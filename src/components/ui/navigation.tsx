@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
-import LanguageSwitcher from "@/components/language-switcher";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,7 +13,6 @@ import {
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useTranslation('common');
 
   const courseCategories = [
     { name: "Embedded C", href: "/courses/embedded-c" },
@@ -42,7 +39,7 @@ const Navigation = () => {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-gray-300 hover:text-white bg-transparent">
-                    {t('navigation.courses')}
+                    Courses
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="grid w-[400px] gap-3 p-6 bg-slate-800 border-slate-700">
@@ -65,30 +62,29 @@ const Navigation = () => {
             </NavigationMenu>
             
             <Link to="/about" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              {t('navigation.about')}
+              About
             </Link>
             <Link to="/trainers" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              {t('navigation.trainers')}
+              Trainers
             </Link>
             <Link to="/blog" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              {t('navigation.blog')}
+              Blog
             </Link>
             <Link to="/hardware" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              {t('navigation.hardware')}
+              Hardware
             </Link>
             <Link to="/contact" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              {t('navigation.contact')}
+              Contact
             </Link>
           </div>
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <LanguageSwitcher />
             <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-slate-800">
-              {t('navigation.login')}
+              Login
             </Button>
             <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
-              {t('navigation.getStarted')}
+              Get Started
             </Button>
           </div>
 
@@ -107,7 +103,7 @@ const Navigation = () => {
             <div className="flex flex-col space-y-4">
               <div className="space-y-2">
                 <div className="font-medium text-sm text-gray-400 px-4">
-                  {t('navigation.courses')}
+                  Courses
                 </div>
                 {courseCategories.map((category) => (
                   <Link
@@ -122,30 +118,27 @@ const Navigation = () => {
               </div>
               
               <Link to="/about" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                {t('navigation.about')}
+                About
               </Link>
               <Link to="/trainers" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                {t('navigation.trainers')}
+                Trainers
               </Link>
               <Link to="/blog" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                {t('navigation.blog')}
+                Blog
               </Link>
               <Link to="/hardware" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                {t('navigation.hardware')}
+                Hardware
               </Link>
               <Link to="/contact" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                {t('navigation.contact')}
+                Contact
               </Link>
               
               <div className="px-4 pt-4 space-y-2">
-                <div className="mb-2">
-                  <LanguageSwitcher />
-                </div>
                 <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-white hover:bg-slate-800">
-                  {t('navigation.login')}
+                  Login
                 </Button>
                 <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                  {t('navigation.getStarted')}
+                  Get Started
                 </Button>
               </div>
             </div>

@@ -3,7 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
 import CourseCard from "@/components/course-card";
-import { useTranslation } from "react-i18next";
 import { 
   Zap, 
   Users, 
@@ -25,7 +24,6 @@ import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
 import AnimatedParticles from "@/components/animated-particles";
 
 const Index = () => {
-  const { t } = useTranslation('common');
   const featuredCourses = [
     {
       id: "embedded-c-arduino",
@@ -122,14 +120,14 @@ const Index = () => {
                 </Badge>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-                  {t('hero.title')}
+                  Master Electronics & Programming with Expert Training
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
                     
                   </span>
                 </h1>
                 
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  {t('hero.subtitle')}
+                  Join thousands of students mastering cutting-edge technology through hands-on courses in IoT, embedded systems, and more.
                 </p>
               </div>
 
@@ -137,12 +135,12 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105">
                   <Code className="mr-2 w-5 h-5" />
-                  {t('hero.cta')}
+                  Start Learning Today
                 </Button>
                 
                 <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg">
                   <Play className="mr-2 w-5 h-5" />
-                  {t('hero.watchDemo')}
+                  Watch Demo
                 </Button>
               </div>
 
@@ -151,17 +149,17 @@ const Index = () => {
                 <div className="flex items-center space-x-2">
                   <Star className="w-5 h-5 text-yellow-400" />
                   <span className="text-white font-semibold">4.9/5</span>
-                  <span className="text-gray-400">{t('stats.satisfaction')}</span>
+                  <span className="text-gray-400">Satisfaction Rate</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users className="w-5 h-5 text-blue-400" />
                   <span className="text-white font-semibold">5,000+</span>
-                  <span className="text-gray-400">{t('stats.students')}</span>
+                  <span className="text-gray-400">Active Students</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Trophy className="w-5 h-5 text-purple-400" />
                   <span className="text-white font-semibold">25+</span>
-                  <span className="text-gray-400">{t('stats.courses')}</span>
+                  <span className="text-gray-400">Expert Courses</span>
                 </div>
               </div>
             </div>
@@ -261,10 +259,10 @@ const Index = () => {
               Most Popular Courses
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-              {t('courses.title')}
+              Featured Courses
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              {t('courses.subtitle')}
+              Discover our most popular courses designed by industry experts
             </p>
           </div>
           
@@ -283,7 +281,7 @@ const Index = () => {
                     course.level === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' :
                     'bg-red-500/20 text-red-400 border-red-500/30'
                   }`}>
-                    {t(`courses.level.${course.level.toLowerCase()}`)}
+                    {course.level}
                   </Badge>
                 </div>
                 
@@ -314,7 +312,7 @@ const Index = () => {
                       <span className="text-2xl font-bold text-white">${course.price}</span>
                     </div>
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                      {t('courses.enrollNow')}
+                      Enroll Now
                     </Button>
                   </div>
                 </CardContent>
@@ -325,7 +323,7 @@ const Index = () => {
           <div className="text-center mt-12">
             <Button variant="outline" size="lg" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500">
               <Link to="/courses" className="flex items-center">
-                {t('courses.viewAll')}
+                View All Courses
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
