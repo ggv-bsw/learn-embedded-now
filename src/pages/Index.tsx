@@ -16,7 +16,7 @@ import {
   Wifi
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroTechBg from "@/assets/hero-tech-bg.jpg";
+import heroTechBg from "@/assets/hero-tech-bg-new.jpg";
 import courseArduino from "@/assets/course-arduino.jpg";
 import courseIot from "@/assets/course-iot.jpg";
 import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
