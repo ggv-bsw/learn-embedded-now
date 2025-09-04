@@ -20,6 +20,7 @@ import heroTechBg from "@/assets/hero-tech-bg.jpg";
 import courseArduino from "@/assets/course-arduino.jpg";
 import courseIot from "@/assets/course-iot.jpg";
 import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
+import AnimatedParticles from "@/components/animated-particles";
 
 const Index = () => {
   const featuredCourses = [
@@ -100,6 +101,9 @@ const Index = () => {
         }}
       >
         <div className="absolute inset-0 bg-gradient-tech opacity-50"></div>
+        
+        {/* Animated Particles */}
+        <AnimatedParticles />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
