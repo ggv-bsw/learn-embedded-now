@@ -64,8 +64,8 @@ const Navigation = () => {
             <Link to="/about" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
               About
             </Link>
-            <Link to="/pricing" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              Pricing
+            <Link to="/trainers" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
+              Trainers
             </Link>
             <Link to="/blog" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
               Blog
@@ -117,8 +117,8 @@ const Navigation = () => {
               <Link to="/about" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
                 About
               </Link>
-              <Link to="/pricing" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                Pricing
+              <Link to="/trainers" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
+                Trainers
               </Link>
               <Link to="/blog" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
                 Blog
