@@ -89,7 +89,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background font-inter">
+    <div className="min-h-screen bg-slate-900 font-inter text-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -252,26 +252,78 @@ const Index = () => {
       </section>
 
       {/* Featured Courses */}
-      <section className="py-20 bg-gradient-to-b from-background to-accent/20">
+      <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Featured Courses
+            <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
+              <Code className="w-4 h-4 mr-2" />
+              Most Popular Courses
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
+              Start Your Development Journey
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Start with our most popular courses designed for beginners and professionals
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Industry-focused courses designed by embedded systems professionals
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {featuredCourses.map((course) => (
-              <CourseCard key={course.id} {...course} />
+              <Card key={course.id} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={course.image} 
+                    alt={course.title}
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                  <Badge className={`absolute top-3 right-3 ${
+                    course.level === 'Beginner' ? 'bg-green-500/20 text-green-400 border-green-500/30' :
+                    course.level === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' :
+                    'bg-red-500/20 text-red-400 border-red-500/30'
+                  }`}>
+                    {course.level}
+                  </Badge>
+                </div>
+                
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                    {course.title}
+                  </h3>
+                  <p className="text-gray-400 mb-4 line-clamp-2">
+                    {course.description}
+                  </p>
+                  
+                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                    <div className="flex items-center space-x-4">
+                      <span className="flex items-center">
+                        <Users className="w-4 h-4 mr-1" />
+                        {course.students.toLocaleString()}
+                      </span>
+                      <span className="flex items-center">
+                        <Star className="w-4 h-4 mr-1 text-yellow-400" />
+                        {course.rating}
+                      </span>
+                    </div>
+                    <span>{course.duration}</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-2xl font-bold text-white">${course.price}</span>
+                    </div>
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                      Enroll Now
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
           
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/courses">
+            <Button variant="outline" size="lg" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500">
+              <Link to="/courses" className="flex items-center">
                 View All Courses
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
@@ -281,27 +333,34 @@ const Index = () => {
       </section>
 
       {/* Features */}
-      <section className="py-20">
+      <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                Why Choose Embedded School?
+              <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
+                <CheckCircle className="w-4 h-4 mr-2" />
+                Why Choose Us?
+              </Badge>
+              
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
+                Industry-Standard Learning Platform
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                We provide comprehensive, practical education in embedded systems and IoT development 
-                with a focus on real-world applications and industry standards.
+              <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+                Master embedded systems with our comprehensive, hands-on curriculum designed by industry professionals. 
+                From basic concepts to advanced real-world applications.
               </p>
               
               <div className="space-y-6">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <feature.icon className="w-6 h-6 text-primary" />
+                  <div key={index} className="flex items-start space-x-4 group">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-lg flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all duration-300">
+                      <feature.icon className="w-6 h-6 text-blue-400" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
+                      <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-blue-400 transition-colors">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-400">{feature.description}</p>
                     </div>
                   </div>
                 ))}
@@ -309,31 +368,50 @@ const Index = () => {
             </div>
             
             <div className="grid gap-6">
-              <Card className="bg-gradient-card shadow-card-hover border-0">
+              <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-slate-700 backdrop-blur-sm hover:from-slate-700/50 hover:to-slate-800/50 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <CheckCircle className="w-6 h-6 text-green-500" />
-                    <span>Certification Ready</span>
+                  <CardTitle className="flex items-center space-x-3 text-white">
+                    <div className="w-12 h-12 bg-green-500/20 border border-green-500/30 rounded-lg flex items-center justify-center">
+                      <CheckCircle className="w-6 h-6 text-green-400" />
+                    </div>
+                    <span>Industry Certification</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
-                    All courses prepare you for industry certifications and real-world employment.
+                  <p className="text-gray-400">
+                    Get recognized certificates that employers value. All courses align with industry standards and best practices.
                   </p>
+                  <div className="mt-4 flex items-center space-x-2">
+                    <div className="flex -space-x-2">
+                      <div className="w-8 h-8 bg-blue-500 rounded-full border-2 border-slate-800"></div>
+                      <div className="w-8 h-8 bg-purple-500 rounded-full border-2 border-slate-800"></div>
+                      <div className="w-8 h-8 bg-green-500 rounded-full border-2 border-slate-800"></div>
+                    </div>
+                    <span className="text-sm text-gray-400">500+ certified this month</span>
+                  </div>
                 </CardContent>
               </Card>
               
-              <Card className="bg-gradient-card shadow-card-hover border-0">
+              <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-slate-700 backdrop-blur-sm hover:from-slate-700/50 hover:to-slate-800/50 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <Users className="w-6 h-6 text-blue-500" />
-                    <span>Community Support</span>
+                  <CardTitle className="flex items-center space-x-3 text-white">
+                    <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-lg flex items-center justify-center">
+                      <Users className="w-6 h-6 text-blue-400" />
+                    </div>
+                    <span>Active Community</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
-                    Join a vibrant community of embedded systems enthusiasts and professionals.
+                  <p className="text-gray-400">
+                    Join a vibrant community of developers, mentors, and industry experts. Get help, share projects, and network.
                   </p>
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-sm text-gray-400">Online now:</span>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                      <span className="text-sm text-green-400 font-mono">1,247 members</span>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -342,71 +420,136 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary via-primary-glow to-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Ready to Start Your Embedded Journey?
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <pattern id="cta-grid" width="8" height="8" patternUnits="userSpaceOnUse">
+                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="currentColor" strokeWidth="0.2" className="text-blue-400"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#cta-grid)"/>
+          </svg>
+        </div>
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
+            <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+            Start Your Journey
+          </Badge>
+          
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
+            Ready to Build the Future?
           </h2>
-          <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Join thousands of students mastering embedded systems. Get instant access to our beginner-friendly courses.
+          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            Join thousands of developers mastering embedded systems. Start with our free course preview 
+            and see why professionals choose Embedded School.
           </p>
-          <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100 px-8 py-6 text-lg shadow-glow">
-            Get Started Free Trial
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105">
+              <Play className="mr-2 w-5 h-5" />
+              Start Free Preview
+            </Button>
+            <Button size="lg" variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6 text-lg">
+              <Users className="mr-2 w-5 h-5" />
+              Join Community
+            </Button>
+          </div>
+          
+          {/* Trust Indicators */}
+          <div className="mt-12 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-white">5K+</div>
+              <div className="text-sm text-gray-400">Active Students</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-white">4.9★</div>
+              <div className="text-sm text-gray-400">Average Rating</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-white">98%</div>
+              <div className="text-sm text-gray-400">Completion Rate</div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-secondary text-secondary-foreground">
+      <footer className="py-12 bg-slate-950 border-t border-slate-800">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-sm">ES</span>
                 </div>
-                <span className="font-bold text-lg">Embedded School</span>
+                <span className="font-bold text-lg text-white">Embedded School</span>
               </div>
-              <p className="text-secondary-foreground/80">
-                Empowering the next generation of embedded systems developers.
+              <p className="text-gray-400 mb-4">
+                Empowering the next generation of embedded systems developers with practical, industry-focused education.
               </p>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-sm text-gray-400">Currently online: 1,247 students</span>
+              </div>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-3">Courses</h4>
-              <ul className="space-y-2 text-secondary-foreground/80">
-                <li><Link to="/courses/arduino" className="hover:text-secondary-foreground">Arduino</Link></li>
-                <li><Link to="/courses/embedded-c" className="hover:text-secondary-foreground">Embedded C</Link></li>
-                <li><Link to="/courses/iot" className="hover:text-secondary-foreground">IoT Systems</Link></li>
-                <li><Link to="/courses/automotive" className="hover:text-secondary-foreground">Automotive</Link></li>
+              <h4 className="font-semibold mb-3 text-white">Courses</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link to="/courses/arduino" className="hover:text-blue-400 transition-colors flex items-center">
+                  <Cpu className="w-3 h-3 mr-2" />Arduino Programming
+                </Link></li>
+                <li><Link to="/courses/embedded-c" className="hover:text-blue-400 transition-colors flex items-center">
+                  <Code className="w-3 h-3 mr-2" />Embedded C
+                </Link></li>
+                <li><Link to="/courses/iot" className="hover:text-blue-400 transition-colors flex items-center">
+                  <Wifi className="w-3 h-3 mr-2" />IoT Systems
+                </Link></li>
+                <li><Link to="/courses/automotive" className="hover:text-blue-400 transition-colors flex items-center">
+                  <Zap className="w-3 h-3 mr-2" />Automotive Electronics
+                </Link></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-3">Company</h4>
-              <ul className="space-y-2 text-secondary-foreground/80">
-                <li><Link to="/about" className="hover:text-secondary-foreground">About Us</Link></li>
-                <li><Link to="/contact" className="hover:text-secondary-foreground">Contact</Link></li>
-                <li><Link to="/blog" className="hover:text-secondary-foreground">Blog</Link></li>
-                <li><Link to="/careers" className="hover:text-secondary-foreground">Careers</Link></li>
+              <h4 className="font-semibold mb-3 text-white">Company</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link to="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
+                <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link></li>
+                <li><Link to="/blog" className="hover:text-blue-400 transition-colors">Blog</Link></li>
+                <li><Link to="/careers" className="hover:text-blue-400 transition-colors">Careers</Link></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-3">Support</h4>
-              <ul className="space-y-2 text-secondary-foreground/80">
-                <li><Link to="/help" className="hover:text-secondary-foreground">Help Center</Link></li>
-                <li><Link to="/terms" className="hover:text-secondary-foreground">Terms</Link></li>
-                <li><Link to="/privacy" className="hover:text-secondary-foreground">Privacy</Link></li>
+              <h4 className="font-semibold mb-3 text-white">Developer Resources</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link to="/docs" className="hover:text-blue-400 transition-colors">Documentation</Link></li>
+                <li><Link to="/api" className="hover:text-blue-400 transition-colors">API Reference</Link></li>
+                <li><Link to="/community" className="hover:text-blue-400 transition-colors">Community</Link></li>
+                <li><Link to="/support" className="hover:text-blue-400 transition-colors">Support</Link></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-center">
-            <p className="text-secondary-foreground/60">
-              © 2024 Embedded School. All rights reserved.
-            </p>
+          <div className="border-t border-slate-800 mt-8 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-gray-500 text-sm">
+                © 2024 Embedded School. Open source education platform.
+              </p>
+              <div className="flex items-center space-x-4 mt-4 md:mt-0">
+                <Badge variant="outline" className="border-slate-700 text-gray-400">
+                  Built with ❤️ in Moldova
+                </Badge>
+                <div className="flex items-center space-x-1 text-gray-400">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span className="text-xs">All systems operational</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
