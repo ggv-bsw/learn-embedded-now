@@ -368,48 +368,48 @@ const Index = () => {
             </div>
             
             <div className="grid gap-6">
-              <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-slate-700 backdrop-blur-sm hover:from-slate-700/50 hover:to-slate-800/50 transition-all duration-300">
-                <CardHeader>
+              <Card className="bg-slate-800/90 border-green-500/30 backdrop-blur-sm hover:bg-slate-800 hover:border-green-500/50 transition-all duration-300 shadow-lg hover:shadow-green-500/20">
+                <CardHeader className="pb-4">
                   <CardTitle className="flex items-center space-x-3 text-white">
-                    <div className="w-12 h-12 bg-green-500/20 border border-green-500/30 rounded-lg flex items-center justify-center">
-                      <CheckCircle className="w-6 h-6 text-green-400" />
+                    <div className="w-12 h-12 bg-green-500/30 border border-green-500/50 rounded-lg flex items-center justify-center shadow-lg shadow-green-500/20">
+                      <CheckCircle className="w-6 h-6 text-green-300" />
                     </div>
-                    <span>Industry Certification</span>
+                    <span className="text-lg font-bold">Industry Certification</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400">
+                  <p className="text-gray-200 text-base leading-relaxed mb-4">
                     Get recognized certificates that employers value. All courses align with industry standards and best practices.
                   </p>
-                  <div className="mt-4 flex items-center space-x-2">
+                  <div className="mt-4 flex items-center space-x-3 p-3 bg-green-500/10 rounded-lg border border-green-500/20">
                     <div className="flex -space-x-2">
-                      <div className="w-8 h-8 bg-blue-500 rounded-full border-2 border-slate-800"></div>
-                      <div className="w-8 h-8 bg-purple-500 rounded-full border-2 border-slate-800"></div>
-                      <div className="w-8 h-8 bg-green-500 rounded-full border-2 border-slate-800"></div>
+                      <div className="w-8 h-8 bg-blue-500 rounded-full border-2 border-slate-700 shadow-md"></div>
+                      <div className="w-8 h-8 bg-purple-500 rounded-full border-2 border-slate-700 shadow-md"></div>
+                      <div className="w-8 h-8 bg-green-500 rounded-full border-2 border-slate-700 shadow-md"></div>
                     </div>
-                    <span className="text-sm text-gray-400">500+ certified this month</span>
+                    <span className="text-sm text-green-300 font-semibold">500+ certified this month</span>
                   </div>
                 </CardContent>
               </Card>
               
-              <Card className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-slate-700 backdrop-blur-sm hover:from-slate-700/50 hover:to-slate-800/50 transition-all duration-300">
-                <CardHeader>
+              <Card className="bg-slate-800/90 border-blue-500/30 backdrop-blur-sm hover:bg-slate-800 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
+                <CardHeader className="pb-4">
                   <CardTitle className="flex items-center space-x-3 text-white">
-                    <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-lg flex items-center justify-center">
-                      <Users className="w-6 h-6 text-blue-400" />
+                    <div className="w-12 h-12 bg-blue-500/30 border border-blue-500/50 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
+                      <Users className="w-6 h-6 text-blue-300" />
                     </div>
-                    <span>Active Community</span>
+                    <span className="text-lg font-bold">Active Community</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400">
+                  <p className="text-gray-200 text-base leading-relaxed mb-4">
                     Join a vibrant community of developers, mentors, and industry experts. Get help, share projects, and network.
                   </p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-sm text-gray-400">Online now:</span>
-                    <div className="flex items-center space-x-1">
+                  <div className="mt-4 flex items-center justify-between p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
+                    <span className="text-sm text-blue-300 font-semibold">Online now:</span>
+                    <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                      <span className="text-sm text-green-400 font-mono">1,247 members</span>
+                      <span className="text-sm text-green-300 font-mono font-bold">1,247 members</span>
                     </div>
                   </div>
                 </CardContent>
