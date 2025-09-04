@@ -344,24 +344,41 @@ const Courses = () => {
       {/* CTA Section */}
       <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4">
-          <Card className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20 backdrop-blur-sm max-w-4xl mx-auto">
+          <Card className="bg-slate-800/90 border-blue-500/30 backdrop-blur-sm max-w-4xl mx-auto shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 transition-all duration-300">
             <CardContent className="pt-12 pb-12 text-center">
-              <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
+              <Badge className="mb-6 bg-purple-500/30 text-purple-300 border-purple-500/50 font-mono shadow-lg">
                 <Code className="w-4 h-4 mr-2" />
                 Need Something Specific?
               </Badge>
               
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
                 Can't Find What You're Looking For?
               </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
                 We're constantly adding new courses. Contact us to suggest a topic or get notified about upcoming releases.
               </p>
+              
+              {/* Feature highlights */}
+              <div className="grid md:grid-cols-3 gap-6 mb-8 max-w-3xl mx-auto">
+                <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
+                  <h3 className="font-semibold text-white mb-2">Custom Curriculum</h3>
+                  <p className="text-gray-300 text-sm">Tailored courses for your specific needs</p>
+                </div>
+                <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
+                  <h3 className="font-semibold text-white mb-2">Expert Instructors</h3>
+                  <p className="text-gray-300 text-sm">Learn from industry professionals</p>
+                </div>
+                <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
+                  <h3 className="font-semibold text-white mb-2">Early Access</h3>
+                  <p className="text-gray-300 text-sm">Get notified about new releases first</p>
+                </div>
+              </div>
+              
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 shadow-lg">
                   Contact Us
                 </Button>
-                <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500 px-8 py-6">
+                <Button size="lg" variant="outline" className="border-slate-500 text-gray-200 hover:bg-slate-700 hover:border-slate-400 px-8 py-6">
                   Subscribe to Updates
                 </Button>
               </div>
