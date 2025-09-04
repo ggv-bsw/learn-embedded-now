@@ -22,12 +22,12 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 font-bold text-xl">
-            <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
+          <Link to="/" className="flex items-center space-x-2 font-bold text-xl text-white">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">ES</span>
             </div>
             <span>Embedded School</span>
@@ -38,14 +38,16 @@ const Navigation = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Courses</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-gray-300 hover:text-white bg-transparent">
+                    Courses
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid w-[400px] gap-3 p-6">
+                    <div className="grid w-[400px] gap-3 p-6 bg-slate-800 border-slate-700">
                       {courseCategories.map((category) => (
                         <NavigationMenuLink key={category.name} asChild>
                           <Link
                             to={category.href}
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-blue-400 focus:bg-slate-700 focus:text-blue-400 text-gray-300"
                           >
                             <div className="text-sm font-medium leading-none">
                               {category.name}
@@ -59,24 +61,26 @@ const Navigation = () => {
               </NavigationMenuList>
             </NavigationMenu>
             
-            <Link to="/about" className="text-foreground hover:text-primary transition-smooth">
+            <Link to="/about" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
               About
             </Link>
-            <Link to="/pricing" className="text-foreground hover:text-primary transition-smooth">
+            <Link to="/pricing" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
               Pricing
             </Link>
-            <Link to="/blog" className="text-foreground hover:text-primary transition-smooth">
+            <Link to="/blog" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
               Blog
             </Link>
-            <Link to="/contact" className="text-foreground hover:text-primary transition-smooth">
+            <Link to="/contact" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
               Contact
             </Link>
           </div>
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost">Login</Button>
-            <Button variant="default" className="bg-gradient-hero shadow-tech">
+            <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-slate-800">
+              Login
+            </Button>
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
               Get Started
             </Button>
           </div>
@@ -84,7 +88,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-gray-300 hover:text-white"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -92,17 +96,17 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-background">
+          <div className="md:hidden py-4 border-t border-slate-800 bg-slate-900">
             <div className="flex flex-col space-y-4">
               <div className="space-y-2">
-                <div className="font-medium text-sm text-muted-foreground px-4">
+                <div className="font-medium text-sm text-gray-400 px-4">
                   Courses
                 </div>
                 {courseCategories.map((category) => (
                   <Link
                     key={category.name}
                     to={category.href}
-                    className="block px-8 py-2 text-foreground hover:text-primary transition-smooth"
+                    className="block px-8 py-2 text-gray-300 hover:text-blue-400 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {category.name}
@@ -110,24 +114,24 @@ const Navigation = () => {
                 ))}
               </div>
               
-              <Link to="/about" className="block px-4 py-2 text-foreground hover:text-primary transition-smooth">
+              <Link to="/about" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
                 About
               </Link>
-              <Link to="/pricing" className="block px-4 py-2 text-foreground hover:text-primary transition-smooth">
+              <Link to="/pricing" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
                 Pricing
               </Link>
-              <Link to="/blog" className="block px-4 py-2 text-foreground hover:text-primary transition-smooth">
+              <Link to="/blog" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
                 Blog
               </Link>
-              <Link to="/contact" className="block px-4 py-2 text-foreground hover:text-primary transition-smooth">
+              <Link to="/contact" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
                 Contact
               </Link>
               
               <div className="px-4 pt-4 space-y-2">
-                <Button variant="ghost" className="w-full justify-start">
+                <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-white hover:bg-slate-800">
                   Login
                 </Button>
-                <Button className="w-full bg-gradient-hero shadow-tech">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                   Get Started
                 </Button>
               </div>

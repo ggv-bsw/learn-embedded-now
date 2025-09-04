@@ -29,70 +29,76 @@ const CourseCard = ({
   level, 
   category 
 }: CourseCardProps) => {
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case "Beginner": return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100";
-      case "Intermediate": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100";
-      case "Advanced": return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100";
-      default: return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100";
-    }
-  };
-
   return (
-    <Card className="group hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 bg-gradient-card border-0 overflow-hidden">
-      <div className="relative overflow-hidden">
+    <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group overflow-hidden">
+      <div className="relative">
         <img 
           src={image} 
           alt={title}
-          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
         />
-        <Badge className={`absolute top-3 right-3 ${getLevelColor(level)}`}>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+        <Badge className={`absolute top-3 right-3 font-mono ${
+          level === 'Beginner' ? 'bg-green-500/20 text-green-400 border-green-500/30' :
+          level === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' :
+          'bg-red-500/20 text-red-400 border-red-500/30'
+        }`}>
           {level}
         </Badge>
-      </div>
-      
-      <CardHeader className="pb-3">
-        <div className="flex items-center justify-between mb-2">
-          <Badge variant="outline" className="text-xs">
+        <div className="absolute top-3 left-3">
+          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 font-mono">
             {category}
           </Badge>
-          <div className="flex items-center space-x-1">
-            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            <span className="text-sm font-medium">{rating}</span>
-          </div>
         </div>
-        <h3 className="font-semibold text-lg leading-tight group-hover:text-primary transition-smooth">
+      </div>
+      
+      <CardContent className="p-6">
+        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
           {title}
         </h3>
-        <p className="text-sm text-muted-foreground line-clamp-2">
+        <p className="text-gray-400 mb-4 line-clamp-2 leading-relaxed">
           {description}
         </p>
-      </CardHeader>
-
-      <CardContent className="pt-0">
-        <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-          <div className="flex items-center space-x-1">
-            <Clock className="w-4 h-4" />
-            <span>{duration}</span>
+        
+        <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+          <div className="flex items-center space-x-4">
+            <span className="flex items-center">
+              <Users className="w-4 h-4 mr-1" />
+              {students.toLocaleString()}
+            </span>
+            <span className="flex items-center">
+              <Star className="w-4 h-4 mr-1 text-yellow-400" />
+              {rating}
+            </span>
           </div>
-          <div className="flex items-center space-x-1">
-            <Users className="w-4 h-4" />
-            <span>{students} students</span>
+          <span className="text-gray-400">{duration}</span>
+        </div>
+        
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="text-2xl font-bold text-white">${price}</span>
+          </div>
+          <Button 
+            asChild 
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-300"
+          >
+            <Link to={`/courses/${id}`}>
+              Enroll Now
+            </Link>
+          </Button>
+        </div>
+        
+        {/* Progress indicator for enrolled courses */}
+        <div className="mt-4 pt-4 border-t border-slate-700">
+          <div className="flex items-center justify-between text-xs text-gray-400">
+            <span>Quick Preview Available</span>
+            <div className="flex items-center space-x-1">
+              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span>Live</span>
+            </div>
           </div>
         </div>
       </CardContent>
-
-      <CardFooter className="pt-0 flex items-center justify-between">
-        <div className="flex items-baseline space-x-2">
-          <span className="text-2xl font-bold text-primary">${price}</span>
-          <span className="text-sm text-muted-foreground line-through">${Math.round(price * 1.5)}</span>
-        </div>
-        <Button asChild className="bg-gradient-hero shadow-tech hover:shadow-glow transition-all duration-300">
-          <Link to={`/courses/${id}`}>
-            Enroll Now
-          </Link>
-        </Button>
-      </CardFooter>
     </Card>
   );
 };
