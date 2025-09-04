@@ -13,7 +13,8 @@ import {
   ArrowRight,
   Code,
   Cpu,
-  Wifi
+  Wifi,
+  Trophy
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroTechBg from "@/assets/hero-tech-bg-new.jpg";
@@ -92,57 +93,159 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section 
-        className="relative py-20 lg:py-32 bg-gradient-to-br from-background via-accent/50 to-background overflow-hidden"
-        style={{
-          backgroundImage: `linear-gradient(135deg, hsl(var(--background) / 0.9), hsl(var(--accent) / 0.7)), url(${heroTechBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-tech opacity-50"></div>
-        
+      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+        {/* Background Grid Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse">
+                <path d="M 4 0 L 0 0 0 4" fill="none" stroke="currentColor" strokeWidth="0.1" className="text-primary"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)"/>
+          </svg>
+        </div>
+
         {/* Animated Particles */}
         <AnimatedParticles />
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
-              🚀 New Course: Automotive Electronics - Enroll Now
-            </Badge>
-            
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
-              Master Embedded Systems & IoT Development
-            </h1>
-            
-            <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Join <strong>5,000+ students</strong> learning embedded programming, Arduino, and IoT development. 
-              Start your tech career with industry-expert instructors from Moldova & Romania.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button size="lg" className="bg-gradient-hero shadow-tech hover:shadow-glow transition-all duration-300 px-8 py-6 text-lg">
-                Start Learning Today
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              
-              <Button size="lg" variant="outline" className="border-primary/30 hover:bg-primary/10 px-8 py-6 text-lg">
-                <Play className="mr-2 w-5 h-5" />
-                Watch Demo
-              </Button>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              <div>
+                <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                  v2.1.0 - Latest Release
+                </Badge>
+                
+                <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
+                  Code Your Way to
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
+                    Embedded Mastery
+                  </span>
+                </h1>
+                
+                <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                  Learn embedded systems development with hands-on projects, real hardware, and industry best practices. 
+                  From Arduino basics to advanced IoT systems.
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105">
+                  <Code className="mr-2 w-5 h-5" />
+                  Start Coding Now
+                </Button>
+                
+                <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg">
+                  <Play className="mr-2 w-5 h-5" />
+                  View Demo
+                </Button>
+              </div>
+
+              {/* Quick Stats */}
+              <div className="flex flex-wrap gap-8 pt-4">
+                <div className="flex items-center space-x-2">
+                  <Star className="w-5 h-5 text-yellow-400" />
+                  <span className="text-white font-semibold">4.9/5</span>
+                  <span className="text-gray-400">Rating</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Users className="w-5 h-5 text-blue-400" />
+                  <span className="text-white font-semibold">5,000+</span>
+                  <span className="text-gray-400">Students</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Trophy className="w-5 h-5 text-purple-400" />
+                  <span className="text-white font-semibold">25+</span>
+                  <span className="text-gray-400">Courses</span>
+                </div>
+              </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-2xl mx-auto">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
-                    <stat.icon className="w-6 h-6 text-primary" />
+            {/* Right Content - Code Terminal */}
+            <div className="space-y-6">
+              {/* Terminal Window */}
+              <Card className="bg-slate-900/50 border-gray-700 shadow-2xl backdrop-blur-sm">
+                <CardHeader className="pb-0">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <div className="flex space-x-2">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      </div>
+                      <span className="text-gray-400 text-sm font-mono ml-4">embedded-project.ino</span>
+                    </div>
                   </div>
-                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
+                </CardHeader>
+                <CardContent className="pt-4">
+                  <div className="bg-slate-950 rounded-lg p-4 font-mono text-sm overflow-hidden">
+                    <div className="space-y-2">
+                      <div className="text-gray-500">// IoT Temperature Monitoring System</div>
+                      <div>
+                        <span className="text-purple-400">#include</span>{' '}
+                        <span className="text-green-400">&lt;WiFi.h&gt;</span>
+                      </div>
+                      <div>
+                        <span className="text-purple-400">#include</span>{' '}
+                        <span className="text-green-400">&lt;DHT.h&gt;</span>
+                      </div>
+                      <div className="text-gray-600">// ...</div>
+                      <div className="pt-2">
+                        <span className="text-blue-400">void</span>{' '}
+                        <span className="text-yellow-400">setup</span>
+                        <span className="text-white">() {"{"}</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-white">Serial.</span>
+                        <span className="text-yellow-400">begin</span>
+                        <span className="text-white">(</span>
+                        <span className="text-orange-400">115200</span>
+                        <span className="text-white">);</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-white">WiFi.</span>
+                        <span className="text-yellow-400">begin</span>
+                        <span className="text-white">(ssid, password);</span>
+                      </div>
+                      <div className="text-white">{"}"}</div>
+                      <div className="pt-2 flex items-center">
+                        <div className="w-2 h-4 bg-white animate-pulse mr-1"></div>
+                        <span className="text-gray-500">Ready to compile...</span>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Course Preview Cards */}
+              <div className="grid grid-cols-2 gap-4">
+                <Card className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20 backdrop-blur-sm hover-scale">
+                  <CardContent className="p-4 text-center">
+                    <Cpu className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                    <h3 className="text-white font-semibold text-sm">Embedded C</h3>
+                    <p className="text-gray-400 text-xs">Low-level programming</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-gradient-to-br from-green-500/10 to-blue-500/10 border-green-500/20 backdrop-blur-sm hover-scale">
+                  <CardContent className="p-4 text-center">
+                    <Wifi className="w-8 h-8 text-green-400 mx-auto mb-2" />
+                    <h3 className="text-white font-semibold text-sm">IoT Systems</h3>
+                    <p className="text-gray-400 text-xs">Connected devices</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
             </div>
           </div>
         </div>
