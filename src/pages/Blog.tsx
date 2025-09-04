@@ -1,0 +1,303 @@
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import Navigation from "@/components/ui/navigation";
+import ScrollReveal from "@/components/scroll-reveal";
+import { Calendar, Clock, User, ArrowRight, Zap, Shield, Sword, Star } from "lucide-react";
+
+const blogPosts = [
+  {
+    id: 1,
+    title: "The Force of Embedded Systems: A New Hope for IoT",
+    excerpt: "Discover how embedded systems are bringing balance to the IoT galaxy, connecting devices across the universe with unprecedented power.",
+    author: "Master Yoda",
+    date: "May 4, 2024",
+    readTime: "5 min read",
+    category: "IoT",
+    image: "/api/placeholder/400/250",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "The Arduino Strikes Back: Advanced Programming Techniques",
+    excerpt: "Unleash the power of the dark side with advanced Arduino programming techniques that would make even Darth Vader proud.",
+    author: "Anakin Skywalker",
+    date: "May 1, 2024",
+    readTime: "8 min read",
+    category: "Arduino",
+    image: "/api/placeholder/400/250",
+    featured: false
+  },
+  {
+    id: 3,
+    title: "Return of the C: Mastering Low-Level Programming",
+    excerpt: "Join Luke Skywalker's journey from padawan to Jedi Master as he conquers the ancient art of embedded C programming.",
+    author: "Luke Skywalker",
+    date: "Apr 28, 2024",
+    readTime: "12 min read",
+    category: "Embedded C",
+    image: "/api/placeholder/400/250",
+    featured: false
+  },
+  {
+    id: 4,
+    title: "The Phantom Menace: Debugging Embedded Systems",
+    excerpt: "Learn to sense disturbances in the code and eliminate bugs before they strike. Your debugging skills will become legendary.",
+    author: "Obi-Wan Kenobi",
+    date: "Apr 25, 2024",
+    readTime: "6 min read",
+    category: "Debugging",
+    image: "/api/placeholder/400/250",
+    featured: false
+  },
+  {
+    id: 5,
+    title: "Attack of the Clones: Scalable IoT Architecture",
+    excerpt: "Build an army of connected devices with scalable IoT architectures that can handle galactic-scale deployments.",
+    author: "Padmé Amidala",
+    date: "Apr 22, 2024",
+    readTime: "10 min read",
+    category: "Architecture",
+    image: "/api/placeholder/400/250",
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Revenge of the Sith: Security in Embedded Systems",
+    excerpt: "Protect your systems from the dark side with advanced security techniques. Don't let your code fall to the Sith.",
+    author: "Mace Windu",
+    date: "Apr 19, 2024",
+    readTime: "7 min read",
+    category: "Security",
+    image: "/api/placeholder/400/250",
+    featured: false
+  }
+];
+
+const categories = ["All", "IoT", "Arduino", "Embedded C", "Debugging", "Architecture", "Security"];
+
+const Blog = () => {
+  return (
+    <div className="min-h-screen bg-black font-inter text-white">
+      <Navigation />
+      
+      {/* Hero Section */}
+      <section className="relative min-h-[70vh] bg-gradient-to-b from-black via-purple-900/20 to-black flex items-center justify-center overflow-hidden">
+        {/* Stars Background */}
+        <div className="absolute inset-0">
+          <div className="stars absolute inset-0"></div>
+          <div className="stars2 absolute inset-0"></div>
+          <div className="stars3 absolute inset-0"></div>
+        </div>
+
+        {/* Death Star */}
+        <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-gradient-to-br from-gray-400 via-gray-500 to-gray-700 opacity-20 animate-pulse">
+          <div className="absolute top-4 left-4 w-6 h-6 rounded-full bg-red-500 opacity-60"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <ScrollReveal>
+            <Badge className="mb-6 bg-yellow-400/10 text-yellow-400 border-yellow-400/30 font-mono">
+              <Star className="w-4 h-4 mr-2" />
+              A long time ago in a galaxy far, far away...
+            </Badge>
+            
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-b from-yellow-400 via-yellow-300 to-yellow-500 leading-tight">
+              THE EMBEDDED
+              <span className="block">CHRONICLES</span>
+            </h1>
+            
+            <p className="text-xl text-blue-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Join the Rebellion against complex code. Learn the ways of the Force in embedded systems, 
+              Arduino mastery, and IoT wisdom from Jedi Masters across the galaxy.
+            </p>
+            
+            <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-300 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105">
+              <Zap className="mr-2 w-5 h-5" />
+              Begin Your Journey
+            </Button>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Featured Post */}
+      <section className="py-20 bg-gradient-to-b from-black to-purple-900/10">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <Badge className="mb-6 bg-red-500/10 text-red-400 border-red-500/30 font-mono">
+                <Shield className="w-4 h-4 mr-2" />
+                Featured Transmission
+              </Badge>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
+                Latest from the Jedi Archives
+              </h2>
+            </div>
+            
+            {blogPosts.filter(post => post.featured).map((post) => (
+              <Card key={post.id} className="bg-gray-900/50 border-yellow-400/30 backdrop-blur-sm hover:border-yellow-400/50 transition-all duration-300 group max-w-4xl mx-auto">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="relative overflow-hidden">
+                    <div className="w-full h-64 lg:h-full bg-gradient-to-br from-yellow-400/20 to-red-500/20 flex items-center justify-center">
+                      <Sword className="w-16 h-16 text-yellow-400 opacity-60" />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  </div>
+                  
+                  <CardContent className="p-8 flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Badge className="bg-yellow-400/10 text-yellow-400 border-yellow-400/30">
+                        {post.category}
+                      </Badge>
+                      <span className="text-sm text-gray-400">Featured</span>
+                    </div>
+                    
+                    <CardTitle className="text-2xl lg:text-3xl font-bold mb-4 text-white group-hover:text-yellow-400 transition-colors">
+                      {post.title}
+                    </CardTitle>
+                    
+                    <p className="text-gray-300 mb-6 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                    
+                    <div className="flex items-center justify-between text-sm text-gray-400 mb-6">
+                      <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-1">
+                          <User className="w-4 h-4" />
+                          <span>{post.author}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>{post.date}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="w-4 h-4" />
+                          <span>{post.readTime}</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <Button className="bg-yellow-400 text-black hover:bg-yellow-300 w-fit">
+                      Read the Holocron
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </CardContent>
+                </div>
+              </Card>
+            ))}
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Blog Posts Grid */}
+      <section className="py-20 bg-gradient-to-b from-purple-900/10 to-black">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-white">
+              Chronicles from the Galaxy
+            </h2>
+            
+            {/* Category Filter */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  variant={category === "All" ? "default" : "outline"}
+                  size="sm"
+                  className={category === "All" 
+                    ? "bg-yellow-400 text-black hover:bg-yellow-300" 
+                    : "border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500"
+                  }
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.filter(post => !post.featured).map((post, index) => (
+              <ScrollReveal key={post.id} delay={index * 100}>
+                <Card className="bg-gray-900/30 border-gray-700 backdrop-blur-sm hover:bg-gray-800/50 hover:border-yellow-400/30 transition-all duration-300 group h-full">
+                  <div className="relative overflow-hidden">
+                    <div className="w-full h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                      <Star className="w-12 h-12 text-blue-400 opacity-60" />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <Badge className={`absolute top-3 right-3 ${
+                      post.category === 'IoT' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :
+                      post.category === 'Arduino' ? 'bg-green-500/20 text-green-400 border-green-500/30' :
+                      post.category === 'Embedded C' ? 'bg-red-500/20 text-red-400 border-red-500/30' :
+                      post.category === 'Debugging' ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' :
+                      post.category === 'Architecture' ? 'bg-purple-500/20 text-purple-400 border-purple-500/30' :
+                      'bg-orange-500/20 text-orange-400 border-orange-500/30'
+                    }`}>
+                      {post.category}
+                    </Badge>
+                  </div>
+                  
+                  <CardContent className="p-6 flex flex-col flex-grow">
+                    <CardTitle className="text-lg font-bold mb-3 text-white group-hover:text-yellow-400 transition-colors line-clamp-2">
+                      {post.title}
+                    </CardTitle>
+                    
+                    <p className="text-gray-400 mb-4 text-sm leading-relaxed flex-grow line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    
+                    <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                      <div className="flex items-center gap-1">
+                        <User className="w-3 h-3" />
+                        <span>{post.author}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span>{post.date}</span>
+                        <span>•</span>
+                        <span>{post.readTime}</span>
+                      </div>
+                    </div>
+                    
+                    <Button size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 w-full">
+                      Read More
+                      <ArrowRight className="ml-2 w-3 h-3" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-20 bg-gradient-to-r from-purple-900/20 via-black to-blue-900/20">
+        <div className="container mx-auto px-4 text-center">
+          <ScrollReveal>
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+                Join the Rebel Alliance
+              </h2>
+              <p className="text-lg text-gray-300 mb-8">
+                Receive transmissions from across the galaxy. Get the latest embedded systems wisdom 
+                delivered directly to your hologram projector.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <input 
+                  type="email" 
+                  placeholder="your.email@rebellion.com"
+                  className="flex-1 px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400"
+                />
+                <Button className="bg-yellow-400 text-black hover:bg-yellow-300 px-6">
+                  Join the Force
+                </Button>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Blog;
