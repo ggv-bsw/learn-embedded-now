@@ -120,9 +120,12 @@ const Index = () => {
                 </Badge>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-                  Master Electronics & Programming with Expert Training
+                  Engineers Factory -{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
+                    Embedded School
+                  </span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                    
+                    Build Your Future
                   </span>
                 </h1>
                 
