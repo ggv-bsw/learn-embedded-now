@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Navigation from "@/components/ui/navigation";
 import AnimatedParticles from "@/components/animated-particles";
 import ScrollReveal from "@/components/scroll-reveal";
@@ -147,9 +148,12 @@ const Trainers = () => {
                   <CardHeader className="pb-4">
                     <div className="flex items-start gap-4">
                       <div className="relative">
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-2 border-blue-500/30 flex items-center justify-center">
-                          <Code className="w-8 h-8 text-blue-400" />
-                        </div>
+                        <Avatar className="w-20 h-20 border-2 border-blue-500/30">
+                          <AvatarImage src={trainer.image} alt={trainer.name} />
+                          <AvatarFallback className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 text-blue-400 text-xl font-bold">
+                            {trainer.name.split(' ').map(n => n[0]).join('')}
+                          </AvatarFallback>
+                        </Avatar>
                         <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-slate-800 flex items-center justify-center">
                           <div className="w-2 h-2 bg-white rounded-full"></div>
                         </div>
