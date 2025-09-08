@@ -286,6 +286,94 @@ const Trainers = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Become a Trainer Section */}
+      <section className="py-20 bg-slate-800 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <AnimatedParticles />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <ScrollReveal>
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
+                <Trophy className="w-4 h-4 mr-2" />
+                Join Our Team
+              </Badge>
+              
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                Become a 
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-green-400">
+                  Trainer at Engineers Factory
+                </span>
+              </h2>
+              
+              <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
+                Are you an experienced embedded systems engineer or IoT specialist? Join our team of expert trainers 
+                and help shape the next generation of engineers. Share your knowledge and make a meaningful impact.
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
+                <div className="p-6 bg-slate-900/50 rounded-lg border border-slate-700">
+                  <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                    <Users className="w-6 h-6 text-green-400" />
+                  </div>
+                  <h3 className="font-semibold text-white mb-2">Flexible Teaching</h3>
+                  <p className="text-sm text-gray-400">Set your own schedule and teach from anywhere</p>
+                </div>
+                
+                <div className="p-6 bg-slate-900/50 rounded-lg border border-slate-700">
+                  <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                    <Award className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h3 className="font-semibold text-white mb-2">Expert Recognition</h3>
+                  <p className="text-sm text-gray-400">Build your reputation in the embedded systems community</p>
+                </div>
+                
+                <div className="p-6 bg-slate-900/50 rounded-lg border border-slate-700">
+                  <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                    <Cpu className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <h3 className="font-semibold text-white mb-2">Competitive Pay</h3>
+                  <p className="text-sm text-gray-400">Earn competitive rates for sharing your expertise</p>
+                </div>
+              </div>
+              
+              <div className="bg-slate-900/50 border border-slate-700 rounded-lg p-8">
+                <h3 className="text-xl font-semibold text-white mb-4">Requirements</h3>
+                <div className="grid md:grid-cols-2 gap-4 text-left">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-300">5+ years of industry experience</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-300">Strong communication skills</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-300">Expertise in embedded systems or IoT</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-300">Passion for teaching and mentoring</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105">
+                  <Award className="mr-2 w-5 h-5" />
+                  Apply to Teach
+                </Button>
+                <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg">
+                  Learn More
+                </Button>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
     </div>
   );
 };
