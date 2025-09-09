@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
 import CourseCard from "@/components/course-card";
+import CourseInquiryForm from "@/components/CourseInquiryForm";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   Zap, 
@@ -26,6 +28,7 @@ import AnimatedParticles from "@/components/animated-particles";
 
 const Index = () => {
   const { t } = useLanguage();
+  const [showInquiryForm, setShowInquiryForm] = useState(false);
   
   const featuredCourses = [
     {
@@ -138,7 +141,11 @@ const Index = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105">
+                <Button 
+                  size="lg" 
+                  className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
+                  onClick={() => setShowInquiryForm(true)}
+                >
                   <Code className="mr-2 w-5 h-5" />
                   {t('hero.startLearning', 'Start Learning Today')}
                 </Button>
@@ -556,6 +563,12 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Course Inquiry Form */}
+      <CourseInquiryForm 
+        open={showInquiryForm} 
+        onOpenChange={setShowInquiryForm} 
+      />
     </div>
   );
 };
