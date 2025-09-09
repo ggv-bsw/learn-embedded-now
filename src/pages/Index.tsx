@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
 import CourseCard from "@/components/course-card";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   Zap, 
   Users, 
@@ -24,6 +25,8 @@ import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
 import AnimatedParticles from "@/components/animated-particles";
 
 const Index = () => {
+  const { t } = useLanguage();
+  
   const featuredCourses = [
     {
       id: "embedded-c-arduino",
@@ -64,27 +67,27 @@ const Index = () => {
   ];
 
   const stats = [
-    { icon: Users, label: "Active Students", value: "5,000+" },
-    { icon: Award, label: "Courses Available", value: "25+" },
-    { icon: Star, label: "Average Rating", value: "4.8" },
-    { icon: Zap, label: "Success Rate", value: "92%" }
+    { icon: Users, label: t('stats.activeStudents', 'Active Students'), value: "5,000+" },
+    { icon: Award, label: t('stats.coursesAvailable', 'Courses Available'), value: "25+" },
+    { icon: Star, label: t('stats.averageRating', 'Average Rating'), value: "4.8" },
+    { icon: Zap, label: t('stats.successRate', 'Success Rate'), value: "92%" }
   ];
 
   const features = [
     {
       icon: Code,
-      title: "Hands-on Projects",
-      description: "Build real embedded systems projects from day one"
+      title: t('features.handsOn', 'Hands-on Projects'),
+      description: t('features.handsOnDesc', 'Build real embedded systems projects from day one')
     },
     {
       icon: Cpu, 
-      title: "Industry-Standard Tools",
-      description: "Learn with the same tools used by professionals"
+      title: t('features.industryTools', 'Industry-Standard Tools'),
+      description: t('features.industryToolsDesc', 'Learn with the same tools used by professionals')
     },
     {
       icon: Wifi,
-      title: "Expert Instructors", 
-      description: "Learn from experienced embedded systems engineers"
+      title: t('features.expertInstructors', 'Expert Instructors'), 
+      description: t('features.expertInstructorsDesc', 'Learn from experienced embedded systems engineers')
     }
   ];
 
@@ -120,17 +123,16 @@ const Index = () => {
                 </Badge>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-                  Engineers Factory -{' '}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                    Embedded School
+                    {t('hero.title', 'Engineers Factory - Embedded School')}
                   </span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                    Build Your Future
+                    {t('hero.subtitle', 'Build Your Future')}
                   </span>
                 </h1>
                 
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  Join thousands of students mastering cutting-edge technology through hands-on courses in IoT, embedded systems, and more.
+                  {t('hero.description', 'Join thousands of students mastering cutting-edge technology through hands-on courses in IoT, embedded systems, and more.')}
                 </p>
               </div>
 
@@ -138,12 +140,12 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105">
                   <Code className="mr-2 w-5 h-5" />
-                  Start Learning Today
+                  {t('hero.startLearning', 'Start Learning Today')}
                 </Button>
                 
                 <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg">
                   <Play className="mr-2 w-5 h-5" />
-                  Watch Demo
+                  {t('hero.watchDemo', 'Watch Demo')}
                 </Button>
               </div>
 
@@ -152,17 +154,17 @@ const Index = () => {
                 <div className="flex items-center space-x-2">
                   <Star className="w-5 h-5 text-yellow-400" />
                   <span className="text-white font-semibold">4.9/5</span>
-                  <span className="text-gray-400">Satisfaction Rate</span>
+                  <span className="text-gray-400">{t('hero.satisfaction', 'Satisfaction Rate')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users className="w-5 h-5 text-blue-400" />
                   <span className="text-white font-semibold">5,000+</span>
-                  <span className="text-gray-400">Active Students</span>
+                  <span className="text-gray-400">{t('hero.activeStudents', 'Active Students')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Trophy className="w-5 h-5 text-purple-400" />
                   <span className="text-white font-semibold">25+</span>
-                  <span className="text-gray-400">Expert Courses</span>
+                  <span className="text-gray-400">{t('hero.expertCourses', 'Expert Courses')}</span>
                 </div>
               </div>
             </div>
@@ -259,13 +261,13 @@ const Index = () => {
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
               <Code className="w-4 h-4 mr-2" />
-              Most Popular Courses
+              {t('courses.mostPopular', 'Most Popular Courses')}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-              Featured Courses
+              {t('courses.featured', 'Featured Courses')}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Discover our most popular courses designed by industry experts
+              {t('courses.description', 'Discover our most popular courses designed by industry experts')}
             </p>
           </div>
           
@@ -284,7 +286,7 @@ const Index = () => {
                     course.level === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' :
                     'bg-red-500/20 text-red-400 border-red-500/30'
                   }`}>
-                    {course.level}
+                    {t(`level.${course.level.toLowerCase() as 'beginner' | 'intermediate' | 'advanced'}`, course.level)}
                   </Badge>
                 </div>
                 
@@ -315,7 +317,7 @@ const Index = () => {
                       <span className="text-2xl font-bold text-white">${course.price}</span>
                     </div>
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                      Enroll Now
+                      {t('courses.enrollNow', 'Enroll Now')}
                     </Button>
                   </div>
                 </CardContent>
@@ -326,7 +328,7 @@ const Index = () => {
           <div className="text-center mt-12">
             <Button variant="outline" size="lg" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500">
               <Link to="/courses" className="flex items-center">
-                View All Courses
+                {t('courses.viewAll', 'View All Courses')}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
@@ -341,15 +343,14 @@ const Index = () => {
             <div>
               <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
                 <CheckCircle className="w-4 h-4 mr-2" />
-                Why Choose Us?
+                {t('features.whyChoose', 'Why Choose Us?')}
               </Badge>
               
               <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-                Industry-Standard Learning Platform
+                {t('features.title', 'Industry-Standard Learning Platform')}
               </h2>
               <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                Master embedded systems with our comprehensive, hands-on curriculum designed by industry professionals. 
-                From basic concepts to advanced real-world applications.
+                {t('features.description', 'Master embedded systems with our comprehensive, hands-on curriculum designed by industry professionals. From basic concepts to advanced real-world applications.')}
               </p>
               
               <div className="space-y-6">
@@ -376,12 +377,12 @@ const Index = () => {
                     <div className="w-12 h-12 bg-green-500/30 border border-green-500/50 rounded-lg flex items-center justify-center shadow-lg shadow-green-500/20">
                       <CheckCircle className="w-6 h-6 text-green-300" />
                     </div>
-                    <span className="text-lg font-bold">Industry Certification</span>
+                    <span className="text-lg font-bold">{t('features.certification', 'Industry Certification')}</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-200 text-base leading-relaxed mb-4">
-                    Get recognized certificates that employers value. All courses align with industry standards and best practices.
+                    {t('features.certificationDesc', 'Get recognized certificates that employers value. All courses align with industry standards and best practices.')}
                   </p>
                   <div className="mt-4 flex items-center space-x-3 p-3 bg-green-500/10 rounded-lg border border-green-500/20">
                     <div className="flex -space-x-2">
