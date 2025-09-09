@@ -15,12 +15,17 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnimatedParticles from "@/components/animated-particles";
+import esp32DevkitImage from "@/assets/esp32-devkit.jpg";
+import arduinoUnoImage from "@/assets/arduino-uno-r3.jpg";
+import raspberryPiPicoImage from "@/assets/raspberry-pi-pico.jpg";
+import stm32NucleoImage from "@/assets/stm32-nucleo.jpg";
 
 const Hardware = () => {
   const developmentBoards = [
     {
       id: "esp32-devkit",
       name: "ESP32 DevKit V1",
+      image: esp32DevkitImage,
       description: "Powerful Wi-Fi + Bluetooth development board with dual-core processor. Perfect for IoT projects and wireless applications.",
       price: 12.99,
       originalPrice: 15.99,
@@ -38,7 +43,8 @@ const Hardware = () => {
     },
     {
       id: "arduino-uno-r3",
-      name: "Arduino Uno R3", 
+      name: "Arduino Uno R3",
+      image: arduinoUnoImage,
       description: "The classic microcontroller board based on ATmega328P. Ideal for beginners and prototyping with extensive community support.",
       price: 24.99,
       originalPrice: null,
@@ -57,6 +63,7 @@ const Hardware = () => {
     {
       id: "raspberry-pi-pico",
       name: "Raspberry Pi Pico",
+      image: raspberryPiPicoImage,
       description: "Low-cost, high-performance microcontroller board with flexible digital interfaces and dual ARM Cortex-M0+ cores.",
       price: 4.00,
       originalPrice: null,
@@ -75,6 +82,7 @@ const Hardware = () => {
     {
       id: "stm32-nucleo",
       name: "STM32 Nucleo-F401RE",
+      image: stm32NucleoImage,
       description: "Professional ARM Cortex-M4 development board with advanced features. Perfect for complex embedded applications and real-time systems.",
       price: 18.50,
       originalPrice: 22.00,
@@ -217,7 +225,18 @@ const Hardware = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {developmentBoards.map((board) => (
               <Card key={board.id} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
-                <CardHeader className="pb-4">
+                {/* Product Image */}
+                <div className="p-4 pb-0">
+                  <div className="aspect-square w-full bg-white rounded-lg p-4 mb-4 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={board.image} 
+                      alt={board.name} 
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                </div>
+                
+                <CardHeader className="pb-4 pt-0">
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <CardTitle className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
