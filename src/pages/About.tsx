@@ -35,29 +35,29 @@ const About = () => {
       role: "Founder & CEO", 
       specialization: "Embedded Systems Architecture",
       experience: "15+ years",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-      linkedin: "#"
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
+      linkedin: "https://www.linkedin.com/in/gheorghe-ghirjev/"
     },
     {
       name: "Daniel Vrabii",
-      role: "Data Engineer",
-      specialization: "Python, ML & Database", 
-      experience: "12+ years",
+      role: "Senior Instructor",
+      specialization: "Data Engineer", 
+      experience: "6+ years",
       image: "https://images.unsplash.com/photo-1494790108755-2616b332c5cd?w=400&h=400&fit=crop&crop=face",
       linkedin: "#"
     },
     {
       name: "Ion Caruta",
       role: "Senior Instructor",
-      specialization: "Real-time Systems & RTOS",
-      experience: "10+ years", 
+      specialization: "Quality Assurance",
+      experience: "6+ years", 
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
       linkedin: "#"
     },
     {
-      name: "Dr. Maria Vladescu",
-      role: "Research Director",
-      specialization: "AI in Embedded Systems",
+      name: "Grigore Ciobanu",
+      role: "Senior Instructor",
+      specialization: "C++ with Linux",
       experience: "8+ years",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face", 
       linkedin: "#"
@@ -123,12 +123,12 @@ const About = () => {
               <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white">
                 Empowering the Next Generation of{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                  Engineers
+                  Embedded Engineers
                 </span>
               </h1>
               
               <p className="text-xl lg:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Founded in Moldova with a vision to democratize pratcical courses education across Eastern Europe. 
+                Founded in Moldova with a vision to democratize embedded systems education across Eastern Europe. 
                 We bridge the gap between academic theory and industry practice.
               </p>
             </div>
