@@ -42,22 +42,22 @@ const About = () => {
       name: "Daniel Vrabii",
       role: "Data Engineer",
       specialization: "Python, ML & Database", 
-      experience: "12+ years",
-      image: "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
-      linkedin: "https://www.linkedin.com/in/daniel-vrabii-8910549b/"
+      experience: "6+ years",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b332c5cd?w=400&h=400&fit=crop&crop=face",
+      linkedin: "#"
     },
     {
       name: "Ion Caruta",
-      role: "Senior Instructor",
-      specialization: "Real-time Systems & RTOS",
-      experience: "10+ years", 
+      role: "Quality Assurance",
+      specialization: "System Test & PLC",
+      experience: "6+ years", 
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
       linkedin: "#"
     },
     {
-      name: "Dr. Maria Vladescu",
-      role: "Research Director",
-      specialization: "AI in Embedded Systems",
+      name: "Grigore Ciobanu",
+      role: "Software Engineer",
+      specialization: "C++ with Linux",
       experience: "8+ years",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face", 
       linkedin: "#"
