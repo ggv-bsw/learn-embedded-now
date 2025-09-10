@@ -31,7 +31,7 @@ const About = () => {
 
   const team = [
     {
-      name: "Dr. Alexandru Popescu",
+      name: "Gheorghe Ghirjev",
       role: "Founder & CEO", 
       specialization: "Embedded Systems Architecture",
       experience: "15+ years",
@@ -39,15 +39,15 @@ const About = () => {
       linkedin: "#"
     },
     {
-      name: "Elena Ionescu",
-      role: "Head of Curriculum",
-      specialization: "IoT & Automotive Systems", 
+      name: "Daniel Vrabii",
+      role: "Data Engineer",
+      specialization: "Python, ML & Database", 
       experience: "12+ years",
       image: "https://images.unsplash.com/photo-1494790108755-2616b332c5cd?w=400&h=400&fit=crop&crop=face",
       linkedin: "#"
     },
     {
-      name: "Mihai Constantinescu",
+      name: "Ion Caruta",
       role: "Senior Instructor",
       specialization: "Real-time Systems & RTOS",
       experience: "10+ years", 
