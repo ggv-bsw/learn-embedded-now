@@ -32,19 +32,19 @@ const About = () => {
   const team = [
     {
       name: "Gheorghe Ghirjev",
-      role: "Founder & CEO", 
+      role: "Software Engineer", 
       specialization: "Embedded Systems Architecture",
-      experience: "15+ years",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-      linkedin: "#"
+      experience: "11+ years",
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
+      linkedin: "https://www.linkedin.com/in/gheorghe-ghirjev/"
     },
     {
       name: "Daniel Vrabii",
       role: "Data Engineer",
       specialization: "Python, ML & Database", 
       experience: "6+ years",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b332c5cd?w=400&h=400&fit=crop&crop=face",
-      linkedin: "#"
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
+      linkedin: "https://www.linkedin.com/in/daniel-vrabii-8910549b/"
     },
     {
       name: "Ion Caruta",
@@ -57,7 +57,7 @@ const About = () => {
     {
       name: "Grigore Ciobanu",
       role: "Software Engineer",
-      specialization: "C++ with Linux",
+      specialization: "C++ with Linux & IoT",
       experience: "8+ years",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face", 
       linkedin: "#"
