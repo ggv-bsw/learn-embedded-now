@@ -85,7 +85,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send email notification
     const emailResponse = await resend.emails.send({
       from: "Engineers Factory <onboarding@resend.dev>",
-      to: ["contact@engineersfactory.com"], // Replace with your actual email
+      to: ["hr@bsw-tech.com"],
       subject: `New Course Inquiry - ${courseName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
