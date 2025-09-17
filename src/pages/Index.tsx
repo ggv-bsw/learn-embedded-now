@@ -716,9 +716,11 @@ const Index = () => {
               <Play className="mr-2 w-5 h-5" />
               Start Free Preview
             </Button>
-            <Button size="lg" variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6 text-lg">
-              <Users className="mr-2 w-5 h-5" />
-              Join Community
+            <Button size="lg" variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6 text-lg" asChild>
+              <a href="https://t.me/embeddedschool" target="_blank" rel="noopener noreferrer">
+                <Users className="mr-2 w-5 h-5" />
+                Join Community
+              </a>
             </Button>
           </div>
           
