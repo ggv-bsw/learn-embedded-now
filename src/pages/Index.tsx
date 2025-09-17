@@ -17,7 +17,8 @@ import {
   Code,
   Cpu,
   Wifi,
-  Trophy
+  Trophy,
+  BookOpen
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroTechBg from "@/assets/hero-tech-bg-new.jpg";
@@ -339,6 +340,168 @@ const Index = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Professional Pack Section */}
+      <section className="py-20 bg-slate-900/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
+              <Star className="w-4 h-4 mr-2" />
+              Professional Pack
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
+              Complete Career Paths
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Comprehensive learning tracks designed for specific engineering roles. 
+              Master multiple technologies in focused career paths.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* IoT/Biomedical/Automotive Engineer */}
+            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
+              <CardHeader className="pb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Cpu className="w-8 h-8 text-green-400" />
+                </div>
+                <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-green-400 transition-colors">
+                  IoT/Biomedical/Automotive Engineer
+                </CardTitle>
+                <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mx-auto">
+                  Advanced
+                </Badge>
+              </CardHeader>
+              
+              <CardContent className="pt-0">
+                <p className="text-gray-400 mb-6 text-center leading-relaxed">
+                  Master embedded systems for healthcare, automotive, and IoT applications. 
+                  Learn real-time systems, sensor integration, and industry protocols.
+                </p>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Duration:</span>
+                    <span className="text-white font-semibold">24 weeks</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Level:</span>
+                    <span className="text-orange-400 font-semibold">Advanced</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Courses Included:</span>
+                    <span className="text-white font-semibold">8 Courses</span>
+                  </div>
+                </div>
+                
+                <div className="text-center mb-6">
+                  <div className="text-3xl font-bold text-white mb-1">$899</div>
+                  <div className="text-gray-400 text-sm line-through">$1,299</div>
+                  <div className="text-green-400 text-sm font-semibold">Save 31%</div>
+                </div>
+                
+                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold">
+                  Start Career Path
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Mobile Developer Software Engineer */}
+            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
+              <CardHeader className="pb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Code className="w-8 h-8 text-blue-400" />
+                </div>
+                <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-blue-400 transition-colors">
+                  Mobile Developer Software Engineer
+                </CardTitle>
+                <Badge className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 mx-auto">
+                  Intermediate
+                </Badge>
+              </CardHeader>
+              
+              <CardContent className="pt-0">
+                <p className="text-gray-400 mb-6 text-center leading-relaxed">
+                  Build mobile applications with embedded system integration. 
+                  Learn cross-platform development, BLE communication, and IoT connectivity.
+                </p>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Duration:</span>
+                    <span className="text-white font-semibold">18 weeks</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Level:</span>
+                    <span className="text-yellow-400 font-semibold">Intermediate</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Courses Included:</span>
+                    <span className="text-white font-semibold">6 Courses</span>
+                  </div>
+                </div>
+                
+                <div className="text-center mb-6">
+                  <div className="text-3xl font-bold text-white mb-1">$699</div>
+                  <div className="text-gray-400 text-sm line-through">$999</div>
+                  <div className="text-green-400 text-sm font-semibold">Save 30%</div>
+                </div>
+                
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold">
+                  Start Career Path
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Data Engineer */}
+            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
+              <CardHeader className="pb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="w-8 h-8 text-purple-400" />
+                </div>
+                <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-purple-400 transition-colors">
+                  Data Engineer
+                </CardTitle>
+                <Badge className="bg-green-500/20 text-green-400 border-green-500/30 mx-auto">
+                  Beginner
+                </Badge>
+              </CardHeader>
+              
+              <CardContent className="pt-0">
+                <p className="text-gray-400 mb-6 text-center leading-relaxed">
+                  Process and analyze embedded sensor data at scale. 
+                  Learn data pipelines, machine learning, and embedded analytics systems.
+                </p>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Duration:</span>
+                    <span className="text-white font-semibold">16 weeks</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Level:</span>
+                    <span className="text-green-400 font-semibold">Beginner</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Courses Included:</span>
+                    <span className="text-white font-semibold">5 Courses</span>
+                  </div>
+                </div>
+                
+                <div className="text-center mb-6">
+                  <div className="text-3xl font-bold text-white mb-1">$549</div>
+                  <div className="text-gray-400 text-sm line-through">$799</div>
+                  <div className="text-green-400 text-sm font-semibold">Save 31%</div>
+                </div>
+                
+                <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold">
+                  Start Career Path
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
