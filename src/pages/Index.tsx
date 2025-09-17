@@ -25,6 +25,7 @@ import heroTechBg from "@/assets/hero-tech-bg-new.jpg";
 import courseArduino from "@/assets/course-arduino.jpg";
 import courseIot from "@/assets/course-iot.jpg";
 import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
+import juniorChessRobot from "@/assets/junior-chess-robot.jpg";
 import AnimatedParticles from "@/components/animated-particles";
 
 const Index = () => {
@@ -587,6 +588,93 @@ const Index = () => {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Junior Program Section */}
+      <section className="py-20 bg-slate-900/50">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <Badge className="mb-6 bg-yellow-500/10 text-yellow-400 border-yellow-500/20 font-mono">
+                <Star className="w-4 h-4 mr-2" />
+                Junior Program
+              </Badge>
+              
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
+                Weekend School for Juniors
+              </h2>
+              <h3 className="text-xl lg:text-2xl font-semibold mb-6 text-yellow-400">
+                Build Rockets of the Future
+              </h3>
+              <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+                Designed for young innovators aged 12-18 years old. Our weekend program introduces 
+                teenagers to embedded systems, robotics, and space technology through hands-on projects 
+                and interactive learning experiences.
+              </p>
+              
+              <div className="space-y-6 mb-8">
+                <div className="flex items-start space-x-4 group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-lg flex items-center justify-center group-hover:from-yellow-500/30 group-hover:to-orange-500/30 transition-all duration-300">
+                    <Code className="w-6 h-6 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
+                      Interactive Learning
+                    </h3>
+                    <p className="text-gray-400">Learn programming and electronics through games, robots, and real projects</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4 group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-lg flex items-center justify-center group-hover:from-yellow-500/30 group-hover:to-orange-500/30 transition-all duration-300">
+                    <Cpu className="w-6 h-6 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
+                      Future Skills
+                    </h3>
+                    <p className="text-gray-400">Develop problem-solving, creativity, and technical skills for tomorrow's careers</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4 group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-lg flex items-center justify-center group-hover:from-yellow-500/30 group-hover:to-orange-500/30 transition-all duration-300">
+                    <Trophy className="w-6 h-6 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
+                      Weekend Schedule
+                    </h3>
+                    <p className="text-gray-400">Flexible weekend classes that don't interfere with school commitments</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6">
+                  <Zap className="mr-2 w-5 h-5" />
+                  Join Junior Program
+                </Button>
+                <Button size="lg" variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6">
+                  Learn More
+                </Button>
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2">
+              <div className="relative">
+                <img 
+                  src={juniorChessRobot} 
+                  alt="Junior student playing chess with a robot in a modern tech classroom"
+                  className="rounded-lg shadow-2xl shadow-yellow-500/20 border border-yellow-500/20 hover:shadow-yellow-500/30 transition-all duration-300"
+                />
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                  <Star className="w-8 h-8 text-white" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
