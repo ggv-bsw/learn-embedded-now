@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
 import CourseCard from "@/components/course-card";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
+import { JuniorProgramForm } from "@/components/JuniorProgramForm";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   Zap, 
@@ -654,10 +655,12 @@ const Index = () => {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6">
-                  <Zap className="mr-2 w-5 h-5" />
-                  Join Junior Program
-                </Button>
+                <JuniorProgramForm>
+                  <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6">
+                    <Zap className="mr-2 w-5 h-5" />
+                    Join Junior Program
+                  </Button>
+                </JuniorProgramForm>
                 <Button size="lg" variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6">
                   Learn More
                 </Button>
