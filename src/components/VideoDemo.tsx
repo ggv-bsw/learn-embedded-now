@@ -17,7 +17,7 @@ const VideoDemo: React.FC<VideoDemoProps> = ({ open, onOpenChange }) => {
   const { t } = useLanguage();
 
   const embedUrl =
-    "https://www.youtube.com/embed/zb2tZ56mass?autoplay=1&mute=1&rel=0&modestbranding=1";
+    "https://www.youtube.com/embed/9J-0EGmsc1E?autoplay=1&mute=1&rel=0&modestbranding=1";
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
