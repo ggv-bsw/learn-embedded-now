@@ -7,11 +7,11 @@ import CourseCard from "@/components/course-card";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
 import { JuniorProgramForm } from "@/components/JuniorProgramForm";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { 
-  Zap, 
-  Users, 
-  Award, 
-  CheckCircle, 
+import {
+  Zap,
+  Users,
+  Award,
+  CheckCircle,
   Star,
   Play,
   ArrowRight,
@@ -19,105 +19,147 @@ import {
   Cpu,
   Wifi,
   Trophy,
-  BookOpen
+  BookOpen,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroTechBg from "@/assets/hero-tech-bg-new.jpg";
 import courseArduino from "@/assets/course-arduino.jpg";
 import courseIot from "@/assets/course-iot.jpg";
+import VideoDemo from "@/components/VideoDemo";
 import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
 import juniorChessRobot from "@/assets/junior-chess-robot.jpg";
 import AnimatedParticles from "@/components/animated-particles";
 
+
 const Index = () => {
   const { t } = useLanguage();
   const [showInquiryForm, setShowInquiryForm] = useState(false);
-  
+  const [showVideo, setShowVideo] = useState(false);
+
   const featuredCourses = [
     {
       id: "embedded-c-arduino",
       title: "Intro to Embedded C with Arduino",
-      description: "Master the fundamentals of embedded programming with C and Arduino. Perfect for beginners starting their embedded systems journey.",
+      description:
+        "Master the fundamentals of embedded programming with C and Arduino. Perfect for beginners starting their embedded systems journey.",
       image: courseArduino,
       price: 149,
       duration: "8 weeks",
       students: 1250,
       rating: 4.8,
       level: "Beginner" as const,
-      category: "Arduino"
+      category: "Arduino",
     },
     {
       id: "iot-systems",
-      title: "Complete IoT Systems Development", 
-      description: "Build real-world IoT applications from sensors to cloud. Learn connectivity, data processing, and system architecture.",
+      title: "Complete IoT Systems Development",
+      description:
+        "Build real-world IoT applications from sensors to cloud. Learn connectivity, data processing, and system architecture.",
       image: courseIot,
       price: 199,
       duration: "12 weeks",
       students: 890,
       rating: 4.9,
       level: "Intermediate" as const,
-      category: "IoT"
+      category: "IoT",
     },
     {
       id: "advanced-embedded-c",
       title: "Advanced Embedded C Programming",
-      description: "Deep dive into embedded C optimization, real-time systems, and hardware-level programming for professional developers.",
+      description:
+        "Deep dive into embedded C optimization, real-time systems, and hardware-level programming for professional developers.",
       image: courseEmbeddedC,
       price: 249,
-      duration: "10 weeks", 
+      duration: "10 weeks",
       students: 645,
       rating: 4.7,
       level: "Advanced" as const,
-      category: "Embedded C"
-    }
+      category: "Embedded C",
+    },
   ];
 
   const stats = [
-    { icon: Users, label: t('stats.activeStudents', 'Active Students'), value: "5,000+" },
-    { icon: Award, label: t('stats.coursesAvailable', 'Courses Available'), value: "25+" },
-    { icon: Star, label: t('stats.averageRating', 'Average Rating'), value: "4.8" },
-    { icon: Zap, label: t('stats.successRate', 'Success Rate'), value: "92%" }
+    {
+      icon: Users,
+      label: t("stats.activeStudents", "Active Students"),
+      value: "5,000+",
+    },
+    {
+      icon: Award,
+      label: t("stats.coursesAvailable", "Courses Available"),
+      value: "25+",
+    },
+    {
+      icon: Star,
+      label: t("stats.averageRating", "Average Rating"),
+      value: "4.8",
+    },
+    { icon: Zap, label: t("stats.successRate", "Success Rate"), value: "92%" },
   ];
 
   const features = [
     {
       icon: Code,
-      title: t('features.handsOn', 'Hands-on Projects'),
-      description: t('features.handsOnDesc', 'Build real embedded systems projects from day one')
+      title: t("features.handsOn", "Hands-on Projects"),
+      description: t(
+        "features.handsOnDesc",
+        "Build real embedded systems projects from day one"
+      ),
     },
     {
-      icon: Cpu, 
-      title: t('features.industryTools', 'Industry-Standard Tools'),
-      description: t('features.industryToolsDesc', 'Learn with the same tools used by professionals')
+      icon: Cpu,
+      title: t("features.industryTools", "Industry-Standard Tools"),
+      description: t(
+        "features.industryToolsDesc",
+        "Learn with the same tools used by professionals"
+      ),
     },
     {
       icon: Wifi,
-      title: t('features.expertInstructors', 'Expert Instructors'), 
-      description: t('features.expertInstructorsDesc', 'Learn from experienced embedded systems engineers')
-    }
+      title: t("features.expertInstructors", "Expert Instructors"),
+      description: t(
+        "features.expertInstructorsDesc",
+        "Learn from experienced embedded systems engineers"
+      ),
+    },
   ];
 
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 opacity-20">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
             <defs>
-              <pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse">
-                <path d="M 4 0 L 0 0 0 4" fill="none" stroke="currentColor" strokeWidth="0.1" className="text-primary"/>
+              <pattern
+                id="grid"
+                width="4"
+                height="4"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 4 0 L 0 0 0 4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.1"
+                  className="text-primary"
+                />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#grid)"/>
+            <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
         </div>
 
         {/* Animated Particles */}
         <AnimatedParticles />
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
@@ -127,35 +169,43 @@ const Index = () => {
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                   v2.1.0 - Latest Release
                 </Badge> */}
-                
+
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                    {t('hero.title', 'Engineers Factory - Embedded School')}
+                    {t("hero.title", "Engineers Factory - Embedded School")}
                   </span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                    {t('hero.subtitle', 'Build Your Future')}
+                    {t("hero.subtitle", "Build Your Future")}
                   </span>
                 </h1>
-                
+
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  {t('hero.description', 'Join thousands of students mastering cutting-edge technology through hands-on courses in IoT, embedded systems, and more.')}
+                  {t(
+                    "hero.description",
+                    "Join thousands of students mastering cutting-edge technology through hands-on courses in IoT, embedded systems, and more."
+                  )}
                 </p>
               </div>
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
                   onClick={() => setShowInquiryForm(true)}
                 >
                   <Code className="mr-2 w-5 h-5" />
-                  {t('hero.startLearning', 'Start Learning Today')}
+                  {t("hero.startLearning", "Start Learning Today")}
                 </Button>
-                
-                <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg">
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg"
+                  onClick={() => setShowVideo(true)}
+                >
                   <Play className="mr-2 w-5 h-5" />
-                  {t('hero.watchDemo', 'Watch Demo')}
+                  {t("hero.watchDemo", "Watch Demo")}
                 </Button>
               </div>
 
@@ -164,17 +214,23 @@ const Index = () => {
                 <div className="flex items-center space-x-2">
                   <Star className="w-5 h-5 text-yellow-400" />
                   <span className="text-white font-semibold">4.9/5</span>
-                  <span className="text-gray-400">{t('hero.satisfaction', 'Satisfaction Rate')}</span>
+                  <span className="text-gray-400">
+                    {t("hero.satisfaction", "Satisfaction Rate")}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users className="w-5 h-5 text-blue-400" />
                   <span className="text-white font-semibold">5,000+</span>
-                  <span className="text-gray-400">{t('hero.activeStudents', 'Active Students')}</span>
+                  <span className="text-gray-400">
+                    {t("hero.activeStudents", "Active Students")}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Trophy className="w-5 h-5 text-purple-400" />
                   <span className="text-white font-semibold">25+</span>
-                  <span className="text-gray-400">{t('hero.expertCourses', 'Expert Courses')}</span>
+                  <span className="text-gray-400">
+                    {t("hero.expertCourses", "Expert Courses")}
+                  </span>
                 </div>
               </div>
             </div>
@@ -191,25 +247,29 @@ const Index = () => {
                         <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                       </div>
-                      <span className="text-gray-400 text-sm font-mono ml-4">embedded-project.ino</span>
+                      <span className="text-gray-400 text-sm font-mono ml-4">
+                        embedded-project.ino
+                      </span>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-4">
                   <div className="bg-slate-950 rounded-lg p-4 font-mono text-sm overflow-hidden">
                     <div className="space-y-2">
-                      <div className="text-gray-500">// IoT Temperature Monitoring System</div>
+                      <div className="text-gray-500">
+                        // IoT Temperature Monitoring System
+                      </div>
                       <div>
-                        <span className="text-purple-400">#include</span>{' '}
+                        <span className="text-purple-400">#include</span>{" "}
                         <span className="text-green-400">&lt;WiFi.h&gt;</span>
                       </div>
                       <div>
-                        <span className="text-purple-400">#include</span>{' '}
+                        <span className="text-purple-400">#include</span>{" "}
                         <span className="text-green-400">&lt;DHT.h&gt;</span>
                       </div>
                       <div className="text-gray-600">// ...</div>
                       <div className="pt-2">
-                        <span className="text-blue-400">void</span>{' '}
+                        <span className="text-blue-400">void</span>{" "}
                         <span className="text-yellow-400">setup</span>
                         <span className="text-white">() {"{"}</span>
                       </div>
@@ -228,7 +288,9 @@ const Index = () => {
                       <div className="text-white">{"}"}</div>
                       <div className="pt-2 flex items-center">
                         <div className="w-2 h-4 bg-white animate-pulse mr-1"></div>
-                        <span className="text-gray-500">Ready to compile...</span>
+                        <span className="text-gray-500">
+                          Ready to compile...
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -240,15 +302,21 @@ const Index = () => {
                 <Card className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20 backdrop-blur-sm hover-scale">
                   <CardContent className="p-4 text-center">
                     <Cpu className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                    <h3 className="text-white font-semibold text-sm">Embedded C</h3>
-                    <p className="text-gray-400 text-xs">Low-level programming</p>
+                    <h3 className="text-white font-semibold text-sm">
+                      Embedded C
+                    </h3>
+                    <p className="text-gray-400 text-xs">
+                      Low-level programming
+                    </p>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="bg-gradient-to-br from-green-500/10 to-blue-500/10 border-green-500/20 backdrop-blur-sm hover-scale">
                   <CardContent className="p-4 text-center">
                     <Wifi className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                    <h3 className="text-white font-semibold text-sm">IoT Systems</h3>
+                    <h3 className="text-white font-semibold text-sm">
+                      IoT Systems
+                    </h3>
                     <p className="text-gray-400 text-xs">Connected devices</p>
                   </CardContent>
                 </Card>
@@ -271,35 +339,53 @@ const Index = () => {
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
               <Code className="w-4 h-4 mr-2" />
-              {t('courses.mostPopular', 'Most Popular Courses')}
+              {t("courses.mostPopular", "Most Popular Courses")}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-              {t('courses.featured', 'Featured Courses')}
+              {t("courses.featured", "Featured Courses")}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              {t('courses.description', 'Discover our most popular courses designed by industry experts')}
+              {t(
+                "courses.description",
+                "Discover our most popular courses designed by industry experts"
+              )}
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {featuredCourses.map((course) => (
-              <Card key={course.id} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
+              <Card
+                key={course.id}
+                className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group"
+              >
                 <div className="relative overflow-hidden">
-                  <img 
-                    src={course.image} 
+                  <img
+                    src={course.image}
                     alt={course.title}
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                  <Badge className={`absolute top-3 right-3 ${
-                    course.level === 'Beginner' ? 'bg-green-500/20 text-green-400 border-green-500/30' :
-                    course.level === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' :
-                    'bg-red-500/20 text-red-400 border-red-500/30'
-                  }`}>
-                    {t(`level.${course.level.toLowerCase() as 'beginner' | 'intermediate' | 'advanced'}`, course.level)}
+                  <Badge
+                    className={`absolute top-3 right-3 ${
+                      course.level === "Beginner"
+                        ? "bg-green-500/20 text-green-400 border-green-500/30"
+                        : course.level === "Intermediate"
+                        ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                        : "bg-red-500/20 text-red-400 border-red-500/30"
+                    }`}
+                  >
+                    {t(
+                      `level.${
+                        course.level.toLowerCase() as
+                          | "beginner"
+                          | "intermediate"
+                          | "advanced"
+                      }`,
+                      course.level
+                    )}
                   </Badge>
                 </div>
-                
+
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                     {course.title}
@@ -307,7 +393,7 @@ const Index = () => {
                   <p className="text-gray-400 mb-4 line-clamp-2">
                     {course.description}
                   </p>
-                  
+
                   <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                     <div className="flex items-center space-x-4">
                       <span className="flex items-center">
@@ -321,24 +407,30 @@ const Index = () => {
                     </div>
                     <span>{course.duration}</span>
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-2xl font-bold text-white">${course.price}</span>
+                      <span className="text-2xl font-bold text-white">
+                        ${course.price}
+                      </span>
                     </div>
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                      {t('courses.enrollNow', 'Enroll Now')}
+                      {t("courses.enrollNow", "Enroll Now")}
                     </Button>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500">
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500"
+            >
               <Link to="/courses" className="flex items-center">
-                {t('courses.viewAll', 'View All Courses')}
+                {t("courses.viewAll", "View All Courses")}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
@@ -358,11 +450,11 @@ const Index = () => {
               Complete Career Paths
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Comprehensive learning tracks designed for specific engineering roles. 
-              Master multiple technologies in focused career paths.
+              Comprehensive learning tracks designed for specific engineering
+              roles. Master multiple technologies in focused career paths.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* IoT/Biomedical/Automotive Engineer */}
             <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
@@ -377,13 +469,14 @@ const Index = () => {
                   Advanced
                 </Badge>
               </CardHeader>
-              
+
               <CardContent className="pt-0">
                 <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  Master embedded systems for healthcare, automotive, and IoT applications. 
-                  Learn real-time systems, sensor integration, and industry protocols.
+                  Master embedded systems for healthcare, automotive, and IoT
+                  applications. Learn real-time systems, sensor integration, and
+                  industry protocols.
                 </p>
-                
+
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">Duration:</span>
@@ -391,20 +484,26 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">Level:</span>
-                    <span className="text-orange-400 font-semibold">Advanced</span>
+                    <span className="text-orange-400 font-semibold">
+                      Advanced
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">Courses Included:</span>
                     <span className="text-white font-semibold">8 Courses</span>
                   </div>
                 </div>
-                
+
                 <div className="text-center mb-6">
                   <div className="text-3xl font-bold text-white mb-1">$899</div>
-                  <div className="text-gray-400 text-sm line-through">$1,299</div>
-                  <div className="text-green-400 text-sm font-semibold">Save 31%</div>
+                  <div className="text-gray-400 text-sm line-through">
+                    $1,299
+                  </div>
+                  <div className="text-green-400 text-sm font-semibold">
+                    Save 31%
+                  </div>
                 </div>
-                
+
                 <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold">
                   Start Career Path
                 </Button>
@@ -424,13 +523,14 @@ const Index = () => {
                   Intermediate
                 </Badge>
               </CardHeader>
-              
+
               <CardContent className="pt-0">
                 <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  Build mobile applications with embedded system integration. 
-                  Learn cross-platform development, BLE communication, and IoT connectivity.
+                  Build mobile applications with embedded system integration.
+                  Learn cross-platform development, BLE communication, and IoT
+                  connectivity.
                 </p>
-                
+
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">Duration:</span>
@@ -438,20 +538,24 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">Level:</span>
-                    <span className="text-yellow-400 font-semibold">Intermediate</span>
+                    <span className="text-yellow-400 font-semibold">
+                      Intermediate
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">Courses Included:</span>
                     <span className="text-white font-semibold">6 Courses</span>
                   </div>
                 </div>
-                
+
                 <div className="text-center mb-6">
                   <div className="text-3xl font-bold text-white mb-1">$699</div>
                   <div className="text-gray-400 text-sm line-through">$999</div>
-                  <div className="text-green-400 text-sm font-semibold">Save 30%</div>
+                  <div className="text-green-400 text-sm font-semibold">
+                    Save 30%
+                  </div>
                 </div>
-                
+
                 <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold">
                   Start Career Path
                 </Button>
@@ -471,13 +575,13 @@ const Index = () => {
                   Beginner
                 </Badge>
               </CardHeader>
-              
+
               <CardContent className="pt-0">
                 <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  Process and analyze embedded sensor data at scale. 
-                  Learn data pipelines, machine learning, and embedded analytics systems.
+                  Process and analyze embedded sensor data at scale. Learn data
+                  pipelines, machine learning, and embedded analytics systems.
                 </p>
-                
+
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">Duration:</span>
@@ -485,20 +589,24 @@ const Index = () => {
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">Level:</span>
-                    <span className="text-green-400 font-semibold">Beginner</span>
+                    <span className="text-green-400 font-semibold">
+                      Beginner
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">Courses Included:</span>
                     <span className="text-white font-semibold">5 Courses</span>
                   </div>
                 </div>
-                
+
                 <div className="text-center mb-6">
                   <div className="text-3xl font-bold text-white mb-1">$549</div>
                   <div className="text-gray-400 text-sm line-through">$799</div>
-                  <div className="text-green-400 text-sm font-semibold">Save 31%</div>
+                  <div className="text-green-400 text-sm font-semibold">
+                    Save 31%
+                  </div>
                 </div>
-                
+
                 <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold">
                   Start Career Path
                 </Button>
@@ -515,16 +623,19 @@ const Index = () => {
             <div>
               <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
                 <CheckCircle className="w-4 h-4 mr-2" />
-                {t('features.whyChoose', 'Why Choose Us?')}
+                {t("features.whyChoose", "Why Choose Us?")}
               </Badge>
-              
+
               <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-                {t('features.title', 'Industry-Standard Learning Platform')}
+                {t("features.title", "Industry-Standard Learning Platform")}
               </h2>
               <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                {t('features.description', 'Master embedded systems with our comprehensive, hands-on curriculum designed by industry professionals. From basic concepts to advanced real-world applications.')}
+                {t(
+                  "features.description",
+                  "Master embedded systems with our comprehensive, hands-on curriculum designed by industry professionals. From basic concepts to advanced real-world applications."
+                )}
               </p>
-              
+
               <div className="space-y-6">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-start space-x-4 group">
@@ -541,7 +652,7 @@ const Index = () => {
                 ))}
               </div>
             </div>
-            
+
             <div className="grid gap-6">
               <Card className="bg-slate-800/90 border-green-500/30 backdrop-blur-sm hover:bg-slate-800 hover:border-green-500/50 transition-all duration-300 shadow-lg hover:shadow-green-500/20">
                 <CardHeader className="pb-4">
@@ -549,12 +660,17 @@ const Index = () => {
                     <div className="w-12 h-12 bg-green-500/30 border border-green-500/50 rounded-lg flex items-center justify-center shadow-lg shadow-green-500/20">
                       <CheckCircle className="w-6 h-6 text-green-300" />
                     </div>
-                    <span className="text-lg font-bold">{t('features.certification', 'Industry Certification')}</span>
+                    <span className="text-lg font-bold">
+                      {t("features.certification", "Industry Certification")}
+                    </span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-200 text-base leading-relaxed mb-4">
-                    {t('features.certificationDesc', 'Get recognized certificates that employers value. All courses align with industry standards and best practices.')}
+                    {t(
+                      "features.certificationDesc",
+                      "Get recognized certificates that employers value. All courses align with industry standards and best practices."
+                    )}
                   </p>
                   <div className="mt-4 flex items-center space-x-3 p-3 bg-green-500/10 rounded-lg border border-green-500/20">
                     <div className="flex -space-x-2">
@@ -562,11 +678,13 @@ const Index = () => {
                       <div className="w-8 h-8 bg-purple-500 rounded-full border-2 border-slate-700 shadow-md"></div>
                       <div className="w-8 h-8 bg-green-500 rounded-full border-2 border-slate-700 shadow-md"></div>
                     </div>
-                    <span className="text-sm text-green-300 font-semibold">500+ certified this month</span>
+                    <span className="text-sm text-green-300 font-semibold">
+                      500+ certified this month
+                    </span>
                   </div>
                 </CardContent>
               </Card>
-              
+
               <Card className="bg-slate-800/90 border-blue-500/30 backdrop-blur-sm hover:bg-slate-800 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
                 <CardHeader className="pb-4">
                   <CardTitle className="flex items-center space-x-3 text-white">
@@ -578,13 +696,18 @@ const Index = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-200 text-base leading-relaxed mb-4">
-                    Join a vibrant community of developers, mentors, and industry experts. Get help, share projects, and network.
+                    Join a vibrant community of developers, mentors, and
+                    industry experts. Get help, share projects, and network.
                   </p>
                   <div className="mt-4 flex items-center justify-between p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
-                    <span className="text-sm text-blue-300 font-semibold">Online now:</span>
+                    <span className="text-sm text-blue-300 font-semibold">
+                      Online now:
+                    </span>
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                      <span className="text-sm text-green-300 font-mono font-bold">1,247 members</span>
+                      <span className="text-sm text-green-300 font-mono font-bold">
+                        1,247 members
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -603,7 +726,7 @@ const Index = () => {
                 <Star className="w-4 h-4 mr-2" />
                 Junior Program
               </Badge>
-              
+
               <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
                 Weekend School for Juniors
               </h2>
@@ -611,11 +734,12 @@ const Index = () => {
                 Build Rockets of the Future
               </h3>
               <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                Designed for young innovators aged 12-18 years old. Our weekend program introduces 
-                teenagers to embedded systems, robotics, and space technology through hands-on projects 
-                and interactive learning experiences.
+                Designed for young innovators aged 12-18 years old. Our weekend
+                program introduces teenagers to embedded systems, robotics, and
+                space technology through hands-on projects and interactive
+                learning experiences.
               </p>
-              
+
               <div className="space-y-6 mb-8">
                 <div className="flex items-start space-x-4 group">
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-lg flex items-center justify-center group-hover:from-yellow-500/30 group-hover:to-orange-500/30 transition-all duration-300">
@@ -625,10 +749,13 @@ const Index = () => {
                     <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
                       Interactive Learning
                     </h3>
-                    <p className="text-gray-400">Learn programming and electronics through games, robots, and real projects</p>
+                    <p className="text-gray-400">
+                      Learn programming and electronics through games, robots,
+                      and real projects
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4 group">
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-lg flex items-center justify-center group-hover:from-yellow-500/30 group-hover:to-orange-500/30 transition-all duration-300">
                     <Cpu className="w-6 h-6 text-yellow-400" />
@@ -637,10 +764,13 @@ const Index = () => {
                     <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
                       Future Skills
                     </h3>
-                    <p className="text-gray-400">Develop problem-solving, creativity, and technical skills for tomorrow's careers</p>
+                    <p className="text-gray-400">
+                      Develop problem-solving, creativity, and technical skills
+                      for tomorrow's careers
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4 group">
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-lg flex items-center justify-center group-hover:from-yellow-500/30 group-hover:to-orange-500/30 transition-all duration-300">
                     <Trophy className="w-6 h-6 text-yellow-400" />
@@ -649,28 +779,38 @@ const Index = () => {
                     <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
                       Weekend Schedule
                     </h3>
-                    <p className="text-gray-400">Flexible weekend classes that don't interfere with school commitments</p>
+                    <p className="text-gray-400">
+                      Flexible weekend classes that don't interfere with school
+                      commitments
+                    </p>
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <JuniorProgramForm>
-                  <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6">
+                  <Button
+                    size="lg"
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6"
+                  >
                     <Zap className="mr-2 w-5 h-5" />
                     Join Junior Program
                   </Button>
                 </JuniorProgramForm>
-                <Button size="lg" variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6"
+                >
                   Learn More
                 </Button>
               </div>
             </div>
-            
+
             <div className="order-1 lg:order-2">
               <div className="relative">
-                <img 
-                  src={juniorChessRobot} 
+                <img
+                  src={juniorChessRobot}
                   alt="Junior student playing chess with a robot in a modern tech classroom"
                   className="rounded-lg shadow-2xl shadow-yellow-500/20 border border-yellow-500/20 hover:shadow-yellow-500/30 transition-all duration-300"
                 />
@@ -687,43 +827,71 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
             <defs>
-              <pattern id="cta-grid" width="8" height="8" patternUnits="userSpaceOnUse">
-                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="currentColor" strokeWidth="0.2" className="text-blue-400"/>
+              <pattern
+                id="cta-grid"
+                width="8"
+                height="8"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 8 0 L 0 0 0 8"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.2"
+                  className="text-blue-400"
+                />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#cta-grid)"/>
+            <rect width="100%" height="100%" fill="url(#cta-grid)" />
           </svg>
         </div>
-        
+
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
             <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
             Start Your Journey
           </Badge>
-          
+
           <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
             Ready to Build the Future?
           </h2>
           <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Join thousands of developers mastering embedded systems. Start with our free course preview 
-            and see why professionals choose Embedded School.
+            Join thousands of developers mastering embedded systems. Start with
+            our free course preview and see why professionals choose Embedded
+            School.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105">
+            <Button
+              size="lg"
+              className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
+            >
               <Play className="mr-2 w-5 h-5" />
               Start Free Preview
             </Button>
-            <Button size="lg" variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6 text-lg" asChild>
-              <a href="https://t.me/embeddedschool" target="_blank" rel="noopener noreferrer">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6 text-lg"
+              asChild
+            >
+              <a
+                href="https://t.me/embeddedschool"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Users className="mr-2 w-5 h-5" />
                 Join Community
               </a>
             </Button>
           </div>
-          
+
           {/* Trust Indicators */}
           <div className="mt-12 grid grid-cols-3 gap-8 max-w-lg mx-auto">
             <div className="text-center">
@@ -751,63 +919,153 @@ const Index = () => {
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-sm">ES</span>
                 </div>
-                <span className="font-bold text-lg text-white">Embedded School</span>
+                <span className="font-bold text-lg text-white">
+                  Embedded School
+                </span>
               </div>
               <p className="text-gray-400 mb-4">
-                Empowering the next generation of embedded systems developers with practical, industry-focused education.
+                Empowering the next generation of embedded systems developers
+                with practical, industry-focused education.
               </p>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-sm text-gray-400">Currently online: 1,247 students</span>
+                <span className="text-sm text-gray-400">
+                  Currently online: 1,247 students
+                </span>
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-3 text-white">Courses</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link to="/courses/arduino" className="hover:text-blue-400 transition-colors flex items-center">
-                  <Cpu className="w-3 h-3 mr-2" />Arduino Programming
-                </Link></li>
-                <li><Link to="/courses/embedded-c" className="hover:text-blue-400 transition-colors flex items-center">
-                  <Code className="w-3 h-3 mr-2" />Embedded C
-                </Link></li>
-                <li><Link to="/courses/iot" className="hover:text-blue-400 transition-colors flex items-center">
-                  <Wifi className="w-3 h-3 mr-2" />IoT Systems
-                </Link></li>
-                <li><Link to="/courses/automotive" className="hover:text-blue-400 transition-colors flex items-center">
-                  <Zap className="w-3 h-3 mr-2" />Automotive Electronics
-                </Link></li>
+                <li>
+                  <Link
+                    to="/courses/arduino"
+                    className="hover:text-blue-400 transition-colors flex items-center"
+                  >
+                    <Cpu className="w-3 h-3 mr-2" />
+                    Arduino Programming
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/courses/embedded-c"
+                    className="hover:text-blue-400 transition-colors flex items-center"
+                  >
+                    <Code className="w-3 h-3 mr-2" />
+                    Embedded C
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/courses/iot"
+                    className="hover:text-blue-400 transition-colors flex items-center"
+                  >
+                    <Wifi className="w-3 h-3 mr-2" />
+                    IoT Systems
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/courses/automotive"
+                    className="hover:text-blue-400 transition-colors flex items-center"
+                  >
+                    <Zap className="w-3 h-3 mr-2" />
+                    Automotive Electronics
+                  </Link>
+                </li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-3 text-white">Company</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link to="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
-                <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link></li>
-                <li><Link to="/blog" className="hover:text-blue-400 transition-colors">Blog</Link></li>
-                <li><Link to="/careers" className="hover:text-blue-400 transition-colors">Careers</Link></li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/contact"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/blog"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/careers"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Careers
+                  </Link>
+                </li>
               </ul>
             </div>
-            
+
             <div>
-              <h4 className="font-semibold mb-3 text-white">Developer Resources</h4>
+              <h4 className="font-semibold mb-3 text-white">
+                Developer Resources
+              </h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link to="/docs" className="hover:text-blue-400 transition-colors">Documentation</Link></li>
-                <li><Link to="/api" className="hover:text-blue-400 transition-colors">API Reference</Link></li>
-                <li><Link to="/community" className="hover:text-blue-400 transition-colors">Community</Link></li>
-                <li><Link to="/support" className="hover:text-blue-400 transition-colors">Support</Link></li>
+                <li>
+                  <Link
+                    to="/docs"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/api"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    API Reference
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/community"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Community
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/support"
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    Support
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-slate-800 mt-8 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-500 text-sm">
                 © 2024 Embedded School. Open source education platform.
               </p>
               <div className="flex items-center space-x-4 mt-4 md:mt-0">
-                <Badge variant="outline" className="border-slate-700 text-gray-400">
+                <Badge
+                  variant="outline"
+                  className="border-slate-700 text-gray-400"
+                >
                   Built with ❤️ in Moldova
                 </Badge>
                 <div className="flex items-center space-x-1 text-gray-400">
@@ -820,10 +1078,13 @@ const Index = () => {
         </div>
       </footer>
 
+      {/* Video Demo */}
+      <VideoDemo open={showVideo} onOpenChange={setShowVideo} />
+
       {/* Course Inquiry Form */}
-      <CourseInquiryForm 
-        open={showInquiryForm} 
-        onOpenChange={setShowInquiryForm} 
+      <CourseInquiryForm
+        open={showInquiryForm}
+        onOpenChange={setShowInquiryForm}
       />
     </div>
   );
