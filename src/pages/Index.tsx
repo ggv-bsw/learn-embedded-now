@@ -123,10 +123,10 @@ const Index = () => {
             {/* Left Content */}
             <div className="space-y-8">
               <div>
-                <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
+                {/* <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                   v2.1.0 - Latest Release
-                </Badge>
+                </Badge> */}
                 
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
