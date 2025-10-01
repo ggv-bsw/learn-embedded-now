@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
-import CourseCard from "@/components/course-card";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
 import { JuniorProgramForm } from "@/components/JuniorProgramForm";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -22,60 +21,15 @@ import {
   BookOpen,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroTechBg from "@/assets/hero-tech-bg-new.jpg";
-import courseArduino from "@/assets/course-arduino.jpg";
-import courseIot from "@/assets/course-iot.jpg";
 import VideoDemo from "@/components/VideoDemo";
-import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
 import juniorChessRobot from "@/assets/junior-chess-robot.jpg";
 import AnimatedParticles from "@/components/animated-particles";
+import { featuredCourses } from "@/testData/featuredCourses";
 
 const Index = () => {
   const { t } = useLanguage();
   const [showInquiryForm, setShowInquiryForm] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-
-  const featuredCourses = [
-    {
-      id: "embedded-c-arduino",
-      title: "Intro to Embedded C with Arduino",
-      description:
-        "Master the fundamentals of embedded programming with C and Arduino. Perfect for beginners starting their embedded systems journey.",
-      image: courseArduino,
-      price: 149,
-      duration: "8 weeks",
-      students: 1250,
-      rating: 4.8,
-      level: "Beginner" as const,
-      category: "Arduino",
-    },
-    {
-      id: "iot-systems",
-      title: "Complete IoT Systems Development",
-      description:
-        "Build real-world IoT applications from sensors to cloud. Learn connectivity, data processing, and system architecture.",
-      image: courseIot,
-      price: 199,
-      duration: "12 weeks",
-      students: 890,
-      rating: 4.9,
-      level: "Intermediate" as const,
-      category: "IoT",
-    },
-    {
-      id: "advanced-embedded-c",
-      title: "Advanced Embedded C Programming",
-      description:
-        "Deep dive into embedded C optimization, real-time systems, and hardware-level programming for professional developers.",
-      image: courseEmbeddedC,
-      price: 249,
-      duration: "10 weeks",
-      students: 645,
-      rating: 4.7,
-      level: "Advanced" as const,
-      category: "Embedded C",
-    },
-  ];
 
   const stats = [
     {
@@ -352,73 +306,79 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {featuredCourses.map((course) => (
-              <Card
+            {featuredCourses.slice(0, 3).map((course) => (
+              <Link
                 key={course.id}
-                className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group"
+                className="block"
+                to={`/courses/${course.id}`}
               >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                  <Badge
-                    className={`absolute top-3 right-3 ${
-                      course.level === "Beginner"
-                        ? "bg-green-500/20 text-green-400 border-green-500/30"
-                        : course.level === "Intermediate"
-                        ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-                        : "bg-red-500/20 text-red-400 border-red-500/30"
-                    }`}
-                  >
-                    {t(
-                      `level.${
-                        course.level.toLowerCase() as
-                          | "beginner"
-                          | "intermediate"
-                          | "advanced"
-                      }`,
-                      course.level
-                    )}
-                  </Badge>
-                </div>
-
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
-                    {course.title}
-                  </h3>
-                  <p className="text-gray-400 mb-4 line-clamp-2">
-                    {course.description}
-                  </p>
-
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <div className="flex items-center space-x-4">
-                      <span className="flex items-center">
-                        <Users className="w-4 h-4 mr-1" />
-                        {course.students.toLocaleString()}
-                      </span>
-                      <span className="flex items-center">
-                        <Star className="w-4 h-4 mr-1 text-yellow-400" />
-                        {course.rating}
-                      </span>
-                    </div>
-                    <span>{course.duration}</span>
+                <Card
+                  key={course.id}
+                  className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group"
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                    <Badge
+                      className={`absolute top-3 right-3 ${
+                        course.level === "Beginner"
+                          ? "bg-green-500/20 text-green-400 border-green-500/30"
+                          : course.level === "Intermediate"
+                          ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                          : "bg-red-500/20 text-red-400 border-red-500/30"
+                      }`}
+                    >
+                      {t(
+                        `level.${
+                          course.level.toLowerCase() as
+                            | "beginner"
+                            | "intermediate"
+                            | "advanced"
+                        }`,
+                        course.level
+                      )}
+                    </Badge>
                   </div>
 
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-2xl font-bold text-white">
-                        ${course.price}
-                      </span>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                      {course.title}
+                    </h3>
+                    <p className="text-gray-400 mb-4 line-clamp-2">
+                      {course.subtitle}
+                    </p>
+
+                    <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                      <div className="flex items-center space-x-4">
+                        <span className="flex items-center">
+                          <Users className="w-4 h-4 mr-1" />
+                          {course.students.toLocaleString()}
+                        </span>
+                        <span className="flex items-center">
+                          <Star className="w-4 h-4 mr-1 text-yellow-400" />
+                          {course.rating}
+                        </span>
+                      </div>
+                      <span>{course.duration}</span>
                     </div>
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                      {t("courses.enrollNow", "Enroll Now")}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-2xl font-bold text-white">
+                          ${course.price}
+                        </span>
+                      </div>
+                      <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                        {t("courses.enrollNow", "Enroll Now")}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
 

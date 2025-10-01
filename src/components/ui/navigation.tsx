@@ -18,10 +18,19 @@ const Navigation = () => {
   const { t } = useLanguage();
 
   const courseCategories = [
-    { name: t('category.embeddedC', 'Embedded C'), href: "/courses/embedded-c" },
-    { name: t('category.arduino', 'Arduino'), href: "/courses/arduino" },
-    { name: t('category.iot', 'IoT Systems'), href: "/courses/iot" },
-    { name: t('category.automotive', 'Automotive'), href: "/courses/automotive" },
+    {
+      name: t("category.embeddedC", "Embedded C"),
+      href: "/courses/advanced-embedded-c",
+    },
+    {
+      name: t("category.arduino", "Arduino"),
+      href: "/courses/embedded-c-arduino",
+    },
+    { name: t("category.iot", "IoT Systems"), href: "/courses/iot-systems" },
+    {
+      name: t("category.automotive", "Automotive"),
+      href: "/courses/automotive",
+    },
   ];
 
   return (
@@ -29,7 +38,10 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 font-bold text-xl text-white">
+          <Link
+            to="/"
+            className="flex items-center space-x-2 font-bold text-xl text-white"
+          >
             <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">ES</span>
             </div>
@@ -42,7 +54,7 @@ const Navigation = () => {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-gray-300 hover:text-white bg-transparent">
-                    {t('nav.courses', 'Courses')}
+                    {t("nav.courses", "Courses")}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="grid w-[400px] gap-3 p-6 bg-slate-800 border-slate-700">
@@ -63,32 +75,50 @@ const Navigation = () => {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            
-            <Link to="/about" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              {t('nav.about', 'About')}
+
+            <Link
+              to="/about"
+              className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
+            >
+              {t("nav.about", "About")}
             </Link>
-            <Link to="/trainers" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              {t('nav.trainers', 'Trainers')}
+            <Link
+              to="/trainers"
+              className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
+            >
+              {t("nav.trainers", "Trainers")}
             </Link>
-            <Link to="/blog" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              {t('nav.blog', 'Blog')}
+            <Link
+              to="/blog"
+              className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
+            >
+              {t("nav.blog", "Blog")}
             </Link>
-            <Link to="/hardware" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              {t('nav.hardware', 'Hardware')}
+            <Link
+              to="/hardware"
+              className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
+            >
+              {t("nav.hardware", "Hardware")}
             </Link>
-            <Link to="/contact" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
-              {t('nav.contact', 'Contact')}
+            <Link
+              to="/contact"
+              className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
+            >
+              {t("nav.contact", "Contact")}
             </Link>
           </div>
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSelector />
-            <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-slate-800">
-              {t('nav.login', 'Login')}
+            <Button
+              variant="ghost"
+              className="text-gray-300 hover:text-white hover:bg-slate-800"
+            >
+              {t("nav.login", "Login")}
             </Button>
             <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
-              {t('nav.getStarted', 'Get Started')}
+              {t("nav.getStarted", "Get Started")}
             </Button>
           </div>
 
@@ -107,7 +137,7 @@ const Navigation = () => {
             <div className="flex flex-col space-y-4">
               <div className="space-y-2">
                 <div className="font-medium text-sm text-gray-400 px-4">
-                  {t('nav.courses', 'Courses')}
+                  {t("nav.courses", "Courses")}
                 </div>
                 {courseCategories.map((category) => (
                   <Link
@@ -120,32 +150,50 @@ const Navigation = () => {
                   </Link>
                 ))}
               </div>
-              
-              <Link to="/about" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                {t('nav.about', 'About')}
+
+              <Link
+                to="/about"
+                className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                {t("nav.about", "About")}
               </Link>
-              <Link to="/trainers" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                {t('nav.trainers', 'Trainers')}
+              <Link
+                to="/trainers"
+                className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                {t("nav.trainers", "Trainers")}
               </Link>
-              <Link to="/blog" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                {t('nav.blog', 'Blog')}
+              <Link
+                to="/blog"
+                className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                {t("nav.blog", "Blog")}
               </Link>
-              <Link to="/hardware" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                {t('nav.hardware', 'Hardware')}
+              <Link
+                to="/hardware"
+                className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                {t("nav.hardware", "Hardware")}
               </Link>
-              <Link to="/contact" className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-                {t('nav.contact', 'Contact')}
+              <Link
+                to="/contact"
+                className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                {t("nav.contact", "Contact")}
               </Link>
-              
+
               <div className="px-4 pt-4 space-y-2">
                 <div className="mb-2">
                   <LanguageSelector />
                 </div>
-                <Button variant="ghost" className="w-full justify-start text-gray-300 hover:text-white hover:bg-slate-800">
-                  {t('nav.login', 'Login')}
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-gray-300 hover:text-white hover:bg-slate-800"
+                >
+                  {t("nav.login", "Login")}
                 </Button>
                 <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                  {t('nav.getStarted', 'Get Started')}
+                  {t("nav.getStarted", "Get Started")}
                 </Button>
               </div>
             </div>
