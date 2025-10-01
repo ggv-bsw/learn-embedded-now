@@ -16,6 +16,9 @@ interface VideoDemoProps {
 const VideoDemo: React.FC<VideoDemoProps> = ({ open, onOpenChange }) => {
   const { t } = useLanguage();
 
+  const embedUrl =
+    "https://www.youtube.com/embed/zb2tZ56mass?autoplay=1&mute=1&rel=0&modestbranding=1";
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[1100px] max-h-[92vh] overflow-y-auto">
@@ -33,11 +36,11 @@ const VideoDemo: React.FC<VideoDemoProps> = ({ open, onOpenChange }) => {
 
         <div className="relative w-full aspect-video">
           <iframe
+            src={embedUrl}
             allowFullScreen
             title="YouTube video player"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            className="absolute inset-0 w-full h-full rounded-b-lg border-t border-slate-800"
-            src="https://www.youtube.com/embed/LIhJxxpPDY0?autoplay=1&mute=1&rel=0&modestbranding=1&controls=1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            className="absolute inset-0 w-full h-full rounded-lg border border-slate-800"
           />
         </div>
       </DialogContent>
