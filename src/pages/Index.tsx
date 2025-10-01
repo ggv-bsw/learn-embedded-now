@@ -30,7 +30,6 @@ import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
 import juniorChessRobot from "@/assets/junior-chess-robot.jpg";
 import AnimatedParticles from "@/components/animated-particles";
 
-
 const Index = () => {
   const { t } = useLanguage();
   const [showInquiryForm, setShowInquiryForm] = useState(false);
@@ -201,7 +200,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg"
+                  className="border-gray-600 text-slate-900 hover:bg-gray-100 hover:scale-105 px-8 py-6 text-lg"
                   onClick={() => setShowVideo(true)}
                 >
                   <Play className="mr-2 w-5 h-5" />
@@ -302,7 +301,7 @@ const Index = () => {
                 <Card className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20 backdrop-blur-sm hover-scale">
                   <CardContent className="p-4 text-center">
                     <Cpu className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                    <h3 className="text-white font-semibold text-sm">
+                    <h3 className="text-slate-900 font-semibold text-sm">
                       Embedded C
                     </h3>
                     <p className="text-gray-400 text-xs">
@@ -314,7 +313,7 @@ const Index = () => {
                 <Card className="bg-gradient-to-br from-green-500/10 to-blue-500/10 border-green-500/20 backdrop-blur-sm hover-scale">
                   <CardContent className="p-4 text-center">
                     <Wifi className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                    <h3 className="text-white font-semibold text-sm">
+                    <h3 className="text-slate-900 font-semibold text-sm">
                       IoT Systems
                     </h3>
                     <p className="text-gray-400 text-xs">Connected devices</p>
@@ -427,7 +426,7 @@ const Index = () => {
             <Button
               variant="outline"
               size="lg"
-              className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500"
+              className="border-slate-600 text-slate-900 hover:bg-gray-100 hover:scale-105"
             >
               <Link to="/courses" className="flex items-center">
                 {t("courses.viewAll", "View All Courses")}
@@ -800,7 +799,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6"
+                  className="border-slate-600 text-slate-900 hover:bg-slate-800 hover:bg-gray-100 px-8 py-6 hover:scale-105"
                 >
                   Learn More
                 </Button>
@@ -878,7 +877,7 @@ const Index = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6 text-lg"
+              className="border-slate-600 text-slate-900 hover:bg-gray-100 hover:border-slate-500 px-8 py-6 text-lg hover:scale-105"
               asChild
             >
               <a
