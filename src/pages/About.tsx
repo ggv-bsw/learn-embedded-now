@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,8 +12,6 @@ import {
   Target,
   Heart,
   Code,
-  Cpu,
-  Wifi,
   BookOpen,
   Trophy,
   Globe,
@@ -20,12 +19,14 @@ import {
   Linkedin,
   Mail,
   GraduationCap,
-  Zap,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Footer from "@/components/footer";
+import CourseInquiryForm from "@/components/CourseInquiryForm";
 
 const About = () => {
+  const [showInquiryForm, setShowInquiryForm] = React.useState(false);
+
   const stats = [
     { icon: Users, label: "Students Taught", value: 5000, suffix: "+" },
     { icon: Award, label: "Course Completions", value: 12000, suffix: "+" },
@@ -232,6 +233,9 @@ const About = () => {
                 <Button
                   size="lg"
                   className="bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-300 hover:scale-105"
+                  onClick={() =>
+                    window.open("https://t.me/embeddedschool", "_blank")
+                  }
                 >
                   <ArrowRight className="mr-2 w-5 h-5" />
                   Join Our Mission
@@ -446,6 +450,7 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
+                onClick={() => setShowInquiryForm(true)}
                 className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
               >
                 <GraduationCap className="mr-2 w-5 h-5" />
@@ -454,7 +459,7 @@ const About = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6 text-lg"
+                className="border-slate-600 text-slate-900 hover:border-slate-500 px-8 py-6 text-lg hover:scale-105"
               >
                 <Mail className="mr-2 w-5 h-5" />
                 Contact Our Team
@@ -466,6 +471,11 @@ const About = () => {
 
       {/* Footer */}
       <Footer />
+
+      <CourseInquiryForm
+        open={showInquiryForm}
+        onOpenChange={setShowInquiryForm}
+      />
     </div>
   );
 };
