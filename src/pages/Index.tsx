@@ -762,7 +762,9 @@ const Index = () => {
                   variant="outline"
                   className="border-slate-600 text-slate-900 hover:bg-slate-800 hover:bg-gray-100 px-8 py-6 hover:scale-105"
                 >
-                  Learn More
+                  <Link to="/junior" className="flex items-center">
+                    Learn More
+                  </Link>
                 </Button>
               </div>
             </div>
