@@ -4,12 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
-import CourseCard from "@/components/course-card";
 import { Search, Filter, SlidersHorizontal, Code, BookOpen, Users, Star, Cpu } from "lucide-react";
 import courseArduino from "@/assets/course-arduino.jpg";
 import courseIot from "@/assets/course-iot.jpg";
 import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
 import AnimatedParticles from "@/components/animated-particles";
+import { featuredCourses } from "@/testData/featuredCourses";
 
 const Courses = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -94,7 +94,7 @@ const Courses = () => {
     }
   ];
 
-  const filteredCourses = allCourses.filter(course => {
+  const filteredCourses = featuredCourses.filter(course => {
     const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          course.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === "All" || course.category === selectedCategory;
@@ -147,7 +147,7 @@ const Courses = () => {
             <div className="flex flex-wrap justify-center gap-8 mb-12">
               <div className="flex items-center space-x-2">
                 <BookOpen className="w-5 h-5 text-blue-400" />
-                <span className="text-white font-semibold">{allCourses.length}</span>
+                <span className="text-white font-semibold">{featuredCourses.length}</span>
                 <span className="text-gray-400">Courses</span>
               </div>
               <div className="flex items-center space-x-2">

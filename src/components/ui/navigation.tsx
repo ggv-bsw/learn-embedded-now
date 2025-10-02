@@ -1,37 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "@/components/LanguageSelector";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
-
-  const courseCategories = [
-    {
-      name: t("category.embeddedC", "Embedded C"),
-      href: "/courses/advanced-embedded-c",
-    },
-    {
-      name: t("category.arduino", "Arduino"),
-      href: "/courses/embedded-c-arduino",
-    },
-    { name: t("category.iot", "IoT Systems"), href: "/courses/iot-systems" },
-    {
-      name: t("category.automotive", "Automotive"),
-      href: "/courses/automotive",
-    },
-  ];
 
   return (
     <nav className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
@@ -50,32 +26,12 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-300 hover:text-white bg-transparent">
-                    {t("nav.courses", "Courses")}
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="grid w-[400px] gap-3 p-6 bg-slate-800 border-slate-700">
-                      {courseCategories.map((category) => (
-                        <NavigationMenuLink key={category.name} asChild>
-                          <Link
-                            to={category.href}
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 hover:text-blue-400 focus:bg-slate-700 focus:text-blue-400 text-gray-300"
-                          >
-                            <div className="text-sm font-medium leading-none">
-                              {category.name}
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
-                      ))}
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-
+            <Link
+              to="/courses"
+              className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
+            >
+              {t("nav.courses", "Courses")}
+            </Link>
             <Link
               to="/about"
               className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
@@ -135,21 +91,12 @@ const Navigation = () => {
         {isOpen && (
           <div className="md:hidden py-4 border-t border-slate-800 bg-slate-900">
             <div className="flex flex-col space-y-4">
-              <div className="space-y-2">
-                <div className="font-medium text-sm text-gray-400 px-4">
-                  {t("nav.courses", "Courses")}
-                </div>
-                {courseCategories.map((category) => (
-                  <Link
-                    key={category.name}
-                    to={category.href}
-                    className="block px-8 py-2 text-gray-300 hover:text-blue-400 transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {category.name}
-                  </Link>
-                ))}
-              </div>
+              <Link
+                to="/courses"
+                className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                {t("nav.courses", "Courses")}
+              </Link>
 
               <Link
                 to="/about"
