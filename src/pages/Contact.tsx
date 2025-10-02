@@ -15,17 +15,10 @@ import {
   MessageCircle,
   Send,
   CheckCircle,
-  Globe,
   Users,
   BookOpen,
-  ArrowRight,
-  Zap,
-  Wifi,
-  Code,
-  Cpu,
 } from "lucide-react";
 import { toast } from "sonner";
-import { Link } from "react-router-dom";
 import Footer from "@/components/footer";
 
 const Contact = () => {
@@ -42,14 +35,14 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Main Office",
-      details: ["Chișinău, Moldova", "Strada București 67", "MD-2012"],
+      details: ["Chișinău, Moldova", "Strada Aleco Ruso 15", "MD-2068"],
       link: "#",
     },
     {
       icon: Phone,
       title: "Phone Numbers",
-      details: ["+373 22 123 456", "+40 21 234 567", "Mon-Fri 9AM-6PM"],
-      link: "tel:+37322123456",
+      details: ["+373 69 117 686", "Mon-Fri 9AM-6PM"],
+      link: "tel:+37369117686",
     },
     {
       icon: Mail,
@@ -326,20 +319,25 @@ const Contact = () => {
                 {/* Map Placeholder */}
                 <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm overflow-hidden">
                   <div className="h-64 bg-gradient-to-br from-blue-500/20 to-purple-500/20 relative">
-                    <img
-                      src="https://images.unsplash.com/photo-1577401239170-897942555fb3?w=600&h=300&fit=crop"
-                      alt="Chișinău office location"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-transparent"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-slate-900/90 backdrop-blur-sm rounded-lg p-4 text-center border border-slate-700">
-                        <MapPin className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                        <p className="font-semibold text-white">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.49667575059!2d28.827259976598!3d47.024902971149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97c3628b769a1%3A0x260efc7c5e0c5e1!2sStrada%20Alecu%20Russo%2015%2C%20Chi%C8%99in%C4%83u%2C%20Moldova!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s&q=Strada+Alecu+Russo+15,+Chișinău,+Moldova&z=16&iwloc=near"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="w-full h-full"
+                    ></iframe>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-transparent pointer-events-none"></div>
+                    <div className="absolute top-2 left-2">
+                      <div className="bg-slate-900/90 backdrop-blur-sm rounded-lg p-2 text-center border border-slate-700 shadow-lg min-w-[300px]">
+                        <MapPin className="w-5 h-5 text-blue-400 mx-auto" />
+                        <p className="font-bold text-white text-sm mb-1">
                           Our Main Office
                         </p>
-                        <p className="text-sm text-gray-400">
-                          Chișinău, Moldova
+                        <p className="text-xs text-gray-300 font-medium">
+                          Strada Aleco Ruso 15, Chișinău, Moldova
                         </p>
                       </div>
                     </div>
@@ -360,7 +358,7 @@ const Contact = () => {
                         <p className="font-semibold text-sm text-white">
                           Call us directly
                         </p>
-                        <p className="text-xs text-gray-400">+373 22 123 456</p>
+                        <p className="text-xs text-gray-400">+373 69 117 686</p>
                       </div>
                     </div>
 
@@ -438,7 +436,7 @@ const Contact = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500"
+                className="border-slate-600 text-slate-900 hover:bg-slate-700 hover:border-slate-500"
               >
                 <MessageCircle className="mr-2 w-5 h-5" />
                 Ask a Question
@@ -494,6 +492,7 @@ const Contact = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
+                onClick={() => (window.location.href = "/courses")}
                 className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
               >
                 <BookOpen className="mr-2 w-5 h-5" />
@@ -502,13 +501,13 @@ const Contact = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500 px-8 py-6 text-lg"
+                className="border-slate-600 text-slate-900 hover:border-slate-500 px-8 py-6 text-lg"
                 asChild
               >
                 <a
-                  href="https://t.me/embeddedschool"
                   target="_blank"
                   rel="noopener noreferrer"
+                  href="https://t.me/embeddedschool"
                 >
                   <Users className="mr-2 w-5 h-5" />
                   Join Community
