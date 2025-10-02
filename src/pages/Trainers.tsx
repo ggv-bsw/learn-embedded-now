@@ -273,12 +273,12 @@ const Trainers = () => {
                 Join thousands of students who have advanced their careers with our expert trainers.
                 Get personalized mentorship and hands-on guidance.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105">
-                  <Code className="mr-2 w-5 h-5" />
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+                <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105">
+                  <Code className="mr-2 w-4 md:w-5 h-4 md:h-5" />
                   Browse All Courses
                 </Button>
-                <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg">
+                <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg">
                   Schedule Consultation
                 </Button>
               </div>

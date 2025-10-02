@@ -142,23 +142,23 @@ const Index = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                 <Button
                   size="lg"
-                  className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
+                  className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105"
                   onClick={() => setShowInquiryForm(true)}
                 >
-                  <Code className="mr-2 w-5 h-5" />
+                  <Code className="mr-2 w-4 md:w-5 h-4 md:h-5" />
                   {t("hero.startLearning", "Start Learning Today")}
                 </Button>
 
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-gray-600 text-slate-900 hover:bg-gray-100 hover:scale-105 px-8 py-6 text-lg"
+                  className="border-gray-600 text-slate-900 hover:bg-gray-100 hover:scale-105 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg"
                   onClick={() => setShowVideo(true)}
                 >
-                  <Play className="mr-2 w-5 h-5" />
+                  <Play className="mr-2 w-4 md:w-5 h-4 md:h-5" />
                   {t("hero.watchDemo", "Watch Demo")}
                 </Button>
               </div>

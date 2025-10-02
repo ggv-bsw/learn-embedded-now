@@ -126,8 +126,8 @@ const Blog = () => {
               Arduino mastery, and IoT wisdom from Jedi Masters across the galaxy.
             </p>
             
-            <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105">
-              <Zap className="mr-2 w-5 h-5" />
+            <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105">
+              <Zap className="mr-2 w-4 md:w-5 h-4 md:h-5" />
               Begin Your Journey
             </Button>
           </ScrollReveal>

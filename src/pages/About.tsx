@@ -232,12 +232,12 @@ const About = () => {
                 </p>
                 <Button
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-300 hover:scale-105"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-300 hover:scale-105 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg"
                   onClick={() =>
                     window.open("https://t.me/embeddedschool", "_blank")
                   }
                 >
-                  <ArrowRight className="mr-2 w-5 h-5" />
+                  <ArrowRight className="mr-2 w-4 md:w-5 h-4 md:h-5" />
                   Join Our Mission
                 </Button>
               </div>
