@@ -23,6 +23,7 @@ import {
 import { Link } from "react-router-dom";
 import Footer from "@/components/footer";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
+import { team } from "@/testData/teamData";
 
 const About = () => {
   const [showInquiryForm, setShowInquiryForm] = React.useState(false);
@@ -32,45 +33,6 @@ const About = () => {
     { icon: Award, label: "Course Completions", value: 12000, suffix: "+" },
     { icon: Trophy, label: "Industry Partners", value: 50, suffix: "+" },
     { icon: Globe, label: "Countries Reached", value: 15, suffix: "" },
-  ];
-
-  const team = [
-    {
-      name: "Gheorghe Ghirjev",
-      role: "Software Engineer",
-      specialization: "Embedded Systems Architecture",
-      experience: "11+ years",
-      image:
-        "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
-      linkedin: "https://www.linkedin.com/in/gheorghe-ghirjev/",
-    },
-    {
-      name: "Daniel Vrabii",
-      role: "Data Engineer",
-      specialization: "Python, ML & Database",
-      experience: "6+ years",
-      image:
-        "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
-      linkedin: "https://www.linkedin.com/in/daniel-vrabii-8910549b/",
-    },
-    {
-      name: "Ion Caruta",
-      role: "Quality Assurance",
-      specialization: "System Test & PLC",
-      experience: "6+ years",
-      image:
-        "https://media.licdn.com/dms/image/v2/C4D03AQHdK61fz_ef5g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1653324813413?e=1762387200&v=beta&t=vRirkPDgVaJSt83gi9yxVWJNEgDTcMcQnAHyMrTGkZQ",
-      linkedin: "https://www.linkedin.com/in/ion-caruta-0ab374216/",
-    },
-    {
-      name: "Grigore Ciobanu",
-      role: "Software Engineer",
-      specialization: "C++ with Linux & IoT",
-      experience: "8+ years",
-      image:
-        "https://media.licdn.com/dms/image/v2/D4D03AQEi63NbK8JmZQ/profile-displayphoto-scale_400_400/B4DZfk_n5PGYAs-/0/1751893574038?e=1762387200&v=beta&t=eh1mbV9h0ydwq7toFdLv00x3PFkAIGyKDrnh-rQHiGI",
-      linkedin: "https://www.linkedin.com/in/grigore-ciobanu/",
-    },
   ];
 
   const values = [
