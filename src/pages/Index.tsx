@@ -31,6 +31,12 @@ const Index = () => {
   const { t } = useLanguage();
   const [showInquiryForm, setShowInquiryForm] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
+
+  const handleEnrollClick = (course: string) => {
+    setSelectedCourse(course);
+    setShowInquiryForm(true);
+  };
 
   const stats = [
     {
@@ -119,11 +125,6 @@ const Index = () => {
             {/* Left Content */}
             <div className="space-y-8">
               <div>
-                {/* <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
-                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                  v2.1.0 - Latest Release
-                </Badge> */}
-
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
                     {t("hero.title", "Engineers Factory - Embedded School")}
@@ -308,78 +309,81 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {featuredCourses.slice(0, 3).map((course) => (
-              <Link
+              <Card
                 key={course.id}
-                className="block"
-                to={`/courses/${course.id}`}
+                className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group"
               >
-                <Card
-                  key={course.id}
-                  className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group"
-                >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={course.image}
-                      alt={course.title}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                    <Badge
-                      className={`absolute top-3 right-3 ${
-                        course.level === "Beginner"
-                          ? "bg-green-500/20 text-green-400 border-green-500/30"
-                          : course.level === "Intermediate"
-                          ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-                          : "bg-red-500/20 text-red-400 border-red-500/30"
-                      }`}
-                    >
-                      {t(
-                        `level.${
-                          course.level.toLowerCase() as
-                            | "beginner"
-                            | "intermediate"
-                            | "advanced"
-                        }`,
-                        course.level
-                      )}
-                    </Badge>
-                  </div>
+                <div className="relative overflow-hidden">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                  <Badge
+                    className={`absolute top-3 right-3 ${
+                      course.level === "Beginner"
+                        ? "bg-green-500/20 text-green-400 border-green-500/30"
+                        : course.level === "Intermediate"
+                        ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                        : "bg-red-500/20 text-red-400 border-red-500/30"
+                    }`}
+                  >
+                    {t(
+                      `level.${
+                        course.level.toLowerCase() as
+                          | "beginner"
+                          | "intermediate"
+                          | "advanced"
+                      }`,
+                      course.level
+                    )}
+                  </Badge>
+                </div>
 
-                  <CardContent className="p-6">
+                <CardContent className="p-6">
+                  <Link
+                    key={course.id}
+                    className="block"
+                    to={`/courses/${course.id}`}
+                  >
                     <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                       {course.title}
                     </h3>
-                    <p className="text-gray-400 mb-4 line-clamp-2">
-                      {course.subtitle}
-                    </p>
+                  </Link>
+                  <p className="text-gray-400 mb-4 line-clamp-2">
+                    {course.subtitle}
+                  </p>
 
-                    <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                      <div className="flex items-center space-x-4">
-                        <span className="flex items-center">
-                          <Users className="w-4 h-4 mr-1" />
-                          {course.students.toLocaleString()}
-                        </span>
-                        <span className="flex items-center">
-                          <Star className="w-4 h-4 mr-1 text-yellow-400" />
-                          {course.rating}
-                        </span>
-                      </div>
-                      <span>{course.duration}</span>
+                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                    <div className="flex items-center space-x-4">
+                      <span className="flex items-center">
+                        <Users className="w-4 h-4 mr-1" />
+                        {course.students.toLocaleString()}
+                      </span>
+                      <span className="flex items-center">
+                        <Star className="w-4 h-4 mr-1 text-yellow-400" />
+                        {course.rating}
+                      </span>
                     </div>
+                    <span>{course.duration}</span>
+                  </div>
 
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="text-2xl font-bold text-white">
-                          ${course.price}
-                        </span>
-                      </div>
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                        {t("courses.enrollNow", "Enroll Now")}
-                      </Button>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-2xl font-bold text-white">
+                        ${course.price}
+                      </span>
                     </div>
-                  </CardContent>
-                </Card>
-              </Link>
+                    <Button
+                      className="bg-blue-600 hover:bg-blue-700 text-white"
+                      onClick={() => handleEnrollClick(course.id)}
+                    >
+                      {t("courses.enrollNow", "Enroll Now")}
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
 
@@ -464,7 +468,10 @@ const Index = () => {
                   </div>
                 </div>
 
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold">
+                <Button
+                  className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
+                  onClick={() => handleEnrollClick("iot-systems")}
+                >
                   Start Career Path
                 </Button>
               </CardContent>
@@ -516,7 +523,10 @@ const Index = () => {
                   </div>
                 </div>
 
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold">
+                <Button
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+                  onClick={() => handleEnrollClick("mobile-developer")}
+                >
                   Start Career Path
                 </Button>
               </CardContent>
@@ -567,7 +577,10 @@ const Index = () => {
                   </div>
                 </div>
 
-                <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold">
+                <Button
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold"
+                  onClick={() => handleEnrollClick("data-engineer")}
+                >
                   Start Career Path
                 </Button>
               </CardContent>
@@ -882,6 +895,7 @@ const Index = () => {
       {/* Course Inquiry Form */}
       <CourseInquiryForm
         open={showInquiryForm}
+        selectedCourseId={selectedCourse}
         onOpenChange={setShowInquiryForm}
       />
     </div>

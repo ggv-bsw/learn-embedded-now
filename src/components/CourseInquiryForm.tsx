@@ -1,21 +1,39 @@
-import React, { useState } from "react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import React, { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
+import { featuredCourses } from "@/testData/featuredCourses";
 
 interface CourseInquiryFormProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  selectedCourseId?: string;
 }
 
-const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({ open, onOpenChange }) => {
+const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
+  open,
+  onOpenChange,
+  selectedCourseId,
+}) => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -25,26 +43,30 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({ open, onOpenChang
     courseId: "",
     email: "",
     phone: "",
-    message: ""
+    message: "",
   });
 
-  const courses = [
-    { id: "embedded-c-arduino", name: "Intro to Embedded C with Arduino" },
-    { id: "iot-systems", name: "Complete IoT Systems Development" },
-    { id: "advanced-embedded-c", name: "Advanced Embedded C Programming" }
-  ];
+  useEffect(() => {
+    if (open && selectedCourseId) {
+      setFormData((prev) => ({
+        ...prev,
+        courseId: selectedCourseId,
+      }));
+    }
+  }, [open, selectedCourseId]);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.name || !formData.surname || !formData.courseId) {
       toast({
         title: "Missing Information",
-        description: "Please fill in all required fields (Name, Surname, and Course selection).",
+        description:
+          "Please fill in all required fields (Name, Surname, and Course selection).",
         variant: "destructive",
       });
       return;
@@ -53,18 +75,22 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({ open, onOpenChang
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('send-course-inquiry', {
-        body: formData
-      });
+      const { data, error } = await supabase.functions.invoke(
+        "send-course-inquiry",
+        {
+          body: formData,
+        }
+      );
 
       if (error) {
-        console.error('Function error:', error);
-        throw new Error(error.message || 'Failed to submit inquiry');
+        console.error("Function error:", error);
+        throw new Error(error.message || "Failed to submit inquiry");
       }
 
       toast({
         title: "Inquiry Submitted!",
-        description: "Thank you for your interest! We'll contact you soon with more information.",
+        description:
+          "Thank you for your interest! We'll contact you soon with more information.",
       });
 
       // Reset form and close dialog
@@ -74,15 +100,16 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({ open, onOpenChang
         courseId: "",
         email: "",
         phone: "",
-        message: ""
+        message: "",
       });
       onOpenChange(false);
-
     } catch (error: any) {
-      console.error('Submit error:', error);
+      console.error("Submit error:", error);
       toast({
         title: "Submission Failed",
-        description: error.message || "There was an error submitting your inquiry. Please try again.",
+        description:
+          error.message ||
+          "There was an error submitting your inquiry. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -95,10 +122,13 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({ open, onOpenChang
       <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">
-            {t('form.title', 'Start Your Learning Journey')}
+            {t("form.title", "Start Your Learning Journey")}
           </DialogTitle>
           <DialogDescription>
-            {t('form.description', 'Fill out this form and we\'ll get back to you with course details and enrollment information.')}
+            {t(
+              "form.description",
+              "Fill out this form and we'll get back to you with course details and enrollment information."
+            )}
           </DialogDescription>
         </DialogHeader>
 
@@ -106,13 +136,13 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({ open, onOpenChang
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="name" className="text-sm font-medium">
-                {t('form.name', 'First Name')} *
+                {t("form.name", "First Name")} *
               </Label>
               <Input
                 id="name"
                 value={formData.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
-                placeholder={t('form.namePlaceholder', 'Enter your first name')}
+                onChange={(e) => handleInputChange("name", e.target.value)}
+                placeholder={t("form.namePlaceholder", "Enter your first name")}
                 disabled={loading}
                 required
               />
@@ -120,13 +150,16 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({ open, onOpenChang
 
             <div className="space-y-2">
               <Label htmlFor="surname" className="text-sm font-medium">
-                {t('form.surname', 'Last Name')} *
+                {t("form.surname", "Last Name")} *
               </Label>
               <Input
                 id="surname"
                 value={formData.surname}
-                onChange={(e) => handleInputChange('surname', e.target.value)}
-                placeholder={t('form.surnamePlaceholder', 'Enter your last name')}
+                onChange={(e) => handleInputChange("surname", e.target.value)}
+                placeholder={t(
+                  "form.surnamePlaceholder",
+                  "Enter your last name"
+                )}
                 disabled={loading}
                 required
               />
@@ -135,21 +168,26 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({ open, onOpenChang
 
           <div className="space-y-2">
             <Label htmlFor="course" className="text-sm font-medium">
-              {t('form.course', 'Course of Interest')} *
+              {t("form.course", "Course of Interest")} *
             </Label>
-            <Select 
-              value={formData.courseId} 
-              onValueChange={(value) => handleInputChange('courseId', value)}
+            <Select
+              value={formData.courseId}
+              onValueChange={(value) => handleInputChange("courseId", value)}
               disabled={loading}
               required
             >
               <SelectTrigger>
-                <SelectValue placeholder={t('form.coursePlaceholder', 'Select a course you\'re interested in')} />
+                <SelectValue
+                  placeholder={t(
+                    "form.coursePlaceholder",
+                    "Select a course you're interested in"
+                  )}
+                />
               </SelectTrigger>
               <SelectContent>
-                {courses.map((course) => (
+                {featuredCourses.map((course) => (
                   <SelectItem key={course.id} value={course.id}>
-                    {course.name}
+                    {course.title}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -158,41 +196,50 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({ open, onOpenChang
 
           <div className="space-y-2">
             <Label htmlFor="email" className="text-sm font-medium">
-              {t('form.email', 'Email Address')}
+              {t("form.email", "Email Address")}
             </Label>
             <Input
               id="email"
               type="email"
               value={formData.email}
-              onChange={(e) => handleInputChange('email', e.target.value)}
-              placeholder={t('form.emailPlaceholder', 'Enter your email address')}
+              onChange={(e) => handleInputChange("email", e.target.value)}
+              placeholder={t(
+                "form.emailPlaceholder",
+                "Enter your email address"
+              )}
               disabled={loading}
             />
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="phone" className="text-sm font-medium">
-              {t('form.phone', 'Phone Number')}
+              {t("form.phone", "Phone Number")}
             </Label>
             <Input
               id="phone"
               type="tel"
               value={formData.phone}
-              onChange={(e) => handleInputChange('phone', e.target.value)}
-              placeholder={t('form.phonePlaceholder', 'Enter your phone number')}
+              onChange={(e) => handleInputChange("phone", e.target.value)}
+              placeholder={t(
+                "form.phonePlaceholder",
+                "Enter your phone number"
+              )}
               disabled={loading}
             />
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="message" className="text-sm font-medium">
-              {t('form.message', 'Additional Message')}
+              {t("form.message", "Additional Message")}
             </Label>
             <Textarea
               id="message"
               value={formData.message}
-              onChange={(e) => handleInputChange('message', e.target.value)}
-              placeholder={t('form.messagePlaceholder', 'Tell us about your goals or any specific questions...')}
+              onChange={(e) => handleInputChange("message", e.target.value)}
+              placeholder={t(
+                "form.messagePlaceholder",
+                "Tell us about your goals or any specific questions..."
+              )}
               rows={3}
               disabled={loading}
             />
@@ -206,22 +253,27 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({ open, onOpenChang
               disabled={loading}
               className="flex-1"
             >
-              {t('form.cancel', 'Cancel')}
+              {t("form.cancel", "Cancel")}
             </Button>
             <Button
               type="submit"
-              disabled={loading || !formData.name || !formData.surname || !formData.courseId}
+              disabled={
+                loading ||
+                !formData.name ||
+                !formData.surname ||
+                !formData.courseId
+              }
               className="flex-1"
             >
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  {t('form.submitting', 'Submitting...')}
+                  {t("form.submitting", "Submitting...")}
                 </>
               ) : (
                 <>
                   <Send className="mr-2 h-4 w-4" />
-                  {t('form.submit', 'Submit Inquiry')}
+                  {t("form.submit", "Submit Inquiry")}
                 </>
               )}
             </Button>

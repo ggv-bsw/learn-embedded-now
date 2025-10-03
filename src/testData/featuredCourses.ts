@@ -645,4 +645,345 @@ export const featuredCourses = [
       "Curiosity about vehicle technology",
     ],
   },
+  {
+    id: "mobile-developer",
+    title: "Mobile Developer Software Engineer",
+    subtitle:
+      "Master iOS & Android development with React Native, Flutter, and native technologies. Build production-ready mobile applications.",
+    description:
+      "Become a professional mobile developer by learning both cross-platform and native development approaches. This comprehensive course covers everything from UI/UX design principles to backend integration, state management, and app store deployment.",
+    image: courseEmbeddedC,
+    price: 299,
+    originalPrice: 399,
+    duration: "14 weeks",
+    students: 2150,
+    rating: 4.8,
+    totalRatings: 520,
+    level: "Intermediate" as const,
+    category: "Mobile Development",
+    language: "English",
+    lastUpdated: "December 2024",
+    instructor: {
+      name: "Sarah Chen",
+      title: "Senior Mobile Architect",
+      experience: "10+ years",
+      students: 8500,
+      rating: 4.9,
+      bio: "Sarah Chen has built mobile applications for Fortune 500 companies and startups alike. She specializes in React Native and Flutter development and has published over 20 apps across both major app stores.",
+    },
+    curriculum: [
+      {
+        title: "Mobile Development Fundamentals",
+        lessons: [
+          {
+            title: "Introduction to Mobile Platforms",
+            duration: "20 min",
+            type: "video",
+          },
+          {
+            title: "Setting up Development Environment",
+            duration: "30 min",
+            type: "video",
+          },
+          {
+            title: "Mobile UI/UX Design Principles",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Your First Mobile App",
+            duration: "60 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "React Native Development",
+        lessons: [
+          {
+            title: "React Native Fundamentals",
+            duration: "50 min",
+            type: "video",
+          },
+          {
+            title: "Components and Navigation",
+            duration: "55 min",
+            type: "video",
+          },
+          {
+            title: "State Management with Redux",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title: "Project: Social Media App",
+            duration: "120 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Flutter Development",
+        lessons: [
+          {
+            title: "Dart Programming Language",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Flutter Widgets and Layouts",
+            duration: "50 min",
+            type: "video",
+          },
+          {
+            title: "State Management in Flutter",
+            duration: "55 min",
+            type: "video",
+          },
+          {
+            title: "Project: E-commerce App",
+            duration: "150 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Native Development",
+        lessons: [
+          {
+            title: "Swift for iOS Development",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Kotlin for Android Development",
+            duration: "50 min",
+            type: "video",
+          },
+          {
+            title: "Platform-Specific APIs",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title: "Project: Native Feature Integration",
+            duration: "180 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Advanced Mobile Topics",
+        lessons: [
+          {
+            title: "Backend Integration and APIs",
+            duration: "55 min",
+            type: "video",
+          },
+          {
+            title: "Performance Optimization",
+            duration: "50 min",
+            type: "video",
+          },
+          {
+            title: "App Store Deployment",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Final Project: Complete Mobile Solution",
+            duration: "240 min",
+            type: "capstone",
+          },
+        ],
+      },
+    ],
+    features: [
+      "Learn both React Native and Flutter",
+      "Real-world project portfolio",
+      "App store deployment guidance",
+      "Career support and interview prep",
+      "Lifetime access to updates",
+      "Private mobile developer community",
+      "Code reviews and mentorship",
+    ],
+    requirements: [
+      "Basic JavaScript knowledge",
+      "Understanding of programming concepts",
+      "Computer with 8GB+ RAM",
+      "Smartphone for testing (optional)",
+      "Dedication to build complete apps",
+    ],
+  },
+  {
+    id: "data-engineer",
+    title: "Data Engineering Professional",
+    subtitle:
+      "Master data pipelines, ETL processes, and big data technologies. Build scalable data infrastructure and become a data engineering expert.",
+    description:
+      "This intensive course transforms you into a professional data engineer. Learn to design, build, and maintain robust data systems using modern tools like Apache Spark, Airflow, Kafka, and cloud platforms. Work with real datasets and build production-ready data pipelines.",
+    image: courseEmbeddedC,
+    price: 349,
+    originalPrice: 499,
+    duration: "16 weeks",
+    students: 1780,
+    rating: 4.9,
+    totalRatings: 430,
+    level: "Advanced" as const,
+    category: "Data Engineering",
+    language: "English",
+    lastUpdated: "December 2024",
+    instructor: {
+      name: "Dr. Michael Torres",
+      title: "Lead Data Architect",
+      experience: "12+ years",
+      students: 6200,
+      rating: 4.9,
+      bio: "Dr. Michael Torres has designed data infrastructure for major financial institutions and tech companies. He holds a PhD in Computer Science and specializes in distributed systems and big data technologies.",
+    },
+    curriculum: [
+      {
+        title: "Data Engineering Fundamentals",
+        lessons: [
+          {
+            title: "Introduction to Data Engineering",
+            duration: "25 min",
+            type: "video",
+          },
+          {
+            title: "Data Modeling and Architecture",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "SQL for Data Engineers",
+            duration: "55 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Database Design",
+            duration: "90 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "Big Data Technologies",
+        lessons: [
+          {
+            title: "Apache Spark Fundamentals",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title: "Distributed Computing Concepts",
+            duration: "50 min",
+            type: "video",
+          },
+          {
+            title: "Spark SQL and DataFrames",
+            duration: "65 min",
+            type: "video",
+          },
+          {
+            title: "Project: Large-Scale Data Processing",
+            duration: "180 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Data Pipeline Development",
+        lessons: [
+          {
+            title: "ETL/ELT Processes",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Apache Airflow for Workflows",
+            duration: "70 min",
+            type: "video",
+          },
+          {
+            title: "Real-time Data Streaming with Kafka",
+            duration: "80 min",
+            type: "video",
+          },
+          {
+            title: "Project: End-to-End Data Pipeline",
+            duration: "240 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Cloud Data Platforms",
+        lessons: [
+          {
+            title: "AWS Data Services (Redshift, Glue)",
+            duration: "65 min",
+            type: "video",
+          },
+          {
+            title: "Google Cloud Data Solutions",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title: "Azure Data Factory and Synapse",
+            duration: "70 min",
+            type: "video",
+          },
+          {
+            title: "Project: Cloud Data Warehouse",
+            duration: "200 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Advanced Data Systems",
+        lessons: [
+          {
+            title: "Data Quality and Governance",
+            duration: "50 min",
+            type: "video",
+          },
+          {
+            title: "Performance Tuning and Optimization",
+            duration: "55 min",
+            type: "video",
+          },
+          {
+            title: "Data Security and Compliance",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Capstone: Enterprise Data Platform",
+            duration: "300 min",
+            type: "capstone",
+          },
+        ],
+      },
+    ],
+    features: [
+      "Hands-on with Apache Spark, Airflow, Kafka",
+      "Multi-cloud platform experience",
+      "Real-world data pipeline projects",
+      "Career coaching and interview prep",
+      "Industry-recognized certification",
+      "Access to large datasets for practice",
+      "Mentorship from senior data engineers",
+    ],
+    requirements: [
+      "Intermediate Python programming",
+      "Basic SQL knowledge",
+      "Understanding of databases",
+      "Computer with 16GB+ RAM recommended",
+      "Familiarity with command line",
+      "Strong problem-solving skills",
+    ],
+  },
 ];
