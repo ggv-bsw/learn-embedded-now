@@ -56,6 +56,7 @@ const Blog = () => {
 
   const featuredPost = blogPosts.find(post => post.featured);
   const regularPosts = filteredPosts.filter(post => !post.featured);
+
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
       <Navigation />
