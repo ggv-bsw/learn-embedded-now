@@ -11,6 +11,7 @@ import CourseDetail from "./pages/CourseDetail";
 import About from "./pages/About";
 import Trainers from "./pages/Trainers";
 import Blog from "./pages/Blog";
+import BlogPostDetail from "./pages/BlogPostDetail";
 import Contact from "./pages/Contact";
 import Hardware from "./pages/Hardware";
 import NotFound from "./pages/NotFound";
@@ -43,6 +44,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/trainers" element={<Trainers />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPostDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/hardware" element={<Hardware />} />
             <Route path="/junior" element={<JuniorProgram />} />
