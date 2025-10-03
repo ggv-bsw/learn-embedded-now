@@ -1,8 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.57.3';
-import { Resend } from "npm:resend@2.0.0";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -82,42 +81,50 @@ const handler = async (req: Request): Promise<Response> => {
 
     const courseName = courseNames[courseId] || courseId;
 
-    // Send email notification
-    const emailResponse = await resend.emails.send({
-      from: "Engineers Factory <onboarding@resend.dev>",
-      to: ["hr@bsw-tech.com"],
-      subject: `New Course Inquiry - ${courseName}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #1e293b; border-bottom: 2px solid #3b82f6; padding-bottom: 10px;">
-            New Course Inquiry
-          </h2>
-          
-          <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #3b82f6; margin-top: 0;">Student Information</h3>
-            <p><strong>Name:</strong> ${name} ${surname}</p>
-            <p><strong>Course of Interest:</strong> ${courseName}</p>
-            ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
-            ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
-          </div>
+    // Send email notification via Resend API
+    const emailResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: "Engineers Factory <onboarding@resend.dev>",
+        to: ["hr@bsw-tech.com"],
+        subject: `New Course Inquiry - ${courseName}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #1e293b; border-bottom: 2px solid #3b82f6; padding-bottom: 10px;">
+              New Course Inquiry
+            </h2>
+            
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="color: #3b82f6; margin-top: 0;">Student Information</h3>
+              <p><strong>Name:</strong> ${name} ${surname}</p>
+              <p><strong>Course of Interest:</strong> ${courseName}</p>
+              ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
+              ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
+            </div>
 
-          ${message ? `
-          <div style="background: #f1f5f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #475569; margin-top: 0;">Additional Message</h3>
-            <p style="color: #475569;">${message}</p>
-          </div>
-          ` : ''}
+            ${message ? `
+            <div style="background: #f1f5f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="color: #475569; margin-top: 0;">Additional Message</h3>
+              <p style="color: #475569;">${message}</p>
+            </div>
+            ` : ''}
 
-          <div style="background: #0f172a; color: white; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 0; font-size: 14px;">
-              This inquiry was submitted through the Engineers Factory website on ${new Date().toLocaleString()}.
-            </p>
+            <div style="background: #0f172a; color: white; padding: 15px; border-radius: 8px; margin: 20px 0;">
+              <p style="margin: 0; font-size: 14px;">
+                This inquiry was submitted through the Engineers Factory website on ${new Date().toLocaleString()}.
+              </p>
+            </div>
           </div>
-        </div>
-      `,
+        `,
+      }),
     });
 
-    console.log("Email sent successfully:", emailResponse);
+    const emailData = await emailResponse.json();
+    console.log("Email sent successfully:", emailData);
 
     return new Response(
       JSON.stringify({ 
