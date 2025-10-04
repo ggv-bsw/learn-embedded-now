@@ -25,6 +25,13 @@ import Footer from "@/components/footer";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
 import { team } from "@/testData/teamData";
 
+import bswTech from "@/assets/bswTech.png";
+import capgemini from "@/assets/capgemini.png";
+import gefeetech from "@/assets/gefeetech.png";
+import moldStud from "@/assets/moldStud.png";
+import procesio from "@/assets/procesio.png";
+import theAutomationNetwork from "@/assets/theAutomationNetwork.svg";
+
 const About = () => {
   const [showInquiryForm, setShowInquiryForm] = React.useState(false);
 
@@ -64,20 +71,28 @@ const About = () => {
 
   const partners = [
     {
-      name: "Intel",
-      logo: "https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=200&h=100&fit=crop",
+      name: "BSW TECH",
+      logo: bswTech,
     },
     {
-      name: "ARM",
-      logo: "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=200&h=100&fit=crop",
+      name: "Procesio",
+      logo: procesio,
     },
     {
-      name: "STMicroelectronics",
-      logo: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=200&h=100&fit=crop",
+      name: "GeFee",
+      logo: gefeetech,
     },
     {
-      name: "Microchip",
-      logo: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=200&h=100&fit=crop",
+      name: "TheAutomationNetwork",
+      logo: theAutomationNetwork,
+    },
+    {
+      name: "MoldStud",
+      logo: moldStud,
+    },
+    {
+      name: "Capgemini",
+      logo: capgemini,
     },
   ];
 
@@ -348,16 +363,16 @@ const About = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 items-center max-w-4xl mx-auto">
+            <div className="flex flex-wrap justify-center items-center gap-6 max-w-6xl mx-auto">
               {partners.map((partner, index) => (
                 <div
                   key={index}
-                  className="text-center opacity-60 hover:opacity-100 transition-opacity duration-300 p-4 rounded-lg hover:bg-slate-700/50"
+                  className="flex-shrink-0 text-center opacity-60 hover:opacity-100 transition-opacity duration-300 p-4 rounded-lg hover:bg-slate-700/50"
                 >
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="h-12 mx-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                    className="h-10 md:h-12 mx-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
               ))}
