@@ -59,6 +59,36 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_inquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          status: string
+          subject: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          status?: string
+          subject: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          status?: string
+          subject?: string
+        }
+        Relationships: []
+      }
       course_inquiries: {
         Row: {
           course_id: string

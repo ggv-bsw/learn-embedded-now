@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import Footer from "@/components/footer";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -98,15 +99,31 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const { error } = await supabase
+        .from("contact_inquiries")
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+          },
+        ]);
 
-    toast("Message sent successfully! We'll get back to you within 24 hours.", {
-      icon: <CheckCircle className="w-5 h-5 text-green-500" />,
-    });
+      if (error) throw error;
 
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setIsSubmitting(false);
+      toast("Message sent successfully! We'll get back to you within 24 hours.", {
+        icon: <CheckCircle className="w-5 h-5 text-green-500" />,
+      });
+
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (
