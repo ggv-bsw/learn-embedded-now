@@ -20,10 +20,12 @@ import {
   developmentBoards,
   DevelopmentBoard,
 } from "@/testData/developmentBoards";
+import { useState } from "react";
 
 const Hardware = () => {
   const { addToCart } = useCart();
   const { toast } = useToast();
+  const [selectedCategory, setSelectedCategory] = useState<string>("All Boards");
 
   const handleAddToCart = (board: DevelopmentBoard) => {
     addToCart({
@@ -38,8 +40,17 @@ const Hardware = () => {
     });
   };
 
+  const getFilteredBoards = () => {
+    if (selectedCategory === "All Boards") return developmentBoards;
+    if (selectedCategory === "Arduino") return developmentBoards.filter((b) => b.id.includes("328"));
+    if (selectedCategory === "STM") return developmentBoards.filter((b) => b.id.includes("stm32"));
+    return developmentBoards;
+  };
+
+  const filteredBoards = getFilteredBoards();
+
   const categories = [
-    { name: "All Boards", count: developmentBoards.length, active: true },
+    { name: "All Boards", count: developmentBoards.length },
     {
       name: "Arduino",
       count: developmentBoards.filter((b) => b.id.includes("328")).length,
@@ -146,12 +157,13 @@ const Hardware = () => {
             {categories.map((category, index) => (
               <Button
                 key={index}
-                variant={category.active ? "default" : "outline"}
+                variant={selectedCategory === category.name ? "default" : "outline"}
                 className={
-                  category.active
+                  selectedCategory === category.name
                     ? "bg-blue-600 hover:bg-blue-700 text-white"
                     : "border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500"
                 }
+                onClick={() => setSelectedCategory(category.name)}
               >
                 {category.name}
                 <Badge className="ml-2 bg-white/20 text-current">
@@ -181,7 +193,7 @@ const Hardware = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {developmentBoards.map((board) => (
+            {filteredBoards.map((board) => (
               <Link key={board.id} to={`/hardware/${board.id}`}>
                 <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group cursor-pointer">
                   <div className="p-4 pb-0">
