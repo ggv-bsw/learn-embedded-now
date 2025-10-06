@@ -14,6 +14,7 @@ import Blog from "./pages/Blog";
 import BlogPostDetail from "./pages/BlogPostDetail";
 import Contact from "./pages/Contact";
 import Hardware from "./pages/Hardware";
+import HardwareDetail from "./pages/HardwareDetail";
 import NotFound from "./pages/NotFound";
 import JuniorProgram from "./pages/JuniorProgram";
 
@@ -47,6 +48,7 @@ const App = () => (
             <Route path="/blog/:slug" element={<BlogPostDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/hardware" element={<Hardware />} />
+            <Route path="/hardware/:productId" element={<HardwareDetail />} />
             <Route path="/junior" element={<JuniorProgram />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

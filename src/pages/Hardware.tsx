@@ -242,10 +242,10 @@ const Hardware = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {developmentBoards.map((board) => (
-              <Card
-                key={board.id}
-                className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group"
-              >
+              <Link key={board.id} to={`/hardware/${board.id}`}>
+                <Card
+                  className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group cursor-pointer"
+                >
                 {/* Product Image */}
                 <div className="p-4 pb-0">
                   <div className="aspect-square w-full bg-white rounded-lg p-4 mb-4 flex items-center justify-center overflow-hidden">
@@ -347,6 +347,7 @@ const Hardware = () => {
                   </div>
                 </CardContent>
               </Card>
+              </Link>
             ))}
           </div>
 
