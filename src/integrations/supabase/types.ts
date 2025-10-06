@@ -92,6 +92,51 @@ export type Database = {
         }
         Relationships: []
       }
+      trainer_applications: {
+        Row: {
+          bio: string
+          created_at: string
+          email: string
+          experience_years: number
+          expertise: string
+          id: string
+          linkedin_url: string | null
+          name: string
+          phone: string | null
+          portfolio_url: string | null
+          status: string
+          why_teach: string
+        }
+        Insert: {
+          bio: string
+          created_at?: string
+          email: string
+          experience_years: number
+          expertise: string
+          id?: string
+          linkedin_url?: string | null
+          name: string
+          phone?: string | null
+          portfolio_url?: string | null
+          status?: string
+          why_teach: string
+        }
+        Update: {
+          bio?: string
+          created_at?: string
+          email?: string
+          experience_years?: number
+          expertise?: string
+          id?: string
+          linkedin_url?: string | null
+          name?: string
+          phone?: string | null
+          portfolio_url?: string | null
+          status?: string
+          why_teach?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null

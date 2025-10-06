@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -11,6 +12,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Navigation from "@/components/ui/navigation";
 import AnimatedParticles from "@/components/animated-particles";
 import ScrollReveal from "@/components/scroll-reveal";
+import TrainerApplicationForm from "@/components/TrainerApplicationForm";
 import {
   Star,
   MapPin,
@@ -26,6 +28,7 @@ import { team } from "@/testData/teamData";
 import { Link } from "react-router-dom";
 
 const Trainers = () => {
+  const [showApplicationForm, setShowApplicationForm] = useState(false);
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
       <Navigation />
@@ -421,6 +424,7 @@ const Trainers = () => {
                 <Button
                   size="lg"
                   className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
+                  onClick={() => setShowApplicationForm(true)}
                 >
                   <Award className="mr-2 w-5 h-5" />
                   Apply to Teach
@@ -437,6 +441,11 @@ const Trainers = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <TrainerApplicationForm
+        open={showApplicationForm}
+        onOpenChange={setShowApplicationForm}
+      />
     </div>
   );
 };
