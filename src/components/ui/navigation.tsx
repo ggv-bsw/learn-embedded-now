@@ -64,18 +64,9 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* Auth Buttons */}
+          {/* Language Selector */}
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSelector />
-            <Button
-              variant="ghost"
-              className="text-gray-300 hover:text-white hover:bg-slate-800"
-            >
-              {t("nav.login", "Login")}
-            </Button>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
-              {t("nav.getStarted", "Get Started")}
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -129,19 +120,8 @@ const Navigation = () => {
                 {t("nav.contact", "Contact")}
               </Link>
 
-              <div className="px-4 pt-4 space-y-2">
-                <div className="mb-2">
-                  <LanguageSelector />
-                </div>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-gray-300 hover:text-white hover:bg-slate-800"
-                >
-                  {t("nav.login", "Login")}
-                </Button>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                  {t("nav.getStarted", "Get Started")}
-                </Button>
+              <div className="px-4 pt-4">
+                <LanguageSelector />
               </div>
             </div>
           </div>
