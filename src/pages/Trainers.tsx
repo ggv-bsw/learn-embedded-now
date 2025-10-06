@@ -92,7 +92,7 @@ const Trainers = () => {
               <div className="flex flex-wrap justify-center gap-8 pt-4">
                 <div className="flex items-center space-x-2">
                   <Users className="w-5 h-5 text-blue-400" />
-                  <span className="text-white font-semibold">4,530+</span>
+                  <span className="text-white font-semibold">250+</span>
                   <span className="text-gray-400">Students Taught</span>
                 </div>
                 <div className="flex items-center space-x-2">

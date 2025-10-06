@@ -122,7 +122,7 @@ const Courses = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Users className="w-5 h-5 text-green-400" />
-                <span className="text-white font-semibold">5,000+</span>
+                <span className="text-white font-semibold">250+</span>
                 <span className="text-gray-400">Students</span>
               </div>
               <div className="flex items-center space-x-2">

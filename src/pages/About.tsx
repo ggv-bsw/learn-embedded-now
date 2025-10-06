@@ -36,9 +36,9 @@ const About = () => {
   const [showInquiryForm, setShowInquiryForm] = React.useState(false);
 
   const stats = [
-    { icon: Users, label: "Students Taught", value: 5000, suffix: "+" },
-    { icon: Award, label: "Course Completions", value: 12000, suffix: "+" },
-    { icon: Trophy, label: "Industry Partners", value: 50, suffix: "+" },
+    { icon: Users, label: "Students Taught", value: 250, suffix: "+" },
+    { icon: Award, label: "Course Completions", value: 50, suffix: "+" },
+    { icon: Trophy, label: "Industry Partners", value: 30, suffix: "+" },
     { icon: Globe, label: "Countries Reached", value: 15, suffix: "" },
   ];
 

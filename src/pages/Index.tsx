@@ -175,7 +175,7 @@ const Index = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users className="w-5 h-5 text-blue-400" />
-                  <span className="text-white font-semibold">5,000+</span>
+                  <span className="text-white font-semibold">250+</span>
                   <span className="text-gray-400">
                     {t("hero.activeStudents", "Active Students")}
                   </span>
@@ -652,7 +652,7 @@ const Index = () => {
                       <div className="w-8 h-8 bg-green-500 rounded-full border-2 border-slate-700 shadow-md"></div>
                     </div>
                     <span className="text-sm text-green-300 font-semibold">
-                      500+ certified this month
+                      150+ certified this month
                     </span>
                   </div>
                 </CardContent>
@@ -679,7 +679,7 @@ const Index = () => {
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                       <span className="text-sm text-green-300 font-mono font-bold">
-                        1,247 members
+                        95 members
                       </span>
                     </div>
                   </div>
@@ -871,7 +871,7 @@ const Index = () => {
           {/* Trust Indicators */}
           <div className="mt-12 grid grid-cols-3 gap-8 max-w-lg mx-auto">
             <div className="text-center">
-              <div className="text-2xl font-bold text-white">5K+</div>
+              <div className="text-2xl font-bold text-white">250+</div>
               <div className="text-sm text-gray-400">Active Students</div>
             </div>
             <div className="text-center">

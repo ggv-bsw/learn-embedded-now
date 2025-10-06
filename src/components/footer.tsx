@@ -21,12 +21,6 @@ const Footer = () => {
               Empowering the next generation of embedded systems developers with
               practical, industry-focused education.
             </p>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-sm text-gray-400">
-                Currently online: 1,247 students
-              </span>
-            </div>
           </div>
 
           <div>
@@ -156,12 +150,6 @@ const Footer = () => {
               © 2024 Embedded School. Open source education platform.
             </p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
-              <Badge
-                variant="outline"
-                className="border-slate-700 text-gray-400"
-              >
-                Built with ❤️ in Moldova
-              </Badge>
               <div className="flex items-center space-x-1 text-gray-400">
                 <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                 <span className="text-xs">All systems operational</span>
