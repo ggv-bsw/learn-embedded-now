@@ -16,8 +16,27 @@ import { Link } from "react-router-dom";
 import AnimatedParticles from "@/components/animated-particles";
 import STMImage from "@/assets/STM1.png";
 import arduinoImage from "@/assets/arduino1.png";
+import { useCart } from "@/contexts/CartContext";
+import { ShoppingCartSheet } from "@/components/ShoppingCart";
+import { useToast } from "@/hooks/use-toast";
 
 const Hardware = () => {
+  const { addToCart } = useCart();
+  const { toast } = useToast();
+
+  const handleAddToCart = (board: typeof developmentBoards[0]) => {
+    addToCart({
+      id: board.id,
+      name: board.name,
+      price: board.price,
+      image: board.image,
+    });
+    toast({
+      title: "Added to cart",
+      description: `${board.name} has been added to your cart.`,
+    });
+  };
+
   const developmentBoards = [
     {
       id: "stm",
@@ -88,6 +107,9 @@ const Hardware = () => {
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
       <Navigation />
+      <div className="fixed top-4 right-4 z-50">
+        <ShoppingCartSheet />
+      </div>
 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
@@ -303,6 +325,7 @@ const Hardware = () => {
                           : "bg-gray-600 text-gray-400 cursor-not-allowed"
                       }`}
                       disabled={!board.inStock}
+                      onClick={() => handleAddToCart(board)}
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />
                       {board.inStock ? "Add to Cart" : "Out of Stock"}
