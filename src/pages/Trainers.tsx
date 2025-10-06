@@ -32,7 +32,7 @@ const Trainers = () => {
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   const [showMeetingForm, setShowMeetingForm] = useState(false);
   const [selectedTrainer, setSelectedTrainer] = useState("");
-  
+
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
       <Navigation />
@@ -265,7 +265,7 @@ const Trainers = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div className="space-y-2">
                 <div className="text-3xl md:text-4xl font-bold text-blue-400">
-                  25+
+                  5+
                 </div>
                 <div className="text-sm text-gray-400">
                   Years Combined Experience
@@ -279,13 +279,13 @@ const Trainers = () => {
               </div>
               <div className="space-y-2">
                 <div className="text-3xl md:text-4xl font-bold text-blue-400">
-                  4.5K+
+                  250+
                 </div>
                 <div className="text-sm text-gray-400">Students Mentored</div>
               </div>
               <div className="space-y-2">
                 <div className="text-3xl md:text-4xl font-bold text-blue-400">
-                  50+
+                  35+
                 </div>
                 <div className="text-sm text-gray-400">Industry Projects</div>
               </div>
@@ -454,7 +454,7 @@ const Trainers = () => {
         open={showApplicationForm}
         onOpenChange={setShowApplicationForm}
       />
-      
+
       <OneToOneMeetingForm
         open={showMeetingForm}
         onOpenChange={setShowMeetingForm}
