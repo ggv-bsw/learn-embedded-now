@@ -652,7 +652,7 @@ const Index = () => {
                       <div className="w-8 h-8 bg-green-500 rounded-full border-2 border-slate-700 shadow-md"></div>
                     </div>
                     <span className="text-sm text-green-300 font-semibold">
-                      150+ certified this month
+                      50+ certified this month
                     </span>
                   </div>
                 </CardContent>

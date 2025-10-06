@@ -2,33 +2,31 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
-import { 
-  Cpu, 
-  Wifi, 
+import {
+  Cpu,
   Zap,
   ShoppingCart,
   Star,
   ArrowRight,
   Microchip,
   Shield,
-  Gauge
+  Gauge,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnimatedParticles from "@/components/animated-particles";
-import esp32DevkitImage from "@/assets/esp32-devkit.jpg";
-import arduinoUnoImage from "@/assets/arduino-uno-r3.jpg";
-import raspberryPiPicoImage from "@/assets/raspberry-pi-pico.jpg";
-import stm32NucleoImage from "@/assets/stm32-nucleo.jpg";
+import STMImage from "@/assets/STM1.png";
+import arduinoImage from "@/assets/arduino1.png";
 
 const Hardware = () => {
   const developmentBoards = [
     {
-      id: "esp32-devkit",
-      name: "ESP32 DevKit V1",
-      image: esp32DevkitImage,
-      description: "Powerful Wi-Fi + Bluetooth development board with dual-core processor. Perfect for IoT projects and wireless applications.",
-      price: 12.99,
-      originalPrice: 15.99,
+      id: "stm",
+      name: "STM",
+      image: STMImage,
+      description:
+        "Powerful Wi-Fi + Bluetooth development board with dual-core processor. Perfect for IoT projects and wireless applications.",
+      price: 39,
+      originalPrice: null,
       rating: 4.8,
       reviews: 1250,
       inStock: true,
@@ -37,16 +35,17 @@ const Hardware = () => {
         "Wi-Fi 802.11 b/g/n",
         "Bluetooth v4.2 BR/EDR and BLE",
         "34 GPIO pins",
-        "12-bit ADC up to 18 channels"
+        "12-bit ADC up to 18 channels",
       ],
-      features: ["WiFi", "Bluetooth", "ADC", "PWM"]
+      features: ["WiFi", "Bluetooth", "ADC", "PWM"],
     },
     {
-      id: "arduino-uno-r3",
-      name: "Arduino Uno R3",
-      image: arduinoUnoImage,
-      description: "The classic microcontroller board based on ATmega328P. Ideal for beginners and prototyping with extensive community support.",
-      price: 24.99,
+      id: "arduino",
+      name: "Arduino",
+      image: arduinoImage,
+      description:
+        "The classic microcontroller board based on ATmega328P. Ideal for beginners and prototyping with extensive community support.",
+      price: 29,
       originalPrice: null,
       rating: 4.9,
       reviews: 2340,
@@ -54,126 +53,108 @@ const Hardware = () => {
       specifications: [
         "ATmega328P microcontroller",
         "14 digital I/O pins",
-        "6 analog input pins", 
+        "6 analog input pins",
         "16 MHz crystal oscillator",
-        "USB connection"
+        "USB connection",
       ],
-      features: ["USB", "Digital I/O", "Analog Input", "PWM"]
+      features: ["USB", "Digital I/O", "Analog Input", "PWM"],
     },
-    {
-      id: "raspberry-pi-pico",
-      name: "Raspberry Pi Pico",
-      image: raspberryPiPicoImage,
-      description: "Low-cost, high-performance microcontroller board with flexible digital interfaces and dual ARM Cortex-M0+ cores.",
-      price: 4.00,
-      originalPrice: null,
-      rating: 4.7,
-      reviews: 890,
-      inStock: true,
-      specifications: [
-        "Dual ARM Cortex-M0+ cores",
-        "264KB SRAM",
-        "2MB Flash memory",
-        "26 GPIO pins",
-        "3 12-bit ADC"
-      ],
-      features: ["Dual Core", "Low Power", "GPIO", "ADC"]
-    },
-    {
-      id: "stm32-nucleo",
-      name: "STM32 Nucleo-F401RE",
-      image: stm32NucleoImage,
-      description: "Professional ARM Cortex-M4 development board with advanced features. Perfect for complex embedded applications and real-time systems.",
-      price: 18.50,
-      originalPrice: 22.00,
-      rating: 4.6,
-      reviews: 567,
-      inStock: false,
-      specifications: [
-        "ARM Cortex-M4 84MHz",
-        "512KB Flash memory",
-        "96KB SRAM",
-        "Arduino-compatible headers",
-        "ST morpho headers"
-      ],
-      features: ["ARM Cortex-M4", "High Performance", "Arduino Compatible", "Debug"]
-    }
   ];
 
   const categories = [
     { name: "All Boards", count: 24, active: true },
     { name: "Arduino", count: 8 },
-    { name: "ESP32", count: 6 },
-    { name: "Raspberry Pi", count: 4 },
-    { name: "STM32", count: 6 }
+    { name: "STM", count: 6 },
   ];
 
   const features = [
     {
       icon: Shield,
       title: "Quality Guaranteed",
-      description: "All boards tested and verified before shipping"
+      description: "All boards tested and verified before shipping",
     },
     {
       icon: Zap,
-      title: "Fast Shipping", 
-      description: "Same-day processing with 2-3 day delivery"
+      title: "Fast Shipping",
+      description: "Same-day processing with 2-3 day delivery",
     },
     {
       icon: Gauge,
       title: "Technical Support",
-      description: "Expert help with setup and troubleshooting"
-    }
+      description: "Expert help with setup and troubleshooting",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 opacity-20">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
             <defs>
-              <pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse">
-                <path d="M 4 0 L 0 0 0 4" fill="none" stroke="currentColor" strokeWidth="0.1" className="text-primary"/>
+              <pattern
+                id="grid"
+                width="4"
+                height="4"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 4 0 L 0 0 0 4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.1"
+                  className="text-primary"
+                />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#grid)"/>
+            <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
         </div>
 
         {/* Animated Particles */}
         <AnimatedParticles />
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
               <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
               Hardware Store
             </Badge>
-            
+
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-              Premium Development 
+              Premium Development
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
                 Hardware & Boards
               </span>
             </h1>
-            
+
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto">
-              Professional-grade development boards and microcontrollers for your embedded projects. 
-              From Arduino to advanced ARM processors.
+              Professional-grade development boards and microcontrollers for
+              your embedded projects. From Arduino to advanced ARM processors.
             </p>
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-              <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105">
+              <Button
+                size="lg"
+                className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105"
+              >
                 <ShoppingCart className="mr-2 w-4 md:w-5 h-4 md:h-5" />
                 Shop Now
               </Button>
-              
-              <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg">
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg"
+              >
                 <Microchip className="mr-2 w-4 md:w-5 h-4 md:h-5" />
                 Browse Categories
               </Button>
@@ -191,8 +172,8 @@ const Hardware = () => {
                 key={index}
                 variant={category.active ? "default" : "outline"}
                 className={`${
-                  category.active 
-                    ? "bg-blue-600 hover:bg-blue-700 text-white" 
+                  category.active
+                    ? "bg-blue-600 hover:bg-blue-700 text-white"
                     : "border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500"
                 }`}
               >
@@ -218,24 +199,28 @@ const Hardware = () => {
               Professional Development Boards
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Hand-picked selection of the best microcontrollers and development platforms
+              Hand-picked selection of the best microcontrollers and development
+              platforms
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {developmentBoards.map((board) => (
-              <Card key={board.id} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
+              <Card
+                key={board.id}
+                className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group"
+              >
                 {/* Product Image */}
                 <div className="p-4 pb-0">
                   <div className="aspect-square w-full bg-white rounded-lg p-4 mb-4 flex items-center justify-center overflow-hidden">
-                    <img 
-                      src={board.image} 
-                      alt={board.name} 
+                    <img
+                      src={board.image}
+                      alt={board.name}
                       className="max-w-full max-h-full object-contain"
                     />
                   </div>
                 </div>
-                
+
                 <CardHeader className="pb-4 pt-0">
                   <div className="flex items-start justify-between mb-4">
                     <div>
@@ -245,34 +230,49 @@ const Hardware = () => {
                       <div className="flex items-center space-x-2 mb-2">
                         <div className="flex items-center">
                           <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                          <span className="text-white font-semibold ml-1">{board.rating}</span>
-                          <span className="text-gray-400 text-sm ml-1">({board.reviews} reviews)</span>
+                          <span className="text-white font-semibold ml-1">
+                            {board.rating}
+                          </span>
+                          <span className="text-gray-400 text-sm ml-1">
+                            ({board.reviews} reviews)
+                          </span>
                         </div>
                       </div>
                     </div>
-                    <Badge className={`${board.inStock ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-red-500/20 text-red-400 border-red-500/30'}`}>
-                      {board.inStock ? 'In Stock' : 'Out of Stock'}
+                    <Badge
+                      className={`${
+                        board.inStock
+                          ? "bg-green-500/20 text-green-400 border-green-500/30"
+                          : "bg-red-500/20 text-red-400 border-red-500/30"
+                      }`}
+                    >
+                      {board.inStock ? "In Stock" : "Out of Stock"}
                     </Badge>
                   </div>
                 </CardHeader>
-                
+
                 <CardContent className="pt-0">
                   <p className="text-gray-400 mb-4 line-clamp-2">
                     {board.description}
                   </p>
-                  
+
                   {/* Features */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {board.features.map((feature, index) => (
-                      <Badge key={index} className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs">
+                      <Badge
+                        key={index}
+                        className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs"
+                      >
                         {feature}
                       </Badge>
                     ))}
                   </div>
-                  
+
                   {/* Specifications */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-300 mb-2">Key Specifications:</h4>
+                    <h4 className="text-sm font-semibold text-gray-300 mb-2">
+                      Key Specifications:
+                    </h4>
                     <ul className="text-sm text-gray-400 space-y-1">
                       {board.specifications.slice(0, 3).map((spec, index) => (
                         <li key={index} className="flex items-center">
@@ -282,35 +282,43 @@ const Hardware = () => {
                       ))}
                     </ul>
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="flex items-center space-x-2">
-                        <span className="text-2xl font-bold text-white">${board.price}</span>
+                        <span className="text-2xl font-bold text-white">
+                          ${board.price}
+                        </span>
                         {board.originalPrice && (
-                          <span className="text-lg text-gray-500 line-through">${board.originalPrice}</span>
+                          <span className="text-lg text-gray-500 line-through">
+                            ${board.originalPrice}
+                          </span>
                         )}
                       </div>
                     </div>
-                    <Button 
+                    <Button
                       className={`${
-                        board.inStock 
-                          ? "bg-blue-600 hover:bg-blue-700 text-white" 
+                        board.inStock
+                          ? "bg-blue-600 hover:bg-blue-700 text-white"
                           : "bg-gray-600 text-gray-400 cursor-not-allowed"
                       }`}
                       disabled={!board.inStock}
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />
-                      {board.inStock ? 'Add to Cart' : 'Out of Stock'}
+                      {board.inStock ? "Add to Cart" : "Out of Stock"}
                     </Button>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg" className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500">
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-slate-600 text-slate-900  hover:scale-105"
+            >
               View All Products
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
@@ -330,13 +338,17 @@ const Hardware = () => {
               Trusted by Developers Worldwide
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Professional service and support for all your embedded development needs
+              Professional service and support for all your embedded development
+              needs
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 text-center group">
+              <Card
+                key={index}
+                className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 text-center group"
+              >
                 <CardContent className="pt-8 pb-8">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all duration-300">
                     <feature.icon className="w-8 h-8 text-blue-400" />
