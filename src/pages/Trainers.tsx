@@ -13,6 +13,7 @@ import Navigation from "@/components/ui/navigation";
 import AnimatedParticles from "@/components/animated-particles";
 import ScrollReveal from "@/components/scroll-reveal";
 import TrainerApplicationForm from "@/components/TrainerApplicationForm";
+import OneToOneMeetingForm from "@/components/OneToOneMeetingForm";
 import {
   Star,
   MapPin,
@@ -29,6 +30,9 @@ import { Link } from "react-router-dom";
 
 const Trainers = () => {
   const [showApplicationForm, setShowApplicationForm] = useState(false);
+  const [showMeetingForm, setShowMeetingForm] = useState(false);
+  const [selectedTrainer, setSelectedTrainer] = useState("");
+  
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
       <Navigation />
@@ -234,8 +238,12 @@ const Trainers = () => {
                         size="sm"
                         variant="outline"
                         className="flex-1 border-slate-600 text-gray-300 text-slate-900 hover:border-slate-500"
+                        onClick={() => {
+                          setSelectedTrainer(trainer.name);
+                          setShowMeetingForm(true);
+                        }}
                       >
-                        Message
+                        Request One-to-One
                       </Button>
                     </div>
                   </CardContent>
@@ -445,6 +453,12 @@ const Trainers = () => {
       <TrainerApplicationForm
         open={showApplicationForm}
         onOpenChange={setShowApplicationForm}
+      />
+      
+      <OneToOneMeetingForm
+        open={showMeetingForm}
+        onOpenChange={setShowMeetingForm}
+        trainerName={selectedTrainer}
       />
     </div>
   );

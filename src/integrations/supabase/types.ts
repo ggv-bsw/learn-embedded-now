@@ -92,6 +92,42 @@ export type Database = {
         }
         Relationships: []
       }
+      one_to_one_requests: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          phone: string | null
+          preferred_date: string | null
+          status: string
+          trainer_name: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          phone?: string | null
+          preferred_date?: string | null
+          status?: string
+          trainer_name: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string | null
+          preferred_date?: string | null
+          status?: string
+          trainer_name?: string
+        }
+        Relationships: []
+      }
       trainer_applications: {
         Row: {
           bio: string
