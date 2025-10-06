@@ -17,7 +17,6 @@ import AnimatedParticles from "@/components/animated-particles";
 import STMImage from "@/assets/STM1.png";
 import arduinoImage from "@/assets/arduino1.png";
 import { useCart } from "@/contexts/CartContext";
-import { ShoppingCartSheet } from "@/components/ShoppingCart";
 import { useToast } from "@/hooks/use-toast";
 
 const Hardware = () => {
@@ -107,9 +106,6 @@ const Hardware = () => {
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
       <Navigation />
-      <div className="fixed top-4 right-4 z-50">
-        <ShoppingCartSheet />
-      </div>
 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">

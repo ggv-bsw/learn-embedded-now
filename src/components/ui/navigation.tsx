@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "@/components/LanguageSelector";
+import { ShoppingCartSheet } from "@/components/ShoppingCart";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,9 +65,10 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* Language Selector */}
+          {/* Language Selector & Cart */}
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSelector />
+            <ShoppingCartSheet />
           </div>
 
           {/* Mobile Menu Button */}
@@ -120,8 +122,9 @@ const Navigation = () => {
                 {t("nav.contact", "Contact")}
               </Link>
 
-              <div className="px-4 pt-4">
+              <div className="px-4 pt-4 flex items-center justify-between">
                 <LanguageSelector />
+                <ShoppingCartSheet />
               </div>
             </div>
           </div>
