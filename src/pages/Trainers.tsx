@@ -130,7 +130,7 @@ const Trainers = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {team.map((trainer, index) => (
               <ScrollReveal key={trainer.id} delay={index * 100}>
-                <Card className="group hover:shadow-2xl transition-all duration-300 bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 hover:scale-105">
+                <Card className="h-full flex flex-col group hover:shadow-2xl transition-all duration-300 bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 hover:scale-105">
                   <CardHeader className="pb-4">
                     <div className="flex items-start gap-4">
                       <div className="relative">
@@ -184,7 +184,7 @@ const Trainers = () => {
                     </div>
                   </CardHeader>
 
-                  <CardContent className="space-y-4">
+                  <CardContent className="space-y-4 flex-1 flex flex-col">
                     <p className="text-sm text-gray-400 leading-relaxed">
                       {trainer.bio}
                     </p>
@@ -222,7 +222,7 @@ const Trainers = () => {
                       </div>
                     </div>
 
-                    <div className="flex gap-2 pt-2">
+                    <div className="flex gap-2 pt-2 mt-auto">
                       <Button
                         size="sm"
                         className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
