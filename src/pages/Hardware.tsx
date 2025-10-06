@@ -14,16 +14,18 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnimatedParticles from "@/components/animated-particles";
-import STMImage from "@/assets/STM1.png";
-import arduinoImage from "@/assets/arduino1.png";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
+import {
+  developmentBoards,
+  DevelopmentBoard,
+} from "@/testData/developmentBoards";
 
 const Hardware = () => {
   const { addToCart } = useCart();
   const { toast } = useToast();
 
-  const handleAddToCart = (board: (typeof developmentBoards)[0]) => {
+  const handleAddToCart = (board: DevelopmentBoard) => {
     addToCart({
       id: board.id,
       name: board.name,
@@ -36,71 +38,16 @@ const Hardware = () => {
     });
   };
 
-  const developmentBoards = [
-    {
-      id: "dino-dev-stm32",
-      name: "Dino Dev STM32",
-      image: STMImage,
-      description:
-        "Compact STM32F103RBT6-based board for learning embedded programming and prototyping. Designed for easy use, it helps users master GPIOs, timers, ADCs, and serial interfaces in real-world applications.",
-      price: 39,
-      originalPrice: null,
-      rating: 4.8,
-      reviews: 980,
-      inStock: true,
-      specifications: [
-        "STM32F103RBT6 microcontroller",
-        "9 LEDs + 1 RGB LED, 2 buttons, slider switch",
-        "Buzzer and encoder for timer tasks",
-        "Photoresistor, potentiometer, LCD display",
-        "Humidity & temperature sensor",
-        "EEPROM + NOR Flash memory",
-        "UART, I2C, SPI, USB, and free GPIO connectors",
-        "USB-C powered (5V → 3.3V/2A DC-DC converter)",
-      ],
-      features: [
-        "Learn GPIO, timers, ADC, and interfaces",
-        "External memory read/write",
-        "Multiple bootloader options",
-        "Debugging and prototyping tool",
-        "Simple, flexible, beginner-friendly design",
-      ],
-    },
-    {
-      id: "dino-dev-328pb",
-      name: "Dino Dev ATmega328PB",
-      image: arduinoImage,
-      description:
-        "Educational board based on ATmega328PB for learning microcontrollers, prototyping, and testing embedded systems. Ideal for students and makers.",
-      price: 29,
-      originalPrice: null,
-      rating: 4.8,
-      reviews: 860,
-      inStock: true,
-      specifications: [
-        "ATmega328PB microcontroller",
-        "27 I/O lines, 32 KB Flash, 1 KB EEPROM, 2 KB SRAM",
-        "8-bit & 16-bit timers, 10 PWM channels, 8-ch 10-bit ADC",
-        "Two USART, SPI, I2C interfaces",
-        "Power: USB or 6–9V DC",
-        "OLED 64x32 display, GL5528 photoresistor",
-        "MPU6050 IMU, BMP280 sensor",
-      ],
-      features: [
-        "USB programming and power",
-        "Capacitive touch support",
-        "Onboard buzzer, LEDs, and buttons",
-        "Power source switch (USB/external)",
-        "Arduino IDE compatible",
-        "Supports shields and breadboards",
-      ],
-    },
-  ];
-
   const categories = [
-    { name: "All Boards", count: 24, active: true },
-    { name: "Arduino", count: 8 },
-    { name: "STM", count: 6 },
+    { name: "All Boards", count: developmentBoards.length, active: true },
+    {
+      name: "Arduino",
+      count: developmentBoards.filter((b) => b.id.includes("328")).length,
+    },
+    {
+      name: "STM",
+      count: developmentBoards.filter((b) => b.id.includes("stm32")).length,
+    },
   ];
 
   const features = [
@@ -127,7 +74,6 @@ const Hardware = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-        {/* Background Grid Pattern */}
         <div className="absolute inset-0 opacity-20">
           <svg
             className="w-full h-full"
@@ -154,13 +100,12 @@ const Hardware = () => {
           </svg>
         </div>
 
-        {/* Animated Particles */}
         <AnimatedParticles />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
-              <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+              <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
               Hardware Store
             </Badge>
 
@@ -173,21 +118,16 @@ const Hardware = () => {
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto">
               Professional-grade development boards and microcontrollers for
-              your embedded projects. From Arduino to advanced ARM processors.
+              your embedded projects.
             </p>
 
-            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105"
-              >
+              <Button className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105">
                 <ShoppingCart className="mr-2 w-4 md:w-5 h-4 md:h-5" />
                 Shop Now
               </Button>
 
               <Button
-                size="lg"
                 variant="outline"
                 className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg"
               >
@@ -207,11 +147,11 @@ const Hardware = () => {
               <Button
                 key={index}
                 variant={category.active ? "default" : "outline"}
-                className={`${
+                className={
                   category.active
                     ? "bg-blue-600 hover:bg-blue-700 text-white"
                     : "border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500"
-                }`}
+                }
               >
                 {category.name}
                 <Badge className="ml-2 bg-white/20 text-current">
@@ -243,110 +183,108 @@ const Hardware = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {developmentBoards.map((board) => (
               <Link key={board.id} to={`/hardware/${board.id}`}>
-                <Card
-                  className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group cursor-pointer"
-                >
-                {/* Product Image */}
-                <div className="p-4 pb-0">
-                  <div className="aspect-square w-full bg-white rounded-lg p-4 mb-4 flex items-center justify-center overflow-hidden">
-                    <img
-                      src={board.image}
-                      alt={board.name}
-                      className="max-w-full max-h-full object-contain"
-                    />
+                <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group cursor-pointer">
+                  <div className="p-4 pb-0">
+                    <div className="aspect-square w-full bg-white rounded-lg p-4 mb-4 flex items-center justify-center overflow-hidden">
+                      <img
+                        src={board.image}
+                        alt={board.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <CardHeader className="pb-4 pt-0">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <CardTitle className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                        {board.name}
-                      </CardTitle>
-                      <div className="flex items-center space-x-2 mb-2">
-                        <div className="flex items-center">
-                          <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                          <span className="text-white font-semibold ml-1">
-                            {board.rating}
-                          </span>
-                          <span className="text-gray-400 text-sm ml-1">
-                            ({board.reviews} reviews)
-                          </span>
+                  <CardHeader className="pb-4 pt-0">
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <CardTitle className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                          {board.name}
+                        </CardTitle>
+                        <div className="flex items-center space-x-2 mb-2">
+                          <div className="flex items-center">
+                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                            <span className="text-white font-semibold ml-1">
+                              {board.rating}
+                            </span>
+                            <span className="text-gray-400 text-sm ml-1">
+                              ({board.reviews} reviews)
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <Badge
-                      className={`${
-                        board.inStock
-                          ? "bg-green-500/20 text-green-400 border-green-500/30"
-                          : "bg-red-500/20 text-red-400 border-red-500/30"
-                      }`}
-                    >
-                      {board.inStock ? "In Stock" : "Out of Stock"}
-                    </Badge>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="pt-0">
-                  <p className="text-gray-400 mb-4 line-clamp-2">
-                    {board.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {board.features.map((feature, index) => (
                       <Badge
-                        key={index}
-                        className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs"
+                        className={
+                          board.inStock
+                            ? "bg-green-500/20 text-green-400 border-green-500/30"
+                            : "bg-red-500/20 text-red-400 border-red-500/30"
+                        }
                       >
-                        {feature}
+                        {board.inStock ? "In Stock" : "Out of Stock"}
                       </Badge>
-                    ))}
-                  </div>
-
-                  {/* Specifications */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-300 mb-2">
-                      Key Specifications:
-                    </h4>
-                    <ul className="text-sm text-gray-400 space-y-1">
-                      {board.specifications.slice(0, 3).map((spec, index) => (
-                        <li key={index} className="flex items-center">
-                          <div className="w-1 h-1 bg-blue-400 rounded-full mr-2"></div>
-                          {spec}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="flex items-center space-x-2">
-                        <span className="text-2xl font-bold text-white">
-                          ${board.price}
-                        </span>
-                        {board.originalPrice && (
-                          <span className="text-lg text-gray-500 line-through">
-                            ${board.originalPrice}
-                          </span>
-                        )}
-                      </div>
                     </div>
-                    <Button
-                      className={`${
-                        board.inStock
-                          ? "bg-blue-600 hover:bg-blue-700 text-white"
-                          : "bg-gray-600 text-gray-400 cursor-not-allowed"
-                      }`}
-                      disabled={!board.inStock}
-                      onClick={() => handleAddToCart(board)}
-                    >
-                      <ShoppingCart className="w-4 h-4 mr-2" />
-                      {board.inStock ? "Add to Cart" : "Out of Stock"}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardHeader>
+
+                  <CardContent className="pt-0">
+                    <p className="text-gray-400 mb-4 line-clamp-2">
+                      {board.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {board.features.slice(0, 4).map((feature, index) => (
+                        <Badge
+                          key={index}
+                          className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs"
+                        >
+                          {feature}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-300 mb-2">
+                        Key Specifications:
+                      </h4>
+                      <ul className="text-sm text-gray-400 space-y-1">
+                        {board.specifications.slice(0, 3).map((spec, index) => (
+                          <li key={index} className="flex items-center">
+                            <div className="w-1 h-1 bg-blue-400 rounded-full mr-2" />
+                            {spec}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center space-x-2">
+                          <span className="text-2xl font-bold text-white">
+                            ${board.price}
+                          </span>
+                          {board.originalPrice && (
+                            <span className="text-lg text-gray-500 line-through">
+                              ${board.originalPrice}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <Button
+                        className={
+                          board.inStock
+                            ? "bg-blue-600 hover:bg-blue-700 text-white"
+                            : "bg-gray-600 text-gray-400 cursor-not-allowed"
+                        }
+                        disabled={!board.inStock}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleAddToCart(board);
+                        }}
+                      >
+                        <ShoppingCart className="w-4 h-4 mr-2" />
+                        {board.inStock ? "Add to Cart" : "Out of Stock"}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
               </Link>
             ))}
           </div>
@@ -355,7 +293,7 @@ const Hardware = () => {
             <Button
               variant="outline"
               size="lg"
-              className="border-slate-600 text-slate-900  hover:scale-105"
+              className="border-slate-600 text-gray-200 hover:scale-105"
             >
               View All Products
               <ArrowRight className="ml-2 w-5 h-5" />
