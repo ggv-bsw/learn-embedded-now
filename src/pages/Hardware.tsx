@@ -23,7 +23,7 @@ const Hardware = () => {
   const { addToCart } = useCart();
   const { toast } = useToast();
 
-  const handleAddToCart = (board: typeof developmentBoards[0]) => {
+  const handleAddToCart = (board: (typeof developmentBoards)[0]) => {
     addToCart({
       id: board.id,
       name: board.name,
@@ -38,44 +38,62 @@ const Hardware = () => {
 
   const developmentBoards = [
     {
-      id: "stm",
-      name: "STM",
+      id: "dino-dev-stm32",
+      name: "Dino Dev STM32",
       image: STMImage,
       description:
-        "Powerful Wi-Fi + Bluetooth development board with dual-core processor. Perfect for IoT projects and wireless applications.",
+        "Compact STM32F103RBT6-based board for learning embedded programming and prototyping. Designed for easy use, it helps users master GPIOs, timers, ADCs, and serial interfaces in real-world applications.",
       price: 39,
       originalPrice: null,
       rating: 4.8,
-      reviews: 1250,
+      reviews: 980,
       inStock: true,
       specifications: [
-        "Dual-core Xtensa 32-bit LX6",
-        "Wi-Fi 802.11 b/g/n",
-        "Bluetooth v4.2 BR/EDR and BLE",
-        "34 GPIO pins",
-        "12-bit ADC up to 18 channels",
+        "STM32F103RBT6 microcontroller",
+        "9 LEDs + 1 RGB LED, 2 buttons, slider switch",
+        "Buzzer and encoder for timer tasks",
+        "Photoresistor, potentiometer, LCD display",
+        "Humidity & temperature sensor",
+        "EEPROM + NOR Flash memory",
+        "UART, I2C, SPI, USB, and free GPIO connectors",
+        "USB-C powered (5V → 3.3V/2A DC-DC converter)",
       ],
-      features: ["WiFi", "Bluetooth", "ADC", "PWM"],
+      features: [
+        "Learn GPIO, timers, ADC, and interfaces",
+        "External memory read/write",
+        "Multiple bootloader options",
+        "Debugging and prototyping tool",
+        "Simple, flexible, beginner-friendly design",
+      ],
     },
     {
-      id: "arduino",
-      name: "Arduino",
+      id: "dino-dev-328pb",
+      name: "Dino Dev ATmega328PB",
       image: arduinoImage,
       description:
-        "The classic microcontroller board based on ATmega328P. Ideal for beginners and prototyping with extensive community support.",
+        "Educational board based on ATmega328PB for learning microcontrollers, prototyping, and testing embedded systems. Ideal for students and makers.",
       price: 29,
       originalPrice: null,
-      rating: 4.9,
-      reviews: 2340,
+      rating: 4.8,
+      reviews: 860,
       inStock: true,
       specifications: [
-        "ATmega328P microcontroller",
-        "14 digital I/O pins",
-        "6 analog input pins",
-        "16 MHz crystal oscillator",
-        "USB connection",
+        "ATmega328PB microcontroller",
+        "27 I/O lines, 32 KB Flash, 1 KB EEPROM, 2 KB SRAM",
+        "8-bit & 16-bit timers, 10 PWM channels, 8-ch 10-bit ADC",
+        "Two USART, SPI, I2C interfaces",
+        "Power: USB or 6–9V DC",
+        "OLED 64x32 display, GL5528 photoresistor",
+        "MPU6050 IMU, BMP280 sensor",
       ],
-      features: ["USB", "Digital I/O", "Analog Input", "PWM"],
+      features: [
+        "USB programming and power",
+        "Capacitive touch support",
+        "Onboard buzzer, LEDs, and buttons",
+        "Power source switch (USB/external)",
+        "Arduino IDE compatible",
+        "Supports shields and breadboards",
+      ],
     },
   ];
 
