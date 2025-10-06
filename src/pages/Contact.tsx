@@ -233,7 +233,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Map */}
-      <section className="py-20 bg-slate-900">
+      <section id="contact-form" className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
@@ -454,6 +454,12 @@ const Contact = () => {
                 variant="outline"
                 size="lg"
                 className="border-slate-600 text-slate-900 hover:bg-slate-700 hover:border-slate-500"
+                onClick={() => {
+                  document.getElementById('contact-form')?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
               >
                 <MessageCircle className="mr-2 w-5 h-5" />
                 Ask a Question
