@@ -25,7 +25,8 @@ import { useState } from "react";
 const Hardware = () => {
   const { addToCart } = useCart();
   const { toast } = useToast();
-  const [selectedCategory, setSelectedCategory] = useState<string>("All Boards");
+  const [selectedCategory, setSelectedCategory] =
+    useState<string>("All Boards");
 
   const handleAddToCart = (board: DevelopmentBoard) => {
     addToCart({
@@ -42,8 +43,10 @@ const Hardware = () => {
 
   const getFilteredBoards = () => {
     if (selectedCategory === "All Boards") return developmentBoards;
-    if (selectedCategory === "Arduino") return developmentBoards.filter((b) => b.id.includes("328"));
-    if (selectedCategory === "STM") return developmentBoards.filter((b) => b.id.includes("stm32"));
+    if (selectedCategory === "Arduino")
+      return developmentBoards.filter((b) => b.id.includes("328"));
+    if (selectedCategory === "STM")
+      return developmentBoards.filter((b) => b.id.includes("stm32"));
     return developmentBoards;
   };
 
@@ -140,7 +143,7 @@ const Hardware = () => {
 
               <Button
                 variant="outline"
-                className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg"
+                className="border-gray-600 text-slate-900 hover:bg-gray-800 hover:border-gray-500 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg"
               >
                 <Microchip className="mr-2 w-4 md:w-5 h-4 md:h-5" />
                 Browse Categories
@@ -157,11 +160,13 @@ const Hardware = () => {
             {categories.map((category, index) => (
               <Button
                 key={index}
-                variant={selectedCategory === category.name ? "default" : "outline"}
+                variant={
+                  selectedCategory === category.name ? "default" : "outline"
+                }
                 className={
                   selectedCategory === category.name
                     ? "bg-blue-600 hover:bg-blue-700 text-white"
-                    : "border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500"
+                    : "border-slate-600 text-slate-900 hover:bg-slate-700 hover:border-slate-500"
                 }
                 onClick={() => setSelectedCategory(category.name)}
               >
@@ -301,16 +306,16 @@ const Hardware = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          {/* <div className="text-center mt-12">
             <Button
               variant="outline"
               size="lg"
-              className="border-slate-600 text-gray-200 hover:scale-105"
+              className="border-slate-600 text-slate-900 hover:scale-105"
             >
               View All Products
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-          </div>
+          </div> */}
         </div>
       </section>
 
