@@ -1,6 +1,8 @@
 import courseArduino from "@/assets/course-arduino.jpg";
 import courseIot from "@/assets/course-iot.jpg";
 import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
+import coursePython from "@/assets/course-python.jpg";
+import courseCpp from "@/assets/course-cpp.jpg";
 
 export const featuredCourses = [
   {
@@ -10,7 +12,7 @@ export const featuredCourses = [
       "20 lessons over 10 weeks: solid Python foundations, data handling, OOP, testing, and mini-projects (CLI & Flask) with package management via uv",
     description:
       "A hands-on beginner curriculum. You’ll learn core programming concepts in Python, data structures, OOP, working with files and data (JSON/CSV), using external libraries with uv, unit testing, and best practices. By the end, you’ll build two mini-projects: a CLI To-Do app and a small Flask web app.",
-    image: courseIot,
+    image: coursePython,
     price: 169,
     originalPrice: 229,
     duration: "10 weeks",
@@ -231,7 +233,7 @@ export const featuredCourses = [
       "Learn modern C++ step by step — from syntax and memory to STL, concurrency, patterns, and production CMake",
     description:
       "A 25-lesson journey that takes you from zero to advanced C++ at BSW. You’ll build confidence with core language features, master memory and the STL, write multi-file and multi-threaded programs, and structure real projects with modern CMake. Every lesson pairs theory with hands-on labs and progressive challenges.",
-    image: courseEmbeddedC,
+    image: courseCpp,
     price: 279,
     originalPrice: 399,
     duration: "12 weeks",
