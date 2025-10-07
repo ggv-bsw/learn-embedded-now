@@ -28,12 +28,14 @@ import {
 import { featuredCourses } from "@/testData/featuredCourses";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
+import { CourseEnrollmentForm } from "@/components/CourseEnrollmentForm";
 
 const CourseDetail = () => {
   const { courseId } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isEnrollFormOpen, setIsEnrollFormOpen] = useState(false);
 
   const getCourseById = (id: string) => {
     const allCourses = [...featuredCourses];
@@ -48,14 +50,7 @@ const CourseDetail = () => {
   const totalDuration = "32 hours";
 
   const handleEnrollNow = () => {
-    addToCart({
-      id: course.id,
-      name: course.title,
-      price: course.price,
-      image: course.image,
-    });
-    toast.success("Course added to cart!");
-    navigate("/checkout");
+    setIsEnrollFormOpen(true);
   };
 
   const handleAddToCart = () => {
@@ -97,6 +92,14 @@ const CourseDetail = () => {
   return (
     <div className="min-h-screen bg-background font-inter">
       <Navigation />
+      
+      <CourseEnrollmentForm
+        isOpen={isEnrollFormOpen}
+        onClose={() => setIsEnrollFormOpen(false)}
+        courseId={course.id}
+        courseName={course.title}
+        coursePrice={course.price}
+      />
 
       {/* Breadcrumb */}
       <div className="container mx-auto px-4 py-6">
