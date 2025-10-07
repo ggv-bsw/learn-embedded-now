@@ -250,9 +250,17 @@ const CourseDetail = () => {
                 <Card>
                   <CardContent className="pt-6">
                     <div className="flex items-start space-x-6">
-                      <div className="w-20 h-20 bg-gradient-hero rounded-full flex items-center justify-center">
-                        <User className="w-10 h-10 text-white" />
-                      </div>
+                      {course.instructor.image ? (
+                        <img 
+                          src={course.instructor.image} 
+                          alt={course.instructor.name}
+                          className="w-20 h-20 rounded-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-20 h-20 bg-gradient-hero rounded-full flex items-center justify-center">
+                          <User className="w-10 h-10 text-white" />
+                        </div>
+                      )}
                       <div className="flex-1">
                         <h3 className="text-xl font-semibold mb-1">
                           {course.instructor.name}

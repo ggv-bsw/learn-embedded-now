@@ -25,11 +25,12 @@ export const featuredCourses = [
     lastUpdated: "October 2025",
     instructor: {
       name: "Daniel Vrabii",
-      title: "Senior Software Engineer & Trainer (Python)",
+      title: "Lead Data Engineer",
       experience: "6+ years",
       students: 85,
-      rating: 4.9,
-      bio: "Grigore Ciobanu teaches beginner and advanced programs in C++ and Python, focusing on practical skills, modern tooling (CMake/uv), and code quality.",
+      rating: 4.8,
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
+      bio: "Data engineering expert with strong background in machine learning and distributed systems. Has built scalable data pipelines for multiple Fortune 500 companies. Enjoys transforming complex data concepts into practical learning experiences.",
     },
     curriculum: [
       {
@@ -246,11 +247,12 @@ export const featuredCourses = [
     lastUpdated: "October 2025",
     instructor: {
       name: "Grigore Ciobanu",
-      title: "Senior C++ Engineer & Trainer",
-      experience: "10+ years",
+      title: "Senior Software Engineer",
+      experience: "8+ years",
       students: 75,
-      rating: 4.9,
-      bio: "Grigore Ciobanu is a senior C++ engineer and educator who has delivered production C++ systems and training programs across embedded, desktop, and backend domains. He focuses on pragmatic modern C++ and clean build tooling with CMake.",
+      rating: 4.8,
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQEi63NbK8JmZQ/profile-displayphoto-scale_400_400/B4DZfk_n5PGYAs-/0/1751893574038?e=1762387200&v=beta&t=eh1mbV9h0ydwq7toFdLv00x3PFkAIGyKDrnh-rQHiGI",
+      bio: "Linux and IoT specialist with deep expertise in network programming and embedded Linux systems. Has contributed to numerous open-source projects and enjoys mentoring developers in system-level programming.",
     },
     curriculum: [
       {
@@ -569,12 +571,13 @@ export const featuredCourses = [
     language: "English",
     lastUpdated: "November 2024",
     instructor: {
-      name: "Dr. Alex Popescu",
+      name: "Gheorghe Ghirjev",
       title: "Senior Embedded Systems Engineer",
-      experience: "15+ years",
-      students: 5000,
+      experience: "11+ years",
+      students: 73,
       rating: 4.9,
-      bio: "Dr. Alex Popescu is a senior embedded systems engineer with over 15 years of experience in automotive and IoT industries. He has worked on projects ranging from automotive ECUs to smart city infrastructure.",
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
+      bio: "Senior embedded systems engineer with extensive experience in automotive and IoT industries. Specialized in real-time operating systems and low-level programming. Passionate about teaching complex embedded concepts in an accessible way.",
     },
     curriculum: [
       {
@@ -729,12 +732,13 @@ export const featuredCourses = [
     language: "English",
     lastUpdated: "November 2024",
     instructor: {
-      name: "Dr. Alex Popescu",
+      name: "Gheorghe Ghirjev",
       title: "Senior Embedded Systems Engineer",
-      experience: "15+ years",
-      students: 5000,
+      experience: "11+ years",
+      students: 73,
       rating: 4.9,
-      bio: "Dr. Alex Popescu is a senior embedded systems engineer with over 15 years of experience in automotive and IoT industries. He has worked on projects ranging from automotive ECUs to smart city infrastructure.",
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
+      bio: "Senior embedded systems engineer with extensive experience in automotive and IoT industries. Specialized in real-time operating systems and low-level programming. Passionate about teaching complex embedded concepts in an accessible way.",
     },
     curriculum: [
       {
@@ -889,12 +893,13 @@ export const featuredCourses = [
     language: "English",
     lastUpdated: "November 2024",
     instructor: {
-      name: "Dr. Alex Popescu",
+      name: "Gheorghe Ghirjev",
       title: "Senior Embedded Systems Engineer",
-      experience: "15+ years",
-      students: 5000,
+      experience: "11+ years",
+      students: 73,
       rating: 4.9,
-      bio: "Dr. Alex Popescu is a senior embedded systems engineer with over 15 years of experience in automotive and IoT industries. He has worked on projects ranging from automotive ECUs to smart city infrastructure.",
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
+      bio: "Senior embedded systems engineer with extensive experience in automotive and IoT industries. Specialized in real-time operating systems and low-level programming. Passionate about teaching complex embedded concepts in an accessible way.",
     },
     curriculum: [
       {
@@ -1049,12 +1054,13 @@ export const featuredCourses = [
     language: "English",
     lastUpdated: "November 2024",
     instructor: {
-      name: "Mike Rodriguez",
-      title: "Automotive Training Specialist",
-      experience: "8+ years",
-      students: 3500,
-      rating: 4.8,
-      bio: "Mike Rodriguez specializes in automotive electronics training and has developed curriculum for several technical institutes. His passion is making complex automotive concepts accessible to newcomers in the field.",
+      name: "Gheorghe Ghirjev",
+      title: "Senior Embedded Systems Engineer",
+      experience: "11+ years",
+      students: 73,
+      rating: 4.9,
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
+      bio: "Senior embedded systems engineer with extensive experience in automotive and IoT industries. Specialized in real-time operating systems and low-level programming. Passionate about teaching complex embedded concepts in an accessible way.",
     },
     curriculum: [
       {
@@ -1211,12 +1217,13 @@ export const featuredCourses = [
     language: "English",
     lastUpdated: "December 2024",
     instructor: {
-      name: "Sarah Chen",
-      title: "Senior Mobile Architect",
-      experience: "10+ years",
-      students: 8500,
-      rating: 4.9,
-      bio: "Sarah Chen has built mobile applications for Fortune 500 companies and startups alike. She specializes in React Native and Flutter development and has published over 20 apps across both major app stores.",
+      name: "Ion Caruta",
+      title: "Senior QA Engineer",
+      experience: "6+ years",
+      students: 70,
+      rating: 4.7,
+      image: "https://media.licdn.com/dms/image/v2/C4D03AQHdK61fz_ef5g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1653324813413?e=1762387200&v=beta&t=vRirkPDgVaJSt83gi9yxVWJNEgDTcMcQnAHyMrTGkZQ",
+      bio: "Quality assurance specialist with extensive experience in industrial automation and system testing. Expert in PLC programming and test automation frameworks. Dedicated to teaching robust testing methodologies for embedded systems.",
     },
     curriculum: [
       {
@@ -1381,12 +1388,13 @@ export const featuredCourses = [
     language: "English",
     lastUpdated: "December 2024",
     instructor: {
-      name: "Dr. Michael Torres",
-      title: "Lead Data Architect",
-      experience: "12+ years",
-      students: 6200,
-      rating: 4.9,
-      bio: "Dr. Michael Torres has designed data infrastructure for major financial institutions and tech companies. He holds a PhD in Computer Science and specializes in distributed systems and big data technologies.",
+      name: "Daniel Vrabii",
+      title: "Lead Data Engineer",
+      experience: "6+ years",
+      students: 85,
+      rating: 4.8,
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
+      bio: "Data engineering expert with strong background in machine learning and distributed systems. Has built scalable data pipelines for multiple Fortune 500 companies. Enjoys transforming complex data concepts into practical learning experiences.",
     },
     curriculum: [
       {
