@@ -9,10 +9,12 @@ import {
 import { ShoppingCart, Trash2, Plus, Minus } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 
 export const ShoppingCartSheet = () => {
   const { items, removeFromCart, updateQuantity, totalItems, totalPrice } =
     useCart();
+  const navigate = useNavigate();
 
   return (
     <Sheet>
@@ -99,7 +101,10 @@ export const ShoppingCartSheet = () => {
                   <span>Total:</span>
                   <span>${totalPrice.toFixed(2)}</span>
                 </div>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                <Button 
+                  className="w-full bg-blue-600 hover:bg-blue-700"
+                  onClick={() => navigate("/checkout")}
+                >
                   Proceed to Checkout
                 </Button>
               </div>
