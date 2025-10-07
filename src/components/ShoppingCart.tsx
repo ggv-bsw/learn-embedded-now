@@ -11,25 +11,32 @@ import { useCart } from "@/contexts/CartContext";
 import { Badge } from "@/components/ui/badge";
 
 export const ShoppingCartSheet = () => {
-  const { items, removeFromCart, updateQuantity, totalItems, totalPrice } = useCart();
+  const { items, removeFromCart, updateQuantity, totalItems, totalPrice } =
+    useCart();
 
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="relative">
-          <ShoppingCart className="h-5 w-5" />
+        <Button
+          variant="outline"
+          size="icon"
+          className="relative bg-transparent border-slate-700 hover:bg-slate-800"
+        >
+          <ShoppingCart className="h-5 w-5 text-white" />
           {totalItems > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 bg-blue-600">
+            <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 bg-blue-600 text-white">
               {totalItems}
             </Badge>
           )}
         </Button>
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-lg bg-slate-900 border-slate-800">
-        <SheetHeader>
-          <SheetTitle className="text-white">Shopping Cart ({totalItems} items)</SheetTitle>
+        <SheetHeader className="mt-6">
+          <SheetTitle className="text-white text-left">
+            Shopping Cart ({totalItems} items)
+          </SheetTitle>
         </SheetHeader>
-        
+
         <div className="mt-8 space-y-4">
           {items.length === 0 ? (
             <p className="text-gray-400 text-center py-8">Your cart is empty</p>
@@ -37,7 +44,10 @@ export const ShoppingCartSheet = () => {
             <>
               <div className="space-y-4 max-h-[60vh] overflow-y-auto">
                 {items.map((item) => (
-                  <div key={item.id} className="flex gap-4 bg-slate-800 p-4 rounded-lg">
+                  <div
+                    key={item.id}
+                    className="flex gap-4 bg-slate-800 p-4 rounded-lg"
+                  >
                     <img
                       src={item.image}
                       alt={item.name}
@@ -51,16 +61,22 @@ export const ShoppingCartSheet = () => {
                           size="icon"
                           variant="outline"
                           className="h-6 w-6"
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity - 1)
+                          }
                         >
                           <Minus className="h-3 w-3" />
                         </Button>
-                        <span className="text-white w-8 text-center">{item.quantity}</span>
+                        <span className="text-white w-8 text-center">
+                          {item.quantity}
+                        </span>
                         <Button
                           size="icon"
                           variant="outline"
                           className="h-6 w-6"
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity + 1)
+                          }
                         >
                           <Plus className="h-3 w-3" />
                         </Button>
@@ -77,7 +93,7 @@ export const ShoppingCartSheet = () => {
                   </div>
                 ))}
               </div>
-              
+
               <div className="border-t border-slate-700 pt-4 space-y-4">
                 <div className="flex justify-between text-lg font-bold text-white">
                   <span>Total:</span>
