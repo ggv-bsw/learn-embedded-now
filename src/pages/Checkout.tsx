@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "sonner";
 import { ArrowLeft } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const Checkout = () => {
   const { items, totalPrice, clearCart } = useCart();
@@ -18,11 +19,29 @@ const Checkout = () => {
     phone: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Order placed successfully! We'll contact you soon.");
-    clearCart();
-    navigate("/");
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('send-order-notification', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          items: items,
+          totalPrice: totalPrice,
+        },
+      });
+
+      if (error) throw error;
+
+      toast.success("Order placed successfully! We'll contact you soon.");
+      clearCart();
+      navigate("/");
+    } catch (error) {
+      console.error("Error sending order notification:", error);
+      toast.error("Failed to place order. Please try again.");
+    }
   };
 
   if (items.length === 0) {
