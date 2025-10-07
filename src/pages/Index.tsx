@@ -890,7 +890,11 @@ const Index = () => {
       <Footer />
 
       {/* Video Demo */}
-      <VideoDemo open={showVideo} onOpenChange={setShowVideo} />
+      <VideoDemo
+        open={showVideo}
+        onOpenChange={setShowVideo}
+        videoUrl="https://www.youtube.com/embed/9J-0EGmsc1E?autoplay=1&mute=1&rel=0&modestbranding=1"
+      />
 
       {/* Course Inquiry Form */}
       <CourseInquiryForm

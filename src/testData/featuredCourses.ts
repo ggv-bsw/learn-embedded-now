@@ -16,6 +16,7 @@ export const featuredCourses = [
     price: 169,
     originalPrice: 229,
     duration: "10 weeks",
+    link: "https://www.youtube.com/shorts/AoeWnfn-kGU",
     students: 14,
     rating: 4.8,
     totalRatings: 260,
@@ -29,7 +30,8 @@ export const featuredCourses = [
       experience: "6+ years",
       students: 85,
       rating: 4.8,
-      image: "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
       bio: "Data engineering expert with strong background in machine learning and distributed systems. Has built scalable data pipelines for multiple Fortune 500 companies. Enjoys transforming complex data concepts into practical learning experiences.",
     },
     curriculum: [
@@ -251,7 +253,8 @@ export const featuredCourses = [
       experience: "8+ years",
       students: 75,
       rating: 4.8,
-      image: "https://media.licdn.com/dms/image/v2/D4D03AQEi63NbK8JmZQ/profile-displayphoto-scale_400_400/B4DZfk_n5PGYAs-/0/1751893574038?e=1762387200&v=beta&t=eh1mbV9h0ydwq7toFdLv00x3PFkAIGyKDrnh-rQHiGI",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4D03AQEi63NbK8JmZQ/profile-displayphoto-scale_400_400/B4DZfk_n5PGYAs-/0/1751893574038?e=1762387200&v=beta&t=eh1mbV9h0ydwq7toFdLv00x3PFkAIGyKDrnh-rQHiGI",
       bio: "Linux and IoT specialist with deep expertise in network programming and embedded Linux systems. Has contributed to numerous open-source projects and enjoys mentoring developers in system-level programming.",
     },
     curriculum: [
@@ -576,7 +579,8 @@ export const featuredCourses = [
       experience: "11+ years",
       students: 73,
       rating: 4.9,
-      image: "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
       bio: "Senior embedded systems engineer with extensive experience in automotive and IoT industries. Specialized in real-time operating systems and low-level programming. Passionate about teaching complex embedded concepts in an accessible way.",
     },
     curriculum: [
@@ -737,7 +741,8 @@ export const featuredCourses = [
       experience: "11+ years",
       students: 73,
       rating: 4.9,
-      image: "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
       bio: "Senior embedded systems engineer with extensive experience in automotive and IoT industries. Specialized in real-time operating systems and low-level programming. Passionate about teaching complex embedded concepts in an accessible way.",
     },
     curriculum: [
@@ -898,7 +903,8 @@ export const featuredCourses = [
       experience: "11+ years",
       students: 73,
       rating: 4.9,
-      image: "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
       bio: "Senior embedded systems engineer with extensive experience in automotive and IoT industries. Specialized in real-time operating systems and low-level programming. Passionate about teaching complex embedded concepts in an accessible way.",
     },
     curriculum: [
@@ -1059,7 +1065,8 @@ export const featuredCourses = [
       experience: "11+ years",
       students: 73,
       rating: 4.9,
-      image: "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
       bio: "Senior embedded systems engineer with extensive experience in automotive and IoT industries. Specialized in real-time operating systems and low-level programming. Passionate about teaching complex embedded concepts in an accessible way.",
     },
     curriculum: [
@@ -1222,7 +1229,8 @@ export const featuredCourses = [
       experience: "6+ years",
       students: 70,
       rating: 4.7,
-      image: "https://media.licdn.com/dms/image/v2/C4D03AQHdK61fz_ef5g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1653324813413?e=1762387200&v=beta&t=vRirkPDgVaJSt83gi9yxVWJNEgDTcMcQnAHyMrTGkZQ",
+      image:
+        "https://media.licdn.com/dms/image/v2/C4D03AQHdK61fz_ef5g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1653324813413?e=1762387200&v=beta&t=vRirkPDgVaJSt83gi9yxVWJNEgDTcMcQnAHyMrTGkZQ",
       bio: "Quality assurance specialist with extensive experience in industrial automation and system testing. Expert in PLC programming and test automation frameworks. Dedicated to teaching robust testing methodologies for embedded systems.",
     },
     curriculum: [
@@ -1393,7 +1401,8 @@ export const featuredCourses = [
       experience: "6+ years",
       students: 85,
       rating: 4.8,
-      image: "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
       bio: "Data engineering expert with strong background in machine learning and distributed systems. Has built scalable data pipelines for multiple Fortune 500 companies. Enjoys transforming complex data concepts into practical learning experiences.",
     },
     curriculum: [

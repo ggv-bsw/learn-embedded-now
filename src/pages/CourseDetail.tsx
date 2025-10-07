@@ -19,16 +19,15 @@ import {
   Play,
   Calendar,
   Award,
-  Download,
   Share,
   Heart,
-  ArrowLeft,
   User,
 } from "lucide-react";
 import { featuredCourses } from "@/testData/featuredCourses";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
+import VideoDemo from "@/components/VideoDemo";
 
 const CourseDetail = () => {
   const { courseId } = useParams();
@@ -36,6 +35,7 @@ const CourseDetail = () => {
   const { addToCart } = useCart();
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [showInquiryForm, setShowInquiryForm] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   const handleEnrollClick = () => {
     setShowInquiryForm(true);
@@ -47,22 +47,15 @@ const CourseDetail = () => {
   };
 
   const course = getCourseById(courseId || "");
+
+  if (!course) {
+    return <div>Course not found</div>;
+  }
+
   const totalLessons = course.curriculum.reduce(
     (total, module) => total + module.lessons.length,
     0
   );
-  const totalDuration = "32 hours";
-
-  const handleEnrollNow = () => {
-    addToCart({
-      id: course.id,
-      name: course.title,
-      price: course.price,
-      image: course.image,
-    });
-    toast.success("Course added to cart!");
-    navigate("/checkout");
-  };
 
   const handleAddToCart = () => {
     addToCart({
@@ -171,15 +164,18 @@ const CourseDetail = () => {
                 alt={course.title}
                 className="w-full h-64 lg:h-80 object-cover"
               />
-              <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                <Button
-                  size="lg"
-                  className="bg-white text-black hover:bg-gray-100"
-                >
-                  <Play className="mr-2 w-6 h-6" />
-                  Preview Course
-                </Button>
-              </div>
+              {course.link && (
+                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                  <Button
+                    size="lg"
+                    onClick={() => setShowVideo(true)}
+                    className="bg-white text-black hover:bg-gray-100"
+                  >
+                    <Play className="mr-2 w-6 h-6" />
+                    Preview Course
+                  </Button>
+                </div>
+              )}
             </div>
 
             {/* Tabs */}
@@ -252,7 +248,7 @@ const CourseDetail = () => {
                     <CardTitle>Course Curriculum</CardTitle>
                     <p className="text-muted-foreground">
                       {course.curriculum.length} modules • {totalLessons}{" "}
-                      lessons • {totalDuration} total length
+                      lessons
                     </p>
                   </CardHeader>
                   <CardContent>
@@ -483,6 +479,12 @@ const CourseDetail = () => {
           </div>
         </div>
       </div>
+
+      <VideoDemo
+        open={showVideo}
+        videoUrl={course.link}
+        onOpenChange={setShowVideo}
+      />
 
       <CourseInquiryForm
         open={showInquiryForm}
