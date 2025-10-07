@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "sonner";
+import { ArrowLeft } from "lucide-react";
 
 const Checkout = () => {
   const { items, totalPrice, clearCart } = useCart();
@@ -38,6 +39,14 @@ const Checkout = () => {
   return (
     <div className="min-h-screen bg-slate-950 py-20">
       <div className="container mx-auto px-4 max-w-6xl">
+        <Button
+          variant="ghost"
+          onClick={() => navigate(-1)}
+          className="mb-4 text-white hover:text-white/80"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back
+        </Button>
         <h1 className="text-4xl font-bold text-white mb-8">Checkout</h1>
         
         <div className="grid md:grid-cols-2 gap-8">
