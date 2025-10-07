@@ -8,7 +8,7 @@ export const team = [
     expertise: ["Embedded C", "RTOS", "Automotive Systems"],
     experience: "11+ years",
     rating: 4.9,
-    students: 3200,
+    students: 73,
     location: "Chisinau, Moldova",
     image:
       "https://media.licdn.com/dms/image/v2/D4D03AQE24yuQ44-tyg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710442325881?e=1760572800&v=beta&t=Pa3Q0lZMhfd4UcAVVVly92_0E8xkJ4LlR3IG3u5zOsI",
@@ -31,7 +31,7 @@ export const team = [
     expertise: ["Big Data", "Machine Learning", "Cloud Platforms"],
     experience: "6+ years",
     rating: 4.8,
-    students: 2800,
+    students: 85,
     location: "Bucharest, Romania",
     image:
       "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
@@ -54,7 +54,7 @@ export const team = [
     expertise: ["Test Automation", "PLC Programming", "Validation"],
     experience: "6+ years",
     rating: 4.7,
-    students: 1900,
+    students: 70,
     location: "Iasi, Romania",
     image:
       "https://media.licdn.com/dms/image/v2/C4D03AQHdK61fz_ef5g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1653324813413?e=1762387200&v=beta&t=vRirkPDgVaJSt83gi9yxVWJNEgDTcMcQnAHyMrTGkZQ",
@@ -77,7 +77,7 @@ export const team = [
     expertise: ["Linux Systems", "IoT Protocols", "Network Programming"],
     experience: "8+ years",
     rating: 4.8,
-    students: 2500,
+    students: 75,
     location: "Chisinau, Moldova",
     image:
       "https://media.licdn.com/dms/image/v2/D4D03AQEi63NbK8JmZQ/profile-displayphoto-scale_400_400/B4DZfk_n5PGYAs-/0/1751893574038?e=1762387200&v=beta&t=eh1mbV9h0ydwq7toFdLv00x3PFkAIGyKDrnh-rQHiGI",

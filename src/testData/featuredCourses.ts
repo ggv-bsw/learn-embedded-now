@@ -4,6 +4,551 @@ import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
 
 export const featuredCourses = [
   {
+    id: "python-junior-beginner",
+    title: "Python for Beginners – Junior Level",
+    subtitle:
+      "20 lessons over 10 weeks: solid Python foundations, data handling, OOP, testing, and mini-projects (CLI & Flask) with package management via uv",
+    description:
+      "A hands-on beginner curriculum. You’ll learn core programming concepts in Python, data structures, OOP, working with files and data (JSON/CSV), using external libraries with uv, unit testing, and best practices. By the end, you’ll build two mini-projects: a CLI To-Do app and a small Flask web app.",
+    image: courseIot,
+    price: 169,
+    originalPrice: 229,
+    duration: "10 weeks",
+    students: 14,
+    rating: 4.8,
+    totalRatings: 260,
+    level: "Beginner" as const,
+    category: "Python",
+    language: "English",
+    lastUpdated: "October 2025",
+    instructor: {
+      name: "Grigore Ciobanu",
+      title: "Senior Software Engineer & Trainer (C++/Python)",
+      experience: "10+ years",
+      students: 4200,
+      rating: 4.9,
+      bio: "Grigore Ciobanu teaches beginner and advanced programs in C++ and Python, focusing on practical skills, modern tooling (CMake/uv), and code quality.",
+    },
+    curriculum: [
+      {
+        title: "Week 1 – Intro to Programming and Python",
+        lessons: [
+          {
+            title:
+              "Lesson 1: What is programming? Install Python, editors (VS Code, PyCharm), first steps in terminal; Hello World & running a script",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title:
+              "Lesson 2: Fundamental data types (int, float, string, bool), variables, type conversions; mini-exercises",
+            duration: "60 min",
+            type: "video",
+          },
+        ],
+      },
+      {
+        title: "Week 2 – Control Flow",
+        lessons: [
+          {
+            title:
+              "Lesson 3: Conditionals (if/elif/else), logical & relational operators; password check program",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title:
+              "Lesson 4: Loops (while, for) and range(); number guessing game",
+            duration: "60 min",
+            type: "video",
+          },
+        ],
+      },
+      {
+        title: "Week 3 – Core Data Structures",
+        lessons: [
+          {
+            title:
+              "Lesson 5: Lists — indexing, slicing, common methods; shopping list manager",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title:
+              "Lesson 6: Tuples & sets — differences and use cases; remove duplicates",
+            duration: "60 min",
+            type: "video",
+          },
+        ],
+      },
+      {
+        title: "Week 4 – Dictionaries and Functions",
+        lessons: [
+          {
+            title:
+              "Lesson 7: Dictionaries — iterating keys/values, useful methods; student gradebook",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title:
+              "Lesson 8: Functions — def, parameters, return, scope; math utilities",
+            duration: "60 min",
+            type: "video",
+          },
+        ],
+      },
+      {
+        title: "Week 5 – Modular Programming & Errors",
+        lessons: [
+          {
+            title:
+              "Lesson 9: Modules & packages, imports; standard libraries (math, random, datetime); random password generator",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title:
+              "Lesson 10: Error handling with try/except/finally; robust numeric input",
+            duration: "60 min",
+            type: "video",
+          },
+        ],
+      },
+      {
+        title: "Week 6 – OOP in Python",
+        lessons: [
+          {
+            title:
+              "Lesson 11: OOP intro — classes, objects, attributes, methods; Car class start/stop",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title:
+              "Lesson 12: Constructors, inheritance, polymorphism, __str__; animal hierarchy",
+            duration: "60 min",
+            type: "video",
+          },
+        ],
+      },
+      {
+        title: "Week 7 – Files and Working with Data",
+        lessons: [
+          {
+            title:
+              "Lesson 13: Reading & writing text files; journal app that saves notes",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title:
+              "Lesson 14: JSON & CSV — data manipulation; product CSV report",
+            duration: "60 min",
+            type: "video",
+          },
+        ],
+      },
+      {
+        title: "Week 8 – External Libraries with uv",
+        lessons: [
+          {
+            title:
+              "Lesson 15: uv — setup & usage (virtual envs, install packages, version pinning); isolated env + requests",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title:
+              "Lesson 16: Intro to pandas for tabular data (basics); simple CSV analysis (installed via uv)",
+            duration: "60 min",
+            type: "video",
+          },
+        ],
+      },
+      {
+        title: "Week 9 – Testing and Best Practices",
+        lessons: [
+          {
+            title:
+              "Lesson 17: Unit testing (unittest/pytest) and debugging principles; tests for math functions",
+            duration: "60 min",
+            type: "video",
+          },
+          {
+            title:
+              "Lesson 18: PEP 8 style guide, docstrings, Git & GitHub (intro); create a small repo",
+            duration: "60 min",
+            type: "video",
+          },
+        ],
+      },
+      {
+        title: "Week 10 – Final Mini-Projects",
+        lessons: [
+          {
+            title: "Lesson 19: Project 1 — To-Do List with files (CLI app)",
+            duration: "90 min",
+            type: "project",
+          },
+          {
+            title:
+              "Lesson 20: Project 2 — Small Flask web app (CRUD for notes) — installed & run with uv",
+            duration: "120 min",
+            type: "capstone",
+          },
+        ],
+      },
+    ],
+    features: [
+      "Clear structure: 2 lessons/week for 10 weeks",
+      "Practice embedded in every lesson",
+      "Package & environment management with uv",
+      "CLI and web (Flask) mini-projects",
+      "Best practices: PEP 8, docstrings, Git",
+      "Access to community and resources",
+      "Certificate of completion",
+    ],
+    requirements: [
+      "Laptop with internet connection",
+      "Willingness to learn by doing",
+      "GitHub account (recommended for projects)",
+      "Code editor (VS Code or PyCharm) — set up in Week 1",
+    ],
+    outcomes: [
+      "Write clean, well-structured Python code",
+      "Work effectively with lists, sets, dictionaries, and OOP",
+      "Handle files and data (JSON/CSV)",
+      "Use uv to install and manage external libraries",
+      "Write unit tests and use Git",
+      "Build complete mini-apps (CLI and web)",
+    ],
+  },
+  {
+    id: "cpp-bsw-beginner-to-advanced",
+    title: "C++ Course: From BSW Beginner to BSW Advanced",
+    subtitle:
+      "Learn modern C++ step by step — from syntax and memory to STL, concurrency, patterns, and production CMake",
+    description:
+      "A 25-lesson journey that takes you from zero to advanced C++ at BSW. You’ll build confidence with core language features, master memory and the STL, write multi-file and multi-threaded programs, and structure real projects with modern CMake. Every lesson pairs theory with hands-on labs and progressive challenges.",
+    image: courseEmbeddedC,
+    price: 279,
+    originalPrice: 399,
+    duration: "12 weeks",
+    students: 11,
+    rating: 4.8,
+    totalRatings: 180,
+    level: "Intermediate" as const,
+    category: "C++",
+    language: "English",
+    lastUpdated: "October 2025",
+    instructor: {
+      name: "Grigore Ciobanu",
+      title: "Senior C++ Engineer & Trainer",
+      experience: "10+ years",
+      students: 75,
+      rating: 4.9,
+      bio: "Grigore Ciobanu is a senior C++ engineer and educator who has delivered production C++ systems and training programs across embedded, desktop, and backend domains. He focuses on pragmatic modern C++ and clean build tooling with CMake.",
+    },
+    curriculum: [
+      {
+        title: "Phase 1: Fundamentals (Lessons 1–8)",
+        lessons: [
+          {
+            title: "Intro to C++ & CMake + Hello World",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Build Hello & Greet by Name (CMake single target)",
+            duration: "45 min",
+            type: "hands-on",
+          },
+          {
+            title: "Basic Syntax, Variables, and Types",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Exercise: Rectangle & Circle Area (I/O + menu)",
+            duration: "50 min",
+            type: "project",
+          },
+          {
+            title: "Control Flow: if/switch and loops (for/while/do-while)",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Challenge: Sum 1..n & Prime Checker",
+            duration: "45 min",
+            type: "hands-on",
+          },
+          {
+            title: "Functions, Overloading, Defaults & Recursion",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Areas API + Recursive Factorial",
+            duration: "50 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title:
+          "Phase 1 Add-Ons: Arrays & Strings; Pointers & Memory; Classes & OOP",
+        lessons: [
+          {
+            title: "Arrays & std::string Essentials",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Max in Array, Reverse & Palindrome",
+            duration: "45 min",
+            type: "hands-on",
+          },
+          {
+            title: "Pointers, new/delete & RAII basics",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Dynamic Array Average & Pointer Swap",
+            duration: "45 min",
+            type: "hands-on",
+          },
+          {
+            title: "Classes, Ctors/Dtors, Static Members",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Project: Car class with counters & methods",
+            duration: "60 min",
+            type: "project",
+          },
+          {
+            title: "Inheritance & Polymorphism with virtual",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Shape → Circle/Rectangle (area & perimeter)",
+            duration: "55 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "Phase 2: Intermediate Topics (Lessons 9–17)",
+        lessons: [
+          {
+            title: "Operator Overloading (arithmetic/relational/stream)",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Complex + and << overloads",
+            duration: "50 min",
+            type: "hands-on",
+          },
+          {
+            title: "Templates: function & class; specialization",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Project: Template Stack + char specialization",
+            duration: "60 min",
+            type: "project",
+          },
+          {
+            title: "Exceptions: throw/try/catch & error safety",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Division by zero & multi-error handling",
+            duration: "45 min",
+            type: "hands-on",
+          },
+          {
+            title: "File I/O: streams, formats, error handling",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Project: Student records (save/load + errors)",
+            duration: "60 min",
+            type: "project",
+          },
+          {
+            title: "Intro to STL: vector/map & algorithms (sort/find)",
+            duration: "50 min",
+            type: "video",
+          },
+        ],
+      },
+      {
+        title:
+          "Phase 2 Add-Ons: Smart Pointers, Threads, CMake (multi-file), Patterns",
+        lessons: [
+          {
+            title: "Memory Mgmt: unique_ptr/shared_ptr & ownership",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Refactor to unique_ptr; collection with shared_ptr",
+            duration: "50 min",
+            type: "hands-on",
+          },
+          {
+            title: "Multithreading: std::thread & mutex basics",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Parallel array sum with synchronization",
+            duration: "55 min",
+            type: "hands-on",
+          },
+          {
+            title: "CMake for multi-file & multi-target projects",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Split into libs/executables + option()",
+            duration: "55 min",
+            type: "hands-on",
+          },
+          {
+            title: "Design Patterns I: Singleton & Factory",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Project: Config Singleton + Shape Factory",
+            duration: "60 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Phase 3: Advanced Topics (Lessons 18–25)",
+        lessons: [
+          {
+            title: "Advanced STL: iterators & custom comparators",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Sort custom Person list by age",
+            duration: "45 min",
+            type: "hands-on",
+          },
+          {
+            title: "Advanced Exceptions: custom types & hierarchies",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Validate inputs with custom exceptions",
+            duration: "45 min",
+            type: "hands-on",
+          },
+          {
+            title: "Advanced CMake: external libs, configs, build types",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Link external lib + target_compile_definitions",
+            duration: "55 min",
+            type: "hands-on",
+          },
+          {
+            title: "Preprocessor, compilation & linking workflow",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Macros, multi-file lib & consumer app",
+            duration: "55 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title:
+          "Phase 3 Add-Ons: Lambdas, Patterns II, Debugging/Optimization, Capstone",
+        lessons: [
+          {
+            title: "Lambdas with STL (capture & predicates)",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Filter & sort with lambdas",
+            duration: "45 min",
+            type: "hands-on",
+          },
+          {
+            title: "Design Patterns II: Observer & Strategy",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title:
+              "Project: Stock tracker (Observer) + pluggable sort (Strategy)",
+            duration: "60 min",
+            type: "project",
+          },
+          {
+            title: "Debugging & Profiling; O2/O3 & sanitizer flags",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Optimize slow sort; CMake options for builds",
+            duration: "55 min",
+            type: "hands-on",
+          },
+          {
+            title: "Capstone Planning: scope & architecture",
+            duration: "30 min",
+            type: "video",
+          },
+          {
+            title: "Capstone Build: Text game or Library system",
+            duration: "120 min",
+            type: "capstone",
+          },
+        ],
+      },
+    ],
+    features: [
+      "Modern C++ (C++17/20) with real projects",
+      "Hands-on labs every module",
+      "Production-grade CMake setups",
+      "Multithreading & STL best practices",
+      "Design patterns with practical use",
+      "Code reviews and feedback",
+      "Certificate of completion",
+      "Discord community & resources",
+    ],
+    requirements: [
+      "Basic programming familiarity helpful (not mandatory)",
+      "Laptop with a modern C++ compiler (GCC/Clang/MSVC)",
+      "CMake 3.20+ and a code editor (VS Code/CLion)",
+      "Willingness to practice and iterate",
+    ],
+  },
+  {
     id: "embedded-c-arduino",
     title: "Intro to Embedded C with Arduino",
     subtitle:
