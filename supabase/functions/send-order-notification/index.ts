@@ -36,7 +36,8 @@ const handler = async (req: Request): Promise<Response> => {
       `<li>${item.name} - Quantity: ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}</li>`
     ).join('');
 
-    const emailResponse = await resend.emails.send({
+    // Send confirmation email to customer
+    const customerEmailResponse = await resend.emails.send({
       from: "The Automation Network <onboarding@resend.dev>",
       to: [customerEmail],
       subject: "Order Confirmation - The Automation Network",
@@ -61,9 +62,41 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
-    console.log("Email sent successfully:", emailResponse);
+    console.log("Customer email sent successfully:", customerEmailResponse);
 
-    return new Response(JSON.stringify(emailResponse), {
+    // Send notification email to business
+    const businessEmailResponse = await resend.emails.send({
+      from: "The Automation Network <onboarding@resend.dev>",
+      to: ["hr@bsw-tech.com"],
+      subject: "New Order Received - The Automation Network",
+      html: `
+        <h1>New Order Received</h1>
+        <p>A new order has been placed on The Automation Network website.</p>
+        
+        <h2>Customer Information:</h2>
+        <ul>
+          <li><strong>Name:</strong> ${customerName}</li>
+          <li><strong>Email:</strong> ${customerEmail}</li>
+          ${customerPhone ? `<li><strong>Phone:</strong> ${customerPhone}</li>` : ''}
+        </ul>
+        
+        <h2>Order Details:</h2>
+        <ul>
+          ${itemsList}
+        </ul>
+        
+        <p><strong>Total: $${totalPrice.toFixed(2)}</strong></p>
+        
+        <p>Please contact the customer to arrange delivery and payment.</p>
+      `,
+    });
+
+    console.log("Business notification email sent successfully:", businessEmailResponse);
+
+    return new Response(JSON.stringify({ 
+      customer: customerEmailResponse, 
+      business: businessEmailResponse 
+    }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
