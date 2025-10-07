@@ -2,6 +2,3 @@ project_id = "wzdlhukymsjittdyuddr"
 
 [functions.send-course-inquiry]
 verify_jwt = false
-
-[functions.send-order-notification]
-verify_jwt = false
