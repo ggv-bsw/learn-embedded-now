@@ -23,7 +23,39 @@ const Checkout = () => {
     e.preventDefault();
     
     try {
-      const { data, error } = await supabase.functions.invoke('send-order-notification', {
+      // Insert order into database
+      const { data: orderData, error: orderError } = await supabase
+        .from('orders')
+        .insert({
+          customer_name: formData.name,
+          customer_email: formData.email,
+          customer_phone: formData.phone,
+          total_price: totalPrice,
+        })
+        .select()
+        .single();
+
+      if (orderError) throw orderError;
+
+      // Insert order items
+      const orderItems = items.map(item => ({
+        order_id: orderData.id,
+        product_id: item.id,
+        product_name: item.name,
+        product_image: item.image,
+        quantity: item.quantity,
+        unit_price: item.price,
+        total_price: item.price * item.quantity,
+      }));
+
+      const { error: itemsError } = await supabase
+        .from('order_items')
+        .insert(orderItems);
+
+      if (itemsError) throw itemsError;
+
+      // Send notification email
+      const { error: emailError } = await supabase.functions.invoke('send-order-notification', {
         body: {
           name: formData.name,
           email: formData.email,
@@ -33,13 +65,16 @@ const Checkout = () => {
         },
       });
 
-      if (error) throw error;
+      if (emailError) {
+        console.error("Email notification failed:", emailError);
+        // Don't throw - order was saved successfully
+      }
 
       toast.success("Order placed successfully! We'll contact you soon.");
       clearCart();
       navigate("/");
     } catch (error) {
-      console.error("Error sending order notification:", error);
+      console.error("Error placing order:", error);
       toast.error("Failed to place order. Please try again.");
     }
   };
