@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "sonner";
 import { ArrowLeft } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const Checkout = () => {
   const { items, totalPrice, clearCart } = useCart();
@@ -18,11 +19,68 @@ const Checkout = () => {
     phone: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Order placed successfully! We'll contact you soon.");
-    clearCart();
-    navigate("/");
+    
+    try {
+      // Insert order into database
+      const { data: orderData, error: orderError } = await supabase
+        .from('orders')
+        .insert({
+          customer_name: formData.name,
+          customer_email: formData.email,
+          customer_phone: formData.phone,
+          total_price: totalPrice,
+          status: 'pending'
+        })
+        .select()
+        .single();
+
+      if (orderError) throw orderError;
+
+      // Insert order items
+      const orderItems = items.map(item => ({
+        order_id: orderData.id,
+        product_id: item.id,
+        product_name: item.name,
+        product_image: item.image,
+        quantity: item.quantity,
+        unit_price: item.price,
+        total_price: item.price * item.quantity
+      }));
+
+      const { error: itemsError } = await supabase
+        .from('order_items')
+        .insert(orderItems);
+
+      if (itemsError) throw itemsError;
+
+      // Send notification email
+      const { error: emailError } = await supabase.functions.invoke('send-order-notification', {
+        body: {
+          customerName: formData.name,
+          customerEmail: formData.email,
+          customerPhone: formData.phone,
+          items: items.map(item => ({
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price
+          })),
+          totalPrice: totalPrice
+        }
+      });
+
+      if (emailError) {
+        console.error('Error sending notification:', emailError);
+      }
+
+      toast.success("Order placed successfully! Check your email for confirmation.");
+      clearCart();
+      navigate("/");
+    } catch (error: any) {
+      console.error('Error placing order:', error);
+      toast.error("Failed to place order. Please try again.");
+    }
   };
 
   if (items.length === 0) {
