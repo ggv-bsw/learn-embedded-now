@@ -28,12 +28,18 @@ import {
 import { featuredCourses } from "@/testData/featuredCourses";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
+import CourseInquiryForm from "@/components/CourseInquiryForm";
 
 const CourseDetail = () => {
   const { courseId } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [showInquiryForm, setShowInquiryForm] = useState(false);
+
+  const handleEnrollClick = () => {
+    setShowInquiryForm(true);
+  };
 
   const getCourseById = (id: string) => {
     const allCourses = [...featuredCourses];
@@ -302,8 +308,8 @@ const CourseDetail = () => {
                   <CardContent className="pt-6">
                     <div className="flex items-start space-x-6">
                       {course.instructor.image ? (
-                        <img 
-                          src={course.instructor.image} 
+                        <img
+                          src={course.instructor.image}
                           alt={course.instructor.name}
                           className="w-20 h-20 rounded-full object-cover"
                         />
@@ -401,11 +407,16 @@ const CourseDetail = () => {
                   <Button
                     className="w-full bg-gradient-hero shadow-tech hover:shadow-glow"
                     size="lg"
-                    onClick={handleEnrollNow}
+                    onClick={handleEnrollClick}
                   >
                     Enroll Now
                   </Button>
-                  <Button variant="outline" className="w-full" size="lg" onClick={handleAddToCart}>
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    size="lg"
+                    onClick={handleAddToCart}
+                  >
                     Add to Cart
                   </Button>
                 </div>
@@ -472,6 +483,12 @@ const CourseDetail = () => {
           </div>
         </div>
       </div>
+
+      <CourseInquiryForm
+        open={showInquiryForm}
+        selectedCourseId={course.id}
+        onOpenChange={setShowInquiryForm}
+      />
     </div>
   );
 };
