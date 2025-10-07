@@ -136,7 +136,10 @@ const Hardware = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-              <Button className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105">
+              <Button 
+                className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105"
+                onClick={() => document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 <ShoppingCart className="mr-2 w-4 md:w-5 h-4 md:h-5" />
                 Shop Now
               </Button>
@@ -181,7 +184,7 @@ const Hardware = () => {
       </section>
 
       {/* Product Grid */}
-      <section className="py-20 bg-slate-900">
+      <section id="products-section" className="py-20 bg-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
