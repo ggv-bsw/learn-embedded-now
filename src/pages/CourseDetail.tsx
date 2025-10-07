@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,9 +26,13 @@ import {
   User,
 } from "lucide-react";
 import { featuredCourses } from "@/testData/featuredCourses";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "sonner";
 
 const CourseDetail = () => {
   const { courseId } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [isWishlisted, setIsWishlisted] = useState(false);
 
   const getCourseById = (id: string) => {
@@ -42,6 +46,53 @@ const CourseDetail = () => {
     0
   );
   const totalDuration = "32 hours";
+
+  const handleEnrollNow = () => {
+    addToCart({
+      id: course.id,
+      name: course.title,
+      price: course.price,
+      image: course.image,
+    });
+    toast.success("Course added to cart!");
+    navigate("/checkout");
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: course.id,
+      name: course.title,
+      price: course.price,
+      image: course.image,
+    });
+    toast.success("Course added to cart!");
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: course.title,
+      text: course.subtitle,
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        toast.success("Course shared successfully!");
+      } catch (err) {
+        if ((err as Error).name !== "AbortError") {
+          toast.error("Failed to share course");
+        }
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        toast.success("Link copied to clipboard!");
+      } catch (err) {
+        toast.error("Failed to copy link");
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background font-inter">
@@ -350,10 +401,11 @@ const CourseDetail = () => {
                   <Button
                     className="w-full bg-gradient-hero shadow-tech hover:shadow-glow"
                     size="lg"
+                    onClick={handleEnrollNow}
                   >
                     Enroll Now
                   </Button>
-                  <Button variant="outline" className="w-full" size="lg">
+                  <Button variant="outline" className="w-full" size="lg" onClick={handleAddToCart}>
                     Add to Cart
                   </Button>
                 </div>
@@ -376,6 +428,7 @@ const CourseDetail = () => {
                     variant="ghost"
                     size="sm"
                     className="flex items-center space-x-1"
+                    onClick={handleShare}
                   >
                     <Share className="w-4 h-4" />
                     <span>Share</span>
