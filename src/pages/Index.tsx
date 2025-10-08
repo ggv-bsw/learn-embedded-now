@@ -258,10 +258,10 @@ const Index = () => {
                   <CardContent className="p-4 text-center">
                     <Cpu className="w-8 h-8 text-blue-400 mx-auto mb-2" />
                     <h3 className="text-slate-900 font-semibold text-sm">
-                      Embedded C
+                      {t('index.embeddedC', 'Embedded C')}
                     </h3>
                     <p className="text-gray-400 text-xs">
-                      Low-level programming
+                      {t('index.lowLevel', 'Low-level programming')}
                     </p>
                   </CardContent>
                 </Card>
@@ -270,9 +270,9 @@ const Index = () => {
                   <CardContent className="p-4 text-center">
                     <Wifi className="w-8 h-8 text-green-400 mx-auto mb-2" />
                     <h3 className="text-slate-900 font-semibold text-sm">
-                      IoT Systems
+                      {t('index.iotSystems', 'IoT Systems')}
                     </h3>
-                    <p className="text-gray-400 text-xs">Connected devices</p>
+                    <p className="text-gray-400 text-xs">{t('index.connectedDevices', 'Connected devices')}</p>
                   </CardContent>
                 </Card>
               </div>
@@ -408,14 +408,13 @@ const Index = () => {
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
               <Star className="w-4 h-4 mr-2" />
-              Professional Pack
+              {t('index.professionalPack', 'Professional Pack')}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-              Complete Career Paths
+              {t('index.careerPaths', 'Complete Career Paths')}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Comprehensive learning tracks designed for specific engineering
-              roles. Master multiple technologies in focused career paths.
+              {t('index.careerPathsDesc', 'Comprehensive learning tracks designed for specific engineering roles. Master multiple technologies in focused career paths.')}
             </p>
           </div>
 
@@ -427,34 +426,32 @@ const Index = () => {
                   <Cpu className="w-8 h-8 text-green-400" />
                 </div>
                 <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-green-400 transition-colors">
-                  Embedded Systems Professional
+                  {t('index.embeddedProfessional', 'Embedded Systems Professional')}
                 </CardTitle>
                 <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mx-auto">
-                  Advanced
+                  {t('index.advanced', 'Advanced')}
                 </Badge>
               </CardHeader>
 
               <CardContent className="pt-0">
                 <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  Complete path from C++ fundamentals to hardware design.
-                  Includes Software Testing & Automotive QA and PCB Design
-                  courses.
+                  {t('index.embeddedProfDesc', 'Complete path from C++ fundamentals to hardware design. Includes Software Testing & Automotive QA and PCB Design courses.')}
                 </p>
 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Duration:</span>
-                    <span className="text-white font-semibold">30 weeks</span>
+                    <span className="text-gray-400">{t('index.duration', 'Duration:')}</span>
+                    <span className="text-white font-semibold">30 {t('index.weeks', 'weeks')}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Level:</span>
+                    <span className="text-gray-400">{t('index.level', 'Level:')}</span>
                     <span className="text-orange-400 font-semibold">
-                      Advanced
+                      {t('index.advanced', 'Advanced')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Courses Included:</span>
-                    <span className="text-white font-semibold">3 Courses</span>
+                    <span className="text-gray-400">{t('index.coursesIncluded', 'Courses Included:')}</span>
+                    <span className="text-white font-semibold">3 {t('index.courses', 'Courses')}</span>
                   </div>
                 </div>
 
@@ -462,7 +459,7 @@ const Index = () => {
                   <div className="text-3xl font-bold text-white mb-1">$699</div>
                   <div className="text-gray-400 text-sm line-through">$927</div>
                   <div className="text-green-400 text-sm font-semibold">
-                    Save 25%
+                    {t('index.save', 'Save')} 25%
                   </div>
                 </div>
 
@@ -472,7 +469,7 @@ const Index = () => {
                     handleEnrollClick("career-path-embedded-professional")
                   }
                 >
-                  Start Career Path
+                  {t('index.startCareerPath', 'Start Career Path')}
                 </Button>
               </CardContent>
             </Card>
@@ -484,33 +481,32 @@ const Index = () => {
                   <Code className="w-8 h-8 text-blue-400" />
                 </div>
                 <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-blue-400 transition-colors">
-                  Software Developer Track
+                  {t('index.softwareDeveloper', 'Software Developer Track')}
                 </CardTitle>
                 <Badge className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 mx-auto">
-                  Beginner to Intermediate
+                  {t('index.beginnerIntermediate', 'Beginner to Intermediate')}
                 </Badge>
               </CardHeader>
 
               <CardContent className="pt-0">
                 <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  Master both Python and C++ from basics to advanced concepts.
-                  Perfect foundation for software development careers.
+                  {t('index.softwareDevDesc', 'Master both Python and C++ from basics to advanced concepts. Perfect foundation for software development careers.')}
                 </p>
 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Duration:</span>
-                    <span className="text-white font-semibold">22 weeks</span>
+                    <span className="text-gray-400">{t('index.duration', 'Duration:')}</span>
+                    <span className="text-white font-semibold">22 {t('index.weeks', 'weeks')}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Level:</span>
+                    <span className="text-gray-400">{t('index.level', 'Level:')}</span>
                     <span className="text-yellow-400 font-semibold">
-                      Beginner to Intermediate
+                      {t('index.beginnerIntermediate', 'Beginner to Intermediate')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Courses Included:</span>
-                    <span className="text-white font-semibold">2 Courses</span>
+                    <span className="text-gray-400">{t('index.coursesIncluded', 'Courses Included:')}</span>
+                    <span className="text-white font-semibold">2 {t('index.courses', 'Courses')}</span>
                   </div>
                 </div>
 
@@ -518,7 +514,7 @@ const Index = () => {
                   <div className="text-3xl font-bold text-white mb-1">$379</div>
                   <div className="text-gray-400 text-sm line-through">$448</div>
                   <div className="text-green-400 text-sm font-semibold">
-                    Save 15%
+                    {t('index.save', 'Save')} 15%
                   </div>
                 </div>
 
@@ -528,7 +524,7 @@ const Index = () => {
                     handleEnrollClick("career-path-software-developer")
                   }
                 >
-                  Start Career Path
+                  {t('index.startCareerPath', 'Start Career Path')}
                 </Button>
               </CardContent>
             </Card>
@@ -540,33 +536,32 @@ const Index = () => {
                   <BookOpen className="w-8 h-8 text-purple-400" />
                 </div>
                 <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-purple-400 transition-colors">
-                  Complete Engineering Bundle
+                  {t('index.completeBundle', 'Complete Engineering Bundle')}
                 </CardTitle>
                 <Badge className="bg-green-500/20 text-green-400 border-green-500/30 mx-auto">
-                  All Levels
+                  {t('index.allLevels', 'All Levels')}
                 </Badge>
               </CardHeader>
 
               <CardContent className="pt-0">
                 <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  Full access to all available courses. From Python basics to
-                  automotive QA and PCB design. Complete engineering education.
+                  {t('index.completeBundleDesc', 'Full access to all available courses. From Python basics to automotive QA and PCB design. Complete engineering education.')}
                 </p>
 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Duration:</span>
-                    <span className="text-white font-semibold">40 weeks</span>
+                    <span className="text-gray-400">{t('index.duration', 'Duration:')}</span>
+                    <span className="text-white font-semibold">40 {t('index.weeks', 'weeks')}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Level:</span>
+                    <span className="text-gray-400">{t('index.level', 'Level:')}</span>
                     <span className="text-green-400 font-semibold">
-                      All Levels
+                      {t('index.allLevels', 'All Levels')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Courses Included:</span>
-                    <span className="text-white font-semibold">4 Courses</span>
+                    <span className="text-gray-400">{t('index.coursesIncluded', 'Courses Included:')}</span>
+                    <span className="text-white font-semibold">4 {t('index.courses', 'Courses')}</span>
                   </div>
                 </div>
 
@@ -576,7 +571,7 @@ const Index = () => {
                     $1,096
                   </div>
                   <div className="text-green-400 text-sm font-semibold">
-                    Save 27%
+                    {t('index.save', 'Save')} 27%
                   </div>
                 </div>
 
@@ -586,7 +581,7 @@ const Index = () => {
                     handleEnrollClick("career-path-complete-bundle")
                   }
                 >
-                  Start Career Path
+                  {t('index.startCareerPath', 'Start Career Path')}
                 </Button>
               </CardContent>
             </Card>
@@ -657,7 +652,7 @@ const Index = () => {
                       <div className="w-8 h-8 bg-green-500 rounded-full border-2 border-slate-700 shadow-md"></div>
                     </div>
                     <span className="text-sm text-green-300 font-semibold">
-                      50+ certified this month
+                      50+ {t('index.certifiedThisMonth', 'certified this month')}
                     </span>
                   </div>
                 </CardContent>
@@ -669,22 +664,23 @@ const Index = () => {
                     <div className="w-12 h-12 bg-blue-500/30 border border-blue-500/50 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
                       <Users className="w-6 h-6 text-blue-300" />
                     </div>
-                    <span className="text-lg font-bold">Active Community</span>
+                    <span className="text-lg font-bold">
+                      {t('index.activeCommunity', 'Active Community')}
+                    </span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-200 text-base leading-relaxed mb-4">
-                    Join a vibrant community of developers, mentors, and
-                    industry experts. Get help, share projects, and network.
+                    {t('index.communityDesc', 'Join a vibrant community of developers, mentors, and industry experts. Get help, share projects, and network.')}
                   </p>
                   <div className="mt-4 flex items-center justify-between p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
                     <span className="text-sm text-blue-300 font-semibold">
-                      Online now:
+                      {t('index.onlineNow', 'Online now:')}
                     </span>
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                       <span className="text-sm text-green-300 font-mono font-bold">
-                        95 members
+                        95 {t('index.members', 'members')}
                       </span>
                     </div>
                   </div>
