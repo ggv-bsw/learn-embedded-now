@@ -556,6 +556,573 @@ export const featuredCourses = [
     ],
   },
   {
+    id: "pcb-design-fundamentals",
+    title: "PCB Design Fundamentals",
+    subtitle:
+      "Complete course on printed circuit board development - from basic concepts to professional design in KiCAD",
+    description:
+      "Comprehensive course for beginners, students and university graduates. Covers basic principles of PCB development, tools and design skills. Students will learn the entire process from concept to manufacturing preparation.",
+    image: courseArduino,
+    price: 189,
+    originalPrice: 279,
+    duration: "8 weeks",
+    students: 8,
+    rating: 4.7,
+    totalRatings: 45,
+    level: "Beginner" as const,
+    category: "Electronics",
+    language: "English",
+    lastUpdated: "January 2025",
+    instructor: {
+      name: "Alexandr Cernii",
+      title: "Senior Electronics Engineer",
+      experience: "9+ years",
+      students: 62,
+      rating: 4.8,
+      image:
+        "https://media.licdn.com/dms/image/v2/D4E03AQF_ABCDEFGHIJ/profile-displayphoto-shrink_400_400/0/1234567890123?e=1762387200&v=beta&t=xyz123",
+      bio: "Electronics design expert with extensive experience in PCB development and hardware prototyping. Specialized in high-speed digital design and signal integrity. Passionate about teaching practical electronics design skills.",
+    },
+    curriculum: [
+      {
+        title: "Introduction to Electronics Development",
+        lessons: [
+          {
+            title: "About electronics development and PCB's role in it",
+            duration: "25 min",
+            type: "video",
+          },
+          {
+            title: "Practical tips for electronics development",
+            duration: "30 min",
+            type: "video",
+          },
+          {
+            title: "What are printed circuit boards? Types and variations",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Lab: PCB types identification",
+            duration: "45 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "PCB Fundamentals",
+        lessons: [
+          {
+            title: "Basic board elements and structure",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Materials for manufacturing",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Manufacturer technological capabilities",
+            duration: "30 min",
+            type: "video",
+          },
+          {
+            title: "Project: Material selection exercise",
+            duration: "60 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Electronic Components",
+        lessons: [
+          {
+            title: "What are electronic components",
+            duration: "25 min",
+            type: "video",
+          },
+          {
+            title: "Types of components and packages",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Most common component packages",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Where to find components and selection criteria",
+            duration: "30 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Component identification",
+            duration: "75 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "Ideal vs Real Connections",
+        lessons: [
+          {
+            title: "Difference between ideal and real connections",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Equivalent circuit of components",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Project: Real vs ideal analysis",
+            duration: "90 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Introduction to KiCAD",
+        lessons: [
+          {
+            title: "What is ECAD? KiCAD concept and structure",
+            duration: "30 min",
+            type: "video",
+          },
+          {
+            title: "Library and component creation",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Installing and connecting libraries",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Creating schematic symbols",
+            duration: "50 min",
+            type: "video",
+          },
+          {
+            title: "Creating component footprints",
+            duration: "55 min",
+            type: "video",
+          },
+          {
+            title: "Lab: First component creation",
+            duration: "120 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "Project Creation",
+        lessons: [
+          {
+            title: "Creating schematics",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Creating PCB layout",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Feature overview",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Project: Simple circuit design",
+            duration: "150 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "PCB Routing",
+        lessons: [
+          {
+            title: "Dimension definition",
+            duration: "25 min",
+            type: "video",
+          },
+          {
+            title: "Stack-up definition",
+            duration: "30 min",
+            type: "video",
+          },
+          {
+            title: "Design rules definition",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Component placement planning",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Vias and holes",
+            duration: "30 min",
+            type: "video",
+          },
+          {
+            title: "Keep-out areas",
+            duration: "25 min",
+            type: "video",
+          },
+          {
+            title: "Component placement priorities",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Conductor routing",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Practical routing tips",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Copper pours",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Test points",
+            duration: "25 min",
+            type: "video",
+          },
+          {
+            title: "Silkscreen design",
+            duration: "30 min",
+            type: "video",
+          },
+          {
+            title: "Design rule checking",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Complete PCB routing",
+            duration: "180 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "Manufacturing Preparation",
+        lessons: [
+          {
+            title: "Gerber file generation",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Placing manufacturing orders",
+            duration: "30 min",
+            type: "video",
+          },
+          {
+            title: "Documentation preparation",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "Component ordering",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Project: Manufacturing package",
+            duration: "120 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Advanced Design Considerations",
+        lessons: [
+          {
+            title: "High-speed signals",
+            duration: "45 min",
+            type: "video",
+          },
+          {
+            title: "Thermal management",
+            duration: "40 min",
+            type: "video",
+          },
+          {
+            title: "High voltage design",
+            duration: "35 min",
+            type: "video",
+          },
+          {
+            title: "Final Project: Complete PCB Design",
+            duration: "240 min",
+            type: "capstone",
+          },
+        ],
+      },
+    ],
+    features: [
+      "Complete KiCAD mastery",
+      "From schematic to manufacturing",
+      "Real-world design techniques",
+      "Component library creation",
+      "Design rule optimization",
+      "Manufacturing preparation",
+      "Professional documentation",
+      "Lifetime course access",
+    ],
+    requirements: [
+      "Basic knowledge of physics and electronics",
+      "Understanding of Ohm's law",
+      "Familiarity with basic electronic components",
+      "Computer with KiCAD software",
+      "Willingness to learn design principles",
+    ],
+    outcomes: [
+      "Design complete PCBs from concept to production",
+      "Create custom component libraries",
+      "Apply design rules and constraints",
+      "Generate manufacturing files",
+      "Understand high-speed and thermal considerations",
+      "Work with PCB manufacturers effectively",
+    ],
+  },
+  {
+    id: "software-testing-automotive",
+    title: "Software Testing & Automotive QA",
+    subtitle:
+      "Complete 200-hour course covering software testing fundamentals, web testing, and embedded automotive systems testing",
+    description:
+      "Comprehensive software testing course following ISTQB principles with specialized focus on automotive embedded systems. Learn manual testing, automation, V-Model, SIL/HIL testing, and functional safety standards (ISO 26262).",
+    image: courseArduino,
+    price: 399,
+    originalPrice: 599,
+    duration: "12 weeks",
+    students: 6,
+    rating: 4.9,
+    totalRatings: 38,
+    level: "Intermediate" as const,
+    category: "Software Testing",
+    language: "English",
+    lastUpdated: "January 2025",
+    instructor: {
+      name: "Ion Caruta",
+      title: "Senior QA Engineer",
+      experience: "6+ years",
+      students: 70,
+      rating: 4.7,
+      image:
+        "https://media.licdn.com/dms/image/v2/C4D03AQHdK61fz_ef5g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1653324813413?e=1762387200&v=beta&t=vRirkPDgVaJSt83gi9yxVWJNEgDTcMcQnAHyMrTGkZQ",
+      bio: "Quality assurance specialist with extensive experience in industrial automation and system testing. Expert in PLC programming and test automation frameworks. Dedicated to teaching robust testing methodologies for embedded systems.",
+    },
+    curriculum: [
+      {
+        title: "Module 1: Testing Fundamentals (40h)",
+        lessons: [
+          {
+            title: "Testing theory and fundamental concepts",
+            duration: "10h",
+            type: "video",
+          },
+          {
+            title: "Testing principles, levels and types",
+            duration: "15h",
+            type: "video",
+          },
+          {
+            title: "Test case design techniques and requirements traceability",
+            duration: "15h",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "Module 2: Web Testing (30h)",
+        lessons: [
+          {
+            title: "Web applications architecture: HTML, CSS, JS, APIs",
+            duration: "10h",
+            type: "video",
+          },
+          {
+            title: "Manual web & API testing",
+            duration: "10h",
+            type: "video",
+          },
+          {
+            title: "Introduction to automation with Selenium/Python",
+            duration: "10h",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "Module 3: Embedded & Automotive Testing (110h)",
+        lessons: [
+          {
+            title: "Introduction to Embedded Systems and Automotive",
+            duration: "15h",
+            type: "video",
+          },
+          {
+            title: "V-Model in Automotive",
+            duration: "20h",
+            type: "video",
+          },
+          {
+            title: "Testing types and techniques",
+            duration: "15h",
+            type: "video",
+          },
+          {
+            title: "Automated and Manual Testing",
+            duration: "15h",
+            type: "video",
+          },
+          {
+            title: "Testing Environments in Automotive",
+            duration: "20h",
+            type: "video",
+          },
+          {
+            title: "Quality, Safety and Standardization",
+            duration: "15h",
+            type: "video",
+          },
+          {
+            title: "Practical Workshops",
+            duration: "10h",
+            type: "hands-on",
+          },
+        ],
+      },
+    ],
+    detailedCurriculum: [
+      {
+        title:
+          "Submodule 3.1: Introduction to Embedded and Automotive Systems (15h)",
+        topics: [
+          "ECU (Electronic Control Unit) Architecture",
+          "Real-time systems and embedded constraints",
+          "Testing role in automotive lifecycle",
+          "Differences from generic software testing",
+        ],
+      },
+      {
+        title: "Submodule 3.2: V-Model in Automotive (20h)",
+        topics: [
+          "V-Model (V-Cycle) presentation",
+          "Testing levels: Unit, Integration, System, Acceptance",
+          "Requirements traceability → testing",
+        ],
+      },
+      {
+        title: "Submodule 3.3: Testing Types and Techniques (15h)",
+        topics: [
+          "Static vs Dynamic testing",
+          "Black-box, White-box, Gray-box",
+          "Boundary Value Analysis, Equivalence Partitioning",
+          "MC/DC Coverage",
+          "Requirements-based vs exploratory testing",
+          "TDD (Test Driven Development)",
+        ],
+      },
+      {
+        title: "Submodule 3.4: Automated and Manual Testing (15h)",
+        topics: [
+          "Advantages and limitations",
+          "Frameworks: GoogleTest, Tessy, CANoe, VectorCAST",
+          "Testing integration in CI/CD (Jenkins, GitLab CI)",
+          "Scripting introduction for automated testing (Python, CAPL)",
+        ],
+      },
+      {
+        title: "Submodule 3.5: Testing Environments in Automotive (20h)",
+        topics: [
+          "SIL (Software-in-the-Loop)",
+          "MIL (Model-in-the-Loop)",
+          "HIL (Hardware-in-the-Loop)",
+          "HIL bench testing (dSPACE, ETAS, NI)",
+          "Real testing setup examples",
+        ],
+      },
+      {
+        title: "Submodule 3.6: Quality, Safety and Standardization (15h)",
+        topics: [
+          "Introduction to ISO 26262 – Functional Safety",
+          "ASIL (Automotive Safety Integrity Level)",
+          "Safety Goals and Safety Requirements",
+          "Verification and validation process",
+          "Documentation (test plan, test case, test report)",
+        ],
+      },
+      {
+        title: "Submodule 3.7: Practical Workshops (10h)",
+        topics: [
+          "Writing and executing test cases for ECU functionality (e.g., light control, ABS)",
+          "Testing on simulators (CAPL + CANoe)",
+          "Automated testing integration in Jenkins",
+          "Code coverage analysis for embedded module",
+        ],
+      },
+    ],
+    features: [
+      "ISTQB-aligned curriculum",
+      "200 hours comprehensive training",
+      "Automotive embedded systems focus",
+      "SIL/HIL testing practical experience",
+      "ISO 26262 functional safety",
+      "Real-world automotive projects",
+      "Industry-standard tools (CANoe, dSPACE, Jenkins)",
+      "Career placement support",
+    ],
+    requirements: [
+      "Basic programming knowledge",
+      "Understanding of software development",
+      "Computer with 8GB+ RAM",
+      "Familiarity with electronics basics",
+      "Analytical thinking skills",
+    ],
+    outcomes: [
+      "Master ISTQB testing principles",
+      "Design comprehensive test strategies",
+      "Perform web and API testing",
+      "Implement automotive V-Model testing",
+      "Work with SIL/HIL environments",
+      "Apply ISO 26262 safety standards",
+      "Use industry testing tools effectively",
+      "Automate testing processes",
+    ],
+    toolsCovered: [
+      "Selenium",
+      "Python",
+      "Jenkins",
+      "GitLab CI",
+      "GoogleTest",
+      "Tessy",
+      "CANoe",
+      "VectorCAST",
+      "dSPACE",
+      "ETAS",
+      "NI TestStand",
+      "CAPL",
+    ],
+  },
+  {
     id: "embedded-c-arduino",
     title: "Intro to Embedded C with Arduino",
     subtitle:
