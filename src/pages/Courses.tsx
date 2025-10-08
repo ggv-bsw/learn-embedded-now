@@ -411,7 +411,7 @@ const Courses = () => {
 
                 <Button
                   className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
-                  onClick={() => handleEnrollClick("embedded-professional")}
+                  onClick={() => handleEnrollClick("career-path-embedded-professional")}
                 >
                   Start Career Path
                 </Button>
@@ -465,7 +465,7 @@ const Courses = () => {
 
                 <Button
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold"
-                  onClick={() => handleEnrollClick("software-developer")}
+                  onClick={() => handleEnrollClick("career-path-software-developer")}
                 >
                   Start Career Path
                 </Button>
@@ -519,7 +519,7 @@ const Courses = () => {
 
                 <Button
                   className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold"
-                  onClick={() => handleEnrollClick("complete-bundle")}
+                  onClick={() => handleEnrollClick("career-path-complete-bundle")}
                 >
                   Start Career Path
                 </Button>
