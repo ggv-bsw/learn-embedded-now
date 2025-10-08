@@ -188,23 +188,11 @@ const Documentation = () => {
 
   const quickLinks = [
     {
-      title: "Download Course Materials",
-      icon: Download,
-      link: "/courses",
-      description: "Access all course resources and materials",
-    },
-    {
       title: "Community Forum",
       icon: ExternalLink,
       link: "https://t.me/embeddedschool",
       description: "Join discussions with other students",
       external: true,
-    },
-    {
-      title: "Video Tutorials",
-      icon: PlayCircle,
-      link: "/blog",
-      description: "Step-by-step video guides",
     },
     {
       title: "Technical Resources",
@@ -301,7 +289,7 @@ const Documentation = () => {
       <section className="py-12 bg-slate-800">
         <div className="container mx-auto px-4">
           <ScrollReveal>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {quickLinks.map((link, index) => (
                 <Card
                   key={index}
