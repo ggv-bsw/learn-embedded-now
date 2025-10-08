@@ -20,7 +20,7 @@ import {
   Mail,
   GraduationCap,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "@/components/footer";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
 import { team } from "@/testData/teamData";
@@ -33,6 +33,7 @@ import procesio from "@/assets/procesio.png";
 import theAutomationNetwork from "@/assets/theAutomationNetwork.svg";
 
 const About = () => {
+  const navigate = useNavigate();
   const [showInquiryForm, setShowInquiryForm] = React.useState(false);
 
   const stats = [
@@ -437,6 +438,7 @@ const About = () => {
                 size="lg"
                 variant="outline"
                 className="border-slate-600 text-slate-900 hover:border-slate-500 px-8 py-6 text-lg hover:scale-105"
+                onClick={() => navigate("/contact")}
               >
                 <Mail className="mr-2 w-5 h-5" />
                 Contact Our Team
