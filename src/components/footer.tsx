@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Code, Cpu, Wifi, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { featuredCourses } from "@/testData/featuredCourses";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -27,42 +28,20 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-3 text-white">{t('footer.courses')}</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>
-                <Link
-                  to="/courses/embedded-c-arduino"
-                  className="hover:text-blue-400 transition-colors flex items-center"
-                >
-                  <Cpu className="w-3 h-3 mr-2" />
-                  {t('footer.arduinoProgramming')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/courses/advanced-embedded-c"
-                  className="hover:text-blue-400 transition-colors flex items-center"
-                >
-                  <Code className="w-3 h-3 mr-2" />
-                  {t('footer.embeddedC')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/courses/iot-systems"
-                  className="hover:text-blue-400 transition-colors flex items-center"
-                >
-                  <Wifi className="w-3 h-3 mr-2" />
-                  {t('footer.iotSystems')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/courses/automotive"
-                  className="hover:text-blue-400 transition-colors flex items-center"
-                >
-                  <Zap className="w-3 h-3 mr-2" />
-                  {t('footer.automotiveElectronics')}
-                </Link>
-              </li>
+              {featuredCourses.map((course) => (
+                <li key={course.id}>
+                  <Link
+                    to={`/courses/${course.id}`}
+                    className="hover:text-blue-400 transition-colors flex items-center"
+                  >
+                    {course.category === "Python" && <Code className="w-3 h-3 mr-2" />}
+                    {course.category === "C++" && <Cpu className="w-3 h-3 mr-2" />}
+                    {course.category === "Hardware" && <Wifi className="w-3 h-3 mr-2" />}
+                    {course.category === "Testing" && <Zap className="w-3 h-3 mr-2" />}
+                    {course.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
