@@ -21,7 +21,7 @@ export const featuredCourses = [
     totalRatings: 260,
     level: "Beginner" as const,
     category: "Python",
-    language: "English",
+    language: "Romanian",
     lastUpdated: "October 2025",
     instructor: {
       name: "Daniel Vrabii",
@@ -244,7 +244,7 @@ export const featuredCourses = [
     totalRatings: 180,
     level: "Intermediate" as const,
     category: "C++",
-    language: "English",
+    language: "Romanian",
     lastUpdated: "October 2025",
     instructor: {
       name: "Grigore Ciobanu",
@@ -570,7 +570,7 @@ export const featuredCourses = [
     totalRatings: 145,
     level: "Intermediate" as const,
     category: "Hardware",
-    language: "English",
+    language: "Russian",
     lastUpdated: "October 2025",
     instructor: {
       name: "Elena Popescu",
@@ -726,7 +726,7 @@ export const featuredCourses = [
     totalRatings: 168,
     level: "Advanced" as const,
     category: "Testing",
-    language: "English",
+    language: "Romanian",
     lastUpdated: "October 2025",
     instructor: {
       name: "Michael Schmidt",

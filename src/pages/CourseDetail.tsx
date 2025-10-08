@@ -31,9 +31,9 @@ import VideoDemo from "@/components/VideoDemo";
 
 const CourseDetail = () => {
   const { courseId } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { addToCart } = useCart();
-  const [isWishlisted, setIsWishlisted] = useState(false);
+  // const [isWishlisted, setIsWishlisted] = useState(false);
   const [showInquiryForm, setShowInquiryForm] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
 
@@ -418,7 +418,7 @@ const CourseDetail = () => {
                 </div>
 
                 <div className="flex items-center justify-center space-x-4 text-sm">
-                  <Button
+                  {/* <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => setIsWishlisted(!isWishlisted)}
@@ -430,7 +430,7 @@ const CourseDetail = () => {
                       }`}
                     />
                     <span>Wishlist</span>
-                  </Button>
+                  </Button> */}
                   <Button
                     variant="ghost"
                     size="sm"
