@@ -27,8 +27,10 @@ import {
 } from "lucide-react";
 import { team } from "@/testData/teamData";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Trainers = () => {
+  const { t } = useLanguage();
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   const [showMeetingForm, setShowMeetingForm] = useState(false);
   const [selectedTrainer, setSelectedTrainer] = useState("");
@@ -77,33 +79,31 @@ const Trainers = () => {
               </Badge>
 
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
-                Meet Our
+                {t('trainers.title', 'Meet Our')}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                  Expert Trainers
+                  {t('trainers.titleHighlight', 'Expert Trainers')}
                 </span>
               </h1>
 
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                Learn from industry professionals with years of real-world
-                experience in embedded systems, IoT development, and
-                cutting-edge technology solutions.
+                {t('trainers.description', 'Learn from industry professionals with years of real-world experience in embedded systems, IoT development, and cutting-edge technology solutions.')}
               </p>
 
               <div className="flex flex-wrap justify-center gap-8 pt-4">
                 <div className="flex items-center space-x-2">
                   <Users className="w-5 h-5 text-blue-400" />
                   <span className="text-white font-semibold">250+</span>
-                  <span className="text-gray-400">Students Taught</span>
+                  <span className="text-gray-400">{t('trainers.studentsTaught', 'Students Taught')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Star className="w-5 h-5 text-yellow-400" />
                   <span className="text-white font-semibold">4.9</span>
-                  <span className="text-gray-400">Average Rating</span>
+                  <span className="text-gray-400">{t('trainers.averageRating', 'Average Rating')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Trophy className="w-5 h-5 text-purple-400" />
                   <span className="text-white font-semibold">15,000+</span>
-                  <span className="text-gray-400">Hours Experience</span>
+                  <span className="text-gray-400">{t('trainers.hoursExperience', 'Hours Experience')}</span>
                 </div>
               </div>
             </div>
@@ -120,10 +120,10 @@ const Trainers = () => {
               Industry Professionals
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-              Your Learning Mentors
+              {t('trainers.yourMentors', 'Your Learning Mentors')}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Expert embedded systems engineers ready to guide your journey
+              {t('trainers.mentorsDescription', 'Expert embedded systems engineers ready to guide your journey')}
             </p>
           </div>
 
@@ -166,7 +166,7 @@ const Trainers = () => {
                             <span className="text-white">
                               {trainer.students}
                             </span>{" "}
-                            students
+                            {t('trainers.students', 'students')}
                           </div>
                           <div className="flex items-center gap-1">
                             <Clock className="w-4 h-4" />
@@ -191,7 +191,7 @@ const Trainers = () => {
 
                     <div>
                       <h4 className="font-semibold mb-2 text-sm text-white">
-                        Expertise
+                        {t('trainers.expertise', 'Expertise')}
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {trainer.expertise.map((skill) => (
@@ -207,7 +207,7 @@ const Trainers = () => {
 
                     <div>
                       <h4 className="font-semibold mb-2 text-sm text-white">
-                        Specialties
+                        {t('trainers.specialties', 'Specialties')}
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {trainer.specialties.map((specialty) => (
@@ -231,7 +231,7 @@ const Trainers = () => {
                           to={trainer.linkedin}
                           className="hover:text-blue-400 transition-colors"
                         >
-                          View Profile
+                          {t('trainers.viewProfile', 'View Profile')}
                         </Link>
                       </Button>
                       <Button
@@ -243,7 +243,7 @@ const Trainers = () => {
                           setShowMeetingForm(true);
                         }}
                       >
-                        Request One-to-One
+                        {t('trainers.requestOneToOne', 'Request One-to-One')}
                       </Button>
                     </div>
                   </CardContent>
@@ -268,26 +268,26 @@ const Trainers = () => {
                   5+
                 </div>
                 <div className="text-sm text-gray-400">
-                  Years Combined Experience
+                  {t('trainers.yearsCombinedExp', 'Years Combined Experience')}
                 </div>
               </div>
               <div className="space-y-2">
                 <div className="text-3xl md:text-4xl font-bold text-blue-400">
                   4.9
                 </div>
-                <div className="text-sm text-gray-400">Average Rating</div>
+                <div className="text-sm text-gray-400">{t('trainers.averageRating', 'Average Rating')}</div>
               </div>
               <div className="space-y-2">
                 <div className="text-3xl md:text-4xl font-bold text-blue-400">
                   250+
                 </div>
-                <div className="text-sm text-gray-400">Students Mentored</div>
+                <div className="text-sm text-gray-400">{t('trainers.studentsMentored', 'Students Mentored')}</div>
               </div>
               <div className="space-y-2">
                 <div className="text-3xl md:text-4xl font-bold text-blue-400">
                   35+
                 </div>
-                <div className="text-sm text-gray-400">Industry Projects</div>
+                <div className="text-sm text-gray-400">{t('trainers.industryProjects', 'Industry Projects')}</div>
               </div>
             </div>
           </ScrollReveal>
@@ -300,12 +300,10 @@ const Trainers = () => {
           <ScrollReveal>
             <div className="max-w-3xl mx-auto space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Ready to Learn from the Best?
+                {t('trainers.readyToLearn', 'Ready to Learn from the Best?')}
               </h2>
               <p className="text-lg text-gray-400">
-                Join thousands of students who have advanced their careers with
-                our expert trainers. Get personalized mentorship and hands-on
-                guidance.
+                {t('trainers.readyDescription', 'Join thousands of students who have advanced their careers with our expert trainers. Get personalized mentorship and hands-on guidance.')}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
                 <Button
@@ -314,7 +312,7 @@ const Trainers = () => {
                 >
                   <Link to="/courses" className="flex items-center">
                     <Code className="mr-2 w-4 md:w-5 h-4 md:h-5" />
-                    Browse All Courses
+                    {t('trainers.browseAllCourses', 'Browse All Courses')}
                   </Link>
                 </Button>
                 <Button
@@ -322,7 +320,7 @@ const Trainers = () => {
                   variant="outline"
                   className="border-gray-600 text-slate-900 hover:border-gray-500 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg"
                 >
-                  Schedule Consultation
+                  {t('trainers.scheduleConsultation', 'Schedule Consultation')}
                 </Button>
               </div>
             </div>
@@ -345,17 +343,14 @@ const Trainers = () => {
               </Badge>
 
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Become a
+                {t('trainers.becomeTrainer', 'Become a')}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-green-400">
-                  Trainer at Engineers Factory
+                  {t('trainers.becomeTrainerHighlight', 'Trainer at Engineers Factory')}
                 </span>
               </h2>
 
               <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-                Are you an experienced embedded systems engineer or IoT
-                specialist? Join our team of expert trainers and help shape the
-                next generation of engineers. Share your knowledge and make a
-                meaningful impact.
+                {t('trainers.becomeTrainerDescription', 'Are you an experienced embedded systems engineer or IoT specialist? Join our team of expert trainers and help shape the next generation of engineers. Share your knowledge and make a meaningful impact.')}
               </p>
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
@@ -364,10 +359,10 @@ const Trainers = () => {
                     <Users className="w-6 h-6 text-green-400" />
                   </div>
                   <h3 className="font-semibold text-white mb-2">
-                    Flexible Teaching
+                    {t('trainers.flexibleTeaching', 'Flexible Teaching')}
                   </h3>
                   <p className="text-sm text-gray-400">
-                    Set your own schedule and teach from anywhere
+                    {t('trainers.flexibleDescription', 'Set your own schedule and teach from anywhere')}
                   </p>
                 </div>
 
@@ -376,10 +371,10 @@ const Trainers = () => {
                     <Award className="w-6 h-6 text-blue-400" />
                   </div>
                   <h3 className="font-semibold text-white mb-2">
-                    Expert Recognition
+                    {t('trainers.expertRecognition', 'Expert Recognition')}
                   </h3>
                   <p className="text-sm text-gray-400">
-                    Build your reputation in the embedded systems community
+                    {t('trainers.recognitionDescription', 'Build your reputation in the embedded systems community')}
                   </p>
                 </div>
 
@@ -388,23 +383,23 @@ const Trainers = () => {
                     <Cpu className="w-6 h-6 text-purple-400" />
                   </div>
                   <h3 className="font-semibold text-white mb-2">
-                    Competitive Pay
+                    {t('trainers.competitivePay', 'Competitive Pay')}
                   </h3>
                   <p className="text-sm text-gray-400">
-                    Earn competitive rates for sharing your expertise
+                    {t('trainers.payDescription', 'Earn competitive rates for sharing your expertise')}
                   </p>
                 </div>
               </div>
 
               <div className="bg-slate-900/50 border border-slate-700 rounded-lg p-8">
                 <h3 className="text-xl font-semibold text-white mb-4">
-                  Requirements
+                  {t('trainers.requirements', 'Requirements')}
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4 text-left">
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-300">
-                      5+ years of industry experience
+                      5+ {t('trainers.yearsExperience', 'years of industry experience')}
                     </span>
                   </div>
                   <div className="flex items-start gap-3">
