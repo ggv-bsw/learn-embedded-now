@@ -9,7 +9,6 @@ import ScrollReveal from "@/components/scroll-reveal";
 import {
   BookOpen,
   Code,
-  Cpu,
   FileText,
   GraduationCap,
   HelpCircle,
@@ -17,9 +16,7 @@ import {
   Search,
   Zap,
   ChevronRight,
-  Download,
   ExternalLink,
-  PlayCircle,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -159,7 +156,8 @@ const Documentation = () => {
       id: "faqs",
       category: "FAQs",
       title: "Frequently Asked Questions",
-      description: "Common questions and answers about our courses and platform",
+      description:
+        "Common questions and answers about our courses and platform",
       icon: HelpCircle,
       articles: [
         {
@@ -350,7 +348,9 @@ const Documentation = () => {
               {categories.map((category) => (
                 <Badge
                   key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
+                  variant={
+                    selectedCategory === category ? "default" : "outline"
+                  }
                   className={`cursor-pointer transition-all duration-200 ${
                     selectedCategory === category
                       ? "bg-blue-600 hover:bg-blue-700 text-white border-blue-600"
@@ -480,7 +480,7 @@ const Documentation = () => {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-slate-500 text-slate-300 px-8 py-6 hover:bg-slate-700"
+                      className="border-slate-500 text-slate-900 px-8 py-6 hover:bg-slate-300"
                     >
                       Join Community
                     </Button>
