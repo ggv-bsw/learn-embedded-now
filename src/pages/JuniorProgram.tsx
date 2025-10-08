@@ -191,19 +191,18 @@ const JuniorProgram = () => {
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-yellow-500/20 text-yellow-400 border-yellow-500/30 font-mono text-lg py-2 px-4">
               <Rocket className="w-5 h-5 mr-2" />
-              Weekend School for Juniors
+              {t('junior.weekend', 'Weekend School for Juniors')}
             </Badge>
 
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white">
-              Build{" "}
+              {t('junior.title', 'Build')}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400">
-                Rockets of the Future
+                {t('junior.titleHighlight', 'Rockets of the Future')}
               </span>
             </h1>
 
             <p className="text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed">
-              For Young Innovators Aged 12-18 • Weekend Classes • Hands-On Tech
-              Projects • Future Career Skills
+              {t('junior.subtitle', 'For Young Innovators Aged 12-18 • Weekend Classes • Hands-On Tech Projects • Future Career Skills')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -213,7 +212,7 @@ const JuniorProgram = () => {
                   className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
                 >
                   <Zap className="mr-2 w-6 h-6" />
-                  Enroll Now - Limited Spots!
+                  {t('junior.enrollNow', 'Enroll Now - Limited Spots!')}
                 </Button>
               </JuniorProgramForm>
 
@@ -228,7 +227,7 @@ const JuniorProgram = () => {
                 }
               >
                 <BookOpen className="mr-2 w-6 h-6" />
-                View Curriculum
+                {t('junior.viewCurriculum', 'View Curriculum')}
               </Button>
             </div>
 
@@ -236,19 +235,19 @@ const JuniorProgram = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-2xl mx-auto">
               <div className="text-center">
                 <div className="text-2xl font-bold text-yellow-400">500+</div>
-                <div className="text-gray-400 text-sm">Students Trained</div>
+                <div className="text-gray-400 text-sm">{t('junior.studentsTrained', 'Students Trained')}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-yellow-400">96%</div>
-                <div className="text-gray-400 text-sm">Completion Rate</div>
+                <div className="text-gray-400 text-sm">{t('junior.completionRate', 'Completion Rate')}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-yellow-400">25+</div>
-                <div className="text-gray-400 text-sm">Real Projects</div>
+                <div className="text-gray-400 text-sm">{t('junior.realProjects', 'Real Projects')}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-yellow-400">4.9★</div>
-                <div className="text-gray-400 text-sm">Parent Rating</div>
+                <div className="text-gray-400 text-sm">{t('junior.parentRating', 'Parent Rating')}</div>
               </div>
             </div>
           </div>
@@ -260,12 +259,10 @@ const JuniorProgram = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-              Why Choose Our Junior Program?
+              {t('junior.whyChoose', 'Why Choose Our Junior Program?')}
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              We transform young minds into tech innovators through
-              project-based learning, industry mentorship, and cutting-edge
-              technology exposure.
+              {t('junior.whyDescription', 'We transform young minds into tech innovators through project-based learning, industry mentorship, and cutting-edge technology exposure.')}
             </p>
           </div>
 
@@ -293,7 +290,7 @@ const JuniorProgram = () => {
           {/* Age Groups */}
           <div className="max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-center mb-8 text-white">
-              Programs by Age Group
+              {t('junior.ageGroups', 'Programs by Age Group')}
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
               {ageGroups.map((group, index) => (

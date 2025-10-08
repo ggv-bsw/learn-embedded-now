@@ -698,20 +698,17 @@ const Index = () => {
             <div className="order-2 lg:order-1">
               <Badge className="mb-6 bg-yellow-500/10 text-yellow-400 border-yellow-500/20 font-mono">
                 <Star className="w-4 h-4 mr-2" />
-                Junior Program
+                {t('index.juniorProgram', 'Junior Program')}
               </Badge>
 
               <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-                Weekend School for Juniors
+                {t('index.weekendSchool', 'Weekend School for Juniors')}
               </h2>
               <h3 className="text-xl lg:text-2xl font-semibold mb-6 text-yellow-400">
-                Build Rockets of the Future
+                {t('index.buildRockets', 'Build Rockets of the Future')}
               </h3>
               <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                Designed for young innovators aged 12-18 years old. Our weekend
-                program introduces teenagers to embedded systems, robotics, and
-                space technology through hands-on projects and interactive
-                learning experiences.
+                {t('index.juniorDescription', 'Designed for young innovators aged 12-18 years old. Our weekend program introduces teenagers to embedded systems, robotics, and space technology through hands-on projects and interactive learning experiences.')}
               </p>
 
               <div className="space-y-6 mb-8">
@@ -721,11 +718,10 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
-                      Interactive Learning
+                      {t('index.interactiveLearning', 'Interactive Learning')}
                     </h3>
                     <p className="text-gray-400">
-                      Learn programming and electronics through games, robots,
-                      and real projects
+                      {t('index.interactiveLearningDesc', 'Learn programming and electronics through games, robots, and real projects')}
                     </p>
                   </div>
                 </div>
@@ -736,11 +732,10 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
-                      Future Skills
+                      {t('index.futureSkills', 'Future Skills')}
                     </h3>
                     <p className="text-gray-400">
-                      Develop problem-solving, creativity, and technical skills
-                      for tomorrow's careers
+                      {t('index.futureSkillsDesc', 'Develop problem-solving, creativity, and technical skills for tomorrow\'s careers')}
                     </p>
                   </div>
                 </div>
@@ -751,11 +746,10 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
-                      Weekend Schedule
+                      {t('index.weekendSchedule', 'Weekend Schedule')}
                     </h3>
                     <p className="text-gray-400">
-                      Flexible weekend classes that don't interfere with school
-                      commitments
+                      {t('index.weekendScheduleDesc', 'Flexible weekend classes that don\'t interfere with school commitments')}
                     </p>
                   </div>
                 </div>
@@ -768,7 +762,7 @@ const Index = () => {
                     className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6"
                   >
                     <Zap className="mr-2 w-5 h-5" />
-                    Join Junior Program
+                    {t('index.joinJuniorProgram', 'Join Junior Program')}
                   </Button>
                 </JuniorProgramForm>
                 <Button
@@ -777,7 +771,7 @@ const Index = () => {
                   className="border-slate-600 text-slate-900 hover:bg-slate-800 hover:bg-gray-100 px-8 py-6 hover:scale-105"
                 >
                   <Link to="/junior" className="flex items-center">
-                    Learn More
+                    {t('index.learnMore', 'Learn More')}
                   </Link>
                 </Button>
               </div>
@@ -831,16 +825,14 @@ const Index = () => {
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
             <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-            Start Your Journey
+            {t('index.startJourney', 'Start Your Journey')}
           </Badge>
 
           <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-            Ready to Build the Future?
+            {t('index.readyToBuild', 'Ready to Build the Future?')}
           </h2>
           <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Join thousands of developers mastering embedded systems. Start with
-            our free course preview and see why professionals choose Embedded
-            School.
+            {t('index.ctaDescription', 'Join thousands of developers mastering embedded systems. Start with our free course preview and see why professionals choose Embedded School.')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

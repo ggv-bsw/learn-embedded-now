@@ -296,6 +296,45 @@ const translations: Record<Language, Record<string, string>> = {
     'index.onlineNow': 'Online now:',
     'index.members': 'members',
     'index.certifiedThisMonth': 'certified this month',
+    
+    // Junior Section on Index Page
+    'index.juniorProgram': 'Junior Program',
+    'index.weekendSchool': 'Weekend School for Juniors',
+    'index.buildRockets': 'Build Rockets of the Future',
+    'index.juniorDescription': 'Designed for young innovators aged 12-18 years old. Our weekend program introduces teenagers to embedded systems, robotics, and space technology through hands-on projects and interactive learning experiences.',
+    'index.interactiveLearning': 'Interactive Learning',
+    'index.interactiveLearningDesc': 'Learn programming and electronics through games, robots, and real projects',
+    'index.futureSkills': 'Future Skills',
+    'index.futureSkillsDesc': 'Develop problem-solving, creativity, and technical skills for tomorrow\'s careers',
+    'index.weekendSchedule': 'Weekend Schedule',
+    'index.weekendScheduleDesc': 'Flexible weekend classes that don\'t interfere with school commitments',
+    'index.joinJuniorProgram': 'Join Junior Program',
+    'index.learnMore': 'Learn More',
+    
+    // CTA Section
+    'index.startJourney': 'Start Your Journey',
+    'index.readyToBuild': 'Ready to Build the Future?',
+    'index.ctaDescription': 'Join thousands of developers mastering embedded systems. Start with our free course preview and see why professionals choose Embedded School.',
+    'index.browseCoursesBtn': 'Browse All Courses',
+    'index.contactUsBtn': 'Contact Us',
+    
+    // Junior Program Page - More translations
+    'junior.ageGroups': 'Programs by Age Group',
+    'junior.yearRange': 'years',
+    'junior.explorer': 'Explorer',
+    'junior.innovator': 'Innovator',
+    'junior.creator': 'Creator',
+    'junior.basicRobots': 'Basic robots',
+    'junior.simpleGames': 'Simple games',
+    'junior.ledCircuits': 'LED circuits',
+    'junior.smartDevices': 'Smart devices',
+    'junior.sensorNetworks': 'Sensor networks',
+    'junior.aiSystems': 'AI systems',
+    'junior.advancedRobotics': 'Advanced robotics',
+    'junior.industryProjects': 'Industry projects',
+    'junior.foundationalProgramming': 'Foundational programming & electronics',
+    'junior.advancedSystems': 'Advanced systems & IoT',
+    'junior.realWorldProjects': 'Real-world projects & specializations',
   },
   ro: {
     // Navigation
@@ -551,6 +590,45 @@ const translations: Record<Language, Record<string, string>> = {
     'junior.gameDevDesc': 'Creează propriile tale jocuri video și experiențe interactive',
     'junior.mobileApps': 'Aplicații Mobile',
     'junior.mobileDesc': 'Dezvoltă aplicații care controlează roboți și dispozitive IoT',
+    
+    // Junior Section on Index Page
+    'index.juniorProgram': 'Program Junior',
+    'index.weekendSchool': 'Școală de Weekend pentru Juniori',
+    'index.buildRockets': 'Construiește Rachetele Viitorului',
+    'index.juniorDescription': 'Conceput pentru tineri inovatori cu vârste între 12-18 ani. Programul nostru de weekend introduce adolescenții în sistemele înglobate, robotică și tehnologie spațială prin proiecte practice și experiențe de învățare interactive.',
+    'index.interactiveLearning': 'Învățare Interactivă',
+    'index.interactiveLearningDesc': 'Învață programare și electronică prin jocuri, roboți și proiecte reale',
+    'index.futureSkills': 'Abilități pentru Viitor',
+    'index.futureSkillsDesc': 'Dezvoltă rezolvarea problemelor, creativitatea și abilitățile tehnice pentru carierele de mâine',
+    'index.weekendSchedule': 'Program Weekend',
+    'index.weekendScheduleDesc': 'Cursuri flexibile de weekend care nu interferează cu angajamentele școlare',
+    'index.joinJuniorProgram': 'Alătură-te Programului Junior',
+    'index.learnMore': 'Află Mai Mult',
+    
+    // CTA Section
+    'index.startJourney': 'Începe Călătoria',
+    'index.readyToBuild': 'Gata să Construiești Viitorul?',
+    'index.ctaDescription': 'Alătură-te miilor de dezvoltatori care stăpânesc sistemele înglobate. Începe cu previzualizarea gratuită a cursului și vezi de ce profesioniștii aleg Embedded School.',
+    'index.browseCoursesBtn': 'Răsfoiește Toate Cursurile',
+    'index.contactUsBtn': 'Contactează-ne',
+    
+    // Junior Program Page - More translations
+    'junior.ageGroups': 'Programe pe Grupe de Vârstă',
+    'junior.yearRange': 'ani',
+    'junior.explorer': 'Explorator',
+    'junior.innovator': 'Inovator',
+    'junior.creator': 'Creator',
+    'junior.basicRobots': 'Roboți de bază',
+    'junior.simpleGames': 'Jocuri simple',
+    'junior.ledCircuits': 'Circuite LED',
+    'junior.smartDevices': 'Dispozitive inteligente',
+    'junior.sensorNetworks': 'Rețele de senzori',
+    'junior.aiSystems': 'Sisteme AI',
+    'junior.advancedRobotics': 'Robotică avansată',
+    'junior.industryProjects': 'Proiecte din industrie',
+    'junior.foundationalProgramming': 'Programare fundamentală & electronică',
+    'junior.advancedSystems': 'Sisteme avansate & IoT',
+    'junior.realWorldProjects': 'Proiecte din lumea reală & specializări',
     
     // Index Page - Professional Packs
     'index.embeddedC': 'C Înglobat',
@@ -836,6 +914,45 @@ const translations: Record<Language, Record<string, string>> = {
     'junior.gameDevDesc': 'Создавайте свои собственные видеоигры и интерактивные опыты',
     'junior.mobileApps': 'Мобильные Приложения',
     'junior.mobileDesc': 'Разрабатывайте приложения, которые управляют роботами и IoT устройствами',
+    
+    // Junior Section on Index Page
+    'index.juniorProgram': 'Юниорская Программа',
+    'index.weekendSchool': 'Выходная Школа для Юниоров',
+    'index.buildRockets': 'Стройте Ракеты Будущего',
+    'index.juniorDescription': 'Разработана для юных инноваторов в возрасте 12-18 лет. Наша программа выходного дня знакомит подростков с встраиваемыми системами, робототехникой и космическими технологиями через практические проекты и интерактивное обучение.',
+    'index.interactiveLearning': 'Интерактивное Обучение',
+    'index.interactiveLearningDesc': 'Изучайте программирование и электронику через игры, роботов и реальные проекты',
+    'index.futureSkills': 'Навыки Будущего',
+    'index.futureSkillsDesc': 'Развивайте решение проблем, креативность и технические навыки для завтрашних карьер',
+    'index.weekendSchedule': 'Выходное Расписание',
+    'index.weekendScheduleDesc': 'Гибкие занятия по выходным, которые не мешают школьным обязательствам',
+    'index.joinJuniorProgram': 'Присоединиться к Юниорской Программе',
+    'index.learnMore': 'Узнать Больше',
+    
+    // CTA Section
+    'index.startJourney': 'Начать Путешествие',
+    'index.readyToBuild': 'Готовы Строить Будущее?',
+    'index.ctaDescription': 'Присоединяйтесь к тысячам разработчиков, осваивающих встраиваемые системы. Начните с бесплатного предпросмотра курса и узнайте, почему профессионалы выбирают Embedded School.',
+    'index.browseCoursesBtn': 'Просмотреть Все Курсы',
+    'index.contactUsBtn': 'Связаться с Нами',
+    
+    // Junior Program Page - More translations
+    'junior.ageGroups': 'Программы по Возрастным Группам',
+    'junior.yearRange': 'лет',
+    'junior.explorer': 'Исследователь',
+    'junior.innovator': 'Инноватор',
+    'junior.creator': 'Создатель',
+    'junior.basicRobots': 'Базовые роботы',
+    'junior.simpleGames': 'Простые игры',
+    'junior.ledCircuits': 'LED схемы',
+    'junior.smartDevices': 'Умные устройства',
+    'junior.sensorNetworks': 'Сенсорные сети',
+    'junior.aiSystems': 'AI системы',
+    'junior.advancedRobotics': 'Продвинутая робототехника',
+    'junior.industryProjects': 'Промышленные проекты',
+    'junior.foundationalProgramming': 'Основы программирования и электроники',
+    'junior.advancedSystems': 'Продвинутые системы и IoT',
+    'junior.realWorldProjects': 'Реальные проекты и специализации',
     
     // Index Page - Professional Packs
     'index.embeddedC': 'Встраиваемый C',
