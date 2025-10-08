@@ -582,41 +582,40 @@ const Courses = () => {
             <CardContent className="pt-12 pb-12 text-center">
               <Badge className="mb-6 bg-purple-500/30 text-purple-300 border-purple-500/50 font-mono shadow-lg">
                 <Code className="w-4 h-4 mr-2" />
-                Need Something Specific?
+                {t('coursesPage.needSpecific')}
               </Badge>
 
               <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-                Can't Find What You're Looking For?
+                {t('coursesPage.cantFind')}
               </h2>
               <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
-                We're constantly adding new courses. Contact us to suggest a
-                topic or get notified about upcoming releases.
+                {t('coursesPage.cantFindDesc')}
               </p>
 
               {/* Feature highlights */}
               <div className="grid md:grid-cols-3 gap-6 mb-8 max-w-3xl mx-auto">
                 <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
                   <h3 className="font-semibold text-white mb-2">
-                    Custom Curriculum
+                    {t('coursesPage.customCurriculum')}
                   </h3>
                   <p className="text-gray-300 text-sm">
-                    Tailored courses for your specific needs
+                    {t('coursesPage.customCurriculumDesc')}
                   </p>
                 </div>
                 <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
                   <h3 className="font-semibold text-white mb-2">
-                    Expert Instructors
+                    {t('coursesPage.expertInstructors')}
                   </h3>
                   <p className="text-gray-300 text-sm">
-                    Learn from industry professionals
+                    {t('coursesPage.expertInstructorsDesc')}
                   </p>
                 </div>
                 <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
                   <h3 className="font-semibold text-white mb-2">
-                    Early Access
+                    {t('coursesPage.earlyAccess')}
                   </h3>
                   <p className="text-gray-300 text-sm">
-                    Get notified about new releases first
+                    {t('coursesPage.earlyAccessDesc')}
                   </p>
                 </div>
               </div>
@@ -627,7 +626,7 @@ const Courses = () => {
                   className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 shadow-lg"
                   onClick={() => navigate("/contact")}
                 >
-                  Contact Us
+                  {t('coursesPage.contactUs')}
                 </Button>
                 <Button
                   size="lg"
@@ -639,7 +638,7 @@ const Courses = () => {
                     href="https://t.me/embeddedschool"
                     rel="noopener noreferrer"
                   >
-                    Subscribe to Updates
+                    {t('coursesPage.subscribeUpdates')}
                   </a>
                 </Button>
               </div>
