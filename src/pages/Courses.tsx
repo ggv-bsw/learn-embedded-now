@@ -17,9 +17,10 @@ import {
 import AnimatedParticles from "@/components/animated-particles";
 import { featuredCourses } from "@/testData/featuredCourses";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Courses = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedLevel, setSelectedLevel] = useState("All");
@@ -630,6 +631,7 @@ const Courses = () => {
                 <Button
                   size="lg"
                   className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 shadow-lg"
+                  onClick={() => navigate("/contact")}
                 >
                   Contact Us
                 </Button>
