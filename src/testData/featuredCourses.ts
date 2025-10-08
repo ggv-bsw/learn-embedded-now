@@ -3,7 +3,7 @@ import courseCpp from "@/assets/course-cpp.jpg";
 import coursePcbDesign from "@/assets/course-pcb-design.jpg";
 import courseSoftwareTesting from "@/assets/course-software-testing-automotive.jpg";
 
-export const getFeaturedCourses = (t: (key: string) => string) => [
+export const featuredCourses = [
   {
     id: "python-junior-beginner",
     title: "Python for Beginners – Junior Level",
@@ -19,9 +19,9 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
     students: 14,
     rating: 4.8,
     totalRatings: 260,
-    level: t("courses.python.level"),
-    category: t("courses.python.category"),
-    language: t("courses.python.language"),
+    level: "Beginner" as const,
+    category: "Python",
+    language: "Romanian",
     lastUpdated: "October 2025",
     instructor: {
       name: "Daniel Vrabii",
@@ -31,34 +31,38 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
       rating: 4.8,
       image:
         "https://media.licdn.com/dms/image/v2/D4D03AQGUSWvS2qP-uQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1683970542550?e=1760572800&v=beta&t=moGAvhHQ2niXRAQbN6HexdK_f88-usja1e0j3FZ_moI",
-      bio: t("courses.python.instructor.bio"),
+      bio: "Data engineering expert with strong background in machine learning and distributed systems. Has built scalable data pipelines for multiple Fortune 500 companies. Enjoys transforming complex data concepts into practical learning experiences.",
     },
     curriculum: [
       {
-        title: t("courses.python.curriculum.week1.title"),
+        title: "Week 1 – Intro to Programming and Python",
         lessons: [
           {
-            title: t("courses.python.curriculum.week1.lesson1"),
+            title:
+              "Lesson 1: What is programming? Install Python, editors (VS Code, PyCharm), first steps in terminal; Hello World & running a script",
             duration: "60 min",
             type: "video",
           },
           {
-            title: t("courses.python.curriculum.week1.lesson2"),
+            title:
+              "Lesson 2: Fundamental data types (int, float, string, bool), variables, type conversions; mini-exercises",
             duration: "60 min",
             type: "video",
           },
         ],
       },
       {
-        title: t("courses.python.curriculum.week2.title"),
+        title: "Week 2 – Control Flow",
         lessons: [
           {
-            title: t("courses.python.curriculum.week2.lesson3"),
+            title:
+              "Lesson 3: Conditionals (if/elif/else), logical & relational operators; password check program",
             duration: "60 min",
             type: "video",
           },
           {
-            title: t("courses.python.curriculum.week2.lesson4"),
+            title:
+              "Lesson 4: Loops (while, for) and range(); number guessing game",
             duration: "60 min",
             type: "video",
           },
@@ -201,27 +205,27 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
       },
     ],
     features: [
-      t("courses.python.features.0"),
-      t("courses.python.features.1"),
-      t("courses.python.features.2"),
-      t("courses.python.features.3"),
-      t("courses.python.features.4"),
-      t("courses.python.features.5"),
-      t("courses.python.features.6"),
+      "Clear structure: 2 lessons/week for 10 weeks",
+      "Practice embedded in every lesson",
+      "Package & environment management with uv",
+      "CLI and web (Flask) mini-projects",
+      "Best practices: PEP 8, docstrings, Git",
+      "Access to community and resources",
+      "Certificate of completion",
     ],
     requirements: [
-      t("courses.python.requirements.0"),
-      t("courses.python.requirements.1"),
-      t("courses.python.requirements.2"),
-      t("courses.python.requirements.3"),
+      "Laptop with internet connection",
+      "Willingness to learn by doing",
+      "GitHub account (recommended for projects)",
+      "Code editor (VS Code or PyCharm) — set up in Week 1",
     ],
     outcomes: [
-      t("courses.python.outcomes.0"),
-      t("courses.python.outcomes.1"),
-      t("courses.python.outcomes.2"),
-      t("courses.python.outcomes.3"),
-      t("courses.python.outcomes.4"),
-      t("courses.python.outcomes.5"),
+      "Write clean, well-structured Python code",
+      "Work effectively with lists, sets, dictionaries, and OOP",
+      "Handle files and data (JSON/CSV)",
+      "Use uv to install and manage external libraries",
+      "Write unit tests and use Git",
+      "Build complete mini-apps (CLI and web)",
     ],
   },
   {
@@ -238,9 +242,9 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
     students: 11,
     rating: 4.8,
     totalRatings: 180,
-    level: t("courses.cpp.level"),
-    category: t("courses.cpp.category"),
-    language: t("courses.cpp.language"),
+    level: "Intermediate" as const,
+    category: "C++",
+    language: "Romanian",
     lastUpdated: "October 2025",
     instructor: {
       name: "Grigore Ciobanu",
@@ -250,7 +254,7 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
       rating: 4.8,
       image:
         "https://media.licdn.com/dms/image/v2/D4D03AQEi63NbK8JmZQ/profile-displayphoto-scale_400_400/B4DZfk_n5PGYAs-/0/1751893574038?e=1762387200&v=beta&t=eh1mbV9h0ydwq7toFdLv00x3PFkAIGyKDrnh-rQHiGI",
-      bio: t("courses.cpp.instructor.bio"),
+      bio: "Linux and IoT specialist with deep expertise in network programming and embedded Linux systems. Has contributed to numerous open-source projects and enjoys mentoring developers in system-level programming.",
     },
     curriculum: [
       {
@@ -534,27 +538,29 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
       },
     ],
     features: [
-      t("courses.cpp.features.0"),
-      t("courses.cpp.features.1"),
-      t("courses.cpp.features.2"),
-      t("courses.cpp.features.3"),
-      t("courses.cpp.features.4"),
-      t("courses.cpp.features.5"),
-      t("courses.cpp.features.6"),
-      t("courses.cpp.features.7"),
+      "Modern C++ (C++17/20) with real projects",
+      "Hands-on labs every module",
+      "Production-grade CMake setups",
+      "Multithreading & STL best practices",
+      "Design patterns with practical use",
+      "Code reviews and feedback",
+      "Certificate of completion",
+      "Discord community & resources",
     ],
     requirements: [
-      t("courses.cpp.requirements.0"),
-      t("courses.cpp.requirements.1"),
-      t("courses.cpp.requirements.2"),
-      t("courses.cpp.requirements.3"),
+      "Basic programming familiarity helpful (not mandatory)",
+      "Laptop with a modern C++ compiler (GCC/Clang/MSVC)",
+      "CMake 3.20+ and a code editor (VS Code/CLion)",
+      "Willingness to practice and iterate",
     ],
   },
   {
     id: "pcb-design-fundamentals",
-    title: t("courses.pcb.title"),
-    subtitle: t("courses.pcb.subtitle"),
-    description: t("courses.pcb.description"),
+    title: "PCB Design Fundamentals",
+    subtitle:
+      "Master the essentials of printed circuit board design from schematic capture to final fabrication",
+    description:
+      "Learn to design professional PCBs using industry-standard tools. This comprehensive course covers schematic design, component selection, PCB layout, signal integrity, power distribution, and manufacturing preparation. Build real-world projects from simple boards to complex multi-layer designs.",
     image: coursePcbDesign,
     price: 249,
     originalPrice: 349,
@@ -562,9 +568,9 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
     students: 18,
     rating: 4.9,
     totalRatings: 145,
-    level: t("courses.pcb.level"),
-    category: t("courses.pcb.category"),
-    language: t("courses.pcb.language"),
+    level: "Intermediate" as const,
+    category: "Hardware",
+    language: "Russian",
     lastUpdated: "October 2025",
     instructor: {
       name: "Elena Popescu",
@@ -574,7 +580,7 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
       rating: 4.9,
       image:
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
-      bio: t("courses.pcb.instructor.bio"),
+      bio: "Hardware design specialist with extensive experience in PCB design for consumer electronics and industrial applications. Has designed over 200 successful products and enjoys teaching practical PCB design techniques.",
     },
     curriculum: [
       {
@@ -681,34 +687,36 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
       },
     ],
     features: [
-      t("courses.pcb.features.0"),
-      t("courses.pcb.features.1"),
-      t("courses.pcb.features.2"),
-      t("courses.pcb.features.3"),
-      t("courses.pcb.features.4"),
-      t("courses.pcb.features.5"),
-      t("courses.pcb.features.6"),
+      "Industry-standard PCB design tools",
+      "Real hardware projects and prototypes",
+      "Design rule checking and validation",
+      "Manufacturing file generation",
+      "Signal integrity analysis",
+      "Professional PCB portfolio pieces",
+      "Certificate of completion",
     ],
     requirements: [
-      t("courses.pcb.requirements.0"),
-      t("courses.pcb.requirements.1"),
-      t("courses.pcb.requirements.2"),
-      t("courses.pcb.requirements.3"),
+      "Basic electronics knowledge",
+      "Understanding of circuit theory",
+      "Computer capable of running PCB design software",
+      "Multimeter and basic testing equipment (recommended)",
     ],
     outcomes: [
-      t("courses.pcb.outcomes.0"),
-      t("courses.pcb.outcomes.1"),
-      t("courses.pcb.outcomes.2"),
-      t("courses.pcb.outcomes.3"),
-      t("courses.pcb.outcomes.4"),
-      t("courses.pcb.outcomes.5"),
+      "Design professional multi-layer PCBs",
+      "Master schematic capture and component selection",
+      "Understand signal integrity and EMI considerations",
+      "Generate manufacturing-ready design files",
+      "Apply DFM and DFA principles",
+      "Build a portfolio of real PCB designs",
     ],
   },
   {
     id: "software-testing-automotive-qa",
-    title: t("courses.testing.title"),
-    subtitle: t("courses.testing.subtitle"),
-    description: t("courses.testing.description"),
+    title: "Software Testing & Automotive QA",
+    subtitle:
+      "Comprehensive testing methodologies for automotive software and embedded systems with industry standards",
+    description:
+      "Master software testing principles specifically for automotive applications. Learn test automation, ISO 26262 functional safety, AUTOSAR testing, HIL/SIL testing, and automotive-specific quality assurance processes. Gain hands-on experience with industry-standard testing tools and frameworks.",
     image: courseSoftwareTesting,
     price: 299,
     originalPrice: 429,
@@ -716,9 +724,9 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
     students: 22,
     rating: 4.9,
     totalRatings: 168,
-    level: t("courses.testing.level"),
-    category: t("courses.testing.category"),
-    language: t("courses.testing.language"),
+    level: "Advanced" as const,
+    category: "Testing",
+    language: "Romanian",
     lastUpdated: "October 2025",
     instructor: {
       name: "Michael Schmidt",
@@ -728,7 +736,7 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
       rating: 4.9,
       image:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
-      bio: t("courses.testing.instructor.bio"),
+      bio: "Automotive software testing expert with extensive experience at leading automotive OEMs. Specialized in functional safety, AUTOSAR, and automated testing frameworks. Has led QA teams for multiple production vehicle programs.",
     },
     curriculum: [
       {
@@ -858,30 +866,28 @@ export const getFeaturedCourses = (t: (key: string) => string) => [
       },
     ],
     features: [
-      t("courses.testing.features.0"),
-      t("courses.testing.features.1"),
-      t("courses.testing.features.2"),
-      t("courses.testing.features.3"),
-      t("courses.testing.features.4"),
-      t("courses.testing.features.5"),
-      t("courses.testing.features.6"),
+      "Industry-standard testing tools and frameworks",
+      "ISO 26262 functional safety coverage",
+      "Real automotive ECU test scenarios",
+      "HIL/SIL simulation environment access",
+      "AUTOSAR testing methodology",
+      "Test automation and CI/CD integration",
+      "Professional certification preparation",
     ],
     requirements: [
-      t("courses.testing.requirements.0"),
-      t("courses.testing.requirements.1"),
-      t("courses.testing.requirements.2"),
-      t("courses.testing.requirements.3"),
-      t("courses.testing.requirements.4"),
+      "Strong software development background",
+      "Basic understanding of automotive systems",
+      "Familiarity with C/C++ programming",
+      "Knowledge of embedded systems (recommended)",
+      "Experience with testing concepts",
     ],
     outcomes: [
-      t("courses.testing.outcomes.0"),
-      t("courses.testing.outcomes.1"),
-      t("courses.testing.outcomes.2"),
-      t("courses.testing.outcomes.3"),
-      t("courses.testing.outcomes.4"),
-      t("courses.testing.outcomes.5"),
+      "Design comprehensive automotive test strategies",
+      "Implement automated testing frameworks",
+      "Execute HIL/SIL testing scenarios",
+      "Apply ISO 26262 safety testing principles",
+      "Validate AUTOSAR-based software components",
+      "Lead automotive QA projects and teams",
     ],
   },
 ];
-
-export const featuredCourses = getFeaturedCourses((key: string) => key);
