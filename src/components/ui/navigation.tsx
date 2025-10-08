@@ -58,12 +58,6 @@ const Navigation = () => {
               {t("nav.hardware", "Hardware")}
             </Link>
             <Link
-              to="/documentation"
-              className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
-            >
-              {t("nav.docs", "Docs")}
-            </Link>
-            <Link
               to="/contact"
               className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
             >
@@ -120,12 +114,6 @@ const Navigation = () => {
                 className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 {t("nav.hardware", "Hardware")}
-              </Link>
-              <Link
-                to="/documentation"
-                className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
-              >
-                {t("nav.docs", "Docs")}
               </Link>
               <Link
                 to="/contact"

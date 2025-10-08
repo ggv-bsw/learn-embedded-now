@@ -47,22 +47,22 @@ const Documentation = () => {
       articles: [
         {
           title: "How to Enroll in a Course",
-          link: "#enroll",
+          link: "/courses",
           duration: "5 min read",
         },
         {
           title: "Platform Overview",
-          link: "#platform",
+          link: "/about",
           duration: "8 min read",
         },
         {
           title: "Payment Methods & Pricing",
-          link: "#payment",
+          link: "/courses",
           duration: "4 min read",
         },
         {
           title: "Certificate Programs",
-          link: "#certificates",
+          link: "/courses",
           duration: "6 min read",
         },
       ],
@@ -77,22 +77,22 @@ const Documentation = () => {
       articles: [
         {
           title: "Python Course Prerequisites",
-          link: "#python-prereq",
+          link: "/courses/python-junior-beginner",
           duration: "7 min read",
         },
         {
           title: "C++ Development Environment Setup",
-          link: "#cpp-setup",
+          link: "/courses/cpp-bsw-beginner-to-advanced",
           duration: "10 min read",
         },
         {
           title: "PCB Design Software Installation",
-          link: "#pcb-setup",
+          link: "/courses/pcb-design-fundamentals",
           duration: "12 min read",
         },
         {
           title: "Testing Tools Configuration",
-          link: "#testing-setup",
+          link: "/courses/software-testing-automotive-qa",
           duration: "9 min read",
         },
       ],
@@ -106,22 +106,22 @@ const Documentation = () => {
       articles: [
         {
           title: "Arduino Programming Reference",
-          link: "#arduino-ref",
+          link: "/hardware",
           duration: "15 min read",
         },
         {
           title: "Embedded C Best Practices",
-          link: "#embedded-c",
+          link: "/blog",
           duration: "12 min read",
         },
         {
           title: "AUTOSAR Architecture Guide",
-          link: "#autosar",
+          link: "/courses/software-testing-automotive-qa",
           duration: "20 min read",
         },
         {
           title: "CMake Build System Tutorial",
-          link: "#cmake",
+          link: "/courses/cpp-bsw-beginner-to-advanced",
           duration: "18 min read",
         },
       ],
@@ -135,22 +135,22 @@ const Documentation = () => {
       articles: [
         {
           title: "VS Code Setup for Embedded Development",
-          link: "#vscode",
+          link: "/blog",
           duration: "10 min read",
         },
         {
           title: "Git & GitHub for Beginners",
-          link: "#git-github",
+          link: "/courses/python-junior-beginner",
           duration: "14 min read",
         },
         {
           title: "Virtual Environment with uv",
-          link: "#uv-env",
+          link: "/courses/python-junior-beginner",
           duration: "8 min read",
         },
         {
           title: "Hardware Debugging Tools",
-          link: "#debug-tools",
+          link: "/hardware",
           duration: "16 min read",
         },
       ],
@@ -164,22 +164,22 @@ const Documentation = () => {
       articles: [
         {
           title: "Course Access & Duration",
-          link: "#access-duration",
+          link: "/courses",
           duration: "3 min read",
         },
         {
           title: "Refund Policy",
-          link: "#refunds",
+          link: "/contact",
           duration: "4 min read",
         },
         {
           title: "Technical Support",
-          link: "#support",
+          link: "/contact",
           duration: "5 min read",
         },
         {
           title: "Career Guidance & Job Placement",
-          link: "#career",
+          link: "/trainers",
           duration: "7 min read",
         },
       ],
@@ -190,7 +190,7 @@ const Documentation = () => {
     {
       title: "Download Course Materials",
       icon: Download,
-      link: "#downloads",
+      link: "/courses",
       description: "Access all course resources and materials",
     },
     {
@@ -203,14 +203,14 @@ const Documentation = () => {
     {
       title: "Video Tutorials",
       icon: PlayCircle,
-      link: "#videos",
+      link: "/blog",
       description: "Step-by-step video guides",
     },
     {
-      title: "API Documentation",
+      title: "Technical Resources",
       icon: FileText,
-      link: "#api-docs",
-      description: "Technical API references",
+      link: "/hardware",
+      description: "Hardware and tools documentation",
     },
   ];
 
@@ -330,7 +330,7 @@ const Documentation = () => {
                         </div>
                       </a>
                     ) : (
-                      <a href={link.link} className="block">
+                      <Link to={link.link} className="block">
                         <div className="flex items-start space-x-3">
                           <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-lg flex items-center justify-center group-hover:bg-blue-500/30 transition-colors flex-shrink-0">
                             <link.icon className="w-6 h-6 text-blue-400" />
@@ -344,7 +344,7 @@ const Documentation = () => {
                             </p>
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     )}
                   </CardContent>
                 </Card>
@@ -406,9 +406,9 @@ const Documentation = () => {
                   <CardContent>
                     <div className="space-y-3">
                       {section.articles.map((article, idx) => (
-                        <a
+                        <Link
                           key={idx}
-                          href={article.link}
+                          to={article.link}
                           className="flex items-center justify-between p-3 rounded-lg bg-slate-900/50 hover:bg-slate-900 transition-colors group"
                         >
                           <div className="flex items-center space-x-3">
@@ -422,7 +422,7 @@ const Documentation = () => {
                               </p>
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </CardContent>
