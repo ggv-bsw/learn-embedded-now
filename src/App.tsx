@@ -18,6 +18,7 @@ import HardwareDetail from "./pages/HardwareDetail";
 import NotFound from "./pages/NotFound";
 import JuniorProgram from "./pages/JuniorProgram";
 import Checkout from "./pages/Checkout";
+import Documentation from "./pages/Documentation";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
             <Route path="/hardware/:productId" element={<HardwareDetail />} />
             <Route path="/junior" element={<JuniorProgram />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/documentation" element={<Documentation />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

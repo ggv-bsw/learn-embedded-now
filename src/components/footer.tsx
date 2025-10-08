@@ -90,31 +90,33 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-400">
               <li>
                 <Link
-                  to="/docs"
+                  to="/documentation"
                   className="hover:text-blue-400 transition-colors"
                 >
                   {t('footer.docs')}
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/api"
-                  className="hover:text-blue-400 transition-colors"
-                >
-                  {t('footer.api')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/community"
+                <a
+                  href="https://t.me/embeddedschool"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-blue-400 transition-colors"
                 >
                   {t('footer.community')}
+                </a>
+              </li>
+              <li>
+                <Link
+                  to="/hardware"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Hardware Store
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/support"
+                  to="/contact"
                   className="hover:text-blue-400 transition-colors"
                 >
                   {t('footer.support')}
