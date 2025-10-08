@@ -28,9 +28,11 @@ import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
 import VideoDemo from "@/components/VideoDemo";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CourseDetail = () => {
   const { courseId } = useParams();
+  const { t } = useLanguage();
   // const navigate = useNavigate();
   const { addToCart } = useCart();
   // const [isWishlisted, setIsWishlisted] = useState(false);
@@ -49,7 +51,7 @@ const CourseDetail = () => {
   const course = getCourseById(courseId || "");
 
   if (!course) {
-    return <div>Course not found</div>;
+    return <div>{t('courseDetail.notFound')}</div>;
   }
 
   const totalLessons = course.curriculum.reduce(
@@ -64,7 +66,7 @@ const CourseDetail = () => {
       price: course.price,
       image: course.image,
     });
-    toast.success("Course added to cart!");
+    toast.success(t('courseDetail.addedToCart'));
   };
 
   const handleShare = async () => {
@@ -77,18 +79,18 @@ const CourseDetail = () => {
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-        toast.success("Course shared successfully!");
+        toast.success(t('courseDetail.sharedSuccess'));
       } catch (err) {
         if ((err as Error).name !== "AbortError") {
-          toast.error("Failed to share course");
+          toast.error(t('courseDetail.shareFailed'));
         }
       }
     } else {
       try {
         await navigator.clipboard.writeText(window.location.href);
-        toast.success("Link copied to clipboard!");
+        toast.success(t('courseDetail.linkCopied'));
       } catch (err) {
-        toast.error("Failed to copy link");
+        toast.error(t('courseDetail.copyFailed'));
       }
     }
   };
@@ -101,11 +103,11 @@ const CourseDetail = () => {
       <div className="container mx-auto px-4 py-6">
         <div className="flex items-center space-x-2 text-sm text-muted-foreground">
           <Link to="/" className="hover:text-primary">
-            Home
+            {t('courseDetail.home')}
           </Link>
           <span>/</span>
           <Link to="/courses" className="hover:text-primary">
-            Courses
+            {t('courseDetail.courses')}
           </Link>
           <span>/</span>
           <span>{course.category}</span>
@@ -118,14 +120,14 @@ const CourseDetail = () => {
           <div className="lg:col-span-2 space-y-8">
             {/* Header */}
             <div>
-              <div className="flex items-center space-x-4 mb-4">
+                <div className="flex items-center space-x-4 mb-4">
                 <Badge variant="outline">{course.category}</Badge>
                 <Badge variant="secondary">{course.level}</Badge>
                 <div className="flex items-center space-x-1">
                   <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   <span className="font-medium">{course.rating}</span>
                   <span className="text-muted-foreground">
-                    ({course.totalRatings} reviews)
+                    ({course.totalRatings} {t('courseDetail.reviews')})
                   </span>
                 </div>
               </div>
@@ -144,15 +146,15 @@ const CourseDetail = () => {
                 </div>
                 <div className="flex items-center space-x-1">
                   <Users className="w-4 h-4" />
-                  <span>{course.students} students</span>
+                  <span>{course.students} {t('courseDetail.students')}</span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <Calendar className="w-4 h-4" />
-                  <span>Updated {course.lastUpdated}</span>
+                  <span>{t('courseDetail.updated')} {course.lastUpdated}</span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <Award className="w-4 h-4" />
-                  <span>Certificate included</span>
+                  <span>{t('courseDetail.certificateIncluded')}</span>
                 </div>
               </div>
             </div>
@@ -172,7 +174,7 @@ const CourseDetail = () => {
                     className="bg-white text-black hover:bg-gray-100"
                   >
                     <Play className="mr-2 w-6 h-6" />
-                    Preview Course
+                    {t('courseDetail.previewCourse')}
                   </Button>
                 </div>
               )}
@@ -181,16 +183,16 @@ const CourseDetail = () => {
             {/* Tabs */}
             <Tabs defaultValue="overview" className="w-full">
               <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
-                <TabsTrigger value="instructor">Instructor</TabsTrigger>
-                <TabsTrigger value="reviews">Reviews</TabsTrigger>
+                <TabsTrigger value="overview">{t('courseDetail.overview')}</TabsTrigger>
+                <TabsTrigger value="curriculum">{t('courseDetail.curriculum')}</TabsTrigger>
+                <TabsTrigger value="instructor">{t('courseDetail.instructor')}</TabsTrigger>
+                <TabsTrigger value="reviews">{t('courseDetail.reviewsTab')}</TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview" className="space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Course Description</CardTitle>
+                    <CardTitle>{t('courseDetail.courseDescription')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground leading-relaxed">
@@ -202,7 +204,7 @@ const CourseDetail = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card>
                     <CardHeader>
-                      <CardTitle>What You'll Learn</CardTitle>
+                      <CardTitle>{t('courseDetail.whatYouLearn')}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2">
@@ -223,7 +225,7 @@ const CourseDetail = () => {
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Requirements</CardTitle>
+                      <CardTitle>{t('courseDetail.requirements')}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2">
@@ -245,10 +247,10 @@ const CourseDetail = () => {
               <TabsContent value="curriculum">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Course Curriculum</CardTitle>
+                    <CardTitle>{t('courseDetail.courseCurriculum')}</CardTitle>
                     <p className="text-muted-foreground">
-                      {course.curriculum.length} modules • {totalLessons}{" "}
-                      lessons
+                      {course.curriculum.length} {t('courseDetail.modules')} • {totalLessons}{" "}
+                      {t('courseDetail.lessons')}
                     </p>
                   </CardHeader>
                   <CardContent>
@@ -262,7 +264,7 @@ const CourseDetail = () => {
                             <div>
                               <div className="font-medium">{module.title}</div>
                               <div className="text-sm text-muted-foreground">
-                                {module.lessons.length} lessons
+                                {module.lessons.length} {t('courseDetail.lessons')}
                               </div>
                             </div>
                           </AccordionTrigger>
@@ -328,7 +330,7 @@ const CourseDetail = () => {
                               {course.instructor.rating}
                             </div>
                             <div className="text-sm text-muted-foreground">
-                              Rating
+                              {t('courseDetail.rating')}
                             </div>
                           </div>
                           <div className="text-center">
@@ -336,7 +338,7 @@ const CourseDetail = () => {
                               {course.instructor.students}
                             </div>
                             <div className="text-sm text-muted-foreground">
-                              Students
+                              {t('courseDetail.studentsLabel')}
                             </div>
                           </div>
                           <div className="text-center">
@@ -344,13 +346,13 @@ const CourseDetail = () => {
                               {course.instructor.experience}
                             </div>
                             <div className="text-sm text-muted-foreground">
-                              Experience
+                              {t('courseDetail.experience')}
                             </div>
                           </div>
                           <div className="text-center">
                             <div className="font-semibold">25</div>
                             <div className="text-sm text-muted-foreground">
-                              Courses
+                              {t('courseDetail.coursesLabel')}
                             </div>
                           </div>
                         </div>
@@ -367,12 +369,12 @@ const CourseDetail = () => {
               <TabsContent value="reviews">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Student Reviews</CardTitle>
+                    <CardTitle>{t('courseDetail.studentReviews')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-center py-8 text-muted-foreground">
                       <Star className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                      <p>Reviews will be displayed here</p>
+                      <p>{t('courseDetail.reviewsDisplay')}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -395,7 +397,7 @@ const CourseDetail = () => {
                     </span>
                   </div>
                   <Badge className="bg-green-100 text-green-800">
-                    50% OFF - Limited Time
+                    {t('courseDetail.limitedOffer')}
                   </Badge>
                 </div>
 
@@ -405,7 +407,7 @@ const CourseDetail = () => {
                     size="lg"
                     onClick={handleEnrollClick}
                   >
-                    Enroll Now
+                    {t('courseDetail.enrollNow')}
                   </Button>
                   <Button
                     variant="outline"
@@ -413,7 +415,7 @@ const CourseDetail = () => {
                     size="lg"
                     onClick={handleAddToCart}
                   >
-                    Add to Cart
+                    {t('courseDetail.addToCart')}
                   </Button>
                 </div>
 
@@ -438,12 +440,12 @@ const CourseDetail = () => {
                     onClick={handleShare}
                   >
                     <Share className="w-4 h-4" />
-                    <span>Share</span>
+                    <span>{t('courseDetail.share')}</span>
                   </Button>
                 </div>
 
                 <div className="text-center text-xs text-muted-foreground mt-4">
-                  30-day money-back guarantee
+                  {t('courseDetail.moneyBack')}
                 </div>
               </CardContent>
             </Card>
@@ -451,28 +453,28 @@ const CourseDetail = () => {
             {/* Course Info */}
             <Card>
               <CardHeader>
-                <CardTitle>Course Information</CardTitle>
+                <CardTitle>{t('courseDetail.courseInformation')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Level</span>
+                  <span className="text-muted-foreground">{t('courseDetail.level')}</span>
                   <span className="font-medium">{course.level}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Duration</span>
+                  <span className="text-muted-foreground">{t('courseDetail.duration')}</span>
                   <span className="font-medium">{course.duration}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Lessons</span>
+                  <span className="text-muted-foreground">{t('courseDetail.lessonsLabel')}</span>
                   <span className="font-medium">{totalLessons}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Language</span>
+                  <span className="text-muted-foreground">{t('courseDetail.language')}</span>
                   <span className="font-medium">{course.language}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Certificate</span>
-                  <span className="font-medium">Yes</span>
+                  <span className="text-muted-foreground">{t('courseDetail.certificate')}</span>
+                  <span className="font-medium">{t('courseDetail.yes')}</span>
                 </div>
               </CardContent>
             </Card>
