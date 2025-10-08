@@ -122,9 +122,8 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
 
     if (!formData.name || !formData.surname || !formData.courseId) {
       toast({
-        title: "Missing Information",
-        description:
-          "Please fill in all required fields (Name, Surname, and Course selection).",
+        title: t('form.missingInfo'),
+        description: t('form.fillRequired'),
         variant: "destructive",
       });
       return;
@@ -146,9 +145,8 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
       }
 
       toast({
-        title: "Inquiry Submitted!",
-        description:
-          "Thank you for your interest! We'll contact you soon with more information.",
+        title: t('form.inquirySubmitted'),
+        description: t('form.thankYou'),
       });
 
       setFormData({
@@ -164,10 +162,8 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
     } catch (error: any) {
       console.error("Submit error:", error);
       toast({
-        title: "Submission Failed",
-        description:
-          error.message ||
-          "There was an error submitting your inquiry. Please try again.",
+        title: t('form.submissionFailed'),
+        description: error.message || t('form.errorMessage'),
         variant: "destructive",
       });
     } finally {
@@ -289,13 +285,12 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
           {selectedCourseId?.includes("career-path") && (
             <div className="space-y-2 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
               <Label className="text-sm font-medium text-blue-700 dark:text-blue-300">
-                Selected Career Path
+                {t('form.selectedCareerPath')}
               </Label>
               <div className="text-sm text-blue-600 dark:text-blue-400">
                 <p className="font-semibold">{getSelectedCourseTitle()}</p>
                 <p className="text-xs mt-1">
-                  Includes {availableCourses.length} course
-                  {availableCourses.length !== 1 ? "s" : ""}
+                  {t('form.includesCourses')} {availableCourses.length} {availableCourses.length === 1 ? t('form.courseSingular') : t('form.courses')}
                 </p>
               </div>
               <input

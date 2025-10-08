@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface JuniorProgramFormProps {
   children: React.ReactNode;
@@ -21,6 +22,7 @@ export const JuniorProgramForm = ({ children }: JuniorProgramFormProps) => {
     phone: ''
   });
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -35,8 +37,8 @@ export const JuniorProgramForm = ({ children }: JuniorProgramFormProps) => {
     
     if (!formData.name || !formData.surname || !formData.email) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields (name, surname, and email).",
+        title: t('juniorForm.missingInfo'),
+        description: t('juniorForm.fillRequired'),
         variant: "destructive",
       });
       return;
@@ -52,16 +54,16 @@ export const JuniorProgramForm = ({ children }: JuniorProgramFormProps) => {
       if (error) {
         console.error('Error submitting junior inquiry:', error);
         toast({
-          title: "Error",
-          description: "Failed to submit your inquiry. Please try again.",
+          title: t('juniorForm.error'),
+          description: t('juniorForm.errorMessage'),
           variant: "destructive",
         });
         return;
       }
 
       toast({
-        title: "Success!",
-        description: "Your junior program inquiry has been submitted successfully. We'll contact you soon!",
+        title: t('juniorForm.success'),
+        description: t('juniorForm.successMessage'),
       });
 
       // Reset form and close dialog
@@ -70,8 +72,8 @@ export const JuniorProgramForm = ({ children }: JuniorProgramFormProps) => {
     } catch (error) {
       console.error('Error:', error);
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: t('juniorForm.error'),
+        description: t('juniorForm.errorMessage'),
         variant: "destructive",
       });
     } finally {
@@ -86,57 +88,57 @@ export const JuniorProgramForm = ({ children }: JuniorProgramFormProps) => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Join Junior Program</DialogTitle>
+          <DialogTitle>{t('juniorForm.title')}</DialogTitle>
           <DialogDescription>
-            Sign up for our weekend school program for juniors aged 12-18. Let's build the rockets of the future together!
+            {t('juniorForm.description')}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Name *</Label>
+              <Label htmlFor="name">{t('juniorForm.name')} *</Label>
               <Input
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                placeholder="Enter your name"
+                placeholder={t('juniorForm.namePlaceholder')}
                 required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="surname">Surname *</Label>
+              <Label htmlFor="surname">{t('juniorForm.surname')} *</Label>
               <Input
                 id="surname"
                 name="surname"
                 value={formData.surname}
                 onChange={handleInputChange}
-                placeholder="Enter your surname"
+                placeholder={t('juniorForm.surnamePlaceholder')}
                 required
               />
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email *</Label>
+            <Label htmlFor="email">{t('juniorForm.email')} *</Label>
             <Input
               id="email"
               name="email"
               type="email"
               value={formData.email}
               onChange={handleInputChange}
-              placeholder="Enter your email"
+              placeholder={t('juniorForm.emailPlaceholder')}
               required
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone">Phone Number</Label>
+            <Label htmlFor="phone">{t('juniorForm.phone')}</Label>
             <Input
               id="phone"
               name="phone"
               type="tel"
               value={formData.phone}
               onChange={handleInputChange}
-              placeholder="Enter your phone number"
+              placeholder={t('juniorForm.phonePlaceholder')}
             />
           </div>
           <div className="flex gap-3 pt-4">
@@ -146,7 +148,7 @@ export const JuniorProgramForm = ({ children }: JuniorProgramFormProps) => {
               onClick={() => setOpen(false)}
               className="flex-1"
             >
-              Cancel
+              {t('juniorForm.cancel')}
             </Button>
             <Button
               type="submit"
@@ -156,10 +158,10 @@ export const JuniorProgramForm = ({ children }: JuniorProgramFormProps) => {
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Submitting...
+                  {t('juniorForm.submitting')}
                 </>
               ) : (
-                'Join Program'
+                t('juniorForm.joinProgram')
               )}
             </Button>
           </div>

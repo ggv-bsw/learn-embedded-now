@@ -13,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface TrainerApplicationFormProps {
   open: boolean;
@@ -24,6 +25,7 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
   onOpenChange,
 }) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -53,8 +55,8 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
       !formData.whyTeach
     ) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields.",
+        title: t('trainerForm.missingInfo'),
+        description: t('trainerForm.fillRequired'),
         variant: "destructive",
       });
       return;
@@ -63,8 +65,8 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
     const experienceYearsNum = parseInt(formData.experienceYears);
     if (isNaN(experienceYearsNum) || experienceYearsNum < 0) {
       toast({
-        title: "Invalid Experience",
-        description: "Please enter a valid number of years of experience.",
+        title: t('trainerForm.invalidExperience'),
+        description: t('trainerForm.validYears'),
         variant: "destructive",
       });
       return;
@@ -91,9 +93,8 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
       }
 
       toast({
-        title: "Application Submitted!",
-        description:
-          "Thank you for your interest in becoming a trainer! We'll review your application and get back to you soon.",
+        title: t('trainerForm.success'),
+        description: t('trainerForm.successMessage'),
       });
 
       // Reset form and close dialog
@@ -112,10 +113,8 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
     } catch (error: any) {
       console.error("Submit error:", error);
       toast({
-        title: "Submission Failed",
-        description:
-          error.message ||
-          "There was an error submitting your application. Please try again.",
+        title: t('trainerForm.error'),
+        description: error.message || t('trainerForm.errorMessage'),
         variant: "destructive",
       });
     } finally {
@@ -128,25 +127,23 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
       <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">
-            Apply to Become a Trainer
+            {t('trainerForm.title')}
           </DialogTitle>
           <DialogDescription>
-            Join our team of expert trainers and help shape the next generation
-            of embedded systems engineers. Fill out the form below and we'll be
-            in touch soon.
+            {t('trainerForm.description')}
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-sm font-medium">
-              Full Name *
+              {t('trainerForm.fullName')} *
             </Label>
             <Input
               id="name"
               value={formData.name}
               onChange={(e) => handleInputChange("name", e.target.value)}
-              placeholder="Enter your full name"
+              placeholder={t('trainerForm.namePlaceholder')}
               disabled={loading}
               required
             />
@@ -155,14 +152,14 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="email" className="text-sm font-medium">
-                Email Address *
+                {t('trainerForm.email')} *
               </Label>
               <Input
                 id="email"
                 type="email"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
-                placeholder="your.email@example.com"
+                placeholder={t('trainerForm.emailPlaceholder')}
                 disabled={loading}
                 required
               />
@@ -170,14 +167,14 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
 
             <div className="space-y-2">
               <Label htmlFor="phone" className="text-sm font-medium">
-                Phone Number
+                {t('trainerForm.phone')}
               </Label>
               <Input
                 id="phone"
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
-                placeholder="+373 ________"
+                placeholder={t('trainerForm.phonePlaceholder')}
                 disabled={loading}
               />
             </div>
@@ -186,13 +183,13 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="expertise" className="text-sm font-medium">
-                Primary Expertise Area *
+                {t('trainerForm.expertise')} *
               </Label>
               <Input
                 id="expertise"
                 value={formData.expertise}
                 onChange={(e) => handleInputChange("expertise", e.target.value)}
-                placeholder="e.g., Embedded Systems, IoT"
+                placeholder={t('trainerForm.expertisePlaceholder')}
                 disabled={loading}
                 required
               />
@@ -200,7 +197,7 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
 
             <div className="space-y-2">
               <Label htmlFor="experienceYears" className="text-sm font-medium">
-                Years of Experience *
+                {t('trainerForm.experienceYears')} *
               </Label>
               <Input
                 id="experienceYears"
@@ -210,7 +207,7 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
                 onChange={(e) =>
                   handleInputChange("experienceYears", e.target.value)
                 }
-                placeholder="5"
+                placeholder={t('trainerForm.experienceYearsPlaceholder')}
                 disabled={loading}
                 required
               />
@@ -220,7 +217,7 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="linkedinUrl" className="text-sm font-medium">
-                LinkedIn Profile URL
+                {t('trainerForm.linkedinUrl')}
               </Label>
               <Input
                 id="linkedinUrl"
@@ -229,14 +226,14 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
                 onChange={(e) =>
                   handleInputChange("linkedinUrl", e.target.value)
                 }
-                placeholder="https://linkedin.com/in/..."
+                placeholder={t('trainerForm.linkedinPlaceholder')}
                 disabled={loading}
               />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="portfolioUrl" className="text-sm font-medium">
-                Portfolio/Website URL
+                {t('trainerForm.portfolioUrl')}
               </Label>
               <Input
                 id="portfolioUrl"
@@ -245,7 +242,7 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
                 onChange={(e) =>
                   handleInputChange("portfolioUrl", e.target.value)
                 }
-                placeholder="https://yourwebsite.com"
+                placeholder={t('trainerForm.portfolioPlaceholder')}
                 disabled={loading}
               />
             </div>
@@ -253,13 +250,13 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
 
           <div className="space-y-2">
             <Label htmlFor="bio" className="text-sm font-medium">
-              Professional Bio *
+              {t('trainerForm.bio')} *
             </Label>
             <Textarea
               id="bio"
               value={formData.bio}
               onChange={(e) => handleInputChange("bio", e.target.value)}
-              placeholder="Tell us about your professional background, achievements, and expertise..."
+              placeholder={t('trainerForm.bioPlaceholder')}
               rows={4}
               disabled={loading}
               required
@@ -268,13 +265,13 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
 
           <div className="space-y-2">
             <Label htmlFor="whyTeach" className="text-sm font-medium">
-              Why Do You Want to Teach? *
+              {t('trainerForm.whyTeach')} *
             </Label>
             <Textarea
               id="whyTeach"
               value={formData.whyTeach}
               onChange={(e) => handleInputChange("whyTeach", e.target.value)}
-              placeholder="Share your motivation for becoming a trainer and what you hope to bring to our students..."
+              placeholder={t('trainerForm.whyTeachPlaceholder')}
               rows={4}
               disabled={loading}
               required
@@ -289,7 +286,7 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
               disabled={loading}
               className="flex-1"
             >
-              Cancel
+              {t('trainerForm.cancel')}
             </Button>
             <Button
               type="submit"
@@ -307,12 +304,12 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Submitting...
+                  {t('trainerForm.submitting')}
                 </>
               ) : (
                 <>
                   <Send className="mr-2 h-4 w-4" />
-                  Submit Application
+                  {t('trainerForm.submit')}
                 </>
               )}
             </Button>

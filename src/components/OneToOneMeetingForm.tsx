@@ -13,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface OneToOneMeetingFormProps {
   open: boolean;
@@ -26,6 +27,7 @@ const OneToOneMeetingForm = ({
   trainerName,
 }: OneToOneMeetingFormProps) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -50,8 +52,8 @@ const OneToOneMeetingForm = ({
 
     if (!formData.name.trim() || !formData.email.trim()) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields (Name and Email).",
+        title: t('meetingForm.missingInfo'),
+        description: t('meetingForm.fillRequired'),
         variant: "destructive",
       });
       return;
@@ -72,8 +74,8 @@ const OneToOneMeetingForm = ({
       if (error) throw error;
 
       toast({
-        title: "Request Submitted!",
-        description: `Your one-to-one meeting request with ${trainerName} has been received. We'll contact you soon.`,
+        title: t('meetingForm.success'),
+        description: t('meetingForm.successMessage').replace('{trainer}', trainerName),
       });
 
       setFormData({
@@ -87,8 +89,8 @@ const OneToOneMeetingForm = ({
     } catch (error) {
       console.error("Error submitting meeting request:", error);
       toast({
-        title: "Submission Failed",
-        description: "There was an error submitting your request. Please try again.",
+        title: t('meetingForm.error'),
+        description: t('meetingForm.errorMessage'),
         variant: "destructive",
       });
     } finally {
@@ -101,24 +103,24 @@ const OneToOneMeetingForm = ({
       <DialogContent className="sm:max-w-[500px] bg-slate-800 border-slate-700">
         <DialogHeader>
           <DialogTitle className="text-white">
-            Request One-to-One Session
+            {t('meetingForm.title')}
           </DialogTitle>
           <DialogDescription className="text-gray-400">
-            Fill in your details to schedule a one-to-one meeting with {trainerName}.
+            {t('meetingForm.description')} {trainerName}.
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-white">
-              Name <span className="text-red-400">*</span>
+              {t('meetingForm.name')} <span className="text-red-400">*</span>
             </Label>
             <Input
               id="name"
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              placeholder="Your full name"
+              placeholder={t('meetingForm.namePlaceholder')}
               required
               className="bg-slate-900 border-slate-700 text-white placeholder:text-gray-500"
             />
@@ -126,7 +128,7 @@ const OneToOneMeetingForm = ({
 
           <div className="space-y-2">
             <Label htmlFor="email" className="text-white">
-              Email <span className="text-red-400">*</span>
+              {t('meetingForm.email')} <span className="text-red-400">*</span>
             </Label>
             <Input
               id="email"
@@ -134,7 +136,7 @@ const OneToOneMeetingForm = ({
               type="email"
               value={formData.email}
               onChange={handleInputChange}
-              placeholder="your.email@example.com"
+              placeholder={t('meetingForm.emailPlaceholder')}
               required
               className="bg-slate-900 border-slate-700 text-white placeholder:text-gray-500"
             />
@@ -142,7 +144,7 @@ const OneToOneMeetingForm = ({
 
           <div className="space-y-2">
             <Label htmlFor="phone" className="text-white">
-              Phone Number
+              {t('meetingForm.phone')}
             </Label>
             <Input
               id="phone"
@@ -150,35 +152,35 @@ const OneToOneMeetingForm = ({
               type="tel"
               value={formData.phone}
               onChange={handleInputChange}
-              placeholder="+1 234 567 8900"
+              placeholder={t('meetingForm.phonePlaceholder')}
               className="bg-slate-900 border-slate-700 text-white placeholder:text-gray-500"
             />
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="preferred_date" className="text-white">
-              Preferred Date/Time
+              {t('meetingForm.preferredDate')}
             </Label>
             <Input
               id="preferred_date"
               name="preferred_date"
               value={formData.preferred_date}
               onChange={handleInputChange}
-              placeholder="e.g., Next Monday afternoon"
+              placeholder={t('meetingForm.datePlaceholder')}
               className="bg-slate-900 border-slate-700 text-white placeholder:text-gray-500"
             />
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="message" className="text-white">
-              Message
+              {t('meetingForm.message')}
             </Label>
             <Textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              placeholder="Tell us about your learning goals or any specific topics you'd like to discuss..."
+              placeholder={t('meetingForm.messagePlaceholder')}
               className="bg-slate-900 border-slate-700 text-white placeholder:text-gray-500 min-h-[100px]"
             />
           </div>
@@ -191,7 +193,7 @@ const OneToOneMeetingForm = ({
               className="flex-1 border-slate-600 text-slate-900 hover:bg-slate-700"
               disabled={isSubmitting}
             >
-              Cancel
+              {t('meetingForm.cancel')}
             </Button>
             <Button
               type="submit"
@@ -201,10 +203,10 @@ const OneToOneMeetingForm = ({
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Submitting...
+                  {t('meetingForm.submitting')}
                 </>
               ) : (
-                "Request One-to-One"
+                t('meetingForm.requestButton')
               )}
             </Button>
           </div>
