@@ -11,7 +11,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 // Translation data
-const translations = {
+const translations: Record<Language, Record<string, string>> = {
   en: {
     // Navigation
     'nav.courses': 'Courses',
@@ -39,6 +39,20 @@ const translations = {
     'courses.description': 'Discover our most popular courses designed by industry experts',
     'courses.enrollNow': 'Enroll Now',
     'courses.viewAll': 'View All Courses',
+    'courses.allAvailable': 'All Courses Available',
+    'courses.masterEmbedded': 'Master Embedded',
+    'courses.systemsIoT': 'Systems & IoT',
+    'courses.discover': 'Discover comprehensive courses in embedded systems, IoT, and programming. Start your journey from beginner to professional level.',
+    'courses.searchPlaceholder': 'Search courses...',
+    'courses.category': 'Category:',
+    'courses.level': 'Level:',
+    'courses.found': 'Found',
+    'courses.course': 'Course',
+    'courses.courses': 'Courses',
+    'courses.clearFilters': 'Clear Filters',
+    'courses.noCourses': 'No courses found',
+    'courses.adjustSearch': 'Try adjusting your search criteria or browse all courses',
+    'courses.viewAllCourses': 'View All Courses',
     
     // Features
     'features.whyChoose': 'Why Choose Us?',
@@ -64,17 +78,50 @@ const translations = {
     'category.arduino': 'Arduino',
     'category.iot': 'IoT Systems',
     'category.automotive': 'Automotive',
+    'category.all': 'All',
     
     // Course Levels
     'level.beginner': 'Beginner',
     'level.intermediate': 'Intermediate',
     'level.advanced': 'Advanced',
+    'level.all': 'All',
     
     // Common
     'common.students': 'students',
     'common.weeks': 'weeks',
     'common.readMore': 'Read More',
     'common.learnMore': 'Learn More',
+    'common.home': 'Home',
+    'common.addToCart': 'Add to Cart',
+    'common.enrollNow': 'Enroll Now',
+    'common.inStock': 'In Stock',
+    'common.outOfStock': 'Out of Stock',
+    'common.reviews': 'reviews',
+    
+    // Professional Pack
+    'pack.title': 'Professional Pack',
+    'pack.careerPaths': 'Complete Career Paths',
+    'pack.description': 'Comprehensive learning tracks designed for specific engineering roles. Master multiple technologies in focused career paths.',
+    
+    // Footer
+    'footer.description': 'Empowering the next generation of embedded systems developers with practical, industry-focused education.',
+    'footer.courses': 'Courses',
+    'footer.company': 'Company',
+    'footer.resources': 'Developer Resources',
+    'footer.aboutUs': 'About Us',
+    'footer.contact': 'Contact',
+    'footer.blog': 'Blog',
+    'footer.careers': 'Careers',
+    'footer.docs': 'Documentation',
+    'footer.api': 'API Reference',
+    'footer.community': 'Community',
+    'footer.support': 'Support',
+    'footer.copyright': '2024 Embedded School. Open source education platform.',
+    'footer.operational': 'All systems operational',
+    'footer.arduinoProgramming': 'Arduino Programming',
+    'footer.embeddedC': 'Embedded C',
+    'footer.iotSystems': 'IoT Systems',
+    'footer.automotiveElectronics': 'Automotive Electronics',
   },
   ro: {
     // Navigation
@@ -103,6 +150,20 @@ const translations = {
     'courses.description': 'Descoperă cele mai populare cursuri create de experți din industrie',
     'courses.enrollNow': 'Înscrie-te Acum',
     'courses.viewAll': 'Vezi Toate Cursurile',
+    'courses.allAvailable': 'Toate Cursurile Disponibile',
+    'courses.masterEmbedded': 'Stăpânește Sistemele',
+    'courses.systemsIoT': 'Înglobate & IoT',
+    'courses.discover': 'Descoperă cursuri complete de sisteme înglobate, IoT și programare. Începe călătoria ta de la nivel începător la nivel profesional.',
+    'courses.searchPlaceholder': 'Caută cursuri...',
+    'courses.category': 'Categorie:',
+    'courses.level': 'Nivel:',
+    'courses.found': 'Găsite',
+    'courses.course': 'Curs',
+    'courses.courses': 'Cursuri',
+    'courses.clearFilters': 'Șterge Filtrele',
+    'courses.noCourses': 'Niciun curs găsit',
+    'courses.adjustSearch': 'Încearcă să ajustezi criteriile de căutare sau vezi toate cursurile',
+    'courses.viewAllCourses': 'Vezi Toate Cursurile',
     
     // Features
     'features.whyChoose': 'De Ce Să Ne Alegi?',
@@ -128,17 +189,50 @@ const translations = {
     'category.arduino': 'Arduino',
     'category.iot': 'Sisteme IoT',
     'category.automotive': 'Automotive',
+    'category.all': 'Toate',
     
     // Course Levels
     'level.beginner': 'Începător',
     'level.intermediate': 'Intermediar',
     'level.advanced': 'Avansat',
+    'level.all': 'Toate',
     
     // Common
     'common.students': 'studenți',
     'common.weeks': 'săptămâni',
     'common.readMore': 'Citește Mai Mult',
     'common.learnMore': 'Află Mai Mult',
+    'common.home': 'Acasă',
+    'common.addToCart': 'Adaugă în Coș',
+    'common.enrollNow': 'Înscrie-te Acum',
+    'common.inStock': 'În Stoc',
+    'common.outOfStock': 'Stoc Epuizat',
+    'common.reviews': 'recenzii',
+    
+    // Professional Pack
+    'pack.title': 'Pachet Profesional',
+    'pack.careerPaths': 'Trasee de Carieră Complete',
+    'pack.description': 'Trasee de învățare cuprinzătoare concepute pentru roluri specifice de inginerie. Stăpânește tehnologii multiple în trasee de carieră focalizate.',
+    
+    // Footer
+    'footer.description': 'Împuternicim noua generație de dezvoltatori de sisteme înglobate cu educație practică, orientată către industrie.',
+    'footer.courses': 'Cursuri',
+    'footer.company': 'Companie',
+    'footer.resources': 'Resurse pentru Dezvoltatori',
+    'footer.aboutUs': 'Despre Noi',
+    'footer.contact': 'Contact',
+    'footer.blog': 'Blog',
+    'footer.careers': 'Cariere',
+    'footer.docs': 'Documentație',
+    'footer.api': 'Referință API',
+    'footer.community': 'Comunitate',
+    'footer.support': 'Suport',
+    'footer.copyright': '2024 Embedded School. Platformă de educație open source.',
+    'footer.operational': 'Toate sistemele operaționale',
+    'footer.arduinoProgramming': 'Programare Arduino',
+    'footer.embeddedC': 'C Înglobat',
+    'footer.iotSystems': 'Sisteme IoT',
+    'footer.automotiveElectronics': 'Electronică Auto',
   },
   ru: {
     // Navigation
@@ -167,6 +261,20 @@ const translations = {
     'courses.description': 'Откройте для себя наши самые популярные курсы, созданные отраслевыми экспертами',
     'courses.enrollNow': 'Записаться Сейчас',
     'courses.viewAll': 'Посмотреть Все Курсы',
+    'courses.allAvailable': 'Все Доступные Курсы',
+    'courses.masterEmbedded': 'Освойте Встраиваемые',
+    'courses.systemsIoT': 'Системы и IoT',
+    'courses.discover': 'Откройте для себя полные курсы по встраиваемым системам, IoT и программированию. Начните свой путь от новичка до профессионального уровня.',
+    'courses.searchPlaceholder': 'Поиск курсов...',
+    'courses.category': 'Категория:',
+    'courses.level': 'Уровень:',
+    'courses.found': 'Найдено',
+    'courses.course': 'Курс',
+    'courses.courses': 'Курсы',
+    'courses.clearFilters': 'Очистить Фильтры',
+    'courses.noCourses': 'Курсы не найдены',
+    'courses.adjustSearch': 'Попробуйте изменить критерии поиска или просмотрите все курсы',
+    'courses.viewAllCourses': 'Посмотреть Все Курсы',
     
     // Features
     'features.whyChoose': 'Почему Мы?',
@@ -192,17 +300,50 @@ const translations = {
     'category.arduino': 'Arduino',
     'category.iot': 'IoT Системы',
     'category.automotive': 'Автомобильные',
+    'category.all': 'Все',
     
     // Course Levels
     'level.beginner': 'Начинающий',
     'level.intermediate': 'Средний',
     'level.advanced': 'Продвинутый',
+    'level.all': 'Все',
     
     // Common
     'common.students': 'студенты',
     'common.weeks': 'недели',
     'common.readMore': 'Читать Далее',
     'common.learnMore': 'Узнать Больше',
+    'common.home': 'Главная',
+    'common.addToCart': 'Добавить в Корзину',
+    'common.enrollNow': 'Записаться Сейчас',
+    'common.inStock': 'В Наличии',
+    'common.outOfStock': 'Нет в Наличии',
+    'common.reviews': 'отзывы',
+    
+    // Professional Pack
+    'pack.title': 'Профессиональный Пакет',
+    'pack.careerPaths': 'Полные Карьерные Пути',
+    'pack.description': 'Всеобъемлющие учебные треки, разработанные для конкретных инженерных ролей. Освойте несколько технологий в целенаправленных карьерных путях.',
+    
+    // Footer
+    'footer.description': 'Расширяем возможности следующего поколения разработчиков встраиваемых систем с практическим, ориентированным на отрасль образованием.',
+    'footer.courses': 'Курсы',
+    'footer.company': 'Компания',
+    'footer.resources': 'Ресурсы для Разработчиков',
+    'footer.aboutUs': 'О Нас',
+    'footer.contact': 'Контакты',
+    'footer.blog': 'Блог',
+    'footer.careers': 'Карьера',
+    'footer.docs': 'Документация',
+    'footer.api': 'Справочник API',
+    'footer.community': 'Сообщество',
+    'footer.support': 'Поддержка',
+    'footer.copyright': '2024 Embedded School. Образовательная платформа с открытым исходным кодом.',
+    'footer.operational': 'Все системы работают',
+    'footer.arduinoProgramming': 'Программирование Arduino',
+    'footer.embeddedC': 'Встраиваемый C',
+    'footer.iotSystems': 'IoT Системы',
+    'footer.automotiveElectronics': 'Автомобильная Электроника',
   },
 };
 

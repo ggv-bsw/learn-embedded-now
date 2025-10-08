@@ -1,9 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Code, Cpu, Wifi, Zap } from "lucide-react";
-
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   return (
     <footer className="py-12 bg-slate-950 border-t border-slate-800">
       <div className="container mx-auto px-4">
@@ -18,13 +20,12 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-400 mb-4">
-              Empowering the next generation of embedded systems developers with
-              practical, industry-focused education.
+              {t('footer.description')}
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 text-white">Courses</h4>
+            <h4 className="font-semibold mb-3 text-white">{t('footer.courses')}</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <Link
@@ -32,7 +33,7 @@ const Footer = () => {
                   className="hover:text-blue-400 transition-colors flex items-center"
                 >
                   <Cpu className="w-3 h-3 mr-2" />
-                  Arduino Programming
+                  {t('footer.arduinoProgramming')}
                 </Link>
               </li>
               <li>
@@ -41,7 +42,7 @@ const Footer = () => {
                   className="hover:text-blue-400 transition-colors flex items-center"
                 >
                   <Code className="w-3 h-3 mr-2" />
-                  Embedded C
+                  {t('footer.embeddedC')}
                 </Link>
               </li>
               <li>
@@ -50,7 +51,7 @@ const Footer = () => {
                   className="hover:text-blue-400 transition-colors flex items-center"
                 >
                   <Wifi className="w-3 h-3 mr-2" />
-                  IoT Systems
+                  {t('footer.iotSystems')}
                 </Link>
               </li>
               <li>
@@ -59,21 +60,21 @@ const Footer = () => {
                   className="hover:text-blue-400 transition-colors flex items-center"
                 >
                   <Zap className="w-3 h-3 mr-2" />
-                  Automotive Electronics
+                  {t('footer.automotiveElectronics')}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 text-white">Company</h4>
+            <h4 className="font-semibold mb-3 text-white">{t('footer.company')}</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <Link
                   to="/about"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  About Us
+                  {t('footer.aboutUs')}
                 </Link>
               </li>
               <li>
@@ -81,7 +82,7 @@ const Footer = () => {
                   to="/contact"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Contact
+                  {t('footer.contact')}
                 </Link>
               </li>
               <li>
@@ -89,7 +90,7 @@ const Footer = () => {
                   to="/blog"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Blog
+                  {t('footer.blog')}
                 </Link>
               </li>
               <li>
@@ -97,7 +98,7 @@ const Footer = () => {
                   to="/careers"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Careers
+                  {t('footer.careers')}
                 </Link>
               </li>
             </ul>
@@ -105,7 +106,7 @@ const Footer = () => {
 
           <div>
             <h4 className="font-semibold mb-3 text-white">
-              Developer Resources
+              {t('footer.resources')}
             </h4>
             <ul className="space-y-2 text-gray-400">
               <li>
@@ -113,7 +114,7 @@ const Footer = () => {
                   to="/docs"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Documentation
+                  {t('footer.docs')}
                 </Link>
               </li>
               <li>
@@ -121,7 +122,7 @@ const Footer = () => {
                   to="/api"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  API Reference
+                  {t('footer.api')}
                 </Link>
               </li>
               <li>
@@ -129,7 +130,7 @@ const Footer = () => {
                   to="/community"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Community
+                  {t('footer.community')}
                 </Link>
               </li>
               <li>
@@ -137,7 +138,7 @@ const Footer = () => {
                   to="/support"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Support
+                  {t('footer.support')}
                 </Link>
               </li>
             </ul>
@@ -147,12 +148,12 @@ const Footer = () => {
         <div className="border-t border-slate-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-500 text-sm">
-              © 2024 Embedded School. Open source education platform.
+              © {t('footer.copyright')}
             </p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
               <div className="flex items-center space-x-1 text-gray-400">
                 <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span className="text-xs">All systems operational</span>
+                <span className="text-xs">{t('footer.operational')}</span>
               </div>
             </div>
           </div>
