@@ -3,6 +3,8 @@ import courseIot from "@/assets/course-iot.jpg";
 import courseEmbeddedC from "@/assets/course-embedded-c.jpg";
 import coursePython from "@/assets/course-python.jpg";
 import courseCpp from "@/assets/course-cpp.jpg";
+import coursePcbDesign from "@/assets/course-pcb-design.jpg";
+import courseSoftwareTesting from "@/assets/course-software-testing-automotive.jpg";
 
 export const featuredCourses = [
   {
@@ -2115,6 +2117,340 @@ export const featuredCourses = [
       "Computer with 16GB+ RAM recommended",
       "Familiarity with command line",
       "Strong problem-solving skills",
+    ],
+  },
+  {
+    id: "pcb-design-fundamentals",
+    title: "PCB Design Fundamentals",
+    subtitle:
+      "Master the essentials of printed circuit board design from schematic capture to final fabrication",
+    description:
+      "Learn to design professional PCBs using industry-standard tools. This comprehensive course covers schematic design, component selection, PCB layout, signal integrity, power distribution, and manufacturing preparation. Build real-world projects from simple boards to complex multi-layer designs.",
+    image: coursePcbDesign,
+    price: 249,
+    originalPrice: 349,
+    duration: "8 weeks",
+    students: 18,
+    rating: 4.9,
+    totalRatings: 145,
+    level: "Intermediate" as const,
+    category: "Hardware",
+    language: "English",
+    lastUpdated: "October 2025",
+    instructor: {
+      name: "Elena Popescu",
+      title: "Hardware Design Engineer",
+      experience: "10+ years",
+      students: 92,
+      rating: 4.9,
+      image:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+      bio: "Hardware design specialist with extensive experience in PCB design for consumer electronics and industrial applications. Has designed over 200 successful products and enjoys teaching practical PCB design techniques.",
+    },
+    curriculum: [
+      {
+        title: "Week 1-2: Schematic Design Fundamentals",
+        lessons: [
+          {
+            title: "Introduction to PCB design workflow and tools (KiCad/Altium)",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Component selection and schematic symbol creation",
+            duration: "120 min",
+            type: "hands-on",
+          },
+          {
+            title: "Schematic capture best practices and design rules",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Project: Design a basic power supply schematic",
+            duration: "180 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Week 3-4: PCB Layout Basics",
+        lessons: [
+          {
+            title: "PCB stackup and layer configuration",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Component placement strategies and design for manufacturing",
+            duration: "120 min",
+            type: "hands-on",
+          },
+          {
+            title: "Routing techniques and trace width calculations",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Layout a 2-layer Arduino shield",
+            duration: "180 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "Week 5-6: Advanced PCB Techniques",
+        lessons: [
+          {
+            title: "Signal integrity and high-speed design considerations",
+            duration: "120 min",
+            type: "video",
+          },
+          {
+            title: "Power distribution networks and ground planes",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "EMC/EMI design guidelines",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Project: Design a multi-layer IoT sensor board",
+            duration: "240 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Week 7-8: Manufacturing and Final Project",
+        lessons: [
+          {
+            title: "Design for manufacturing (DFM) and assembly (DFA)",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Generating fabrication files and BOM",
+            duration: "90 min",
+            type: "hands-on",
+          },
+          {
+            title: "PCB testing and debugging techniques",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Capstone: Complete 4-layer embedded system PCB",
+            duration: "360 min",
+            type: "capstone",
+          },
+        ],
+      },
+    ],
+    features: [
+      "Industry-standard PCB design tools",
+      "Real hardware projects and prototypes",
+      "Design rule checking and validation",
+      "Manufacturing file generation",
+      "Signal integrity analysis",
+      "Professional PCB portfolio pieces",
+      "Certificate of completion",
+    ],
+    requirements: [
+      "Basic electronics knowledge",
+      "Understanding of circuit theory",
+      "Computer capable of running PCB design software",
+      "Multimeter and basic testing equipment (recommended)",
+    ],
+    outcomes: [
+      "Design professional multi-layer PCBs",
+      "Master schematic capture and component selection",
+      "Understand signal integrity and EMI considerations",
+      "Generate manufacturing-ready design files",
+      "Apply DFM and DFA principles",
+      "Build a portfolio of real PCB designs",
+    ],
+  },
+  {
+    id: "software-testing-automotive-qa",
+    title: "Software Testing & Automotive QA",
+    subtitle:
+      "Comprehensive testing methodologies for automotive software and embedded systems with industry standards",
+    description:
+      "Master software testing principles specifically for automotive applications. Learn test automation, ISO 26262 functional safety, AUTOSAR testing, HIL/SIL testing, and automotive-specific quality assurance processes. Gain hands-on experience with industry-standard testing tools and frameworks.",
+    image: courseSoftwareTesting,
+    price: 299,
+    originalPrice: 429,
+    duration: "10 weeks",
+    students: 22,
+    rating: 4.9,
+    totalRatings: 168,
+    level: "Advanced" as const,
+    category: "Testing",
+    language: "English",
+    lastUpdated: "October 2025",
+    instructor: {
+      name: "Michael Schmidt",
+      title: "Automotive QA Lead",
+      experience: "12+ years",
+      students: 115,
+      rating: 4.9,
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      bio: "Automotive software testing expert with extensive experience at leading automotive OEMs. Specialized in functional safety, AUTOSAR, and automated testing frameworks. Has led QA teams for multiple production vehicle programs.",
+    },
+    curriculum: [
+      {
+        title: "Week 1-2: Fundamentals of Automotive Software Testing",
+        lessons: [
+          {
+            title: "Automotive software architecture and V-model",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Introduction to ISO 26262 functional safety",
+            duration: "120 min",
+            type: "video",
+          },
+          {
+            title: "Test planning and requirement-based testing",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Lab: Create test plans for an ECU module",
+            duration: "180 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "Week 3-4: Test Automation & Tools",
+        lessons: [
+          {
+            title: "Test automation frameworks (pytest, Robot Framework)",
+            duration: "120 min",
+            type: "video",
+          },
+          {
+            title: "CANoe/CANalyzer for vehicle network testing",
+            duration: "120 min",
+            type: "hands-on",
+          },
+          {
+            title: "CI/CD pipelines for automotive software",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Project: Automated CAN bus testing suite",
+            duration: "240 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Week 5-6: HIL/SIL Testing",
+        lessons: [
+          {
+            title: "Hardware-in-the-Loop (HIL) testing principles",
+            duration: "120 min",
+            type: "video",
+          },
+          {
+            title: "Software-in-the-Loop (SIL) and Model-in-the-Loop (MIL)",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "dSPACE and Vector HIL systems",
+            duration: "120 min",
+            type: "hands-on",
+          },
+          {
+            title: "Lab: Set up and execute HIL test scenarios",
+            duration: "240 min",
+            type: "hands-on",
+          },
+        ],
+      },
+      {
+        title: "Week 7-8: AUTOSAR Testing & Integration",
+        lessons: [
+          {
+            title: "AUTOSAR architecture and component testing",
+            duration: "120 min",
+            type: "video",
+          },
+          {
+            title: "BSW module testing strategies",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "RTE and SWC integration testing",
+            duration: "120 min",
+            type: "video",
+          },
+          {
+            title: "Project: AUTOSAR stack validation suite",
+            duration: "300 min",
+            type: "project",
+          },
+        ],
+      },
+      {
+        title: "Week 9-10: Advanced Topics & Capstone",
+        lessons: [
+          {
+            title: "Cybersecurity testing for automotive systems",
+            duration: "120 min",
+            type: "video",
+          },
+          {
+            title: "OTA update validation and testing",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Performance and stress testing for ECUs",
+            duration: "90 min",
+            type: "video",
+          },
+          {
+            title: "Capstone: Complete test suite for ADAS feature",
+            duration: "480 min",
+            type: "capstone",
+          },
+        ],
+      },
+    ],
+    features: [
+      "Industry-standard testing tools and frameworks",
+      "ISO 26262 functional safety coverage",
+      "Real automotive ECU test scenarios",
+      "HIL/SIL simulation environment access",
+      "AUTOSAR testing methodology",
+      "Test automation and CI/CD integration",
+      "Professional certification preparation",
+    ],
+    requirements: [
+      "Strong software development background",
+      "Basic understanding of automotive systems",
+      "Familiarity with C/C++ programming",
+      "Knowledge of embedded systems (recommended)",
+      "Experience with testing concepts",
+    ],
+    outcomes: [
+      "Design comprehensive automotive test strategies",
+      "Implement automated testing frameworks",
+      "Execute HIL/SIL testing scenarios",
+      "Apply ISO 26262 safety testing principles",
+      "Validate AUTOSAR-based software components",
+      "Lead automotive QA projects and teams",
     ],
   },
 ];
