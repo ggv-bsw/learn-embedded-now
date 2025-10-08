@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Language = 'en' | 'ro';
+type Language = 'en' | 'ro' | 'ru';
 
 interface LanguageContextType {
   language: Language;
@@ -140,6 +140,70 @@ const translations = {
     'common.readMore': 'Citește Mai Mult',
     'common.learnMore': 'Află Mai Mult',
   },
+  ru: {
+    // Navigation
+    'nav.courses': 'Курсы',
+    'nav.about': 'О нас',
+    'nav.trainers': 'Инструкторы',
+    'nav.blog': 'Блог',
+    'nav.hardware': 'Оборудование',
+    'nav.contact': 'Контакты',
+    'nav.login': 'Войти',
+    'nav.getStarted': 'Начать',
+    
+    // Hero Section
+    'hero.title': 'Фабрика Инженеров - Школа Встраиваемых Систем',
+    'hero.subtitle': 'Построй Свое Будущее',
+    'hero.description': 'Присоединяйтесь к тысячам студентов, осваивающих передовые технологии через практические курсы по IoT, встраиваемым системам и многому другому.',
+    'hero.startLearning': 'Начать Обучение Сегодня',
+    'hero.watchDemo': 'Смотреть Демо',
+    'hero.satisfaction': 'Уровень Удовлетворенности',
+    'hero.activeStudents': 'Активные Студенты',
+    'hero.expertCourses': 'Экспертные Курсы',
+    
+    // Featured Courses
+    'courses.featured': 'Рекомендуемые Курсы',
+    'courses.mostPopular': 'Самые Популярные Курсы',
+    'courses.description': 'Откройте для себя наши самые популярные курсы, созданные отраслевыми экспертами',
+    'courses.enrollNow': 'Записаться Сейчас',
+    'courses.viewAll': 'Посмотреть Все Курсы',
+    
+    // Features
+    'features.whyChoose': 'Почему Мы?',
+    'features.title': 'Платформа Обучения Промышленных Стандартов',
+    'features.description': 'Овладейте встраиваемыми системами с нашей всесторонней практической программой, разработанной профессионалами отрасли. От базовых концепций до продвинутых реальных приложений.',
+    'features.handsOn': 'Практические Проекты',
+    'features.handsOnDesc': 'Создавайте реальные проекты встраиваемых систем с первого дня',
+    'features.industryTools': 'Промышленные Инструменты',
+    'features.industryToolsDesc': 'Учитесь с теми же инструментами, которые используют профессионалы',
+    'features.expertInstructors': 'Экспертные Инструкторы',
+    'features.expertInstructorsDesc': 'Учитесь у опытных инженеров встраиваемых систем',
+    'features.certification': 'Промышленная Сертификация',
+    'features.certificationDesc': 'Получите признанные сертификаты, которые ценят работодатели. Все курсы соответствуют отраслевым стандартам и лучшим практикам.',
+    
+    // Stats
+    'stats.activeStudents': 'Активные Студенты',
+    'stats.coursesAvailable': 'Доступные Курсы',
+    'stats.averageRating': 'Средний Рейтинг',
+    'stats.successRate': 'Уровень Успеха',
+    
+    // Course Categories
+    'category.embeddedC': 'Встраиваемый C',
+    'category.arduino': 'Arduino',
+    'category.iot': 'IoT Системы',
+    'category.automotive': 'Автомобильные',
+    
+    // Course Levels
+    'level.beginner': 'Начинающий',
+    'level.intermediate': 'Средний',
+    'level.advanced': 'Продвинутый',
+    
+    // Common
+    'common.students': 'студенты',
+    'common.weeks': 'недели',
+    'common.readMore': 'Читать Далее',
+    'common.learnMore': 'Узнать Больше',
+  },
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -147,7 +211,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ro')) {
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ro' || savedLanguage === 'ru')) {
       setLanguage(savedLanguage);
     }
   }, []);

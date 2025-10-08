@@ -14,6 +14,7 @@ const LanguageSelector = () => {
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
     { code: 'ro', name: 'Română', flag: '🇷🇴' },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
   ];
 
   const currentLanguage = languages.find(lang => lang.code === language);
@@ -31,7 +32,7 @@ const LanguageSelector = () => {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => setLanguage(lang.code as 'en' | 'ro')}
+            onClick={() => setLanguage(lang.code as 'en' | 'ro' | 'ru')}
             className="text-gray-300 hover:text-white hover:bg-slate-700 cursor-pointer"
           >
             <span className="mr-2">{lang.flag}</span>
