@@ -15,7 +15,7 @@ import {
   Cpu,
 } from "lucide-react";
 import AnimatedParticles from "@/components/animated-particles";
-import { featuredCourses } from "@/testData/featuredCourses";
+import { getFeaturedCourses } from "@/testData/featuredCourses";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
 import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -23,6 +23,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const Courses = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const featuredCourses = getFeaturedCourses(t);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedLevel, setSelectedLevel] = useState("All");

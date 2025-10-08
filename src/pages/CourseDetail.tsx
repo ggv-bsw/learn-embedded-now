@@ -23,7 +23,7 @@ import {
   Heart,
   User,
 } from "lucide-react";
-import { featuredCourses } from "@/testData/featuredCourses";
+import { getFeaturedCourses } from "@/testData/featuredCourses";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
@@ -33,6 +33,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const CourseDetail = () => {
   const { courseId } = useParams();
   const { t } = useLanguage();
+  const featuredCourses = getFeaturedCourses(t);
   // const navigate = useNavigate();
   const { addToCart } = useCart();
   // const [isWishlisted, setIsWishlisted] = useState(false);

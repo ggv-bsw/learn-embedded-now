@@ -2,10 +2,11 @@ import { Badge } from "@/components/ui/badge";
 import { Code, Cpu, Wifi, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { featuredCourses } from "@/testData/featuredCourses";
+import { getFeaturedCourses } from "@/testData/featuredCourses";
 
 const Footer = () => {
   const { t } = useLanguage();
+  const featuredCourses = getFeaturedCourses(t);
   
   return (
     <footer className="py-12 bg-slate-950 border-t border-slate-800">

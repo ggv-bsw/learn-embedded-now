@@ -24,11 +24,12 @@ import { Link } from "react-router-dom";
 import VideoDemo from "@/components/VideoDemo";
 import juniorChessRobot from "@/assets/junior-chess-robot.jpg";
 import AnimatedParticles from "@/components/animated-particles";
-import { featuredCourses } from "@/testData/featuredCourses";
+import { getFeaturedCourses } from "@/testData/featuredCourses";
 import Footer from "@/components/footer";
 
 const Index = () => {
   const { t } = useLanguage();
+  const featuredCourses = getFeaturedCourses(t);
   const [showInquiryForm, setShowInquiryForm] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
