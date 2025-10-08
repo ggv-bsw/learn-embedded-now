@@ -1,7 +1,20 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.57.3';
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+
+// Create Supabase client with service role key to bypass RLS
+const supabaseAdmin = createClient(
+  Deno.env.get('SUPABASE_URL') ?? '',
+  Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
+  {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  }
+);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -30,7 +43,51 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { customerName, customerEmail, customerPhone, items, totalPrice }: OrderNotificationRequest = await req.json();
 
-    console.log("Processing order notification for:", customerEmail);
+    console.log("Processing order for:", customerEmail);
+
+    // Step 1: Insert order into database using service role (bypasses RLS)
+    const { data: orderData, error: orderError } = await supabaseAdmin
+      .from('orders')
+      .insert({
+        customer_name: customerName,
+        customer_email: customerEmail,
+        customer_phone: customerPhone,
+        total_price: totalPrice,
+        status: 'pending'
+      })
+      .select()
+      .single();
+
+    if (orderError) {
+      console.error('Error creating order:', orderError);
+      throw new Error(`Failed to create order: ${orderError.message}`);
+    }
+
+    console.log("Order created with ID:", orderData.id);
+
+    // Step 2: Insert order items
+    const orderItems = items.map(item => ({
+      order_id: orderData.id,
+      product_id: item.name, // Using name as ID since we don't have product IDs
+      product_name: item.name,
+      product_image: '', // Frontend doesn't send image
+      quantity: item.quantity,
+      unit_price: item.price,
+      total_price: item.price * item.quantity
+    }));
+
+    const { error: itemsError } = await supabaseAdmin
+      .from('order_items')
+      .insert(orderItems);
+
+    if (itemsError) {
+      console.error('Error creating order items:', itemsError);
+      throw new Error(`Failed to create order items: ${itemsError.message}`);
+    }
+
+    console.log("Order items created successfully");
+
+    // Step 3: Send notification emails
 
     const itemsList = items.map(item => 
       `<li>${item.name} - Quantity: ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}</li>`
@@ -94,6 +151,8 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Business notification email sent successfully:", businessEmailResponse);
 
     return new Response(JSON.stringify({ 
+      success: true,
+      orderId: orderData.id,
       customer: customerEmailResponse, 
       business: businessEmailResponse 
     }), {
