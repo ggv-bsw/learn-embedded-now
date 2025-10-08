@@ -331,7 +331,7 @@ const Trainers = () => {
       </section>
 
       {/* Become a Trainer Section */}
-      <section className="py-20 bg-slate-800 relative overflow-hidden">
+      <section id="become-a-trainer" className="py-20 bg-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <AnimatedParticles />
         </div>

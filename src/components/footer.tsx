@@ -74,7 +74,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/careers"
+                  to="/trainers#become-a-trainer"
                   className="hover:text-blue-400 transition-colors"
                 >
                   {t('footer.careers')}
