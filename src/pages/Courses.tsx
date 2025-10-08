@@ -34,26 +34,53 @@ const Courses = () => {
 
   const categories = [
     "All",
-    "Arduino",
-    "Embedded C",
+    "Python",
+    "C++",
+    "Hardware",
+    "Testing",
+    "Embedded Systems",
     "IoT",
     "Automotive",
-    "Mobile Development",
-    "Data Engineering",
   ];
+
   const levels = ["All", "Beginner", "Intermediate", "Advanced"];
 
   const filteredCourses = featuredCourses.filter((course) => {
     const matchesSearch =
       course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      course.description.toLowerCase().includes(searchQuery.toLowerCase());
+      course.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.subtitle.toLowerCase().includes(searchQuery.toLowerCase());
+
     const matchesCategory =
-      selectedCategory === "All" || course.category === selectedCategory;
+      selectedCategory === "All" ||
+      course.category === selectedCategory ||
+      (selectedCategory === "Embedded Systems" &&
+        ["C++", "Hardware"].includes(course.category)) ||
+      (selectedCategory === "IoT" &&
+        ["Python", "Hardware"].includes(course.category)) ||
+      (selectedCategory === "Automotive" && course.category === "Testing");
+
     const matchesLevel =
       selectedLevel === "All" || course.level === selectedLevel;
 
     return matchesSearch && matchesCategory && matchesLevel;
   });
+
+  const getCategoryColor = (category: string) => {
+    const colors = {
+      Python: "bg-green-500/20 text-green-400 border-green-500/30",
+      "C++": "bg-blue-500/20 text-blue-400 border-blue-500/30",
+      Hardware: "bg-orange-500/20 text-orange-400 border-orange-500/30",
+      Testing: "bg-purple-500/20 text-purple-400 border-purple-500/30",
+      "Embedded Systems": "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
+      IoT: "bg-pink-500/20 text-pink-400 border-pink-500/30",
+      Automotive: "bg-red-500/20 text-red-400 border-red-500/30",
+    };
+    return (
+      colors[category as keyof typeof colors] ||
+      "bg-gray-500/20 text-gray-400 border-gray-500/30"
+    );
+  };
 
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
@@ -122,7 +149,13 @@ const Courses = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Users className="w-5 h-5 text-green-400" />
-                <span className="text-white font-semibold">250+</span>
+                <span className="text-white font-semibold">
+                  {featuredCourses.reduce(
+                    (acc, course) => acc + course.students,
+                    0
+                  )}
+                  +
+                </span>
                 <span className="text-gray-400">Students</span>
               </div>
               <div className="flex items-center space-x-2">
@@ -138,7 +171,7 @@ const Courses = () => {
                 <div className="relative mb-6">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <Input
-                    placeholder="Search courses..."
+                    placeholder="Search courses by title, description, or keywords..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-10 bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-blue-500"
@@ -165,7 +198,7 @@ const Courses = () => {
                           className={`cursor-pointer transition-all duration-200 ${
                             selectedCategory === category
                               ? "bg-blue-600 hover:bg-blue-700 text-white border-blue-600"
-                              : "border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500"
+                              : `${getCategoryColor(category)} hover:opacity-80`
                           }`}
                           onClick={() => setSelectedCategory(category)}
                         >
@@ -229,7 +262,7 @@ const Courses = () => {
               searchQuery) && (
               <Button
                 variant="outline"
-                className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:border-slate-500"
+                className="border-slate-600 text-slate-900 hover:border-slate-500"
                 onClick={() => {
                   setSelectedCategory("All");
                   setSelectedLevel("All");
@@ -266,18 +299,24 @@ const Courses = () => {
                     >
                       {course.level}
                     </Badge>
+                    <Badge
+                      className={`absolute top-3 left-3 ${getCategoryColor(
+                        course.category
+                      )}`}
+                    >
+                      {course.category}
+                    </Badge>
                   </div>
 
                   <CardContent className="p-6">
-                    <Link
-                      key={course.id}
-                      className="block"
-                      to={`/courses/${course.id}`}
-                    >
+                    <Link to={`/courses/${course.id}`} className="block">
                       <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                         {course.title}
                       </h3>
                     </Link>
+                    <p className="text-gray-400 mb-2 text-sm">
+                      {course.subtitle}
+                    </p>
                     <p className="text-gray-400 mb-4 line-clamp-2">
                       {course.description}
                     </p>
@@ -286,7 +325,7 @@ const Courses = () => {
                       <div className="flex items-center space-x-4">
                         <span className="flex items-center">
                           <Users className="w-4 h-4 mr-1" />
-                          {course.students.toLocaleString()}
+                          {course.students}
                         </span>
                         <span className="flex items-center">
                           <Star className="w-4 h-4 mr-1 text-yellow-400" />
@@ -301,6 +340,11 @@ const Courses = () => {
                         <span className="text-2xl font-bold text-white">
                           ${course.price}
                         </span>
+                        {course.originalPrice && (
+                          <span className="text-gray-400 line-through text-sm ml-2">
+                            ${course.originalPrice}
+                          </span>
+                        )}
                       </div>
                       <Button
                         className="bg-blue-600 hover:bg-blue-700 text-white"
@@ -379,7 +423,8 @@ const Courses = () => {
               <CardContent className="pt-0">
                 <p className="text-gray-400 mb-6 text-center leading-relaxed">
                   Complete path from C++ fundamentals to hardware design.
-                  Includes Software Testing & Automotive QA and PCB Design courses.
+                  Includes Software Testing & Automotive QA and PCB Design
+                  courses.
                 </p>
 
                 <div className="space-y-3 mb-6">
@@ -401,9 +446,7 @@ const Courses = () => {
 
                 <div className="text-center mb-6">
                   <div className="text-3xl font-bold text-white mb-1">$699</div>
-                  <div className="text-gray-400 text-sm line-through">
-                    $927
-                  </div>
+                  <div className="text-gray-400 text-sm line-through">$927</div>
                   <div className="text-green-400 text-sm font-semibold">
                     Save 25%
                   </div>
@@ -411,7 +454,9 @@ const Courses = () => {
 
                 <Button
                   className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
-                  onClick={() => handleEnrollClick("career-path-embedded-professional")}
+                  onClick={() =>
+                    handleEnrollClick("career-path-embedded-professional")
+                  }
                 >
                   Start Career Path
                 </Button>
@@ -465,7 +510,9 @@ const Courses = () => {
 
                 <Button
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold"
-                  onClick={() => handleEnrollClick("career-path-software-developer")}
+                  onClick={() =>
+                    handleEnrollClick("career-path-software-developer")
+                  }
                 >
                   Start Career Path
                 </Button>
@@ -511,7 +558,9 @@ const Courses = () => {
 
                 <div className="text-center mb-6">
                   <div className="text-3xl font-bold text-white mb-1">$799</div>
-                  <div className="text-gray-400 text-sm line-through">$1,096</div>
+                  <div className="text-gray-400 text-sm line-through">
+                    $1,096
+                  </div>
                   <div className="text-green-400 text-sm font-semibold">
                     Save 27%
                   </div>
@@ -519,7 +568,9 @@ const Courses = () => {
 
                 <Button
                   className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold"
-                  onClick={() => handleEnrollClick("career-path-complete-bundle")}
+                  onClick={() =>
+                    handleEnrollClick("career-path-complete-bundle")
+                  }
                 >
                   Start Career Path
                 </Button>
