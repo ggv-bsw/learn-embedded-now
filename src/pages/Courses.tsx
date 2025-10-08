@@ -18,9 +18,11 @@ import AnimatedParticles from "@/components/animated-particles";
 import { featuredCourses } from "@/testData/featuredCourses";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
 import { Link, useNavigate } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Courses = () => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedLevel, setSelectedLevel] = useState("All");
@@ -123,20 +125,18 @@ const Courses = () => {
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
               <BookOpen className="w-4 h-4 mr-2" />
-              All Courses Available
+              {t('coursesPage.allAvailable')}
             </Badge>
 
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-              Master Embedded
+              {t('coursesPage.masterEmbedded')}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                Systems & IoT
+                {t('coursesPage.systemsIot')}
               </span>
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto">
-              Discover comprehensive courses in embedded systems, IoT, and
-              programming. Start your journey from beginner to professional
-              level.
+              {t('coursesPage.discover')}
             </p>
 
             {/* Quick Stats */}
@@ -146,7 +146,7 @@ const Courses = () => {
                 <span className="text-white font-semibold">
                   {featuredCourses.length}
                 </span>
-                <span className="text-gray-400">Courses</span>
+                <span className="text-gray-400">{t('coursesPage.coursesLabel')}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Users className="w-5 h-5 text-green-400" />
@@ -157,12 +157,12 @@ const Courses = () => {
                   )}
                   +
                 </span>
-                <span className="text-gray-400">Students</span>
+                <span className="text-gray-400">{t('coursesPage.studentsLabel')}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Star className="w-5 h-5 text-yellow-400" />
                 <span className="text-white font-semibold">4.8</span>
-                <span className="text-gray-400">Avg Rating</span>
+                <span className="text-gray-400">{t('coursesPage.avgRating')}</span>
               </div>
             </div>
 
@@ -172,7 +172,7 @@ const Courses = () => {
                 <div className="relative mb-6">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <Input
-                    placeholder="Search courses by title, description, or keywords..."
+                    placeholder={t('coursesPage.searchPlaceholder')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-10 bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-blue-500"
@@ -184,7 +184,7 @@ const Courses = () => {
                     <div className="flex items-center space-x-2">
                       <Filter className="w-4 h-4 text-gray-400" />
                       <span className="text-sm font-medium text-gray-300">
-                        Category:
+                        {t('coursesPage.category')}
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -213,7 +213,7 @@ const Courses = () => {
                     <div className="flex items-center space-x-2">
                       <SlidersHorizontal className="w-4 h-4 text-gray-400" />
                       <span className="text-sm font-medium text-gray-300">
-                        Level:
+                        {t('coursesPage.level')}
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -248,13 +248,12 @@ const Courses = () => {
           <div className="flex items-center justify-between mb-12">
             <div>
               <h2 className="text-3xl font-bold text-white mb-2">
-                {filteredCourses.length} Course
-                {filteredCourses.length !== 1 ? "s" : ""} Found
+                {filteredCourses.length} {filteredCourses.length === 1 ? t('coursesPage.courseFound') : t('coursesPage.coursesFound')}
               </h2>
               <p className="text-gray-400">
                 {selectedCategory !== "All" && `${selectedCategory} • `}
                 {selectedLevel !== "All" && `${selectedLevel} Level • `}
-                Professional embedded systems education
+                {t('coursesPage.professionalEducation')}
               </p>
             </div>
 
@@ -270,7 +269,7 @@ const Courses = () => {
                   setSearchQuery("");
                 }}
               >
-                Clear Filters
+                {t('coursesPage.clearFilters')}
               </Button>
             )}
           </div>
@@ -351,7 +350,7 @@ const Courses = () => {
                         className="bg-blue-600 hover:bg-blue-700 text-white"
                         onClick={() => handleEnrollClick(course.id)}
                       >
-                        Enroll Now
+                        {t('coursesPage.enrollNow')}
                       </Button>
                     </div>
                   </CardContent>
@@ -366,10 +365,10 @@ const Courses = () => {
                     <Search className="w-8 h-8 text-gray-400" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2 text-white">
-                    No courses found
+                    {t('coursesPage.noCoursesFound')}
                   </h3>
                   <p className="text-gray-400 mb-4">
-                    Try adjusting your search criteria or browse all courses
+                    {t('coursesPage.adjustSearch')}
                   </p>
                   <Button
                     variant="outline"
@@ -380,7 +379,7 @@ const Courses = () => {
                       setSearchQuery("");
                     }}
                   >
-                    View All Courses
+                    {t('coursesPage.viewAllCourses')}
                   </Button>
                 </CardContent>
               </Card>
@@ -395,14 +394,13 @@ const Courses = () => {
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
               <Star className="w-4 h-4 mr-2" />
-              Professional Pack
+              {t('coursesPage.professionalPack')}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-              Complete Career Paths
+              {t('coursesPage.completeCareerPaths')}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Comprehensive learning tracks designed for specific engineering
-              roles. Master multiple technologies in focused career paths.
+              {t('coursesPage.careerPathsDescription')}
             </p>
           </div>
 
@@ -414,34 +412,32 @@ const Courses = () => {
                   <Cpu className="w-8 h-8 text-green-400" />
                 </div>
                 <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-green-400 transition-colors">
-                  Embedded Systems Professional
+                  {t('coursesPage.embeddedProfessional')}
                 </CardTitle>
                 <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mx-auto">
-                  Advanced
+                  {t('coursesPage.advanced')}
                 </Badge>
               </CardHeader>
 
               <CardContent className="pt-0">
                 <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  Complete path from C++ fundamentals to hardware design.
-                  Includes Software Testing & Automotive QA and PCB Design
-                  courses.
+                  {t('coursesPage.embeddedProfDesc')}
                 </p>
 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Duration:</span>
-                    <span className="text-white font-semibold">30 weeks</span>
+                    <span className="text-gray-400">{t('coursesPage.duration')}</span>
+                    <span className="text-white font-semibold">30 {t('coursesPage.weeks')}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Level:</span>
+                    <span className="text-gray-400">{t('coursesPage.levelLabel')}</span>
                     <span className="text-orange-400 font-semibold">
-                      Advanced
+                      {t('coursesPage.advanced')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Courses Included:</span>
-                    <span className="text-white font-semibold">3 Courses</span>
+                    <span className="text-gray-400">{t('coursesPage.coursesIncluded')}</span>
+                    <span className="text-white font-semibold">3 {t('coursesPage.coursesLabel')}</span>
                   </div>
                 </div>
 
@@ -449,7 +445,7 @@ const Courses = () => {
                   <div className="text-3xl font-bold text-white mb-1">$699</div>
                   <div className="text-gray-400 text-sm line-through">$927</div>
                   <div className="text-green-400 text-sm font-semibold">
-                    Save 25%
+                    {t('coursesPage.save')} 25%
                   </div>
                 </div>
 
@@ -459,7 +455,7 @@ const Courses = () => {
                     handleEnrollClick("career-path-embedded-professional")
                   }
                 >
-                  Start Career Path
+                  {t('coursesPage.startCareerPath')}
                 </Button>
               </CardContent>
             </Card>
@@ -471,33 +467,32 @@ const Courses = () => {
                   <Code className="w-8 h-8 text-blue-400" />
                 </div>
                 <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-blue-400 transition-colors">
-                  Software Developer Track
+                  {t('coursesPage.softwareDeveloper')}
                 </CardTitle>
                 <Badge className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 mx-auto">
-                  Beginner to Intermediate
+                  {t('coursesPage.beginnerIntermediate')}
                 </Badge>
               </CardHeader>
 
               <CardContent className="pt-0">
                 <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  Master both Python and C++ from basics to advanced concepts.
-                  Perfect foundation for software development careers.
+                  {t('coursesPage.softwareDevDesc')}
                 </p>
 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Duration:</span>
-                    <span className="text-white font-semibold">22 weeks</span>
+                    <span className="text-gray-400">{t('coursesPage.duration')}</span>
+                    <span className="text-white font-semibold">22 {t('coursesPage.weeks')}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Level:</span>
+                    <span className="text-gray-400">{t('coursesPage.levelLabel')}</span>
                     <span className="text-yellow-400 font-semibold">
-                      Beginner to Intermediate
+                      {t('coursesPage.beginnerIntermediate')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Courses Included:</span>
-                    <span className="text-white font-semibold">2 Courses</span>
+                    <span className="text-gray-400">{t('coursesPage.coursesIncluded')}</span>
+                    <span className="text-white font-semibold">2 {t('coursesPage.coursesLabel')}</span>
                   </div>
                 </div>
 
@@ -505,7 +500,7 @@ const Courses = () => {
                   <div className="text-3xl font-bold text-white mb-1">$379</div>
                   <div className="text-gray-400 text-sm line-through">$448</div>
                   <div className="text-green-400 text-sm font-semibold">
-                    Save 15%
+                    {t('coursesPage.save')} 15%
                   </div>
                 </div>
 
@@ -515,7 +510,7 @@ const Courses = () => {
                     handleEnrollClick("career-path-software-developer")
                   }
                 >
-                  Start Career Path
+                  {t('coursesPage.startCareerPath')}
                 </Button>
               </CardContent>
             </Card>
@@ -527,33 +522,32 @@ const Courses = () => {
                   <BookOpen className="w-8 h-8 text-purple-400" />
                 </div>
                 <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-purple-400 transition-colors">
-                  Complete Engineering Bundle
+                  {t('coursesPage.completeBundle')}
                 </CardTitle>
                 <Badge className="bg-green-500/20 text-green-400 border-green-500/30 mx-auto">
-                  All Levels
+                  {t('coursesPage.allLevels')}
                 </Badge>
               </CardHeader>
 
               <CardContent className="pt-0">
                 <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  Full access to all available courses. From Python basics to
-                  automotive QA and PCB design. Complete engineering education.
+                  {t('coursesPage.completeBundleDesc')}
                 </p>
 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Duration:</span>
-                    <span className="text-white font-semibold">40 weeks</span>
+                    <span className="text-gray-400">{t('coursesPage.duration')}</span>
+                    <span className="text-white font-semibold">40 {t('coursesPage.weeks')}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Level:</span>
+                    <span className="text-gray-400">{t('coursesPage.levelLabel')}</span>
                     <span className="text-green-400 font-semibold">
-                      All Levels
+                      {t('coursesPage.allLevels')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Courses Included:</span>
-                    <span className="text-white font-semibold">4 Courses</span>
+                    <span className="text-gray-400">{t('coursesPage.coursesIncluded')}</span>
+                    <span className="text-white font-semibold">4 {t('coursesPage.coursesLabel')}</span>
                   </div>
                 </div>
 
@@ -563,7 +557,7 @@ const Courses = () => {
                     $1,096
                   </div>
                   <div className="text-green-400 text-sm font-semibold">
-                    Save 27%
+                    {t('coursesPage.save')} 27%
                   </div>
                 </div>
 
@@ -573,7 +567,7 @@ const Courses = () => {
                     handleEnrollClick("career-path-complete-bundle")
                   }
                 >
-                  Start Career Path
+                  {t('coursesPage.startCareerPath')}
                 </Button>
               </CardContent>
             </Card>
