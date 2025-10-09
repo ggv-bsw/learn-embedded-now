@@ -29,6 +29,7 @@ export type Database = {
           excerpt_ru: string | null
           featured: boolean
           id: string
+          image_url: string | null
           published: boolean
           read_time: string
           slug: string
@@ -51,6 +52,7 @@ export type Database = {
           excerpt_ru?: string | null
           featured?: boolean
           id?: string
+          image_url?: string | null
           published?: boolean
           read_time: string
           slug: string
@@ -73,6 +75,7 @@ export type Database = {
           excerpt_ru?: string | null
           featured?: boolean
           id?: string
+          image_url?: string | null
           published?: boolean
           read_time?: string
           slug?: string
