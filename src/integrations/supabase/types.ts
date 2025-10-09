@@ -149,6 +149,105 @@ export type Database = {
         }
         Relationships: []
       }
+      development_boards: {
+        Row: {
+          applications: string[] | null
+          applications_ro: string[] | null
+          applications_ru: string[] | null
+          created_at: string
+          description: string
+          description_ro: string | null
+          description_ru: string | null
+          features: string[]
+          features_ro: string[] | null
+          features_ru: string[] | null
+          full_description: string | null
+          full_description_ro: string | null
+          full_description_ru: string | null
+          id: string
+          image: string
+          in_stock: boolean
+          name: string
+          name_ro: string | null
+          name_ru: string | null
+          original_price: number | null
+          package_includes: string[] | null
+          package_includes_ro: string[] | null
+          package_includes_ru: string[] | null
+          price: number
+          rating: number
+          reviews: number
+          specifications: string[]
+          specifications_ro: string[] | null
+          specifications_ru: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          applications?: string[] | null
+          applications_ro?: string[] | null
+          applications_ru?: string[] | null
+          created_at?: string
+          description: string
+          description_ro?: string | null
+          description_ru?: string | null
+          features: string[]
+          features_ro?: string[] | null
+          features_ru?: string[] | null
+          full_description?: string | null
+          full_description_ro?: string | null
+          full_description_ru?: string | null
+          id: string
+          image: string
+          in_stock?: boolean
+          name: string
+          name_ro?: string | null
+          name_ru?: string | null
+          original_price?: number | null
+          package_includes?: string[] | null
+          package_includes_ro?: string[] | null
+          package_includes_ru?: string[] | null
+          price: number
+          rating?: number
+          reviews?: number
+          specifications: string[]
+          specifications_ro?: string[] | null
+          specifications_ru?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          applications?: string[] | null
+          applications_ro?: string[] | null
+          applications_ru?: string[] | null
+          created_at?: string
+          description?: string
+          description_ro?: string | null
+          description_ru?: string | null
+          features?: string[]
+          features_ro?: string[] | null
+          features_ru?: string[] | null
+          full_description?: string | null
+          full_description_ro?: string | null
+          full_description_ru?: string | null
+          id?: string
+          image?: string
+          in_stock?: boolean
+          name?: string
+          name_ro?: string | null
+          name_ru?: string | null
+          original_price?: number | null
+          package_includes?: string[] | null
+          package_includes_ro?: string[] | null
+          package_includes_ru?: string[] | null
+          price?: number
+          rating?: number
+          reviews?: number
+          specifications?: string[]
+          specifications_ro?: string[] | null
+          specifications_ru?: string[] | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       one_to_one_requests: {
         Row: {
           created_at: string
