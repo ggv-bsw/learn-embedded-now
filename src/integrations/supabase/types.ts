@@ -18,43 +18,67 @@ export type Database = {
         Row: {
           author: string
           category: string
+          category_ro: string | null
+          category_ru: string | null
           content: string
+          content_ro: string | null
+          content_ru: string | null
           created_at: string
           excerpt: string
+          excerpt_ro: string | null
+          excerpt_ru: string | null
           featured: boolean
           id: string
           published: boolean
           read_time: string
           slug: string
           title: string
+          title_ro: string | null
+          title_ru: string | null
           updated_at: string
         }
         Insert: {
           author: string
           category: string
+          category_ro?: string | null
+          category_ru?: string | null
           content: string
+          content_ro?: string | null
+          content_ru?: string | null
           created_at?: string
           excerpt: string
+          excerpt_ro?: string | null
+          excerpt_ru?: string | null
           featured?: boolean
           id?: string
           published?: boolean
           read_time: string
           slug: string
           title: string
+          title_ro?: string | null
+          title_ru?: string | null
           updated_at?: string
         }
         Update: {
           author?: string
           category?: string
+          category_ro?: string | null
+          category_ru?: string | null
           content?: string
+          content_ro?: string | null
+          content_ru?: string | null
           created_at?: string
           excerpt?: string
+          excerpt_ro?: string | null
+          excerpt_ru?: string | null
           featured?: boolean
           id?: string
           published?: boolean
           read_time?: string
           slug?: string
           title?: string
+          title_ro?: string | null
+          title_ru?: string | null
           updated_at?: string
         }
         Relationships: []

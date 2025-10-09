@@ -13,6 +13,7 @@ import {
   Share2,
 } from "lucide-react";
 import { toast } from "sonner";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface BlogPost {
   id: string;
@@ -25,10 +26,19 @@ interface BlogPost {
   read_time: string;
   created_at: string;
   featured: boolean;
+  title_ro?: string;
+  title_ru?: string;
+  excerpt_ro?: string;
+  excerpt_ru?: string;
+  content_ro?: string;
+  content_ru?: string;
+  category_ro?: string;
+  category_ru?: string;
 }
 
 const BlogPostDetail = () => {
   const { slug } = useParams<{ slug: string }>();
+  const { language } = useLanguage();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -57,10 +67,21 @@ const BlogPostDetail = () => {
     fetchPost();
   }, [slug]);
 
+  const getTranslatedField = (field: 'title' | 'excerpt' | 'content' | 'category') => {
+    if (!post) return '';
+    if (language === 'ro' && post[`${field}_ro`]) {
+      return post[`${field}_ro`];
+    }
+    if (language === 'ru' && post[`${field}_ru`]) {
+      return post[`${field}_ru`];
+    }
+    return post[field];
+  };
+
   const copyToClipboard = async () => {
     if (!post) return;
 
-    const shareText = `${post.title}\n\n${post.excerpt}\n\nRead more: ${window.location.href}`;
+    const shareText = `${getTranslatedField('title')}\n\n${getTranslatedField('excerpt')}\n\nRead more: ${window.location.href}`;
 
     try {
       await navigator.clipboard.writeText(shareText);
@@ -125,15 +146,15 @@ const BlogPostDetail = () => {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="mb-8">
             <Badge className="mb-4 bg-blue-500/10 text-blue-400 border-blue-500/20">
-              {post.category}
+              {getTranslatedField('category')}
             </Badge>
 
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              {post.title}
+              {getTranslatedField('title')}
             </h1>
 
             <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
-              {post.excerpt}
+              {getTranslatedField('excerpt')}
             </p>
 
             <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-gray-400 pb-8 border-b border-slate-700">
@@ -171,7 +192,7 @@ const BlogPostDetail = () => {
               prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700
               prose-ul:text-gray-300 prose-ol:text-gray-300
               prose-li:mb-2"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: getTranslatedField('content') }}
           />
 
           {/* Share Section */}

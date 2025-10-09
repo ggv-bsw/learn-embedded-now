@@ -20,10 +20,16 @@ interface BlogPost {
   read_time: string;
   category: string;
   featured: boolean;
+  title_ro?: string;
+  title_ru?: string;
+  excerpt_ro?: string;
+  excerpt_ru?: string;
+  category_ro?: string;
+  category_ru?: string;
 }
 
 const Blog = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -60,9 +66,19 @@ const Blog = () => {
     }
   };
 
+  const getTranslatedField = (post: BlogPost, field: 'title' | 'excerpt' | 'category') => {
+    if (language === 'ro' && post[`${field}_ro`]) {
+      return post[`${field}_ro`];
+    }
+    if (language === 'ru' && post[`${field}_ru`]) {
+      return post[`${field}_ru`];
+    }
+    return post[field];
+  };
+
   const filteredPosts = selectedCategory === "All" 
     ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
+    : blogPosts.filter(post => getTranslatedField(post, 'category') === selectedCategory || post.category === selectedCategory);
 
   const featuredPost = blogPosts.find(post => post.featured);
   const regularPosts = filteredPosts.filter(post => !post.featured);
@@ -157,17 +173,17 @@ const Blog = () => {
                     <CardContent className="p-8 flex flex-col justify-center">
                       <div className="flex items-center gap-3 mb-4">
                         <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">
-                          {featuredPost.category}
+                          {getTranslatedField(featuredPost, 'category')}
                         </Badge>
                         <span className="text-sm text-gray-400">{t('blog.featured.label', 'Featured')}</span>
                       </div>
                       
                       <CardTitle className="text-2xl lg:text-3xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors">
-                        {featuredPost.title}
+                        {getTranslatedField(featuredPost, 'title')}
                       </CardTitle>
                       
                       <p className="text-gray-300 mb-6 leading-relaxed">
-                        {featuredPost.excerpt}
+                        {getTranslatedField(featuredPost, 'excerpt')}
                       </p>
                       
                       <div className="flex items-center justify-between text-sm text-gray-400 mb-6">
@@ -254,17 +270,17 @@ const Blog = () => {
                           post.category === 'Architecture' ? 'bg-purple-500/20 text-purple-400 border-purple-500/30' :
                           'bg-orange-500/20 text-orange-400 border-orange-500/30'
                         }`}>
-                          {post.category}
+                          {getTranslatedField(post, 'category')}
                         </Badge>
                       </div>
                       
                       <CardContent className="p-6 flex flex-col flex-grow">
                         <CardTitle className="text-lg font-bold mb-3 text-white group-hover:text-blue-400 transition-colors line-clamp-2">
-                          {post.title}
+                          {getTranslatedField(post, 'title')}
                         </CardTitle>
                         
                         <p className="text-gray-400 mb-4 text-sm leading-relaxed flex-grow line-clamp-3">
-                          {post.excerpt}
+                          {getTranslatedField(post, 'excerpt')}
                         </p>
                         
                         <div className="flex items-center justify-between text-xs text-gray-500 mb-4 flex-wrap gap-2">
