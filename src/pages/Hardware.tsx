@@ -272,7 +272,7 @@ const Hardware = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {filteredBoards.map((board) => (
               <Link key={board.id} to={`/hardware/${board.id}`}>
-                <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group cursor-pointer">
+                <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group cursor-pointer h-full flex flex-col">
                   <div className="p-4 pb-0">
                     <div className="aspect-square w-full bg-white rounded-lg p-4 mb-4 flex items-center justify-center overflow-hidden">
                       <img
@@ -283,7 +283,7 @@ const Hardware = () => {
                     </div>
                   </div>
 
-                  <CardHeader className="pb-4 pt-0">
+                  <CardHeader className="pb-4 pt-0 flex-shrink-0">
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <CardTitle className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
@@ -313,7 +313,7 @@ const Hardware = () => {
                     </div>
                   </CardHeader>
 
-                  <CardContent className="pt-0">
+                  <CardContent className="pt-0 flex-grow flex flex-col justify-between">
                     <p className="text-gray-400 mb-4 line-clamp-2">
                       {getTranslatedField(board, 'description')}
                     </p>
