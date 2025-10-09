@@ -160,7 +160,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send notification email to business
     const businessEmailResponse = await resend.emails.send({
       from: "The Automation Network <onboarding@resend.dev>",
-      to: ["hr@bsw-tech.com"],
+      to: ["learn@embedded.school"],
       subject: "New Order Received - The Automation Network",
       html: `
         <h1>New Order Received</h1>

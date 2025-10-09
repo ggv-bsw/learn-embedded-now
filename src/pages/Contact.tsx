@@ -97,25 +97,21 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from("contact_inquiries")
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            subject: formData.subject,
-            message: formData.message,
-          },
-        ]);
+      const { data, error } = await supabase.functions.invoke('send-contact-message', {
+        body: formData
+      });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Error submitting contact form:', error);
+        throw new Error(error.message || 'Failed to send message');
+      }
 
       toast(t('contact.form.success', "Message sent successfully! We'll get back to you within 24 hours."), {
         icon: <CheckCircle className="w-5 h-5 text-green-500" />,
       });
 
       setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting contact form:", error);
       toast.error(t('contact.form.error', "Failed to send message. Please try again."));
     } finally {

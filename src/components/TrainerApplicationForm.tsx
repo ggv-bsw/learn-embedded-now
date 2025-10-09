@@ -75,16 +75,18 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
     setLoading(true);
 
     try {
-      const { error } = await supabase.from("trainer_applications").insert({
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone || null,
-        expertise: formData.expertise,
-        experience_years: experienceYearsNum,
-        linkedin_url: formData.linkedinUrl || null,
-        portfolio_url: formData.portfolioUrl || null,
-        bio: formData.bio,
-        why_teach: formData.whyTeach,
+      const { data, error } = await supabase.functions.invoke('send-trainer-application', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || undefined,
+          expertise: formData.expertise,
+          experienceYears: experienceYearsNum,
+          linkedinUrl: formData.linkedinUrl || undefined,
+          portfolioUrl: formData.portfolioUrl || undefined,
+          bio: formData.bio,
+          whyTeach: formData.whyTeach,
+        }
       });
 
       if (error) {

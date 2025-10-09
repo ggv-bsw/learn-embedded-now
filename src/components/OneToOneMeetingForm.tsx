@@ -62,16 +62,21 @@ const OneToOneMeetingForm = ({
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("one_to_one_requests").insert({
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim() || null,
-        trainer_name: trainerName,
-        preferred_date: formData.preferred_date || null,
-        message: formData.message.trim() || null,
+      const { data, error } = await supabase.functions.invoke('send-meeting-request', {
+        body: {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim() || undefined,
+          trainerName: trainerName,
+          preferredDate: formData.preferred_date || undefined,
+          message: formData.message.trim() || undefined,
+        }
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Error submitting meeting request:', error);
+        throw new Error(error.message || 'Failed to submit request');
+      }
 
       toast({
         title: t('meetingForm.success'),
@@ -86,11 +91,11 @@ const OneToOneMeetingForm = ({
         message: "",
       });
       onOpenChange(false);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting meeting request:", error);
       toast({
         title: t('meetingForm.error'),
-        description: t('meetingForm.errorMessage'),
+        description: error.message || t('meetingForm.errorMessage'),
         variant: "destructive",
       });
     } finally {

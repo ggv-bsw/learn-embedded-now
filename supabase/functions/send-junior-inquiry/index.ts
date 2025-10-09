@@ -103,7 +103,7 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "Engineers Factory <onboarding@resend.dev>",
-        to: ["hr@bsw-tech.com"],
+        to: ["learn@embedded.school"],
         subject: `New Junior Program Application - ${name} ${surname}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
