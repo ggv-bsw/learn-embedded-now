@@ -47,7 +47,9 @@ const CourseDetail = () => {
       <div className="min-h-screen bg-background font-inter flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">{t('common.loading') || 'Loading...'}</p>
+          <p className="text-muted-foreground">
+            {t("common.loading") || "Loading..."}
+          </p>
         </div>
       </div>
     );
@@ -58,10 +60,16 @@ const CourseDetail = () => {
       <div className="min-h-screen bg-background font-inter">
         <Navigation />
         <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-2xl font-bold mb-4">{t('courseDetail.notFound')}</h1>
-          <p className="text-muted-foreground mb-8">{error || 'Course not found'}</p>
+          <h1 className="text-2xl font-bold mb-4">
+            {t("courseDetail.notFound")}
+          </h1>
+          <p className="text-muted-foreground mb-8">
+            {error || "Course not found"}
+          </p>
           <Button asChild>
-            <Link to="/courses">{t('courseDetail.backToCourses') || 'Back to Courses'}</Link>
+            <Link to="/courses">
+              {t("courseDetail.backToCourses") || "Back to Courses"}
+            </Link>
           </Button>
         </div>
       </div>
@@ -80,7 +88,7 @@ const CourseDetail = () => {
       price: course.price,
       image: course.image,
     });
-    toast.success(t('courseDetail.addedToCart'));
+    toast.success(t("courseDetail.addedToCart"));
   };
 
   const handleShare = async () => {
@@ -93,18 +101,18 @@ const CourseDetail = () => {
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-        toast.success(t('courseDetail.sharedSuccess'));
+        toast.success(t("courseDetail.sharedSuccess"));
       } catch (err) {
         if ((err as Error).name !== "AbortError") {
-          toast.error(t('courseDetail.shareFailed'));
+          toast.error(t("courseDetail.shareFailed"));
         }
       }
     } else {
       try {
         await navigator.clipboard.writeText(window.location.href);
-        toast.success(t('courseDetail.linkCopied'));
+        toast.success(t("courseDetail.linkCopied"));
       } catch (err) {
-        toast.error(t('courseDetail.copyFailed'));
+        toast.error(t("courseDetail.copyFailed"));
       }
     }
   };
@@ -117,11 +125,11 @@ const CourseDetail = () => {
       <div className="container mx-auto px-4 py-6">
         <div className="flex items-center space-x-2 text-sm text-muted-foreground">
           <Link to="/" className="hover:text-primary">
-            {t('courseDetail.home')}
+            {t("courseDetail.home")}
           </Link>
           <span>/</span>
           <Link to="/courses" className="hover:text-primary">
-            {t('courseDetail.courses')}
+            {t("courseDetail.courses")}
           </Link>
           <span>/</span>
           <span>{course.category}</span>
@@ -134,14 +142,14 @@ const CourseDetail = () => {
           <div className="lg:col-span-2 space-y-8">
             {/* Header */}
             <div>
-                <div className="flex items-center space-x-4 mb-4">
+              <div className="flex items-center space-x-4 mb-4">
                 <Badge variant="outline">{course.category}</Badge>
                 <Badge variant="secondary">{course.level}</Badge>
                 <div className="flex items-center space-x-1">
                   <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   <span className="font-medium">{course.rating}</span>
                   <span className="text-muted-foreground">
-                    ({course.totalRatings} {t('courseDetail.reviews')})
+                    ({course.totalRatings} {t("courseDetail.reviews")})
                   </span>
                 </div>
               </div>
@@ -160,15 +168,19 @@ const CourseDetail = () => {
                 </div>
                 <div className="flex items-center space-x-1">
                   <Users className="w-4 h-4" />
-                  <span>{course.students} {t('courseDetail.students')}</span>
+                  <span>
+                    {course.students} {t("courseDetail.students")}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <Calendar className="w-4 h-4" />
-                  <span>{t('courseDetail.updated')} {course.lastUpdated}</span>
+                  <span>
+                    {t("courseDetail.updated")} {course.lastUpdated}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <Award className="w-4 h-4" />
-                  <span>{t('courseDetail.certificateIncluded')}</span>
+                  <span>{t("courseDetail.certificateIncluded")}</span>
                 </div>
               </div>
             </div>
@@ -188,7 +200,7 @@ const CourseDetail = () => {
                     className="bg-white text-black hover:bg-gray-100"
                   >
                     <Play className="mr-2 w-6 h-6" />
-                    {t('courseDetail.previewCourse')}
+                    {t("courseDetail.previewCourse")}
                   </Button>
                 </div>
               )}
@@ -197,16 +209,24 @@ const CourseDetail = () => {
             {/* Tabs */}
             <Tabs defaultValue="overview" className="w-full">
               <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="overview">{t('courseDetail.overview')}</TabsTrigger>
-                <TabsTrigger value="curriculum">{t('courseDetail.curriculum')}</TabsTrigger>
-                <TabsTrigger value="instructor">{t('courseDetail.instructor')}</TabsTrigger>
-                <TabsTrigger value="reviews">{t('courseDetail.reviewsTab')}</TabsTrigger>
+                <TabsTrigger value="overview">
+                  {t("courseDetail.overview")}
+                </TabsTrigger>
+                <TabsTrigger value="curriculum">
+                  {t("courseDetail.curriculum")}
+                </TabsTrigger>
+                <TabsTrigger value="instructor">
+                  {t("courseDetail.instructor")}
+                </TabsTrigger>
+                <TabsTrigger value="reviews">
+                  {t("courseDetail.reviewsTab")}
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview" className="space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>{t('courseDetail.courseDescription')}</CardTitle>
+                    <CardTitle>{t("courseDetail.courseDescription")}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground leading-relaxed">
@@ -218,7 +238,7 @@ const CourseDetail = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <Card>
                     <CardHeader>
-                      <CardTitle>{t('courseDetail.whatYouLearn')}</CardTitle>
+                      <CardTitle>{t("courseDetail.whatYouLearn")}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2">
@@ -239,7 +259,7 @@ const CourseDetail = () => {
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>{t('courseDetail.requirements')}</CardTitle>
+                      <CardTitle>{t("courseDetail.requirements")}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2">
@@ -261,10 +281,10 @@ const CourseDetail = () => {
               <TabsContent value="curriculum">
                 <Card>
                   <CardHeader>
-                    <CardTitle>{t('courseDetail.courseCurriculum')}</CardTitle>
+                    <CardTitle>{t("courseDetail.courseCurriculum")}</CardTitle>
                     <p className="text-muted-foreground">
-                      {course.curriculum.length} {t('courseDetail.modules')} • {totalLessons}{" "}
-                      {t('courseDetail.lessons')}
+                      {course.curriculum.length} {t("courseDetail.modules")} •{" "}
+                      {totalLessons} {t("courseDetail.lessons")}
                     </p>
                   </CardHeader>
                   <CardContent>
@@ -278,7 +298,8 @@ const CourseDetail = () => {
                             <div>
                               <div className="font-medium">{module.title}</div>
                               <div className="text-sm text-muted-foreground">
-                                {module.lessons.length} {t('courseDetail.lessons')}
+                                {module.lessons.length}{" "}
+                                {t("courseDetail.lessons")}
                               </div>
                             </div>
                           </AccordionTrigger>
@@ -344,7 +365,7 @@ const CourseDetail = () => {
                               {course.instructor.rating}
                             </div>
                             <div className="text-sm text-muted-foreground">
-                              {t('courseDetail.rating')}
+                              {t("courseDetail.rating")}
                             </div>
                           </div>
                           <div className="text-center">
@@ -352,7 +373,7 @@ const CourseDetail = () => {
                               {course.instructor.students}
                             </div>
                             <div className="text-sm text-muted-foreground">
-                              {t('courseDetail.studentsLabel')}
+                              {t("courseDetail.studentsLabel")}
                             </div>
                           </div>
                           <div className="text-center">
@@ -360,13 +381,13 @@ const CourseDetail = () => {
                               {course.instructor.experience}
                             </div>
                             <div className="text-sm text-muted-foreground">
-                              {t('courseDetail.experience')}
+                              {t("courseDetail.experience")}
                             </div>
                           </div>
                           <div className="text-center">
                             <div className="font-semibold">25</div>
                             <div className="text-sm text-muted-foreground">
-                              {t('courseDetail.coursesLabel')}
+                              {t("courseDetail.coursesLabel")}
                             </div>
                           </div>
                         </div>
@@ -383,12 +404,12 @@ const CourseDetail = () => {
               <TabsContent value="reviews">
                 <Card>
                   <CardHeader>
-                    <CardTitle>{t('courseDetail.studentReviews')}</CardTitle>
+                    <CardTitle>{t("courseDetail.studentReviews")}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-center py-8 text-muted-foreground">
                       <Star className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                      <p>{t('courseDetail.reviewsDisplay')}</p>
+                      <p>{t("courseDetail.reviewsDisplay")}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -411,27 +432,17 @@ const CourseDetail = () => {
                     </span>
                   </div>
                   <Badge className="bg-green-100 text-green-800">
-                    {t('courseDetail.limitedOffer')}
+                    {t("courseDetail.limitedOffer")}
                   </Badge>
                 </div>
 
                 <div className="space-y-3 mb-6">
-                  {course.link && (
-                    <Button
-                      className="w-full bg-gradient-hero shadow-tech hover:shadow-glow"
-                      size="lg"
-                      onClick={() => setShowVideo(true)}
-                    >
-                      <Play className="mr-2 w-5 h-5" />
-                      {t('courseDetail.watchPreview') || 'Watch Preview Video'}
-                    </Button>
-                  )}
                   <Button
                     className="w-full bg-gradient-hero shadow-tech hover:shadow-glow"
                     size="lg"
                     onClick={handleEnrollClick}
                   >
-                    {t('courseDetail.enrollNow')}
+                    {t("courseDetail.enrollNow")}
                   </Button>
                   <Button
                     variant="outline"
@@ -439,7 +450,7 @@ const CourseDetail = () => {
                     size="lg"
                     onClick={handleAddToCart}
                   >
-                    {t('courseDetail.addToCart')}
+                    {t("courseDetail.addToCart")}
                   </Button>
                 </div>
 
@@ -464,12 +475,12 @@ const CourseDetail = () => {
                     onClick={handleShare}
                   >
                     <Share className="w-4 h-4" />
-                    <span>{t('courseDetail.share')}</span>
+                    <span>{t("courseDetail.share")}</span>
                   </Button>
                 </div>
 
                 <div className="text-center text-xs text-muted-foreground mt-4">
-                  {t('courseDetail.moneyBack')}
+                  {t("courseDetail.moneyBack")}
                 </div>
               </CardContent>
             </Card>
@@ -477,28 +488,38 @@ const CourseDetail = () => {
             {/* Course Info */}
             <Card>
               <CardHeader>
-                <CardTitle>{t('courseDetail.courseInformation')}</CardTitle>
+                <CardTitle>{t("courseDetail.courseInformation")}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">{t('courseDetail.level')}</span>
+                  <span className="text-muted-foreground">
+                    {t("courseDetail.level")}
+                  </span>
                   <span className="font-medium">{course.level}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">{t('courseDetail.duration')}</span>
+                  <span className="text-muted-foreground">
+                    {t("courseDetail.duration")}
+                  </span>
                   <span className="font-medium">{course.duration}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">{t('courseDetail.lessonsLabel')}</span>
+                  <span className="text-muted-foreground">
+                    {t("courseDetail.lessonsLabel")}
+                  </span>
                   <span className="font-medium">{totalLessons}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">{t('courseDetail.language')}</span>
+                  <span className="text-muted-foreground">
+                    {t("courseDetail.language")}
+                  </span>
                   <span className="font-medium">{course.language}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">{t('courseDetail.certificate')}</span>
-                  <span className="font-medium">{t('courseDetail.yes')}</span>
+                  <span className="text-muted-foreground">
+                    {t("courseDetail.certificate")}
+                  </span>
+                  <span className="font-medium">{t("courseDetail.yes")}</span>
                 </div>
               </CardContent>
             </Card>
