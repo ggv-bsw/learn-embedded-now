@@ -9,6 +9,12 @@ import ScrollReveal from "@/components/scroll-reveal";
 import { Calendar, Clock, User, ArrowRight, Zap, Shield, Sword, Star, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
+import blogPhantomMenace from "@/assets/blog-phantom-menace.jpg";
+import blogAttackClones from "@/assets/blog-attack-clones.jpg";
+import blogArduinoStrikes from "@/assets/blog-arduino-strikes.jpg";
+import blogReturnC from "@/assets/blog-return-c.jpg";
+import blogRevengeSith from "@/assets/blog-revenge-sith.jpg";
+import blogForceEmbedded from "@/assets/blog-force-embedded.jpg";
 
 interface BlogPost {
   id: string;
@@ -20,6 +26,7 @@ interface BlogPost {
   read_time: string;
   category: string;
   featured: boolean;
+  image_url?: string;
   title_ro?: string;
   title_ru?: string;
   excerpt_ro?: string;
@@ -74,6 +81,18 @@ const Blog = () => {
       return post[`${field}_ru`];
     }
     return post[field];
+  };
+
+  const getImageForSlug = (slug: string) => {
+    const imageMap: { [key: string]: string } = {
+      'phantom-menace-debugging-embedded': blogPhantomMenace,
+      'attack-of-clones-scalable-iot': blogAttackClones,
+      'arduino-strikes-back-advanced-programming': blogArduinoStrikes,
+      'return-of-c-mastering-low-level': blogReturnC,
+      'revenge-of-sith-security-embedded': blogRevengeSith,
+      'force-of-embedded-systems-iot': blogForceEmbedded,
+    };
+    return imageMap[slug];
   };
 
   const filteredPosts = selectedCategory === "All" 
@@ -164,9 +183,11 @@ const Blog = () => {
                 <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 group max-w-4xl mx-auto hover:scale-105">
                   <div className="grid lg:grid-cols-2 gap-0">
                     <div className="relative overflow-hidden">
-                      <div className="w-full h-64 lg:h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                        <Sword className="w-16 h-16 text-blue-400 opacity-60" />
-                      </div>
+                      <img 
+                        src={getImageForSlug(featuredPost.slug)} 
+                        alt={getTranslatedField(featuredPost, 'title')}
+                        className="w-full h-64 lg:h-full object-cover"
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                     </div>
                     
@@ -258,9 +279,11 @@ const Blog = () => {
                   <Link to={`/blog/${post.slug}`}>
                     <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 group h-full hover:scale-105">
                       <div className="relative overflow-hidden">
-                        <div className="w-full h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                          <Star className="w-12 h-12 text-blue-400 opacity-60" />
-                        </div>
+                        <img 
+                          src={getImageForSlug(post.slug)} 
+                          alt={getTranslatedField(post, 'title')}
+                          className="w-full h-48 object-cover"
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                         <Badge className={`absolute top-3 right-3 ${
                           post.category === 'IoT' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :

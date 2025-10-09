@@ -14,6 +14,12 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
+import blogPhantomMenace from "@/assets/blog-phantom-menace.jpg";
+import blogAttackClones from "@/assets/blog-attack-clones.jpg";
+import blogArduinoStrikes from "@/assets/blog-arduino-strikes.jpg";
+import blogReturnC from "@/assets/blog-return-c.jpg";
+import blogRevengeSith from "@/assets/blog-revenge-sith.jpg";
+import blogForceEmbedded from "@/assets/blog-force-embedded.jpg";
 
 interface BlogPost {
   id: string;
@@ -26,6 +32,7 @@ interface BlogPost {
   read_time: string;
   created_at: string;
   featured: boolean;
+  image_url?: string;
   title_ro?: string;
   title_ru?: string;
   excerpt_ro?: string;
@@ -76,6 +83,18 @@ const BlogPostDetail = () => {
       return post[`${field}_ru`];
     }
     return post[field];
+  };
+
+  const getImageForSlug = (slug: string) => {
+    const imageMap: { [key: string]: string } = {
+      'phantom-menace-debugging-embedded': blogPhantomMenace,
+      'attack-of-clones-scalable-iot': blogAttackClones,
+      'arduino-strikes-back-advanced-programming': blogArduinoStrikes,
+      'return-of-c-mastering-low-level': blogReturnC,
+      'revenge-of-sith-security-embedded': blogRevengeSith,
+      'force-of-embedded-systems-iot': blogForceEmbedded,
+    };
+    return imageMap[slug];
   };
 
   const copyToClipboard = async () => {
@@ -144,6 +163,17 @@ const BlogPostDetail = () => {
       {/* Article Header */}
       <article className="py-12 md:py-20">
         <div className="container mx-auto px-4 max-w-4xl">
+          {/* Hero Image */}
+          {post.slug && (
+            <div className="mb-8 rounded-xl overflow-hidden">
+              <img 
+                src={getImageForSlug(post.slug)} 
+                alt={getTranslatedField('title')}
+                className="w-full h-64 md:h-96 object-cover"
+              />
+            </div>
+          )}
+
           <div className="mb-8">
             <Badge className="mb-4 bg-blue-500/10 text-blue-400 border-blue-500/20">
               {getTranslatedField('category')}
