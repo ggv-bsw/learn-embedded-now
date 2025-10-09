@@ -5,6 +5,18 @@ import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
+// HTML escape helper to prevent email injection
+const escapeHtml = (text: string): string => {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+};
+
 // Create Supabase client with service role key to bypass RLS
 const supabaseAdmin = createClient(
   Deno.env.get('SUPABASE_URL') ?? '',
@@ -114,7 +126,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Step 3: Send notification emails
 
     const itemsList = items.map(item => 
-      `<li>${item.name} - Quantity: ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}</li>`
+      `<li>${escapeHtml(item.name)} - Quantity: ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}</li>`
     ).join('');
 
     // Send confirmation email to customer
@@ -123,7 +135,7 @@ const handler = async (req: Request): Promise<Response> => {
       to: [customerEmail],
       subject: "Order Confirmation - The Automation Network",
       html: `
-        <h1>Thank you for your order, ${customerName}!</h1>
+        <h1>Thank you for your order, ${escapeHtml(customerName)}!</h1>
         <p>We have received your order and will contact you shortly to confirm the details.</p>
         
         <h2>Order Details:</h2>
@@ -134,8 +146,8 @@ const handler = async (req: Request): Promise<Response> => {
         <p><strong>Total: $${totalPrice.toFixed(2)}</strong></p>
         
         <h3>Contact Information:</h3>
-        <p>Email: ${customerEmail}</p>
-        ${customerPhone ? `<p>Phone: ${customerPhone}</p>` : ''}
+        <p>Email: ${escapeHtml(customerEmail)}</p>
+        ${customerPhone ? `<p>Phone: ${escapeHtml(customerPhone)}</p>` : ''}
         
         <p>We will get back to you as soon as possible to arrange delivery and payment.</p>
         
@@ -156,9 +168,9 @@ const handler = async (req: Request): Promise<Response> => {
         
         <h2>Customer Information:</h2>
         <ul>
-          <li><strong>Name:</strong> ${customerName}</li>
-          <li><strong>Email:</strong> ${customerEmail}</li>
-          ${customerPhone ? `<li><strong>Phone:</strong> ${customerPhone}</li>` : ''}
+          <li><strong>Name:</strong> ${escapeHtml(customerName)}</li>
+          <li><strong>Email:</strong> ${escapeHtml(customerEmail)}</li>
+          ${customerPhone ? `<li><strong>Phone:</strong> ${escapeHtml(customerPhone)}</li>` : ''}
         </ul>
         
         <h2>Order Details:</h2>

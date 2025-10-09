@@ -248,6 +248,36 @@ export type Database = {
         }
         Relationships: []
       }
+      junior_program_applications: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          phone: string | null
+          status: string
+          surname: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          phone?: string | null
+          status?: string
+          surname: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string | null
+          status?: string
+          surname?: string
+        }
+        Relationships: []
+      }
       one_to_one_requests: {
         Row: {
           created_at: string

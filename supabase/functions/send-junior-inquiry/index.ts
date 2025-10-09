@@ -1,6 +1,28 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.57.3';
+import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
+// HTML escape helper to prevent email injection
+const escapeHtml = (text: string): string => {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+};
+
+// Validation schema
+const JuniorInquirySchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  surname: z.string().trim().min(1, "Surname is required").max(100, "Surname must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().max(20, "Phone must be less than 20 characters").optional(),
+});
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -28,17 +50,49 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, surname, email, phone }: JuniorInquiryRequest = await req.json();
+    // Initialize Supabase client
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    console.log("Received junior program inquiry:", { name, surname, email });
+    const requestData = await req.json();
 
-    // Validate required fields
-    if (!name || !surname || !email) {
+    // Validate input with Zod
+    const validationResult = JuniorInquirySchema.safeParse(requestData);
+    
+    if (!validationResult.success) {
+      console.error("Validation error:", validationResult.error);
       return new Response(
-        JSON.stringify({ error: "Name, surname, and email are required" }),
+        JSON.stringify({ error: "Invalid input", details: validationResult.error.errors }),
         { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
+
+    const { name, surname, email, phone } = validationResult.data;
+
+    console.log("Received junior program inquiry:", { name, surname, email });
+
+    // Store in database
+    const { data, error: dbError } = await supabase
+      .from('junior_program_applications')
+      .insert({
+        name,
+        surname,
+        email,
+        phone: phone || null,
+      })
+      .select()
+      .single();
+
+    if (dbError) {
+      console.error("Database error:", dbError);
+      return new Response(
+        JSON.stringify({ error: "Failed to save inquiry" }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    console.log("Saved to database:", data);
 
     // Send email notification via Resend API
     const emailResponse = await fetch("https://api.resend.com/emails", {
@@ -59,9 +113,9 @@ const handler = async (req: Request): Promise<Response> => {
             
             <div style="background: #f7fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
               <h3 style="color: #3182ce; margin-top: 0;">Student Information</h3>
-              <p><strong>Name:</strong> ${name} ${surname}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
+              <p><strong>Name:</strong> ${escapeHtml(name)} ${escapeHtml(surname)}</p>
+              <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+              ${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ''}
             </div>
 
             <div style="background: #e6fffa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #38b2ac;">
