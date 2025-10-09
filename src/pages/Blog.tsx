@@ -8,6 +8,7 @@ import Navigation from "@/components/ui/navigation";
 import ScrollReveal from "@/components/scroll-reveal";
 import { Calendar, Clock, User, ArrowRight, Zap, Shield, Sword, Star, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface BlogPost {
   id: string;
@@ -22,11 +23,20 @@ interface BlogPost {
 }
 
 const Blog = () => {
+  const { t } = useLanguage();
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const categories = ["All", "IoT", "Arduino", "Embedded C", "Debugging", "Architecture", "Security"];
+  const categories = [
+    { key: "All", label: t('blog.category.all', 'All') },
+    { key: "IoT", label: t('blog.category.iot', 'IoT') },
+    { key: "Arduino", label: t('blog.category.arduino', 'Arduino') },
+    { key: "Embedded C", label: t('blog.category.embeddedC', 'Embedded C') },
+    { key: "Debugging", label: t('blog.category.debugging', 'Debugging') },
+    { key: "Architecture", label: t('blog.category.architecture', 'Architecture') },
+    { key: "Security", label: t('blog.category.security', 'Security') }
+  ];
 
   useEffect(() => {
     fetchBlogPosts();
@@ -91,24 +101,23 @@ const Blog = () => {
           <ScrollReveal>
             <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
               <Star className="w-4 h-4 mr-2" />
-              A long time ago in a galaxy far, far away...
+              {t('blog.hero.badge', 'A long time ago in a galaxy far, far away...')}
             </Badge>
             
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
-              THE EMBEDDED
+              {t('blog.hero.title1', 'THE EMBEDDED')}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                CHRONICLES
+                {t('blog.hero.title2', 'CHRONICLES')}
               </span>
             </h1>
             
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Join the Rebellion against complex code. Learn the ways of the Force in embedded systems, 
-              Arduino mastery, and IoT wisdom from Jedi Masters across the galaxy.
+              {t('blog.hero.subtitle', 'Join the Rebellion against complex code. Learn the ways of the Force in embedded systems, Arduino mastery, and IoT wisdom from Jedi Masters across the galaxy.')}
             </p>
             
             <Button size="lg" className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105">
               <Zap className="mr-2 w-4 md:w-5 h-4 md:h-5" />
-              Begin Your Journey
+              {t('blog.hero.cta', 'Begin Your Journey')}
             </Button>
           </ScrollReveal>
         </div>
@@ -128,10 +137,10 @@ const Blog = () => {
               <div className="text-center mb-12">
                 <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
                   <Shield className="w-4 h-4 mr-2" />
-                  Featured Transmission
+                  {t('blog.featured.badge', 'Featured Transmission')}
                 </Badge>
                 <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-                  Latest from the Jedi Archives
+                  {t('blog.featured.title', 'Latest from the Jedi Archives')}
                 </h2>
               </div>
               
@@ -150,7 +159,7 @@ const Blog = () => {
                         <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">
                           {featuredPost.category}
                         </Badge>
-                        <span className="text-sm text-gray-400">Featured</span>
+                        <span className="text-sm text-gray-400">{t('blog.featured.label', 'Featured')}</span>
                       </div>
                       
                       <CardTitle className="text-2xl lg:text-3xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors">
@@ -179,7 +188,7 @@ const Blog = () => {
                       </div>
                       
                       <Button className="bg-blue-600 hover:bg-blue-700 text-white w-fit">
-                        Read the Holocron
+                        {t('blog.featured.cta', 'Read the Holocron')}
                         <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
                     </CardContent>
@@ -196,23 +205,23 @@ const Blog = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-white">
-              Chronicles from the Galaxy
+              {t('blog.posts.title', 'Chronicles from the Galaxy')}
             </h2>
             
             {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-3 mb-12">
               {categories.map((category) => (
                 <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
+                  key={category.key}
+                  variant={selectedCategory === category.key ? "default" : "outline"}
                   size="sm"
-                  onClick={() => setSelectedCategory(category)}
-                  className={selectedCategory === category 
+                  onClick={() => setSelectedCategory(category.key)}
+                  className={selectedCategory === category.key 
                     ? "bg-blue-600 hover:bg-blue-700 text-white" 
                     : "border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500"
                   }
                 >
-                  {category}
+                  {category.label}
                 </Button>
               ))}
             </div>
@@ -224,7 +233,7 @@ const Blog = () => {
             </div>
           ) : regularPosts.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-gray-400 text-lg">No posts found in this category.</p>
+              <p className="text-gray-400 text-lg">{t('blog.empty', 'No posts found in this category.')}</p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -271,7 +280,7 @@ const Blog = () => {
                         </div>
                         
                         <Button size="sm" variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500 w-full">
-                          Read More
+                          {t('blog.readMore', 'Read More')}
                           <ArrowRight className="ml-2 w-3 h-3" />
                         </Button>
                       </CardContent>
@@ -290,21 +299,20 @@ const Blog = () => {
           <ScrollReveal>
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                Join the Rebel Alliance
+                {t('blog.newsletter.title', 'Join the Rebel Alliance')}
               </h2>
               <p className="text-lg text-gray-300 mb-8">
-                Receive transmissions from across the galaxy. Get the latest embedded systems wisdom 
-                delivered directly to your hologram projector.
+                {t('blog.newsletter.subtitle', 'Receive transmissions from across the galaxy. Get the latest embedded systems wisdom delivered directly to your hologram projector.')}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
                 <input 
                   type="email" 
-                  placeholder="your.email@rebellion.com"
+                  placeholder={t('blog.newsletter.placeholder', 'your.email@rebellion.com')}
                   className="flex-1 px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400"
                 />
                 <Button className="bg-white text-slate-900 hover:bg-gray-100 px-6 font-semibold">
-                  Join the Force
+                  {t('blog.newsletter.cta', 'Join the Force')}
                 </Button>
               </div>
             </div>
