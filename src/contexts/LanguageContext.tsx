@@ -317,6 +317,13 @@ const translations: Record<Language, Record<string, string>> = {
     'blog.newsletter.subtitle': 'Receive transmissions from across the galaxy. Get the latest embedded systems wisdom delivered directly to your hologram projector.',
     'blog.newsletter.placeholder': 'your.email@rebellion.com',
     'blog.newsletter.cta': 'Join the Force',
+    'blog.detail.backToBlog': 'Back to Blog',
+    'blog.detail.notFound': 'Post Not Found',
+    'blog.detail.notFoundMessage': "The blog post you're looking for doesn't exist.",
+    'blog.detail.shareArticle': 'Share this article',
+    'blog.detail.copyLink': 'Copy Link',
+    'blog.detail.linkCopied': 'Article link and description copied to clipboard!',
+    'blog.detail.linkCopyFailed': 'Failed to copy link',
     
     // Hardware Page
     'hardware.hero.badge': 'Hardware Store',
@@ -1022,6 +1029,13 @@ const translations: Record<Language, Record<string, string>> = {
     'blog.newsletter.subtitle': 'Primește transmisii din întreaga galaxie. Obține cele mai recente cunoștințe despre sisteme embedded livrate direct la proiectorul tău holografic.',
     'blog.newsletter.placeholder': 'email.tau@rebeliune.ro',
     'blog.newsletter.cta': 'Alătură-te Forței',
+    'blog.detail.backToBlog': 'Înapoi la Blog',
+    'blog.detail.notFound': 'Postare Negăsită',
+    'blog.detail.notFoundMessage': 'Postarea de blog pe care o cauți nu există.',
+    'blog.detail.shareArticle': 'Distribuie acest articol',
+    'blog.detail.copyLink': 'Copiază Link',
+    'blog.detail.linkCopied': 'Linkul și descrierea articolului au fost copiate în clipboard!',
+    'blog.detail.linkCopyFailed': 'Linkul nu a putut fi copiat',
     
     // Hardware Page
     'hardware.hero.badge': 'Magazin Hardware',
@@ -1745,6 +1759,13 @@ const translations: Record<Language, Record<string, string>> = {
     'blog.newsletter.subtitle': 'Получайте передачи со всей галактики. Получайте последние знания о встраиваемых системах прямо на свой голографический проектор.',
     'blog.newsletter.placeholder': 'ваш.email@восстание.ru',
     'blog.newsletter.cta': 'Присоединиться к Силе',
+    'blog.detail.backToBlog': 'Назад к Блогу',
+    'blog.detail.notFound': 'Пост Не Найден',
+    'blog.detail.notFoundMessage': 'Пост в блоге, который вы ищете, не существует.',
+    'blog.detail.shareArticle': 'Поделиться этой статьей',
+    'blog.detail.copyLink': 'Копировать Ссылку',
+    'blog.detail.linkCopied': 'Ссылка на статью и описание скопированы в буфер обмена!',
+    'blog.detail.linkCopyFailed': 'Не удалось скопировать ссылку',
     
     // Hardware Page
     'hardware.hero.badge': 'Магазин Оборудования',
