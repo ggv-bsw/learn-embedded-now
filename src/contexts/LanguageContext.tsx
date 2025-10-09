@@ -124,19 +124,53 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.automotiveElectronics': 'Automotive Electronics',
     
     // About Page
+    'about.badge': 'About Embedded School',
     'about.title': 'Empowering the Next Generation of',
     'about.titleHighlight': 'Embedded Engineers',
     'about.description': 'Founded in Moldova with a vision to democratize embedded systems education across Eastern Europe. We bridge the gap between academic theory and industry practice.',
+    
+    // Stats
+    'about.studentsTaught': 'Students Taught',
+    'about.courseCompletions': 'Course Completions',
+    'about.industryPartners': 'Industry Partners',
+    'about.countriesReached': 'Countries Reached',
+    
+    // Mission Section
+    'about.missionBadge': 'Our Mission',
     'about.missionTitle': 'Building the Future of Embedded Education',
     'about.missionText1': 'To provide world-class embedded systems education that prepares students for successful careers in the rapidly evolving technology landscape. We believe that quality education should be accessible to everyone, regardless of their background.',
     'about.missionText2': 'Since our founding in 2019, we\'ve been committed to creating practical, industry-relevant courses that give our students the skills they need to excel in embedded systems development, IoT, and automotive electronics.',
     'about.joinMission': 'Join Our Mission',
+    'about.imageAlt': 'Team collaboration',
+    
+    // Values Section
+    'about.valuesBadge': 'Our Values',
     'about.valuesTitle': 'What Drives Us Forward',
     'about.valuesSubtitle': 'The principles that guide everything we do at Embedded School',
+    'about.excellenceTitle': 'Excellence in Education',
+    'about.excellenceDesc': 'We are committed to providing the highest quality embedded systems education through practical, hands-on learning experiences.',
+    'about.studentCenteredTitle': 'Student-Centered Approach',
+    'about.studentCenteredDesc': 'Every decision we make is guided by what\'s best for our students\' learning journey and career success.',
+    'about.innovationTitle': 'Continuous Innovation',
+    'about.innovationDesc': 'We constantly update our curriculum to reflect the latest industry trends and technological advancements.',
+    'about.communityTitle': 'Community Building',
+    'about.communityDesc': 'We foster a supportive community where students, instructors, and industry professionals collaborate and grow together.',
+    
+    // Team Section
+    'about.teamBadge': 'Meet The Team',
     'about.teamTitle': 'Expert Developers & Educators',
     'about.teamSubtitle': 'Industry professionals with decades of combined experience in embedded systems',
+    'about.specialization': 'Specialization:',
+    'about.experience': 'Experience:',
+    'about.connect': 'Connect',
+    
+    // Partners Section
+    'about.partnersBadge': 'Industry Partners',
     'about.partnersTitle': 'Trusted by Leading Companies',
     'about.partnersSubtitle': 'Collaborating with leading technology companies to provide real-world experience',
+    
+    // CTA Section
+    'about.ctaBadge': 'Join Our Community',
     'about.ctaTitle': 'Ready to Join Our Community?',
     'about.ctaSubtitle': 'Become part of a growing network of embedded systems professionals and enthusiasts.',
     'about.startLearning': 'Start Learning Today',
@@ -651,19 +685,53 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.automotiveElectronics': 'Electronică Auto',
     
     // About Page
+    'about.badge': 'Despre Embedded School',
     'about.title': 'Împuternicim Noua Generație de',
     'about.titleHighlight': 'Ingineri Înglobați',
     'about.description': 'Fondată în Moldova cu viziunea de a democratiza educația sistemelor înglobate în Europa de Est. Comblăm diferența între teoria academică și practica industrială.',
+    
+    // Stats
+    'about.studentsTaught': 'Studenți Predați',
+    'about.courseCompletions': 'Cursuri Finalizate',
+    'about.industryPartners': 'Parteneri din Industrie',
+    'about.countriesReached': 'Țări Atinse',
+    
+    // Mission Section
+    'about.missionBadge': 'Misiunea Noastră',
     'about.missionTitle': 'Construim Viitorul Educației Înglobate',
     'about.missionText1': 'Să oferim educație de clasă mondială în sisteme înglobate care pregătește studenții pentru cariere de succes în peisajul tehnologic în rapidă evoluție. Credem că educația de calitate ar trebui să fie accesibilă tuturor, indiferent de background.',
     'about.missionText2': 'Din 2019, ne-am angajat să creăm cursuri practice, relevante pentru industrie, care le oferă studenților noștri abilitățile necesare pentru a excela în dezvoltarea sistemelor înglobate, IoT și electronică auto.',
     'about.joinMission': 'Alătură-te Misiunii Noastre',
+    'about.imageAlt': 'Colaborare în echipă',
+    
+    // Values Section
+    'about.valuesBadge': 'Valorile Noastre',
     'about.valuesTitle': 'Ce Ne Conduce Înainte',
     'about.valuesSubtitle': 'Principiile care ghidează tot ceea ce facem la Embedded School',
+    'about.excellenceTitle': 'Excelență în Educație',
+    'about.excellenceDesc': 'Ne angajăm să oferim educație de cea mai înaltă calitate în sisteme înglobate prin experiențe practice de învățare.',
+    'about.studentCenteredTitle': 'Abordare Centrată pe Student',
+    'about.studentCenteredDesc': 'Fiecare decizie pe care o luăm este ghidată de ceea ce este mai bun pentru călătoria de învățare și succesul în carieră al studenților noștri.',
+    'about.innovationTitle': 'Inovație Continuă',
+    'about.innovationDesc': 'Actualizăm constant curriculum-ul nostru pentru a reflecta cele mai recente tendințe din industrie și progrese tehnologice.',
+    'about.communityTitle': 'Construirea Comunității',
+    'about.communityDesc': 'Promovăm o comunitate de susținere unde studenții, instructorii și profesioniștii din industrie colaborează și cresc împreună.',
+    
+    // Team Section
+    'about.teamBadge': 'Cunoaște Echipa',
     'about.teamTitle': 'Dezvoltatori și Educatori Experți',
     'about.teamSubtitle': 'Profesioniști din industrie cu decenii de experiență combinată în sisteme înglobate',
+    'about.specialization': 'Specializare:',
+    'about.experience': 'Experiență:',
+    'about.connect': 'Conectează-te',
+    
+    // Partners Section
+    'about.partnersBadge': 'Parteneri din Industrie',
     'about.partnersTitle': 'De Încredere pentru Companii de Top',
     'about.partnersSubtitle': 'Colaborăm cu companii tehnologice de top pentru a oferi experiență din lumea reală',
+    
+    // CTA Section
+    'about.ctaBadge': 'Alătură-te Comunității',
     'about.ctaTitle': 'Gata să Te Alături Comunității Noastre?',
     'about.ctaSubtitle': 'Devino parte dintr-o rețea în creștere de profesioniști și entuziaști ai sistemelor înglobate.',
     'about.startLearning': 'Începe să Înveți Astăzi',
@@ -1176,19 +1244,53 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.automotiveElectronics': 'Автомобильная Электроника',
     
     // About Page
+    'about.badge': 'О Embedded School',
     'about.title': 'Расширяем Возможности Следующего Поколения',
     'about.titleHighlight': 'Встраиваемых Инженеров',
     'about.description': 'Основана в Молдове с видением демократизировать образование встраиваемых систем в Восточной Европе. Мы соединяем академическую теорию с промышленной практикой.',
+    
+    // Stats
+    'about.studentsTaught': 'Обученных Студентов',
+    'about.courseCompletions': 'Завершённых Курсов',
+    'about.industryPartners': 'Отраслевых Партнёров',
+    'about.countriesReached': 'Охваченных Стран',
+    
+    // Mission Section
+    'about.missionBadge': 'Наша Миссия',
     'about.missionTitle': 'Строим Будущее Встраиваемого Образования',
     'about.missionText1': 'Предоставлять образование мирового уровня по встраиваемым системам, которое готовит студентов к успешной карьере в быстро развивающемся технологическом ландшафте. Мы верим, что качественное образование должно быть доступно всем, независимо от их происхождения.',
     'about.missionText2': 'С момента нашего основания в 2019 году мы стремились создавать практические, актуальные для индустрии курсы, которые дают нашим студентам навыки, необходимые для успеха в разработке встраиваемых систем, IoT и автомобильной электронике.',
     'about.joinMission': 'Присоединитесь к Нашей Миссии',
+    'about.imageAlt': 'Командная работа',
+    
+    // Values Section
+    'about.valuesBadge': 'Наши Ценности',
     'about.valuesTitle': 'Что Движет Нас Вперед',
     'about.valuesSubtitle': 'Принципы, которые направляют все, что мы делаем в Embedded School',
+    'about.excellenceTitle': 'Превосходство в Образовании',
+    'about.excellenceDesc': 'Мы стремимся предоставлять высочайшее качество образования по встраиваемым системам через практический опыт обучения.',
+    'about.studentCenteredTitle': 'Студентоцентрированный Подход',
+    'about.studentCenteredDesc': 'Каждое наше решение направлено на то, что лучше всего для учебного пути и карьерного успеха наших студентов.',
+    'about.innovationTitle': 'Постоянные Инновации',
+    'about.innovationDesc': 'Мы постоянно обновляем нашу учебную программу, чтобы отражать последние отраслевые тренды и технологические достижения.',
+    'about.communityTitle': 'Построение Сообщества',
+    'about.communityDesc': 'Мы развиваем поддерживающее сообщество, где студенты, преподаватели и профессионалы индустрии сотрудничают и растут вместе.',
+    
+    // Team Section
+    'about.teamBadge': 'Познакомьтесь с Командой',
     'about.teamTitle': 'Эксперты-Разработчики и Преподаватели',
     'about.teamSubtitle': 'Профессионалы индустрии с десятилетиями общего опыта во встраиваемых системах',
+    'about.specialization': 'Специализация:',
+    'about.experience': 'Опыт:',
+    'about.connect': 'Связаться',
+    
+    // Partners Section
+    'about.partnersBadge': 'Отраслевые Партнёры',
     'about.partnersTitle': 'Доверяют Ведущие Компании',
     'about.partnersSubtitle': 'Сотрудничаем с ведущими технологическими компаниями для предоставления реального опыта',
+    
+    // CTA Section
+    'about.ctaBadge': 'Присоединитесь к Сообществу',
     'about.ctaTitle': 'Готовы Присоединиться к Нашему Сообществу?',
     'about.ctaSubtitle': 'Станьте частью растущей сети профессионалов и энтузиастов встраиваемых систем.',
     'about.startLearning': 'Начать Обучение Сегодня',

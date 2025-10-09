@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/ui/navigation";
 import ScrollReveal from "@/components/scroll-reveal";
 import AnimatedCounter from "@/components/animated-counter";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Users,
   Award,
@@ -34,39 +35,36 @@ import theAutomationNetwork from "@/assets/theAutomationNetwork.svg";
 
 const About = () => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [showInquiryForm, setShowInquiryForm] = React.useState(false);
 
   const stats = [
-    { icon: Users, label: "Students Taught", value: 250, suffix: "+" },
-    { icon: Award, label: "Course Completions", value: 50, suffix: "+" },
-    { icon: Trophy, label: "Industry Partners", value: 30, suffix: "+" },
-    { icon: Globe, label: "Countries Reached", value: 15, suffix: "" },
+    { icon: Users, label: t("about.studentsTaught"), value: 250, suffix: "+" },
+    { icon: Award, label: t("about.courseCompletions"), value: 50, suffix: "+" },
+    { icon: Trophy, label: t("about.industryPartners"), value: 30, suffix: "+" },
+    { icon: Globe, label: t("about.countriesReached"), value: 15, suffix: "" },
   ];
 
   const values = [
     {
       icon: Target,
-      title: "Excellence in Education",
-      description:
-        "We are committed to providing the highest quality embedded systems education through practical, hands-on learning experiences.",
+      title: t("about.excellenceTitle"),
+      description: t("about.excellenceDesc"),
     },
     {
       icon: Heart,
-      title: "Student-Centered Approach",
-      description:
-        "Every decision we make is guided by what's best for our students' learning journey and career success.",
+      title: t("about.studentCenteredTitle"),
+      description: t("about.studentCenteredDesc"),
     },
     {
       icon: BookOpen,
-      title: "Continuous Innovation",
-      description:
-        "We constantly update our curriculum to reflect the latest industry trends and technological advancements.",
+      title: t("about.innovationTitle"),
+      description: t("about.innovationDesc"),
     },
     {
       icon: Users,
-      title: "Community Building",
-      description:
-        "We foster a supportive community where students, instructors, and industry professionals collaborate and grow together.",
+      title: t("about.communityTitle"),
+      description: t("about.communityDesc"),
     },
   ];
 
@@ -135,20 +133,18 @@ const About = () => {
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
                 <Target className="w-4 h-4 mr-2" />
-                About Embedded School
+                {t("about.badge")}
               </Badge>
 
               <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white">
-                Empowering the Next Generation of{" "}
+                {t("about.title")}{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                  Embedded Engineers
+                  {t("about.titleHighlight")}
                 </span>
               </h1>
 
               <p className="text-xl lg:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Founded in Moldova with a vision to democratize embedded systems
-                education across Eastern Europe. We bridge the gap between
-                academic theory and industry practice.
+                {t("about.description")}
               </p>
             </div>
           </ScrollReveal>
@@ -189,24 +185,17 @@ const About = () => {
               <div>
                 <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
                   <Code className="w-4 h-4 mr-2" />
-                  Our Mission
+                  {t("about.missionBadge")}
                 </Badge>
 
                 <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-                  Building the Future of Embedded Education
+                  {t("about.missionTitle")}
                 </h2>
                 <p className="text-lg text-gray-400 mb-6 leading-relaxed">
-                  To provide world-class embedded systems education that
-                  prepares students for successful careers in the rapidly
-                  evolving technology landscape. We believe that quality
-                  education should be accessible to everyone, regardless of
-                  their background.
+                  {t("about.missionText1")}
                 </p>
                 <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                  Since our founding in 2019, we've been committed to creating
-                  practical, industry-relevant courses that give our students
-                  the skills they need to excel in embedded systems development,
-                  IoT, and automotive electronics.
+                  {t("about.missionText2")}
                 </p>
                 <Button
                   size="lg"
@@ -216,7 +205,7 @@ const About = () => {
                   }
                 >
                   <ArrowRight className="mr-2 w-4 md:w-5 h-4 md:h-5" />
-                  Join Our Mission
+                  {t("about.joinMission")}
                 </Button>
               </div>
             </ScrollReveal>
@@ -225,7 +214,7 @@ const About = () => {
               <div className="relative">
                 <img
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop"
-                  alt="Team collaboration"
+                  alt={t("about.imageAlt")}
                   className="rounded-lg shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-transparent rounded-lg"></div>
@@ -242,13 +231,13 @@ const About = () => {
             <div className="text-center mb-16">
               <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
                 <Heart className="w-4 h-4 mr-2" />
-                Our Values
+                {t("about.valuesBadge")}
               </Badge>
               <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-                What Drives Us Forward
+                {t("about.valuesTitle")}
               </h2>
               <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                The principles that guide everything we do at Embedded School
+                {t("about.valuesSubtitle")}
               </p>
             </div>
           </ScrollReveal>
@@ -282,14 +271,13 @@ const About = () => {
             <div className="text-center mb-16">
               <Badge className="mb-6 bg-yellow-500/10 text-yellow-400 border-yellow-500/20 font-mono">
                 <Users className="w-4 h-4 mr-2" />
-                Meet The Team
+                {t("about.teamBadge")}
               </Badge>
               <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-                Expert Developers & Educators
+                {t("about.teamTitle")}
               </h2>
               <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Industry professionals with decades of combined experience in
-                embedded systems
+                {t("about.teamSubtitle")}
               </p>
             </div>
           </ScrollReveal>
@@ -316,11 +304,11 @@ const About = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-400 mb-2">
-                      <strong className="text-gray-300">Specialization:</strong>{" "}
+                      <strong className="text-gray-300">{t("about.specialization")}</strong>{" "}
                       {member.specialization}
                     </p>
                     <p className="text-sm text-gray-400 mb-4">
-                      <strong className="text-gray-300">Experience:</strong>{" "}
+                      <strong className="text-gray-300">{t("about.experience")}</strong>{" "}
                       {member.experience}
                     </p>
                     <Link
@@ -333,7 +321,7 @@ const About = () => {
                         className="w-full border-slate-600 text-slate-900 hover:bg-slate-700 hover:border-slate-500"
                       >
                         <Linkedin className="w-4 h-4 mr-2" />
-                        Connect
+                        {t("about.connect")}
                       </Button>
                     </Link>
                   </CardContent>
@@ -351,14 +339,13 @@ const About = () => {
             <div className="text-center mb-12">
               <Badge className="mb-6 bg-orange-500/10 text-orange-400 border-orange-500/20 font-mono">
                 <Globe className="w-4 h-4 mr-2" />
-                Industry Partners
+                {t("about.partnersBadge")}
               </Badge>
               <h3 className="text-2xl font-bold mb-4 text-white">
-                Trusted by Leading Companies
+                {t("about.partnersTitle")}
               </h3>
               <p className="text-gray-400">
-                Collaborating with leading technology companies to provide
-                real-world experience
+                {t("about.partnersSubtitle")}
               </p>
             </div>
           </ScrollReveal>
@@ -415,15 +402,14 @@ const About = () => {
           <ScrollReveal>
             <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
               <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-              Join Our Community
+              {t("about.ctaBadge")}
             </Badge>
 
             <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-              Ready to Join Our Community?
+              {t("about.ctaTitle")}
             </h2>
             <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-              Become part of a growing network of embedded systems professionals
-              and enthusiasts.
+              {t("about.ctaSubtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -432,7 +418,7 @@ const About = () => {
                 className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
               >
                 <GraduationCap className="mr-2 w-5 h-5" />
-                Start Learning Today
+                {t("about.startLearning")}
               </Button>
               <Button
                 size="lg"
@@ -441,7 +427,7 @@ const About = () => {
                 onClick={() => navigate("/contact")}
               >
                 <Mail className="mr-2 w-5 h-5" />
-                Contact Our Team
+                {t("about.contactTeam")}
               </Button>
             </div>
           </ScrollReveal>
