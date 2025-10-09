@@ -170,20 +170,18 @@ const Contact = () => {
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                Get In Touch
+                {t('contact.hero.badge', 'Get In Touch')}
               </Badge>
 
               <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white">
-                We're Here to{" "}
+                {t('contact.hero.title', "We're Here to")}{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                  Help You Succeed
+                  {t('contact.hero.titleHighlight', 'Help You Succeed')}
                 </span>
               </h1>
 
               <p className="text-xl lg:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Have questions about our courses? Need guidance on your embedded
-                systems journey? Our team of experts is ready to assist you
-                every step of the way.
+                {t('contact.hero.description', "Have questions about our courses? Need guidance on your embedded systems journey? Our team of experts is ready to assist you every step of the way.")}
               </p>
             </div>
           </ScrollReveal>
@@ -239,7 +237,7 @@ const Contact = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2 text-2xl text-white">
                     <MessageCircle className="w-6 h-6 text-blue-400" />
-                    <span>Send us a Message</span>
+                    <span>{t('contact.form.title', 'Send us a Message')}</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -247,12 +245,12 @@ const Contact = () => {
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name" className="text-gray-300">
-                          Full Name
+                          {t('contact.form.fullName', 'Full Name')}
                         </Label>
                         <Input
                           id="name"
                           name="name"
-                          placeholder="Your full name"
+                          placeholder={t('contact.form.fullNamePlaceholder', 'Your full name')}
                           value={formData.name}
                           onChange={handleInputChange}
                           className="bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400"
@@ -261,13 +259,13 @@ const Contact = () => {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-gray-300">
-                          Email Address
+                          {t('contact.form.email', 'Email Address')}
                         </Label>
                         <Input
                           id="email"
                           name="email"
                           type="email"
-                          placeholder="your.email@example.com"
+                          placeholder={t('contact.form.emailPlaceholder', 'your.email@example.com')}
                           value={formData.email}
                           onChange={handleInputChange}
                           className="bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400"
@@ -278,12 +276,12 @@ const Contact = () => {
 
                     <div className="space-y-2">
                       <Label htmlFor="subject" className="text-gray-300">
-                        Subject
+                        {t('contact.form.subject', 'Subject')}
                       </Label>
                       <Input
                         id="subject"
                         name="subject"
-                        placeholder="What can we help you with?"
+                        placeholder={t('contact.form.subjectPlaceholder', 'What can we help you with?')}
                         value={formData.subject}
                         onChange={handleInputChange}
                         className="bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400"
@@ -293,12 +291,12 @@ const Contact = () => {
 
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-gray-300">
-                        Message
+                        {t('contact.form.message', 'Message')}
                       </Label>
                       <Textarea
                         id="message"
                         name="message"
-                        placeholder="Tell us more about your inquiry..."
+                        placeholder={t('contact.form.messagePlaceholder', 'Tell us more about your inquiry...')}
                         rows={5}
                         value={formData.message}
                         onChange={handleInputChange}
@@ -314,11 +312,11 @@ const Contact = () => {
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
-                        <>Sending...</>
+                        <>{t('contact.form.sending', 'Sending...')}</>
                       ) : (
                         <>
                           <Send className="mr-2 w-5 h-5" />
-                          Send Message
+                          {t('contact.form.send', 'Send Message')}
                         </>
                       )}
                     </Button>
@@ -348,7 +346,7 @@ const Contact = () => {
                       <div className="bg-slate-900/90 backdrop-blur-sm rounded-lg p-2 text-center border border-slate-700 shadow-lg min-w-[300px]">
                         <MapPin className="w-5 h-5 text-blue-400 mx-auto" />
                         <p className="font-bold text-white text-sm mb-1">
-                          Our Main Office
+                          {t('contact.map.title', 'Our Main Office')}
                         </p>
                         <p className="text-xs text-gray-300 font-medium">
                           Strada Aleco Ruso 15, Chișinău, Moldova
@@ -362,7 +360,7 @@ const Contact = () => {
                 <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="text-xl text-white">
-                      Need Immediate Help?
+                      {t('contact.quick.title', 'Need Immediate Help?')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -370,7 +368,7 @@ const Contact = () => {
                       <Phone className="w-5 h-5 text-blue-400 group-hover:text-blue-300" />
                       <div>
                         <p className="font-semibold text-sm text-white">
-                          Call us directly
+                          {t('contact.quick.call', 'Call us directly')}
                         </p>
                         <p className="text-xs text-gray-400">+373 69 117 686</p>
                       </div>
@@ -380,7 +378,7 @@ const Contact = () => {
                       <Mail className="w-5 h-5 text-green-400 group-hover:text-green-300" />
                       <div>
                         <p className="font-semibold text-sm text-white">
-                          Email support
+                          {t('contact.quick.email', 'Email support')}
                         </p>
                         <p className="text-xs text-gray-400">
                           support@embeddedschool.com
@@ -392,10 +390,10 @@ const Contact = () => {
                       <BookOpen className="w-5 h-5 text-purple-400 group-hover:text-purple-300" />
                       <div>
                         <p className="font-semibold text-sm text-white">
-                          Browse courses
+                          {t('contact.quick.browse', 'Browse courses')}
                         </p>
                         <p className="text-xs text-gray-400">
-                          Find the perfect course for you
+                          {t('contact.quick.browseDescription', 'Find the perfect course for you')}
                         </p>
                       </div>
                     </div>
@@ -414,13 +412,13 @@ const Contact = () => {
             <div className="text-center mb-16">
               <Badge className="mb-6 bg-orange-500/10 text-orange-400 border-orange-500/20 font-mono">
                 <CheckCircle className="w-4 h-4 mr-2" />
-                FAQ
+                {t('contact.faq.badge', 'FAQ')}
               </Badge>
               <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-                Frequently Asked Questions
+                {t('contact.faq.title', 'Frequently Asked Questions')}
               </h2>
               <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                Quick answers to common questions about our courses and services
+                {t('contact.faq.description', 'Quick answers to common questions about our courses and services')}
               </p>
             </div>
           </ScrollReveal>
@@ -445,7 +443,7 @@ const Contact = () => {
           <ScrollReveal delay={600}>
             <div className="text-center mt-12">
               <p className="text-gray-400 mb-4">
-                Can't find what you're looking for?
+                {t('contact.faq.notFound', "Can't find what you're looking for?")}
               </p>
               <Button
                 variant="outline"
@@ -459,7 +457,7 @@ const Contact = () => {
                 }}
               >
                 <MessageCircle className="mr-2 w-5 h-5" />
-                Ask a Question
+                {t('contact.faq.askQuestion', 'Ask a Question')}
               </Button>
             </div>
           </ScrollReveal>
@@ -499,15 +497,14 @@ const Contact = () => {
           <ScrollReveal>
             <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
               <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-              Ready to Start?
+              {t('contact.cta.badge', 'Ready to Start?')}
             </Badge>
 
             <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-              Ready to Start Your Journey?
+              {t('contact.cta.title', 'Ready to Start Your Journey?')}
             </h2>
             <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-              Join thousands of students mastering embedded systems. Get started
-              today with our beginner-friendly courses.
+              {t('contact.cta.description', 'Join thousands of students mastering embedded systems. Get started today with our beginner-friendly courses.')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -516,7 +513,7 @@ const Contact = () => {
                 className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
               >
                 <BookOpen className="mr-2 w-5 h-5" />
-                Browse Courses
+                {t('contact.cta.browseCourses', 'Browse Courses')}
               </Button>
               <Button
                 size="lg"
@@ -530,7 +527,7 @@ const Contact = () => {
                   href="https://t.me/embeddedschool"
                 >
                   <Users className="mr-2 w-5 h-5" />
-                  Join Community
+                  {t('contact.cta.joinCommunity', 'Join Community')}
                 </a>
               </Button>
             </div>
