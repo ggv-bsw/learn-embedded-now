@@ -281,8 +281,8 @@ const About = () => {
                       </div>
                       <span>{value.title}</span>
                     </CardTitle>
-                  </CardHeader>
-                  <CardContent>
+                    </CardHeader>
+                    <CardContent className="flex-grow flex flex-col justify-between">
                     <p className="text-gray-400">{value.description}</p>
                   </CardContent>
                 </Card>
@@ -318,8 +318,8 @@ const About = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
               {team.map((member, index) => (
                 <ScrollReveal key={member.id} delay={index * 100}>
-                  <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm text-center hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
-                    <CardHeader className="pb-4">
+                  <Card className="h-full flex flex-col bg-slate-800/50 border-slate-700 backdrop-blur-sm text-center hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
+                    <CardHeader className="pb-4 flex-shrink-0">
                       <div className="relative mx-auto mb-4">
                         <img
                           src={member.image}
