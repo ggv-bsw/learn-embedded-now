@@ -131,7 +131,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to customer
     const customerEmailResponse = await resend.emails.send({
-      from: "Embedded school <onboarding@resend.dev>",
+      from: "Embedded school <noreply@embedded.school>",
       to: [customerEmail],
       subject: "Order Confirmation - Embedded school",
       html: `
@@ -159,7 +159,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification email to business
     const businessEmailResponse = await resend.emails.send({
-      from: "Embedded school <onboarding@resend.dev>",
+      from: "Embedded school <noreply@embedded.school>",
       to: ["learn@embedded.school"],
       subject: "New Order Received - Embedded school",
       html: `
