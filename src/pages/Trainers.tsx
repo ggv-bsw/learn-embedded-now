@@ -339,7 +339,7 @@ const Trainers = () => {
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
                 <Trophy className="w-4 h-4 mr-2" />
-                Join Our Team
+                {t('trainers.joinTeam', 'Join Our Team')}
               </Badge>
 
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -405,19 +405,19 @@ const Trainers = () => {
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-300">
-                      Strong communication skills
+                      {t('trainers.communicationSkills', 'Strong communication skills')}
                     </span>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-300">
-                      Expertise in embedded systems or IoT
+                      {t('trainers.embeddedExpertise', 'Expertise in embedded systems or IoT')}
                     </span>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-300">
-                      Passion for teaching and mentoring
+                      {t('trainers.passionTeaching', 'Passion for teaching and mentoring')}
                     </span>
                   </div>
                 </div>
@@ -430,14 +430,14 @@ const Trainers = () => {
                   onClick={() => setShowApplicationForm(true)}
                 >
                   <Award className="mr-2 w-5 h-5" />
-                  Apply to Teach
+                  {t('trainers.applyToTeach', 'Apply to Teach')}
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-gray-600 text-slate-900 hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg"
                 >
-                  Learn More
+                  {t('trainers.learnMore', 'Learn More')}
                 </Button>
               </div>
             </div>

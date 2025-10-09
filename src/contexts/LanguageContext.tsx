@@ -231,7 +231,12 @@ const translations: Record<Language, Record<string, string>> = {
     'trainers.payDescription': 'Earn competitive rates for sharing your expertise',
     'trainers.requirements': 'Requirements',
     'trainers.yearsExperience': 'years of industry experience',
-    'trainers.applyNow': 'Apply Now',
+    'trainers.communicationSkills': 'Strong communication skills',
+    'trainers.embeddedExpertise': 'Expertise in embedded systems or IoT',
+    'trainers.passionTeaching': 'Passion for teaching and mentoring',
+    'trainers.applyToTeach': 'Apply to Teach',
+    'trainers.learnMore': 'Learn More',
+    'trainers.joinTeam': 'Join Our Team',
     
     // Hardware Page
     'hardware.title': 'Premium Development',
@@ -792,7 +797,12 @@ const translations: Record<Language, Record<string, string>> = {
     'trainers.payDescription': 'Câștigă rate competitive pentru împărtășirea expertizei tale',
     'trainers.requirements': 'Cerințe',
     'trainers.yearsExperience': 'ani de experiență în industrie',
-    'trainers.applyNow': 'Aplică Acum',
+    'trainers.communicationSkills': 'Abilități puternice de comunicare',
+    'trainers.embeddedExpertise': 'Expertiză în sisteme înglobate sau IoT',
+    'trainers.passionTeaching': 'Pasiune pentru predare și mentorat',
+    'trainers.applyToTeach': 'Aplică pentru Predare',
+    'trainers.learnMore': 'Află Mai Mult',
+    'trainers.joinTeam': 'Alătură-te Echipei Noastre',
     
     // Hardware Page
     'hardware.title': 'Hardware de Dezvoltare',
@@ -1351,7 +1361,12 @@ const translations: Record<Language, Record<string, string>> = {
     'trainers.payDescription': 'Зарабатывайте конкурентные ставки за обмен опытом',
     'trainers.requirements': 'Требования',
     'trainers.yearsExperience': 'лет отраслевого опыта',
-    'trainers.applyNow': 'Подать Заявку Сейчас',
+    'trainers.communicationSkills': 'Сильные коммуникативные навыки',
+    'trainers.embeddedExpertise': 'Опыт во встраиваемых системах или IoT',
+    'trainers.passionTeaching': 'Страсть к преподаванию и наставничеству',
+    'trainers.applyToTeach': 'Подать Заявку на Преподавание',
+    'trainers.learnMore': 'Узнать Больше',
+    'trainers.joinTeam': 'Присоединитесь к Нашей Команде',
     
     // Hardware Page
     'hardware.title': 'Премиальное Оборудование',
