@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -25,15 +25,43 @@ import {
   CheckCircle,
   Trophy,
 } from "lucide-react";
-import { team } from "@/testData/teamData";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const Trainers = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   const [showMeetingForm, setShowMeetingForm] = useState(false);
   const [selectedTrainer, setSelectedTrainer] = useState("");
+  const [team, setTeam] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      const { data, error } = await supabase
+        .from("team_members")
+        .select("*")
+        .order("id");
+      
+      if (!error && data) {
+        setTeam(data);
+      }
+      setLoading(false);
+    };
+    
+    fetchTeam();
+  }, []);
+
+  const getTranslatedField = (item: any, field: string) => {
+    if (language === "ro" && item[`${field}_ro`]) {
+      return item[`${field}_ro`];
+    }
+    if (language === "ru" && item[`${field}_ru`]) {
+      return item[`${field}_ru`];
+    }
+    return item[field];
+  };
 
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
@@ -127,8 +155,13 @@ const Trainers = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {team.map((trainer, index) => (
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-gray-400">{t("loading", "Loading...")}</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {team.map((trainer, index) => (
               <ScrollReveal key={trainer.id} delay={index * 100}>
                 <Card className="h-full flex flex-col group hover:shadow-2xl transition-all duration-300 bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 hover:scale-105">
                   <CardHeader className="pb-4">
@@ -153,7 +186,7 @@ const Trainers = () => {
                           {trainer.name}
                         </CardTitle>
                         <CardDescription className="text-blue-400 font-medium mb-2">
-                          {trainer.title}
+                          {getTranslatedField(trainer, "title")}
                         </CardDescription>
 
                         <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
@@ -178,7 +211,7 @@ const Trainers = () => {
 
                         <div className="flex items-center gap-1 text-sm text-gray-400">
                           <MapPin className="w-4 h-4" />
-                          <span>{trainer.location}</span>
+                          <span>{getTranslatedField(trainer, "location")}</span>
                         </div>
                       </div>
                     </div>
@@ -186,7 +219,7 @@ const Trainers = () => {
 
                   <CardContent className="space-y-4 flex-1 flex flex-col">
                     <p className="text-sm text-gray-400 leading-relaxed">
-                      {trainer.bio}
+                      {getTranslatedField(trainer, "bio")}
                     </p>
 
                     <div>
@@ -194,7 +227,7 @@ const Trainers = () => {
                         {t('trainers.expertise', 'Expertise')}
                       </h4>
                       <div className="flex flex-wrap gap-2">
-                        {trainer.expertise.map((skill) => (
+                        {(getTranslatedField(trainer, "expertise") || trainer.expertise).map((skill: string) => (
                           <Badge
                             key={skill}
                             className="bg-blue-500/10 text-blue-400 border-blue-500/20"
@@ -210,7 +243,7 @@ const Trainers = () => {
                         {t('trainers.specialties', 'Specialties')}
                       </h4>
                       <div className="flex flex-wrap gap-2">
-                        {trainer.specialties.map((specialty) => (
+                        {(getTranslatedField(trainer, "specialties") || trainer.specialties).map((specialty: string) => (
                           <Badge
                             key={specialty}
                             variant="outline"
@@ -248,9 +281,10 @@ const Trainers = () => {
                     </div>
                   </CardContent>
                 </Card>
-              </ScrollReveal>
-            ))}
-          </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

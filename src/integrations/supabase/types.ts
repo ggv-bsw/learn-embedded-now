@@ -358,6 +358,105 @@ export type Database = {
         }
         Relationships: []
       }
+      team_members: {
+        Row: {
+          bio: string
+          bio_ro: string | null
+          bio_ru: string | null
+          created_at: string
+          experience: string
+          expertise: string[]
+          expertise_ro: string[] | null
+          expertise_ru: string[] | null
+          id: number
+          image: string
+          linkedin: string | null
+          location: string
+          location_ro: string | null
+          location_ru: string | null
+          name: string
+          rating: number
+          role: string
+          role_ro: string | null
+          role_ru: string | null
+          specialization: string
+          specialization_ro: string | null
+          specialization_ru: string | null
+          specialties: string[]
+          specialties_ro: string[] | null
+          specialties_ru: string[] | null
+          students: number
+          title: string
+          title_ro: string | null
+          title_ru: string | null
+          updated_at: string
+        }
+        Insert: {
+          bio: string
+          bio_ro?: string | null
+          bio_ru?: string | null
+          created_at?: string
+          experience: string
+          expertise?: string[]
+          expertise_ro?: string[] | null
+          expertise_ru?: string[] | null
+          id: number
+          image: string
+          linkedin?: string | null
+          location: string
+          location_ro?: string | null
+          location_ru?: string | null
+          name: string
+          rating?: number
+          role: string
+          role_ro?: string | null
+          role_ru?: string | null
+          specialization: string
+          specialization_ro?: string | null
+          specialization_ru?: string | null
+          specialties?: string[]
+          specialties_ro?: string[] | null
+          specialties_ru?: string[] | null
+          students?: number
+          title: string
+          title_ro?: string | null
+          title_ru?: string | null
+          updated_at?: string
+        }
+        Update: {
+          bio?: string
+          bio_ro?: string | null
+          bio_ru?: string | null
+          created_at?: string
+          experience?: string
+          expertise?: string[]
+          expertise_ro?: string[] | null
+          expertise_ru?: string[] | null
+          id?: number
+          image?: string
+          linkedin?: string | null
+          location?: string
+          location_ro?: string | null
+          location_ru?: string | null
+          name?: string
+          rating?: number
+          role?: string
+          role_ro?: string | null
+          role_ru?: string | null
+          specialization?: string
+          specialization_ro?: string | null
+          specialization_ru?: string | null
+          specialties?: string[]
+          specialties_ro?: string[] | null
+          specialties_ru?: string[] | null
+          students?: number
+          title?: string
+          title_ro?: string | null
+          title_ru?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       trainer_applications: {
         Row: {
           bio: string

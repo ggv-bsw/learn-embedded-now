@@ -24,7 +24,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "@/components/footer";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
-import { team } from "@/testData/teamData";
+import { supabase } from "@/integrations/supabase/client";
 
 import bswTech from "@/assets/bswTech.png";
 import capgemini from "@/assets/capgemini.png";
@@ -35,8 +35,36 @@ import theAutomationNetwork from "@/assets/theAutomationNetwork.svg";
 
 const About = () => {
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [showInquiryForm, setShowInquiryForm] = React.useState(false);
+  const [team, setTeam] = React.useState<any[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchTeam = async () => {
+      const { data, error } = await supabase
+        .from("team_members")
+        .select("*")
+        .order("id");
+      
+      if (!error && data) {
+        setTeam(data);
+      }
+      setLoading(false);
+    };
+    
+    fetchTeam();
+  }, []);
+
+  const getTranslatedField = (item: any, field: string) => {
+    if (language === "ro" && item[`${field}_ro`]) {
+      return item[`${field}_ro`];
+    }
+    if (language === "ru" && item[`${field}_ru`]) {
+      return item[`${field}_ru`];
+    }
+    return item[field];
+  };
 
   const stats = [
     { icon: Users, label: t("about.studentsTaught"), value: 250, suffix: "+" },
@@ -282,53 +310,59 @@ const About = () => {
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {team.map((member, index) => (
-              <ScrollReveal key={index} delay={index * 100}>
-                <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm text-center hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
-                  <CardHeader className="pb-4">
-                    <div className="relative mx-auto mb-4">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-24 h-24 rounded-full mx-auto object-cover shadow-2xl"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-transparent rounded-full"></div>
-                    </div>
-                    <CardTitle className="text-lg text-white">
-                      {member.name}
-                    </CardTitle>
-                    <Badge className="mx-auto bg-blue-500/20 text-blue-400 border-blue-500/30">
-                      {member.role}
-                    </Badge>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-400 mb-2">
-                      <strong className="text-gray-300">{t("about.specialization")}</strong>{" "}
-                      {member.specialization}
-                    </p>
-                    <p className="text-sm text-gray-400 mb-4">
-                      <strong className="text-gray-300">{t("about.experience")}</strong>{" "}
-                      {member.experience}
-                    </p>
-                    <Link
-                      to={member.linkedin}
-                      className="hover:text-blue-400 transition-colors"
-                    >
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="w-full border-slate-600 text-slate-900 hover:bg-slate-700 hover:border-slate-500"
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-gray-400">{t("loading", "Loading...")}</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+              {team.map((member, index) => (
+                <ScrollReveal key={member.id} delay={index * 100}>
+                  <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm text-center hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
+                    <CardHeader className="pb-4">
+                      <div className="relative mx-auto mb-4">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-24 h-24 rounded-full mx-auto object-cover shadow-2xl"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-transparent rounded-full"></div>
+                      </div>
+                      <CardTitle className="text-lg text-white">
+                        {member.name}
+                      </CardTitle>
+                      <Badge className="mx-auto bg-blue-500/20 text-blue-400 border-blue-500/30">
+                        {getTranslatedField(member, "role")}
+                      </Badge>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-gray-400 mb-2">
+                        <strong className="text-gray-300">{t("about.specialization")}</strong>{" "}
+                        {getTranslatedField(member, "specialization")}
+                      </p>
+                      <p className="text-sm text-gray-400 mb-4">
+                        <strong className="text-gray-300">{t("about.experience")}</strong>{" "}
+                        {member.experience}
+                      </p>
+                      <Link
+                        to={member.linkedin}
+                        className="hover:text-blue-400 transition-colors"
                       >
-                        <Linkedin className="w-4 h-4 mr-2" />
-                        {t("about.connect")}
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </ScrollReveal>
-            ))}
-          </div>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="w-full border-slate-600 text-slate-900 hover:bg-slate-700 hover:border-slate-500"
+                        >
+                          <Linkedin className="w-4 h-4 mr-2" />
+                          {t("about.connect")}
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                </ScrollReveal>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
