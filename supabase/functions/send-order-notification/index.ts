@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.57.3';
+import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -21,19 +22,23 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-interface OrderItem {
-  name: string;
-  quantity: number;
-  price: number;
-}
+// Validation schemas
+const OrderItemSchema = z.object({
+  name: z.string().trim().min(1, "Product name is required").max(200, "Product name too long"),
+  quantity: z.number().int().positive("Quantity must be positive").max(1000, "Quantity too large"),
+  price: z.number().positive("Price must be positive").max(1000000, "Price too large")
+});
 
-interface OrderNotificationRequest {
-  customerName: string;
-  customerEmail: string;
-  customerPhone?: string;
-  items: OrderItem[];
-  totalPrice: number;
-}
+const OrderNotificationSchema = z.object({
+  customerName: z.string().trim().min(1, "Name is required").max(100, "Name too long"),
+  customerEmail: z.string().trim().email("Invalid email address").max(255, "Email too long"),
+  customerPhone: z.string().trim().max(20, "Phone number too long").optional(),
+  items: z.array(OrderItemSchema).min(1, "At least one item is required").max(100, "Too many items"),
+  totalPrice: z.number().positive("Total price must be positive").max(1000000, "Total price too large")
+});
+
+type OrderItem = z.infer<typeof OrderItemSchema>;
+type OrderNotificationRequest = z.infer<typeof OrderNotificationSchema>;
 
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
@@ -41,7 +46,26 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { customerName, customerEmail, customerPhone, items, totalPrice }: OrderNotificationRequest = await req.json();
+    const rawBody = await req.json();
+    
+    // Validate input data
+    const validationResult = OrderNotificationSchema.safeParse(rawBody);
+    
+    if (!validationResult.success) {
+      console.error("Validation error:", validationResult.error);
+      return new Response(
+        JSON.stringify({ 
+          error: "Invalid order data", 
+          details: validationResult.error.issues 
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+    
+    const { customerName, customerEmail, customerPhone, items, totalPrice } = validationResult.data;
 
     console.log("Processing order for:", customerEmail);
 

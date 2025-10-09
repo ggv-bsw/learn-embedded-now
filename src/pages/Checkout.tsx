@@ -9,6 +9,14 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+
+// Validation schema for checkout form
+const checkoutSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().min(1, "Phone is required").max(20, "Phone number must be less than 20 characters"),
+});
 
 const Checkout = () => {
   const { items, totalPrice, clearCart } = useCart();
@@ -25,15 +33,25 @@ const Checkout = () => {
     setIsLoading(true);
 
     try {
+      // Validate form data
+      const validationResult = checkoutSchema.safeParse(formData);
+      
+      if (!validationResult.success) {
+        const firstError = validationResult.error.issues[0];
+        toast.error(firstError.message);
+        setIsLoading(false);
+        return;
+      }
+
       // Call edge function to create order and send notifications
       // The edge function uses service role credentials to securely handle database operations
       const { data, error } = await supabase.functions.invoke(
         "send-order-notification",
         {
           body: {
-            customerName: formData.name,
-            customerEmail: formData.email,
-            customerPhone: formData.phone,
+            customerName: validationResult.data.name,
+            customerEmail: validationResult.data.email,
+            customerPhone: validationResult.data.phone,
             items: items.map((item) => ({
               name: item.name,
               quantity: item.quantity,
@@ -54,7 +72,7 @@ const Checkout = () => {
       navigate("/");
     } catch (error: any) {
       console.error("Error placing order:", error);
-      toast.error("Failed to place order. Please try again.");
+      toast.error(error.message || "Failed to place order. Please try again.");
     } finally {
       setIsLoading(false);
     }
