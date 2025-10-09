@@ -66,7 +66,7 @@ const Checkout = () => {
 
       console.log("Order created successfully:", data);
       toast.success(
-        "Order placed successfully! Check your email for confirmation."
+        "Order placed successfully! We will contact you shortly."
       );
       clearCart();
       navigate("/");
