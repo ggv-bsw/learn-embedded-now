@@ -21,6 +21,7 @@ const CourseInquirySchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   surname: z.string().trim().min(1, "Surname is required").max(100, "Surname must be less than 100 characters"),
   courseId: z.string().trim().min(1, "Course selection is required").max(100),
+  courseName: z.string().trim().max(200).optional(),
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters").optional(),
   phone: z.string().trim().max(20, "Phone must be less than 20 characters").optional(),
   message: z.string().trim().max(2000, "Message must be less than 2000 characters").optional(),
@@ -35,6 +36,7 @@ interface CourseInquiryRequest {
   name: string;
   surname: string;
   courseId: string;
+  courseName?: string;
   email?: string;
   phone?: string;
   message?: string;
@@ -72,9 +74,9 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    const { name, surname, courseId, email, phone, message } = validationResult.data;
+    const { name, surname, courseId, courseName, email, phone, message } = validationResult.data;
 
-    console.log("Received course inquiry:", { name, surname, courseId, email });
+    console.log("Received course inquiry:", { name, surname, courseId, courseName, email });
 
     // Store in database
     const { data, error: dbError } = await supabase
@@ -100,14 +102,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Saved to database:", data);
 
-    // Course mapping for email
-    const courseNames: Record<string, string> = {
-      "embedded-c-arduino": "Intro to Embedded C with Arduino",
-      "iot-systems": "Complete IoT Systems Development",
-      "advanced-embedded-c": "Advanced Embedded C Programming"
-    };
-
-    const courseName = courseNames[courseId] || courseId;
+    // Use the provided course name or fall back to course ID
+    const displayCourseName = courseName || courseId;
 
     // Send email notification via Resend API
     const emailResponse = await fetch("https://api.resend.com/emails", {
@@ -117,9 +113,9 @@ const handler = async (req: Request): Promise<Response> => {
         "Authorization": `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Engineers Factory <onboarding@resend.dev>",
+        from: "Embedded school <onboarding@resend.dev>",
         to: ["learn@embedded.school"],
-        subject: `New Course Inquiry - ${courseName}`,
+        subject: `New Course Inquiry - ${displayCourseName}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #1e293b; border-bottom: 2px solid #3b82f6; padding-bottom: 10px;">
@@ -129,7 +125,7 @@ const handler = async (req: Request): Promise<Response> => {
             <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
               <h3 style="color: #3b82f6; margin-top: 0;">Student Information</h3>
               <p><strong>Name:</strong> ${escapeHtml(name)} ${escapeHtml(surname)}</p>
-              <p><strong>Course of Interest:</strong> ${escapeHtml(courseName)}</p>
+              <p><strong>Course of Interest:</strong> ${escapeHtml(displayCourseName)}</p>
               ${email ? `<p><strong>Email:</strong> ${escapeHtml(email)}</p>` : ''}
               ${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ''}
             </div>

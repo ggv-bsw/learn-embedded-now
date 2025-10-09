@@ -62,6 +62,7 @@ interface FormData {
   name: string;
   surname: string;
   courseId: string;
+  courseName?: string;
   email: string;
   phone: string;
   message: string;
@@ -132,10 +133,14 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
     setLoading(true);
 
     try {
+      const courseName = getSelectedCourseTitle();
       const { data, error } = await supabase.functions.invoke(
         "send-course-inquiry",
         {
-          body: formData,
+          body: {
+            ...formData,
+            courseName,
+          },
         }
       );
 
