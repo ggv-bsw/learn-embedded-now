@@ -23,35 +23,49 @@ import {
   Heart,
   User,
 } from "lucide-react";
-import { featuredCourses } from "@/testData/featuredCourses";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
 import VideoDemo from "@/components/VideoDemo";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useCourse } from "@/hooks/useCourses";
 
 const CourseDetail = () => {
   const { courseId } = useParams();
   const { t } = useLanguage();
-  // const navigate = useNavigate();
   const { addToCart } = useCart();
-  // const [isWishlisted, setIsWishlisted] = useState(false);
   const [showInquiryForm, setShowInquiryForm] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+  const { course, loading, error } = useCourse(courseId || "");
 
   const handleEnrollClick = () => {
     setShowInquiryForm(true);
   };
 
-  const getCourseById = (id: string) => {
-    const allCourses = [...featuredCourses];
-    return allCourses.find((course) => course.id === id);
-  };
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background font-inter flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">{t('common.loading') || 'Loading...'}</p>
+        </div>
+      </div>
+    );
+  }
 
-  const course = getCourseById(courseId || "");
-
-  if (!course) {
-    return <div>{t('courseDetail.notFound')}</div>;
+  if (error || !course) {
+    return (
+      <div className="min-h-screen bg-background font-inter">
+        <Navigation />
+        <div className="container mx-auto px-4 py-16 text-center">
+          <h1 className="text-2xl font-bold mb-4">{t('courseDetail.notFound')}</h1>
+          <p className="text-muted-foreground mb-8">{error || 'Course not found'}</p>
+          <Button asChild>
+            <Link to="/courses">{t('courseDetail.backToCourses') || 'Back to Courses'}</Link>
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   const totalLessons = course.curriculum.reduce(

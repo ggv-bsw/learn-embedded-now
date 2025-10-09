@@ -24,11 +24,12 @@ import { Link } from "react-router-dom";
 import VideoDemo from "@/components/VideoDemo";
 import juniorChessRobot from "@/assets/junior-chess-robot.jpg";
 import AnimatedParticles from "@/components/animated-particles";
-import { featuredCourses } from "@/testData/featuredCourses";
+import { useCourses } from "@/hooks/useCourses";
 import Footer from "@/components/footer";
 
 const Index = () => {
   const { t } = useLanguage();
+  const { courses: featuredCourses, loading: coursesLoading } = useCourses();
   const [showInquiryForm, setShowInquiryForm] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
@@ -308,7 +309,32 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {featuredCourses.slice(0, 3).map((course) => (
+            {coursesLoading ? (
+              // Loading skeleton
+              Array.from({ length: 3 }).map((_, idx) => (
+                <Card
+                  key={idx}
+                  className="bg-slate-800/50 border-slate-700 backdrop-blur-sm"
+                >
+                  <div className="relative overflow-hidden">
+                    <div className="w-full h-48 bg-slate-700 animate-pulse"></div>
+                  </div>
+                  <CardContent className="p-6">
+                    <div className="h-6 bg-slate-700 animate-pulse rounded mb-3"></div>
+                    <div className="h-4 bg-slate-700 animate-pulse rounded mb-4"></div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="h-4 w-20 bg-slate-700 animate-pulse rounded"></div>
+                      <div className="h-4 w-20 bg-slate-700 animate-pulse rounded"></div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="h-8 w-24 bg-slate-700 animate-pulse rounded"></div>
+                      <div className="h-10 w-32 bg-slate-700 animate-pulse rounded"></div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            ) : (
+              featuredCourses.slice(0, 3).map((course) => (
               <Card
                 key={course.id}
                 className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group"
@@ -382,9 +408,10 @@ const Index = () => {
                       {t("courses.enrollNow", "Enroll Now")}
                     </Button>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ))
+            )}
           </div>
 
           <div className="text-center mt-12">

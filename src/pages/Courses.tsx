@@ -15,14 +15,15 @@ import {
   Cpu,
 } from "lucide-react";
 import AnimatedParticles from "@/components/animated-particles";
-import { featuredCourses } from "@/testData/featuredCourses";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
 import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useCourses } from "@/hooks/useCourses";
 
 const Courses = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const { courses: featuredCourses, loading, error } = useCourses();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedLevel, setSelectedLevel] = useState("All");
@@ -84,6 +85,30 @@ const Courses = () => {
       "bg-gray-500/20 text-gray-400 border-gray-500/30"
     );
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-900 font-inter text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+          <p className="text-gray-300">{t('common.loading') || 'Loading courses...'}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-slate-900 font-inter text-white">
+        <Navigation />
+        <div className="container mx-auto px-4 py-16 text-center">
+          <h1 className="text-2xl font-bold mb-4">Error Loading Courses</h1>
+          <p className="text-gray-400 mb-8">{error}</p>
+          <Button onClick={() => window.location.reload()}>Reload Page</Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-900 font-inter text-white">
