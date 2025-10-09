@@ -97,6 +97,7 @@ const translations: Record<Language, Record<string, string>> = {
     'common.inStock': 'In Stock',
     'common.outOfStock': 'Out of Stock',
     'common.reviews': 'reviews',
+    'common.loading': 'Loading...',
     
     // Professional Pack
     'pack.title': 'Professional Pack',
@@ -809,6 +810,7 @@ const translations: Record<Language, Record<string, string>> = {
     'common.inStock': 'În Stoc',
     'common.outOfStock': 'Stoc Epuizat',
     'common.reviews': 'recenzii',
+    'common.loading': 'Se încarcă...',
     
     // Professional Pack
     'pack.title': 'Pachet Profesional',
@@ -1539,6 +1541,7 @@ const translations: Record<Language, Record<string, string>> = {
     'common.inStock': 'В Наличии',
     'common.outOfStock': 'Нет в Наличии',
     'common.reviews': 'отзывы',
+    'common.loading': 'Загрузка...',
     
     // Professional Pack
     'pack.title': 'Профессиональный Пакет',
