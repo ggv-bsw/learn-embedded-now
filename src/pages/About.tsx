@@ -335,15 +335,17 @@ const About = () => {
                         {getTranslatedField(member, "role")}
                       </Badge>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-gray-400 mb-2">
-                        <strong className="text-gray-300">{t("about.specialization")}</strong>{" "}
-                        {getTranslatedField(member, "specialization")}
-                      </p>
-                      <p className="text-sm text-gray-400 mb-4">
-                        <strong className="text-gray-300">{t("about.experience")}</strong>{" "}
-                        {member.experience}
-                      </p>
+                    <CardContent className="flex-grow flex flex-col justify-between">
+                      <div>
+                        <p className="text-sm text-gray-400 mb-2">
+                          <strong className="text-gray-300">{t("about.specialization")}</strong>{" "}
+                          {getTranslatedField(member, "specialization")}
+                        </p>
+                        <p className="text-sm text-gray-400 mb-4">
+                          <strong className="text-gray-300">{t("about.experience")}</strong>{" "}
+                          {member.experience}
+                        </p>
+                      </div>
                       <Link
                         to={member.linkedin}
                         className="hover:text-blue-400 transition-colors"
