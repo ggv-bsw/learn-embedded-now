@@ -225,6 +225,35 @@ export type Database = {
         }
         Relationships: []
       }
+      course_instructors: {
+        Row: {
+          course_id: string
+          created_at: string
+          id: string
+          team_member_id: number
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          id?: string
+          team_member_id: number
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          id?: string
+          team_member_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_instructors_team_member_id_fkey"
+            columns: ["team_member_id"]
+            isOneToOne: false
+            referencedRelation: "team_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       course_outcomes: {
         Row: {
           course_id: string
@@ -528,65 +557,6 @@ export type Database = {
         }
         Relationships: []
       }
-      instructors: {
-        Row: {
-          bio: string
-          bio_ro: string | null
-          bio_ru: string | null
-          course_id: string
-          created_at: string
-          experience: string
-          id: string
-          image: string
-          name: string
-          rating: number
-          students: number
-          title: string
-          title_ro: string | null
-          title_ru: string | null
-        }
-        Insert: {
-          bio: string
-          bio_ro?: string | null
-          bio_ru?: string | null
-          course_id: string
-          created_at?: string
-          experience: string
-          id?: string
-          image: string
-          name: string
-          rating?: number
-          students?: number
-          title: string
-          title_ro?: string | null
-          title_ru?: string | null
-        }
-        Update: {
-          bio?: string
-          bio_ro?: string | null
-          bio_ru?: string | null
-          course_id?: string
-          created_at?: string
-          experience?: string
-          id?: string
-          image?: string
-          name?: string
-          rating?: number
-          students?: number
-          title?: string
-          title_ro?: string | null
-          title_ru?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "instructors_course_id_fkey"
-            columns: ["course_id"]
-            isOneToOne: false
-            referencedRelation: "courses"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       junior_program_applications: {
         Row: {
           created_at: string
@@ -769,7 +739,7 @@ export type Database = {
           expertise?: string[]
           expertise_ro?: string[] | null
           expertise_ru?: string[] | null
-          id: number
+          id?: number
           image: string
           linkedin?: string | null
           location: string

@@ -85,8 +85,8 @@ export const useCourses = () => {
       // Fetch all related data in parallel
       const courseIds = coursesData.map(c => c.id);
 
-      const [instructorsRes, curriculumRes, featuresRes, requirementsRes, outcomesRes] = await Promise.all([
-        supabase.from('instructors').select('*').in('course_id', courseIds),
+      const [courseInstructorsRes, curriculumRes, featuresRes, requirementsRes, outcomesRes] = await Promise.all([
+        supabase.from('course_instructors').select('course_id, team_member_id, team_members(*)').in('course_id', courseIds),
         supabase.from('course_curriculum').select('*').in('course_id', courseIds).order('order_index'),
         supabase.from('course_features').select('*').in('course_id', courseIds).order('order_index'),
         supabase.from('course_requirements').select('*').in('course_id', courseIds).order('order_index'),
@@ -103,7 +103,8 @@ export const useCourses = () => {
 
       // Build courses with translations
       const formattedCourses: Course[] = coursesData.map(course => {
-        const instructor = instructorsRes.data?.find(i => i.course_id === course.id);
+        const courseInstructor = courseInstructorsRes.data?.find(ci => ci.course_id === course.id);
+        const instructorData = courseInstructor?.team_members as any;
         const curriculumModules = curriculumRes.data?.filter(c => c.course_id === course.id) || [];
         const features = featuresRes.data?.filter(f => f.course_id === course.id) || [];
         const requirements = requirementsRes.data?.filter(r => r.course_id === course.id) || [];
@@ -138,14 +139,14 @@ export const useCourses = () => {
           category: getTranslatedField(course.category, course.category_ro, course.category_ru),
           language: course.language,
           lastUpdated: course.last_updated,
-          instructor: instructor ? {
-            name: instructor.name,
-            title: getTranslatedField(instructor.title, instructor.title_ro, instructor.title_ru),
-            experience: instructor.experience,
-            students: instructor.students,
-            rating: Number(instructor.rating),
-            image: instructor.image,
-            bio: getTranslatedField(instructor.bio, instructor.bio_ro, instructor.bio_ru),
+          instructor: instructorData ? {
+            name: instructorData.name,
+            title: getTranslatedField(instructorData.title, instructorData.title_ro, instructorData.title_ru),
+            experience: instructorData.experience,
+            students: instructorData.students,
+            rating: Number(instructorData.rating),
+            image: instructorData.image,
+            bio: getTranslatedField(instructorData.bio, instructorData.bio_ro, instructorData.bio_ru),
           } : {
             name: 'Unknown',
             title: 'Instructor',
