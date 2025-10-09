@@ -7,64 +7,126 @@ import {
   Zap,
   ShoppingCart,
   Star,
-  ArrowRight,
   Microchip,
   Shield,
   Gauge,
+  Loader2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnimatedParticles from "@/components/animated-particles";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
-import {
-  developmentBoards,
-  DevelopmentBoard,
-} from "@/testData/developmentBoards";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
+import { toast as sonnerToast } from "sonner";
+import STMImage from "@/assets/STM1.png";
+import arduinoImage from "@/assets/arduino1.png";
+
+interface DevelopmentBoard {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  price: number;
+  original_price: number | null;
+  rating: number;
+  reviews: number;
+  in_stock: boolean;
+  specifications: string[];
+  features: string[];
+  name_ro?: string;
+  name_ru?: string;
+  description_ro?: string;
+  description_ru?: string;
+  specifications_ro?: string[];
+  specifications_ru?: string[];
+  features_ro?: string[];
+  features_ru?: string[];
+}
 
 const Hardware = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { addToCart } = useCart();
   const { toast } = useToast();
-  const [selectedCategory, setSelectedCategory] =
-    useState<string>("All Boards");
+  const [selectedCategory, setSelectedCategory] = useState<string>("All Boards");
+  const [boards, setBoards] = useState<DevelopmentBoard[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchBoards();
+  }, []);
+
+  const fetchBoards = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("development_boards")
+        .select("*")
+        .eq("in_stock", true);
+
+      if (error) throw error;
+
+      // Map image paths to imported images
+      const boardsWithImages = data.map((board: any) => ({
+        ...board,
+        image: board.id === "dino-dev-stm32" ? STMImage : arduinoImage,
+      }));
+
+      setBoards(boardsWithImages);
+    } catch (error) {
+      console.error("Error fetching boards:", error);
+      sonnerToast.error("Failed to load development boards");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getTranslatedField = (board: DevelopmentBoard, field: 'name' | 'description' | 'specifications' | 'features') => {
+    if (language === 'ro' && board[`${field}_ro`]) {
+      return board[`${field}_ro`];
+    }
+    if (language === 'ru' && board[`${field}_ru`]) {
+      return board[`${field}_ru`];
+    }
+    return board[field];
+  };
 
   const handleAddToCart = (board: DevelopmentBoard) => {
+    const translatedName = getTranslatedField(board, 'name') as string;
     addToCart({
       id: board.id,
-      name: board.name,
+      name: translatedName,
       price: board.price,
       image: board.image,
     });
     toast({
       title: t('hardware.addedToCart', 'Added to cart'),
-      description: `${board.name} ${t('hardware.addedDescription', 'has been added to your cart.')}`,
+      description: `${translatedName} ${t('hardware.addedDescription', 'has been added to your cart.')}`,
     });
   };
 
   const getFilteredBoards = () => {
-    if (selectedCategory === "All Boards") return developmentBoards;
+    if (selectedCategory === "All Boards") return boards;
     if (selectedCategory === "Arduino")
-      return developmentBoards.filter((b) => b.id.includes("328"));
+      return boards.filter((b) => b.id.includes("328"));
     if (selectedCategory === "STM")
-      return developmentBoards.filter((b) => b.id.includes("stm32"));
-    return developmentBoards;
+      return boards.filter((b) => b.id.includes("stm32"));
+    return boards;
   };
 
   const filteredBoards = getFilteredBoards();
 
   const categories = [
-    { name: "All Boards", label: t('hardware.category.allBoards', 'All Boards'), count: developmentBoards.length },
+    { name: "All Boards", label: t('hardware.category.allBoards', 'All Boards'), count: boards.length },
     {
       name: "Arduino",
       label: t('hardware.category.arduino', 'Arduino'),
-      count: developmentBoards.filter((b) => b.id.includes("328")).length,
+      count: boards.filter((b) => b.id.includes("328")).length,
     },
     {
       name: "STM",
       label: t('hardware.category.stm', 'STM'),
-      count: developmentBoards.filter((b) => b.id.includes("stm32")).length,
+      count: boards.filter((b) => b.id.includes("stm32")).length,
     },
   ];
 
@@ -202,8 +264,13 @@ const Hardware = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {filteredBoards.map((board) => (
+          {loading ? (
+            <div className="flex justify-center py-12">
+              <Loader2 className="w-8 h-8 text-blue-400 animate-spin" />
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {filteredBoards.map((board) => (
               <Link key={board.id} to={`/hardware/${board.id}`}>
                 <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group cursor-pointer">
                   <div className="p-4 pb-0">
@@ -220,7 +287,7 @@ const Hardware = () => {
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <CardTitle className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                          {board.name}
+                          {getTranslatedField(board, 'name')}
                         </CardTitle>
                         <div className="flex items-center space-x-2 mb-2">
                           <div className="flex items-center">
@@ -236,23 +303,23 @@ const Hardware = () => {
                       </div>
                       <Badge
                         className={
-                          board.inStock
+                          board.in_stock
                             ? "bg-green-500/20 text-green-400 border-green-500/30"
                             : "bg-red-500/20 text-red-400 border-red-500/30"
                         }
                       >
-                        {board.inStock ? t('hardware.inStock', 'In Stock') : t('hardware.outOfStock', 'Out of Stock')}
+                        {board.in_stock ? t('hardware.inStock', 'In Stock') : t('hardware.outOfStock', 'Out of Stock')}
                       </Badge>
                     </div>
                   </CardHeader>
 
                   <CardContent className="pt-0">
                     <p className="text-gray-400 mb-4 line-clamp-2">
-                      {board.description}
+                      {getTranslatedField(board, 'description')}
                     </p>
 
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {board.features.slice(0, 4).map((feature, index) => (
+                      {(getTranslatedField(board, 'features') as string[]).slice(0, 4).map((feature, index) => (
                         <Badge
                           key={index}
                           className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs"
@@ -267,7 +334,7 @@ const Hardware = () => {
                         {t('hardware.keySpecs', 'Key Specifications:')}
                       </h4>
                       <ul className="text-sm text-gray-400 space-y-1">
-                        {board.specifications.slice(0, 3).map((spec, index) => (
+                        {(getTranslatedField(board, 'specifications') as string[]).slice(0, 3).map((spec, index) => (
                           <li key={index} className="flex items-center">
                             <div className="w-1 h-1 bg-blue-400 rounded-full mr-2" />
                             {spec}
@@ -282,34 +349,35 @@ const Hardware = () => {
                           <span className="text-2xl font-bold text-white">
                             ${board.price}
                           </span>
-                          {board.originalPrice && (
+                          {board.original_price && (
                             <span className="text-lg text-gray-500 line-through">
-                              ${board.originalPrice}
+                              ${board.original_price}
                             </span>
                           )}
                         </div>
                       </div>
                       <Button
                         className={
-                          board.inStock
+                          board.in_stock
                             ? "bg-blue-600 hover:bg-blue-700 text-white"
                             : "bg-gray-600 text-gray-400 cursor-not-allowed"
                         }
-                        disabled={!board.inStock}
+                        disabled={!board.in_stock}
                         onClick={(e) => {
                           e.preventDefault();
                           handleAddToCart(board);
                         }}
                       >
                         <ShoppingCart className="w-4 h-4 mr-2" />
-                        {board.inStock ? t('hardware.addToCart', 'Add to Cart') : t('hardware.outOfStock', 'Out of Stock')}
+                        {board.in_stock ? t('hardware.addToCart', 'Add to Cart') : t('hardware.outOfStock', 'Out of Stock')}
                       </Button>
                     </div>
                   </CardContent>
                 </Card>
               </Link>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {/* <div className="text-center mt-12">
             <Button

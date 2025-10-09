@@ -10,24 +10,107 @@ import {
   Package,
   Shield,
   Truck,
+  Loader2,
 } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
-import {
-  developmentBoards,
-  DevelopmentBoard,
-} from "@/testData/developmentBoards";
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
+import { toast as sonnerToast } from "sonner";
+import STMImage from "@/assets/STM1.png";
+import arduinoImage from "@/assets/arduino1.png";
+
+interface DevelopmentBoard {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  price: number;
+  original_price: number | null;
+  rating: number;
+  reviews: number;
+  in_stock: boolean;
+  specifications: string[];
+  features: string[];
+  full_description?: string;
+  applications?: string[];
+  package_includes?: string[];
+  name_ro?: string;
+  name_ru?: string;
+  description_ro?: string;
+  description_ru?: string;
+  specifications_ro?: string[];
+  specifications_ru?: string[];
+  features_ro?: string[];
+  features_ru?: string[];
+  full_description_ro?: string;
+  full_description_ru?: string;
+  applications_ro?: string[];
+  applications_ru?: string[];
+  package_includes_ro?: string[];
+  package_includes_ru?: string[];
+}
 
 const HardwareDetail = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const { toast } = useToast();
+  const { t, language } = useLanguage();
+  const [product, setProduct] = useState<DevelopmentBoard | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const product: DevelopmentBoard | undefined = developmentBoards.find(
-    (p) => p.id === productId
-  );
+  useEffect(() => {
+    fetchProduct();
+  }, [productId]);
+
+  const fetchProduct = async () => {
+    if (!productId) return;
+
+    try {
+      const { data, error } = await supabase
+        .from("development_boards")
+        .select("*")
+        .eq("id", productId)
+        .single();
+
+      if (error) throw error;
+
+      // Map image path to imported image
+      const productWithImage = {
+        ...data,
+        image: data.id === "dino-dev-stm32" ? STMImage : arduinoImage,
+      };
+
+      setProduct(productWithImage);
+    } catch (error) {
+      console.error("Error fetching product:", error);
+      sonnerToast.error("Failed to load product");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getTranslatedField = (field: 'name' | 'description' | 'specifications' | 'features' | 'full_description' | 'applications' | 'package_includes') => {
+    if (!product) return '';
+    if (language === 'ro' && product[`${field}_ro`]) {
+      return product[`${field}_ro`];
+    }
+    if (language === 'ru' && product[`${field}_ru`]) {
+      return product[`${field}_ru`];
+    }
+    return product[field];
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-blue-400 animate-spin" />
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -45,15 +128,17 @@ const HardwareDetail = () => {
   }
 
   const handleAddToCart = () => {
+    if (!product) return;
+    const translatedName = getTranslatedField('name') as string;
     addToCart({
       id: product.id,
-      name: product.name,
+      name: translatedName,
       price: product.price,
       image: product.image,
     });
     toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
+      title: t('hardware.addedToCart', 'Added to cart'),
+      description: `${translatedName} ${t('hardware.addedDescription', 'has been added to your cart.')}`,
     });
   };
 
@@ -119,15 +204,15 @@ const HardwareDetail = () => {
               <div>
                 <Badge
                   className={`mb-4 ${
-                    product.inStock
+                    product.in_stock
                       ? "bg-green-500/20 text-green-400 border-green-500/30"
                       : "bg-red-500/20 text-red-400 border-red-500/30"
                   }`}
                 >
-                  {product.inStock ? "In Stock" : "Out of Stock"}
+                  {product.in_stock ? t('hardware.inStock', 'In Stock') : t('hardware.outOfStock', 'Out of Stock')}
                 </Badge>
 
-                <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
+                <h1 className="text-4xl font-bold mb-4">{getTranslatedField('name')}</h1>
 
                 <div className="flex items-center space-x-4 mb-6">
                   <div className="flex items-center">
@@ -142,7 +227,7 @@ const HardwareDetail = () => {
                 </div>
 
                 <p className="text-gray-300 text-lg mb-6">
-                  {product.description}
+                  {getTranslatedField('description')}
                 </p>
 
                 <div className="border-t border-b border-slate-700 py-6 mb-6">
@@ -152,11 +237,11 @@ const HardwareDetail = () => {
                         <span className="text-4xl font-bold text-white">
                           ${product.price}
                         </span>
-                        {product.originalPrice && (
-                          <span className="text-2xl text-gray-500 line-through">
-                            ${product.originalPrice}
-                          </span>
-                        )}
+                          {product.original_price && (
+                            <span className="text-2xl text-gray-500 line-through">
+                              ${product.original_price}
+                            </span>
+                          )}
                       </div>
                       <p className="text-gray-400 mt-2">Including VAT</p>
                     </div>
@@ -166,15 +251,15 @@ const HardwareDetail = () => {
                 <Button
                   size="lg"
                   className={`w-full ${
-                    product.inStock
+                    product.in_stock
                       ? "bg-blue-600 hover:bg-blue-700"
                       : "bg-gray-600"
                   } text-white py-6 text-lg`}
-                  disabled={!product.inStock}
+                  disabled={!product.in_stock}
                   onClick={handleAddToCart}
                 >
                   <ShoppingCart className="w-5 h-5 mr-2" />
-                  {product.inStock ? "Add to Cart" : "Out of Stock"}
+                  {product.in_stock ? t('hardware.addToCart', 'Add to Cart') : t('hardware.outOfStock', 'Out of Stock')}
                 </Button>
               </div>
             </div>
@@ -183,14 +268,14 @@ const HardwareDetail = () => {
           {/* Detailed Information */}
           <div className="max-w-7xl mx-auto mt-16 space-y-8">
             {/* Full Description */}
-            {(product.fullDescription ?? "").length > 0 && (
+            {(getTranslatedField('full_description') as string || "").length > 0 && (
               <Card className="bg-slate-800/50 border-slate-700">
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold mb-4 text-gray-300">
-                    Product Overview
+                    {t('hardware.detail.overview', 'Product Overview')}
                   </h2>
                   <p className="text-gray-300 leading-relaxed">
-                    {product.fullDescription}
+                    {getTranslatedField('full_description')}
                   </p>
                 </CardContent>
               </Card>
@@ -200,10 +285,10 @@ const HardwareDetail = () => {
             <Card className="bg-slate-800/50 border-slate-700">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-6 text-gray-300">
-                  Technical Specifications
+                  {t('hardware.detail.specs', 'Technical Specifications')}
                 </h2>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {product.specifications.map((spec, index) => (
+                  {(getTranslatedField('specifications') as string[]).map((spec, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <Check className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-300">{spec}</span>
@@ -217,10 +302,10 @@ const HardwareDetail = () => {
             <Card className="bg-slate-800/50 border-slate-700">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-6 text-gray-300">
-                  Key Features
+                  {t('hardware.detail.features', 'Key Features')}
                 </h2>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {product.features.map((feature, index) => (
+                  {(getTranslatedField('features') as string[]).map((feature, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-300">{feature}</span>
@@ -231,14 +316,14 @@ const HardwareDetail = () => {
             </Card>
 
             {/* Applications */}
-            {(product.applications?.length ?? 0) > 0 && (
+            {((getTranslatedField('applications') as string[])?.length ?? 0) > 0 && (
               <Card className="bg-slate-800/50 border-slate-700">
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold mb-6 text-gray-300">
-                    Ideal Applications
+                    {t('hardware.detail.applications', 'Ideal Applications')}
                   </h2>
                   <div className="grid md:grid-cols-3 gap-4">
-                    {product.applications!.map((app, index) => (
+                    {(getTranslatedField('applications') as string[])!.map((app, index) => (
                       <Badge
                         key={index}
                         className="bg-purple-500/20 text-purple-400 border-purple-500/30 text-center py-2"
@@ -252,14 +337,14 @@ const HardwareDetail = () => {
             )}
 
             {/* Package Contents */}
-            {(product.packageIncludes?.length ?? 0) > 0 && (
+            {((getTranslatedField('package_includes') as string[])?.length ?? 0) > 0 && (
               <Card className="bg-slate-800/50 border-slate-700">
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold mb-6 text-gray-300">
-                    Package Includes
+                    {t('hardware.detail.package', 'Package Includes')}
                   </h2>
                   <div className="space-y-3">
-                    {product.packageIncludes!.map((item, index) => (
+                    {(getTranslatedField('package_includes') as string[])!.map((item, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <Package className="w-5 h-5 text-blue-400" />
                         <span className="text-gray-300">{item}</span>
