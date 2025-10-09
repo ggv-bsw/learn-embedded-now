@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { getCourseImage } from '@/utils/courseImages';
 
 export interface Instructor {
   name: string;
@@ -126,7 +127,7 @@ export const useCourses = () => {
           title: getTranslatedField(course.title, course.title_ro, course.title_ru),
           subtitle: getTranslatedField(course.subtitle, course.subtitle_ro, course.subtitle_ru),
           description: getTranslatedField(course.description, course.description_ro, course.description_ru),
-          image: course.image,
+          image: getCourseImage(course.image),
           price: Number(course.price),
           originalPrice: course.original_price ? Number(course.original_price) : undefined,
           duration: course.duration,
