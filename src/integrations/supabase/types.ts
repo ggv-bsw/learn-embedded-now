@@ -357,6 +357,7 @@ export type Database = {
           title_ru: string | null
           total_ratings: number
           updated_at: string
+          video_url: string | null
         }
         Insert: {
           category: string
@@ -384,6 +385,7 @@ export type Database = {
           title_ru?: string | null
           total_ratings?: number
           updated_at?: string
+          video_url?: string | null
         }
         Update: {
           category?: string
@@ -411,6 +413,7 @@ export type Database = {
           title_ru?: string | null
           total_ratings?: number
           updated_at?: string
+          video_url?: string | null
         }
         Relationships: []
       }

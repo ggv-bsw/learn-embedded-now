@@ -139,6 +139,7 @@ export const useCourses = () => {
           category: getTranslatedField(course.category, course.category_ro, course.category_ru),
           language: course.language,
           lastUpdated: course.last_updated,
+          link: course.video_url || undefined,
           instructor: instructorData ? {
             name: instructorData.name,
             title: getTranslatedField(instructorData.title, instructorData.title_ro, instructorData.title_ru),
