@@ -416,6 +416,16 @@ const CourseDetail = () => {
                 </div>
 
                 <div className="space-y-3 mb-6">
+                  {course.link && (
+                    <Button
+                      className="w-full bg-gradient-hero shadow-tech hover:shadow-glow"
+                      size="lg"
+                      onClick={() => setShowVideo(true)}
+                    >
+                      <Play className="mr-2 w-5 h-5" />
+                      {t('courseDetail.watchPreview') || 'Watch Preview Video'}
+                    </Button>
+                  )}
                   <Button
                     className="w-full bg-gradient-hero shadow-tech hover:shadow-glow"
                     size="lg"
