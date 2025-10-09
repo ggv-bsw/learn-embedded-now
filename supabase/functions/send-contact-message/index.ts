@@ -114,7 +114,7 @@ const handler = async (req: Request): Promise<Response> => {
     `;
 
     const { data: emailData, error: emailError } = await resend.emails.send({
-      from: 'BSW-Tech <onboarding@resend.dev>',
+      from: 'Embedded school <onboarding@resend.dev>',
       to: ['learn@embedded.school'],
       subject: `New Contact Message: ${validData.subject}`,
       html: emailHtml,
