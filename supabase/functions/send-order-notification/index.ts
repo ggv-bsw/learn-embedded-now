@@ -131,9 +131,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to customer
     const customerEmailResponse = await resend.emails.send({
-      from: "The Automation Network <onboarding@resend.dev>",
+      from: "Embedded school <onboarding@resend.dev>",
       to: [customerEmail],
-      subject: "Order Confirmation - The Automation Network",
+      subject: "Order Confirmation - Embedded school",
       html: `
         <h1>Thank you for your order, ${escapeHtml(customerName)}!</h1>
         <p>We have received your order and will contact you shortly to confirm the details.</p>
@@ -151,7 +151,7 @@ const handler = async (req: Request): Promise<Response> => {
         
         <p>We will get back to you as soon as possible to arrange delivery and payment.</p>
         
-        <p>Best regards,<br>The Automation Network Team</p>
+        <p>Best regards,<br>Embedded school Team</p>
       `,
     });
 
@@ -159,12 +159,12 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification email to business
     const businessEmailResponse = await resend.emails.send({
-      from: "The Automation Network <onboarding@resend.dev>",
+      from: "Embedded school <onboarding@resend.dev>",
       to: ["learn@embedded.school"],
-      subject: "New Order Received - The Automation Network",
+      subject: "New Order Received - Embedded school",
       html: `
         <h1>New Order Received</h1>
-        <p>A new order has been placed on The Automation Network website.</p>
+        <p>A new order has been placed on the Embedded school website.</p>
         
         <h2>Customer Information:</h2>
         <ul>
