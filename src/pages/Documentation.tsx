@@ -19,166 +19,165 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Documentation = () => {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState(t('docs.category.all'));
 
   const categories = [
-    "All",
-    "Getting Started",
-    "Course Guides",
-    "Technical Reference",
-    "Tools & Setup",
-    "FAQs",
+    t('docs.category.all'),
+    t('docs.category.gettingStarted'),
+    t('docs.category.courseGuides'),
+    t('docs.category.technicalRef'),
+    t('docs.category.toolsSetup'),
+    t('docs.category.faqs'),
   ];
 
   const docSections = [
     {
       id: "getting-started",
-      category: "Getting Started",
-      title: "Getting Started with Embedded School",
-      description:
-        "Learn how to begin your journey with our platform and courses",
+      category: t('docs.category.gettingStarted'),
+      title: t('docs.section.gettingStarted.title'),
+      description: t('docs.section.gettingStarted.desc'),
       icon: GraduationCap,
       articles: [
         {
-          title: "How to Enroll in a Course",
+          title: t('docs.section.gettingStarted.enroll'),
           link: "/courses",
-          duration: "5 min read",
+          duration: `5 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Platform Overview",
+          title: t('docs.section.gettingStarted.overview'),
           link: "/about",
-          duration: "8 min read",
+          duration: `8 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Payment Methods & Pricing",
+          title: t('docs.section.gettingStarted.payment'),
           link: "/courses",
-          duration: "4 min read",
+          duration: `4 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Certificate Programs",
+          title: t('docs.section.gettingStarted.certificate'),
           link: "/courses",
-          duration: "6 min read",
+          duration: `6 ${t('docs.duration.minRead')}`,
         },
       ],
     },
     {
       id: "course-guides",
-      category: "Course Guides",
-      title: "Course-Specific Guides",
-      description:
-        "Detailed guides for each course including setup and requirements",
+      category: t('docs.category.courseGuides'),
+      title: t('docs.section.courseGuides.title'),
+      description: t('docs.section.courseGuides.desc'),
       icon: BookOpen,
       articles: [
         {
-          title: "Python Course Prerequisites",
+          title: t('docs.section.courseGuides.python'),
           link: "/courses/python-junior-beginner",
-          duration: "7 min read",
+          duration: `7 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "C++ Development Environment Setup",
+          title: t('docs.section.courseGuides.cpp'),
           link: "/courses/cpp-bsw-beginner-to-advanced",
-          duration: "10 min read",
+          duration: `10 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "PCB Design Software Installation",
+          title: t('docs.section.courseGuides.pcb'),
           link: "/courses/pcb-design-fundamentals",
-          duration: "12 min read",
+          duration: `12 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Testing Tools Configuration",
+          title: t('docs.section.courseGuides.testing'),
           link: "/courses/software-testing-automotive-qa",
-          duration: "9 min read",
+          duration: `9 ${t('docs.duration.minRead')}`,
         },
       ],
     },
     {
       id: "technical-reference",
-      category: "Technical Reference",
-      title: "Technical Documentation",
-      description: "In-depth technical references and API documentation",
+      category: t('docs.category.technicalRef'),
+      title: t('docs.section.technicalRef.title'),
+      description: t('docs.section.technicalRef.desc'),
       icon: Code,
       articles: [
         {
-          title: "Arduino Programming Reference",
+          title: t('docs.section.technicalRef.arduino'),
           link: "/hardware",
-          duration: "15 min read",
+          duration: `15 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Embedded C Best Practices",
+          title: t('docs.section.technicalRef.embeddedC'),
           link: "/blog",
-          duration: "12 min read",
+          duration: `12 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "AUTOSAR Architecture Guide",
+          title: t('docs.section.technicalRef.autosar'),
           link: "/courses/software-testing-automotive-qa",
-          duration: "20 min read",
+          duration: `20 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "CMake Build System Tutorial",
+          title: t('docs.section.technicalRef.cmake'),
           link: "/courses/cpp-bsw-beginner-to-advanced",
-          duration: "18 min read",
+          duration: `18 ${t('docs.duration.minRead')}`,
         },
       ],
     },
     {
       id: "tools-setup",
-      category: "Tools & Setup",
-      title: "Development Tools & Setup",
-      description: "Setup guides for development environments and tools",
+      category: t('docs.category.toolsSetup'),
+      title: t('docs.section.toolsSetup.title'),
+      description: t('docs.section.toolsSetup.desc'),
       icon: Layers,
       articles: [
         {
-          title: "VS Code Setup for Embedded Development",
+          title: t('docs.section.toolsSetup.vscode'),
           link: "/blog",
-          duration: "10 min read",
+          duration: `10 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Git & GitHub for Beginners",
+          title: t('docs.section.toolsSetup.git'),
           link: "/courses/python-junior-beginner",
-          duration: "14 min read",
+          duration: `14 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Virtual Environment with uv",
+          title: t('docs.section.toolsSetup.virtualEnv'),
           link: "/courses/python-junior-beginner",
-          duration: "8 min read",
+          duration: `8 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Hardware Debugging Tools",
+          title: t('docs.section.toolsSetup.debugging'),
           link: "/hardware",
-          duration: "16 min read",
+          duration: `16 ${t('docs.duration.minRead')}`,
         },
       ],
     },
     {
       id: "faqs",
-      category: "FAQs",
-      title: "Frequently Asked Questions",
-      description:
-        "Common questions and answers about our courses and platform",
+      category: t('docs.category.faqs'),
+      title: t('docs.section.faqs.title'),
+      description: t('docs.section.faqs.desc'),
       icon: HelpCircle,
       articles: [
         {
-          title: "Course Access & Duration",
+          title: t('docs.section.faqs.access'),
           link: "/courses",
-          duration: "3 min read",
+          duration: `3 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Refund Policy",
+          title: t('docs.section.faqs.refund'),
           link: "/contact",
-          duration: "4 min read",
+          duration: `4 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Technical Support",
+          title: t('docs.section.faqs.support'),
           link: "/contact",
-          duration: "5 min read",
+          duration: `5 ${t('docs.duration.minRead')}`,
         },
         {
-          title: "Career Guidance & Job Placement",
+          title: t('docs.section.faqs.career'),
           link: "/trainers",
-          duration: "7 min read",
+          duration: `7 ${t('docs.duration.minRead')}`,
         },
       ],
     },
@@ -186,23 +185,23 @@ const Documentation = () => {
 
   const quickLinks = [
     {
-      title: "Community Forum",
+      title: t('docs.quickLinks.community'),
       icon: ExternalLink,
       link: "https://t.me/embeddedschool",
-      description: "Join discussions with other students",
+      description: t('docs.quickLinks.communityDesc'),
       external: true,
     },
     {
-      title: "Technical Resources",
+      title: t('docs.quickLinks.resources'),
       icon: FileText,
       link: "/hardware",
-      description: "Hardware and tools documentation",
+      description: t('docs.quickLinks.resourcesDesc'),
     },
   ];
 
   const filteredSections = docSections.filter((section) => {
     const matchesCategory =
-      selectedCategory === "All" || section.category === selectedCategory;
+      selectedCategory === t('docs.category.all') || section.category === selectedCategory;
     const matchesSearch =
       section.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       section.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -249,19 +248,18 @@ const Documentation = () => {
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
                 <FileText className="w-4 h-4 mr-2" />
-                Documentation
+                {t('docs.badge')}
               </Badge>
 
               <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white">
-                Everything You Need to{" "}
+                {t('docs.hero.title')}{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                  Succeed
+                  {t('docs.hero.titleHighlight')}
                 </span>
               </h1>
 
               <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                Comprehensive guides, tutorials, and technical documentation to
-                help you master embedded systems development.
+                {t('docs.hero.description')}
               </p>
 
               {/* Search Bar */}
@@ -270,7 +268,7 @@ const Documentation = () => {
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <Input
-                      placeholder="Search documentation..."
+                      placeholder={t('docs.search.placeholder')}
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="pl-10 bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-blue-500"
@@ -427,20 +425,20 @@ const Documentation = () => {
                     <Search className="w-8 h-8 text-gray-400" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2 text-white">
-                    No results found
+                    {t('docs.noResults.title')}
                   </h3>
                   <p className="text-gray-400 mb-4">
-                    Try adjusting your search or filters
+                    {t('docs.noResults.message')}
                   </p>
                   <Button
                     variant="outline"
                     className="border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500"
                     onClick={() => {
                       setSearchQuery("");
-                      setSelectedCategory("All");
+                      setSelectedCategory(t('docs.category.all'));
                     }}
                   >
-                    Clear Filters
+                    {t('docs.noResults.clear')}
                   </Button>
                 </CardContent>
               </Card>
@@ -457,11 +455,10 @@ const Documentation = () => {
               <CardContent className="pt-12 pb-12 text-center">
                 <Zap className="w-16 h-16 text-blue-400 mx-auto mb-6" />
                 <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-                  Still Have Questions?
+                  {t('docs.cta.title')}
                 </h2>
                 <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                  Our support team is here to help. Get in touch and we'll
-                  respond as quickly as possible.
+                  {t('docs.cta.description')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
@@ -469,7 +466,7 @@ const Documentation = () => {
                       size="lg"
                       className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6"
                     >
-                      Contact Support
+                      {t('docs.cta.contact')}
                     </Button>
                   </Link>
                   <a
@@ -480,9 +477,9 @@ const Documentation = () => {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-slate-500 text-slate-900 px-8 py-6 hover:bg-slate-300"
+                      className="border-blue-500/30 text-blue-400 hover:bg-blue-500/10 font-semibold px-8 py-6"
                     >
-                      Join Community
+                      {t('docs.cta.community')}
                     </Button>
                   </a>
                 </div>
