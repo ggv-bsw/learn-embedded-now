@@ -21,8 +21,10 @@ import {
   DevelopmentBoard,
 } from "@/testData/developmentBoards";
 import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hardware = () => {
+  const { t } = useLanguage();
   const { addToCart } = useCart();
   const { toast } = useToast();
   const [selectedCategory, setSelectedCategory] =
@@ -36,8 +38,8 @@ const Hardware = () => {
       image: board.image,
     });
     toast({
-      title: "Added to cart",
-      description: `${board.name} has been added to your cart.`,
+      title: t('hardware.addedToCart', 'Added to cart'),
+      description: `${board.name} ${t('hardware.addedDescription', 'has been added to your cart.')}`,
     });
   };
 
@@ -53,13 +55,15 @@ const Hardware = () => {
   const filteredBoards = getFilteredBoards();
 
   const categories = [
-    { name: "All Boards", count: developmentBoards.length },
+    { name: "All Boards", label: t('hardware.category.allBoards', 'All Boards'), count: developmentBoards.length },
     {
       name: "Arduino",
+      label: t('hardware.category.arduino', 'Arduino'),
       count: developmentBoards.filter((b) => b.id.includes("328")).length,
     },
     {
       name: "STM",
+      label: t('hardware.category.stm', 'STM'),
       count: developmentBoards.filter((b) => b.id.includes("stm32")).length,
     },
   ];
@@ -67,18 +71,18 @@ const Hardware = () => {
   const features = [
     {
       icon: Shield,
-      title: "Quality Guaranteed",
-      description: "All boards tested and verified before shipping",
+      title: t('hardware.feature.quality.title', 'Quality Guaranteed'),
+      description: t('hardware.feature.quality.description', 'All boards tested and verified before shipping'),
     },
     {
       icon: Zap,
-      title: "Fast Shipping",
-      description: "Same-day processing with 2-3 day delivery",
+      title: t('hardware.feature.shipping.title', 'Fast Shipping'),
+      description: t('hardware.feature.shipping.description', 'Same-day processing with 2-3 day delivery'),
     },
     {
       icon: Gauge,
-      title: "Technical Support",
-      description: "Expert help with setup and troubleshooting",
+      title: t('hardware.feature.support.title', 'Technical Support'),
+      description: t('hardware.feature.support.description', 'Expert help with setup and troubleshooting'),
     },
   ];
 
@@ -120,19 +124,18 @@ const Hardware = () => {
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
               <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
-              Hardware Store
+              {t('hardware.hero.badge', 'Hardware Store')}
             </Badge>
 
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-              Premium Development
+              {t('hardware.hero.title', 'Premium Development')}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                Hardware & Boards
+                {t('hardware.hero.subtitle', 'Hardware & Boards')}
               </span>
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto">
-              Professional-grade development boards and microcontrollers for
-              your embedded projects.
+              {t('hardware.hero.description', 'Professional-grade development boards and microcontrollers for your embedded projects.')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
@@ -141,7 +144,7 @@ const Hardware = () => {
                 onClick={() => document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <ShoppingCart className="mr-2 w-4 md:w-5 h-4 md:h-5" />
-                Shop Now
+                {t('hardware.hero.shopNow', 'Shop Now')}
               </Button>
 
               <Button
@@ -149,7 +152,7 @@ const Hardware = () => {
                 className="border-gray-600 text-slate-900 hover:bg-gray-800 hover:border-gray-500 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg"
               >
                 <Microchip className="mr-2 w-4 md:w-5 h-4 md:h-5" />
-                Browse Categories
+                {t('hardware.hero.browseCategories', 'Browse Categories')}
               </Button>
             </div>
           </div>
@@ -173,7 +176,7 @@ const Hardware = () => {
                 }
                 onClick={() => setSelectedCategory(category.name)}
               >
-                {category.name}
+                {category.label}
                 <Badge className="ml-2 bg-white/20 text-current">
                   {category.count}
                 </Badge>
@@ -189,14 +192,13 @@ const Hardware = () => {
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
               <Cpu className="w-4 h-4 mr-2" />
-              Featured Products
+              {t('hardware.featured.badge', 'Featured Products')}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-              Professional Development Boards
+              {t('hardware.featured.title', 'Professional Development Boards')}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Hand-picked selection of the best microcontrollers and development
-              platforms
+              {t('hardware.featured.description', 'Hand-picked selection of the best microcontrollers and development platforms')}
             </p>
           </div>
 
@@ -227,7 +229,7 @@ const Hardware = () => {
                               {board.rating}
                             </span>
                             <span className="text-gray-400 text-sm ml-1">
-                              ({board.reviews} reviews)
+                              ({board.reviews} {t('hardware.reviews', 'reviews')})
                             </span>
                           </div>
                         </div>
@@ -239,7 +241,7 @@ const Hardware = () => {
                             : "bg-red-500/20 text-red-400 border-red-500/30"
                         }
                       >
-                        {board.inStock ? "In Stock" : "Out of Stock"}
+                        {board.inStock ? t('hardware.inStock', 'In Stock') : t('hardware.outOfStock', 'Out of Stock')}
                       </Badge>
                     </div>
                   </CardHeader>
@@ -262,7 +264,7 @@ const Hardware = () => {
 
                     <div className="mb-6">
                       <h4 className="text-sm font-semibold text-gray-300 mb-2">
-                        Key Specifications:
+                        {t('hardware.keySpecs', 'Key Specifications:')}
                       </h4>
                       <ul className="text-sm text-gray-400 space-y-1">
                         {board.specifications.slice(0, 3).map((spec, index) => (
@@ -300,7 +302,7 @@ const Hardware = () => {
                         }}
                       >
                         <ShoppingCart className="w-4 h-4 mr-2" />
-                        {board.inStock ? "Add to Cart" : "Out of Stock"}
+                        {board.inStock ? t('hardware.addToCart', 'Add to Cart') : t('hardware.outOfStock', 'Out of Stock')}
                       </Button>
                     </div>
                   </CardContent>
@@ -328,14 +330,13 @@ const Hardware = () => {
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
               <Shield className="w-4 h-4 mr-2" />
-              Why Buy From Us?
+              {t('hardware.features.badge', 'Why Buy From Us?')}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-              Trusted by Developers Worldwide
+              {t('hardware.features.title', 'Trusted by Developers Worldwide')}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Professional service and support for all your embedded development
-              needs
+              {t('hardware.features.description', 'Professional service and support for all your embedded development needs')}
             </p>
           </div>
 

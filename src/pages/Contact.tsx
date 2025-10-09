@@ -21,8 +21,10 @@ import {
 import { toast } from "sonner";
 import Footer from "@/components/footer";
 import { supabase } from "@/integrations/supabase/client";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,33 +37,33 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Main Office",
+      title: t('contact.info.mainOffice', 'Main Office'),
       details: ["Chișinău, Moldova", "Strada Aleco Ruso 15", "MD-2068"],
       link: "#",
     },
     {
       icon: Phone,
-      title: "Phone Numbers",
+      title: t('contact.info.phoneNumbers', 'Phone Numbers'),
       details: ["+373 69 117 686", "Mon-Fri 9AM-6PM"],
       link: "tel:+37369117686",
     },
     {
       icon: Mail,
-      title: "Email Support",
+      title: t('contact.info.emailSupport', 'Email Support'),
       details: [
         "info@embeddedschool.com",
         "support@embeddedschool.com",
-        "Response within 24hrs",
+        t('contact.info.responseTime', 'Response within 24hrs'),
       ],
       link: "mailto:info@embeddedschool.com",
     },
     {
       icon: Clock,
-      title: "Office Hours",
+      title: t('contact.info.officeHours', 'Office Hours'),
       details: [
-        "Monday - Friday: 9:00 - 18:00",
-        "Saturday: 10:00 - 16:00",
-        "Sunday: Closed",
+        t('contact.info.hours.weekday', 'Monday - Friday: 9:00 - 18:00'),
+        t('contact.info.hours.saturday', 'Saturday: 10:00 - 16:00'),
+        t('contact.info.hours.sunday', 'Sunday: Closed'),
       ],
       link: "#",
     },
@@ -69,29 +71,24 @@ const Contact = () => {
 
   const faq = [
     {
-      question: "Do you offer courses in Romanian and Russian?",
-      answer:
-        "Yes! All our courses are available in Romanian, Russian, and English. You can switch between languages anytime in your student dashboard.",
+      question: t('contact.faq.q1', 'Do you offer courses in Romanian and Russian?'),
+      answer: t('contact.faq.a1', 'Yes! All our courses are available in Romanian, Russian, and English. You can switch between languages anytime in your student dashboard.'),
     },
     {
-      question: "What equipment do I need for the embedded systems courses?",
-      answer:
-        "We provide starter kits for most courses, including Arduino boards, sensors, and components. For advanced courses, we'll provide a detailed equipment list.",
+      question: t('contact.faq.q2', 'What equipment do I need for the embedded systems courses?'),
+      answer: t('contact.faq.a2', 'We provide starter kits for most courses, including Arduino boards, sensors, and components. For advanced courses, we\'ll provide a detailed equipment list.'),
     },
     {
-      question: "Are there any prerequisites for your courses?",
-      answer:
-        "Basic programming knowledge is helpful but not required for beginner courses. Each course page lists specific prerequisites if any.",
+      question: t('contact.faq.q3', 'Are there any prerequisites for your courses?'),
+      answer: t('contact.faq.a3', 'Basic programming knowledge is helpful but not required for beginner courses. Each course page lists specific prerequisites if any.'),
     },
     {
-      question: "Do you offer certificates upon completion?",
-      answer:
-        "Yes, all students receive industry-recognized certificates upon successful course completion. These are valued by employers across Moldova and Romania.",
+      question: t('contact.faq.q4', 'Do you offer certificates upon completion?'),
+      answer: t('contact.faq.a4', 'Yes, all students receive industry-recognized certificates upon successful course completion. These are valued by employers across Moldova and Romania.'),
     },
     {
-      question: "Can I get help if I'm stuck during a course?",
-      answer:
-        "Absolutely! We offer 24/7 community support, weekly live Q&A sessions, and one-on-one mentoring for premium students.",
+      question: t('contact.faq.q5', 'Can I get help if I\'m stuck during a course?'),
+      answer: t('contact.faq.a5', 'Absolutely! We offer 24/7 community support, weekly live Q&A sessions, and one-on-one mentoring for premium students.'),
     },
   ];
 
@@ -113,14 +110,14 @@ const Contact = () => {
 
       if (error) throw error;
 
-      toast("Message sent successfully! We'll get back to you within 24 hours.", {
+      toast(t('contact.form.success', "Message sent successfully! We'll get back to you within 24 hours."), {
         icon: <CheckCircle className="w-5 h-5 text-green-500" />,
       });
 
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       console.error("Error submitting contact form:", error);
-      toast.error("Failed to send message. Please try again.");
+      toast.error(t('contact.form.error', "Failed to send message. Please try again."));
     } finally {
       setIsSubmitting(false);
     }
