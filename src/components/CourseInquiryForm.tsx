@@ -180,11 +180,11 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
     if (formData.courseId.includes("career-path")) {
       switch (formData.courseId) {
         case "career-path-embedded-professional":
-          return "Embedded Systems Professional Career Path";
+          return "IoT, Automotive & Biomedical Career";
         case "career-path-software-developer":
-          return "Software Developer Career Path";
+          return "Mobile Engineer";
         case "career-path-complete-bundle":
-          return "Complete Engineering Bundle";
+          return "Data Engineer";
         default:
           return "Career Path";
       }
