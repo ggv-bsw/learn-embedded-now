@@ -76,7 +76,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { name, surname, courseId, courseName, email, phone, message } = validationResult.data;
 
-    console.log("Received course inquiry:", { name, surname, courseId, courseName, email });
+    console.log("Received course inquiry");
 
     // Store in database
     const { data, error: dbError } = await supabase
@@ -100,7 +100,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    console.log("Saved to database:", data);
+    console.log("Saved course inquiry to database with id", data.id);
 
     // Use the provided course name or fall back to course ID
     const displayCourseName = courseName || courseId;
@@ -147,8 +147,9 @@ const handler = async (req: Request): Promise<Response> => {
       }),
     });
 
-    const emailData = await emailResponse.json();
-    console.log("Email sent successfully:", emailData);
+    if (!emailResponse.ok) {
+      console.error("Email sending failed with status", emailResponse.status);
+    }
 
     return new Response(
       JSON.stringify({ 
@@ -168,7 +169,7 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error: any) {
     console.error("Error in send-course-inquiry function:", error);
     return new Response(
-      JSON.stringify({ error: error.message || "Internal server error" }),
+      JSON.stringify({ error: "Internal server error" }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
