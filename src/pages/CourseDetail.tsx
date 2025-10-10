@@ -427,13 +427,13 @@ const CourseDetail = () => {
                     <span className="text-3xl font-bold text-primary">
                       {course.price} mdl
                     </span>
-                    <span className="text-lg text-muted-foreground line-through">
+                    {/* <span className="text-lg text-muted-foreground line-through">
                       {course.originalPrice} mdl
-                    </span>
+                    </span> */}
                   </div>
-                  <Badge className="bg-green-100 text-green-800">
+                  {/* <Badge className="bg-green-100 text-green-800">
                     {t("courseDetail.limitedOffer")}
-                  </Badge>
+                  </Badge> */}
                 </div>
 
                 <div className="space-y-3 mb-6">
