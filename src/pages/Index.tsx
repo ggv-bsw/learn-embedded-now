@@ -42,25 +42,6 @@ const Index = () => {
     setShowInquiryForm(true);
   };
 
-  const stats = [
-    {
-      icon: Users,
-      label: t("stats.activeStudents", "Active Students"),
-      value: "5,000+",
-    },
-    {
-      icon: Award,
-      label: t("stats.coursesAvailable", "Courses Available"),
-      value: "25+",
-    },
-    {
-      icon: Star,
-      label: t("stats.averageRating", "Average Rating"),
-      value: "4.8",
-    },
-    { icon: Zap, label: t("stats.successRate", "Success Rate"), value: "92%" },
-  ];
-
   const features = [
     {
       icon: Code,
@@ -179,7 +160,11 @@ const Index = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users className="w-5 h-5 text-blue-400" />
-                  <span className="text-white font-semibold">250+</span>
+                  {featuredCourses.reduce(
+                    (acc, course) => acc + course.students,
+                    0
+                  )}
+                  +{" "}
                   <span className="text-gray-400">
                     {t("hero.activeStudents", "Active Students")}
                   </span>
@@ -262,10 +247,10 @@ const Index = () => {
                   <CardContent className="p-4 text-center">
                     <Cpu className="w-8 h-8 text-blue-400 mx-auto mb-2" />
                     <h3 className="text-slate-900 font-semibold text-sm">
-                      {t('index.embeddedC', 'Embedded C')}
+                      {t("index.embeddedC", "Embedded C")}
                     </h3>
                     <p className="text-gray-400 text-xs">
-                      {t('index.lowLevel', 'Low-level programming')}
+                      {t("index.lowLevel", "Low-level programming")}
                     </p>
                   </CardContent>
                 </Card>
@@ -274,9 +259,11 @@ const Index = () => {
                   <CardContent className="p-4 text-center">
                     <Wifi className="w-8 h-8 text-green-400 mx-auto mb-2" />
                     <h3 className="text-slate-900 font-semibold text-sm">
-                      {t('index.iotSystems', 'IoT Systems')}
+                      {t("index.iotSystems", "IoT Systems")}
                     </h3>
-                    <p className="text-gray-400 text-xs">{t('index.connectedDevices', 'Connected devices')}</p>
+                    <p className="text-gray-400 text-xs">
+                      {t("index.connectedDevices", "Connected devices")}
+                    </p>
                   </CardContent>
                 </Card>
               </div>
@@ -312,109 +299,107 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {coursesLoading ? (
-              // Loading skeleton
-              Array.from({ length: 3 }).map((_, idx) => (
-                <Card
-                  key={idx}
-                  className="bg-slate-800/50 border-slate-700 backdrop-blur-sm"
-                >
-                  <div className="relative overflow-hidden">
-                    <div className="w-full h-48 bg-slate-700 animate-pulse"></div>
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="h-6 bg-slate-700 animate-pulse rounded mb-3"></div>
-                    <div className="h-4 bg-slate-700 animate-pulse rounded mb-4"></div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="h-4 w-20 bg-slate-700 animate-pulse rounded"></div>
-                      <div className="h-4 w-20 bg-slate-700 animate-pulse rounded"></div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="h-8 w-24 bg-slate-700 animate-pulse rounded"></div>
-                      <div className="h-10 w-32 bg-slate-700 animate-pulse rounded"></div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))
-            ) : (
-              featuredCourses.slice(0, 3).map((course) => (
-              <Card
-                key={course.id}
-                className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                  <Badge
-                    className={`absolute top-3 right-3 ${
-                      course.level === "Beginner"
-                        ? "bg-green-500/20 text-green-400 border-green-500/30"
-                        : course.level === "Intermediate"
-                        ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-                        : "bg-red-500/20 text-red-400 border-red-500/30"
-                    }`}
+            {coursesLoading
+              ? // Loading skeleton
+                Array.from({ length: 3 }).map((_, idx) => (
+                  <Card
+                    key={idx}
+                    className="bg-slate-800/50 border-slate-700 backdrop-blur-sm"
                   >
-                    {t(
-                      `level.${
-                        course.level.toLowerCase() as
-                          | "beginner"
-                          | "intermediate"
-                          | "advanced"
-                      }`,
-                      course.level
-                    )}
-                  </Badge>
-                </div>
-
-                <CardContent className="p-6">
-                  <Link
+                    <div className="relative overflow-hidden">
+                      <div className="w-full h-48 bg-slate-700 animate-pulse"></div>
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="h-6 bg-slate-700 animate-pulse rounded mb-3"></div>
+                      <div className="h-4 bg-slate-700 animate-pulse rounded mb-4"></div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="h-4 w-20 bg-slate-700 animate-pulse rounded"></div>
+                        <div className="h-4 w-20 bg-slate-700 animate-pulse rounded"></div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="h-8 w-24 bg-slate-700 animate-pulse rounded"></div>
+                        <div className="h-10 w-32 bg-slate-700 animate-pulse rounded"></div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
+              : featuredCourses.slice(0, 3).map((course) => (
+                  <Card
                     key={course.id}
-                    className="block"
-                    to={`/courses/${course.id}`}
+                    className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group"
                   >
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
-                      {course.title}
-                    </h3>
-                  </Link>
-                  <p className="text-gray-400 mb-4 line-clamp-2">
-                    {course.subtitle}
-                  </p>
-
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <div className="flex items-center space-x-4">
-                      <span className="flex items-center">
-                        <Users className="w-4 h-4 mr-1" />
-                        {course.students.toLocaleString()}
-                      </span>
-                      <span className="flex items-center">
-                        <Star className="w-4 h-4 mr-1 text-yellow-400" />
-                        {course.rating}
-                      </span>
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={course.image}
+                        alt={course.title}
+                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                      <Badge
+                        className={`absolute top-3 right-3 ${
+                          course.level === "Beginner"
+                            ? "bg-green-500/20 text-green-400 border-green-500/30"
+                            : course.level === "Intermediate"
+                            ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                            : "bg-red-500/20 text-red-400 border-red-500/30"
+                        }`}
+                      >
+                        {t(
+                          `level.${
+                            course.level.toLowerCase() as
+                              | "beginner"
+                              | "intermediate"
+                              | "advanced"
+                          }`,
+                          course.level
+                        )}
+                      </Badge>
                     </div>
-                    <span>{course.duration}</span>
-                  </div>
 
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-2xl font-bold text-white">
-                        {course.price} mdl
-                      </span>
-                    </div>
-                    <Button
-                      className="bg-blue-600 hover:bg-blue-700 text-white"
-                      onClick={() => handleEnrollClick(course.id)}
-                    >
-                      {t("courses.enrollNow", "Enroll Now")}
-                    </Button>
-                  </div>
-                  </CardContent>
-                </Card>
-              ))
-            )}
+                    <CardContent className="p-6">
+                      <Link
+                        key={course.id}
+                        className="block"
+                        to={`/courses/${course.id}`}
+                      >
+                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                          {course.title}
+                        </h3>
+                      </Link>
+                      <p className="text-gray-400 mb-4 line-clamp-2">
+                        {course.subtitle}
+                      </p>
+
+                      <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <div className="flex items-center space-x-4">
+                          <span className="flex items-center">
+                            <Users className="w-4 h-4 mr-1" />
+                            {course.students.toLocaleString()}
+                          </span>
+                          <span className="flex items-center">
+                            <Star className="w-4 h-4 mr-1 text-yellow-400" />
+                            {course.rating}
+                          </span>
+                        </div>
+                        <span>{course.duration}</span>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <span className="text-2xl font-bold text-white">
+                            {course.price} mdl
+                          </span>
+                        </div>
+                        <Button
+                          className="bg-blue-600 hover:bg-blue-700 text-white"
+                          onClick={() => handleEnrollClick(course.id)}
+                        >
+                          {t("courses.enrollNow", "Enroll Now")}
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
           </div>
 
           <div className="text-center mt-12">
@@ -438,13 +423,16 @@ const Index = () => {
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
               <Star className="w-4 h-4 mr-2" />
-              {t('index.professionalPack', 'Professional Pack')}
+              {t("index.professionalPack", "Professional Pack")}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-              {t('index.careerPaths', 'Complete Career Paths')}
+              {t("index.careerPaths", "Complete Career Paths")}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              {t('index.careerPathsDesc', 'Comprehensive learning tracks designed for specific engineering roles. Master multiple technologies in focused career paths.')}
+              {t(
+                "index.careerPathsDesc",
+                "Comprehensive learning tracks designed for specific engineering roles. Master multiple technologies in focused career paths."
+              )}
             </p>
           </div>
 
@@ -452,7 +440,9 @@ const Index = () => {
             {packsLoading ? (
               <div className="col-span-3 text-center py-12">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                <p className="text-gray-300">{t('common.loading') || 'Loading packs...'}</p>
+                <p className="text-gray-300">
+                  {t("common.loading") || "Loading packs..."}
+                </p>
               </div>
             ) : (
               packs.map((pack, index) => (
@@ -531,7 +521,8 @@ const Index = () => {
                       <div className="w-8 h-8 bg-green-500 rounded-full border-2 border-slate-700 shadow-md"></div>
                     </div>
                     <span className="text-sm text-green-300 font-semibold">
-                      50+ {t('index.certifiedThisMonth', 'certified this month')}
+                      50+{" "}
+                      {t("index.certifiedThisMonth", "certified this month")}
                     </span>
                   </div>
                 </CardContent>
@@ -544,22 +535,25 @@ const Index = () => {
                       <Users className="w-6 h-6 text-blue-300" />
                     </div>
                     <span className="text-lg font-bold">
-                      {t('index.activeCommunity', 'Active Community')}
+                      {t("index.activeCommunity", "Active Community")}
                     </span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-200 text-base leading-relaxed mb-4">
-                    {t('index.communityDesc', 'Join a vibrant community of developers, mentors, and industry experts. Get help, share projects, and network.')}
+                    {t(
+                      "index.communityDesc",
+                      "Join a vibrant community of developers, mentors, and industry experts. Get help, share projects, and network."
+                    )}
                   </p>
                   <div className="mt-4 flex items-center justify-between p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
                     <span className="text-sm text-blue-300 font-semibold">
-                      {t('index.onlineNow', 'Online now:')}
+                      {t("index.onlineNow", "Online now:")}
                     </span>
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                       <span className="text-sm text-green-300 font-mono font-bold">
-                        95 {t('index.members', 'members')}
+                        95 {t("index.members", "members")}
                       </span>
                     </div>
                   </div>
@@ -577,17 +571,20 @@ const Index = () => {
             <div className="order-2 lg:order-1">
               <Badge className="mb-6 bg-yellow-500/10 text-yellow-400 border-yellow-500/20 font-mono">
                 <Star className="w-4 h-4 mr-2" />
-                {t('index.juniorProgram', 'Junior Program')}
+                {t("index.juniorProgram", "Junior Program")}
               </Badge>
 
               <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-                {t('index.weekendSchool', 'Weekend School for Juniors')}
+                {t("index.weekendSchool", "Weekend School for Juniors")}
               </h2>
               <h3 className="text-xl lg:text-2xl font-semibold mb-6 text-yellow-400">
-                {t('index.buildRockets', 'Build Rockets of the Future')}
+                {t("index.buildRockets", "Build Rockets of the Future")}
               </h3>
               <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                {t('index.juniorDescription', 'Designed for young innovators aged 12-18 years old. Our weekend program introduces teenagers to embedded systems, robotics, and space technology through hands-on projects and interactive learning experiences.')}
+                {t(
+                  "index.juniorDescription",
+                  "Designed for young innovators aged 12-18 years old. Our weekend program introduces teenagers to embedded systems, robotics, and space technology through hands-on projects and interactive learning experiences."
+                )}
               </p>
 
               <div className="space-y-6 mb-8">
@@ -597,10 +594,13 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
-                      {t('index.interactiveLearning', 'Interactive Learning')}
+                      {t("index.interactiveLearning", "Interactive Learning")}
                     </h3>
                     <p className="text-gray-400">
-                      {t('index.interactiveLearningDesc', 'Learn programming and electronics through games, robots, and real projects')}
+                      {t(
+                        "index.interactiveLearningDesc",
+                        "Learn programming and electronics through games, robots, and real projects"
+                      )}
                     </p>
                   </div>
                 </div>
@@ -611,10 +611,13 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
-                      {t('index.futureSkills', 'Future Skills')}
+                      {t("index.futureSkills", "Future Skills")}
                     </h3>
                     <p className="text-gray-400">
-                      {t('index.futureSkillsDesc', 'Develop problem-solving, creativity, and technical skills for tomorrow\'s careers')}
+                      {t(
+                        "index.futureSkillsDesc",
+                        "Develop problem-solving, creativity, and technical skills for tomorrow's careers"
+                      )}
                     </p>
                   </div>
                 </div>
@@ -625,10 +628,13 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-2 text-white group-hover:text-yellow-400 transition-colors">
-                      {t('index.weekendSchedule', 'Weekend Schedule')}
+                      {t("index.weekendSchedule", "Weekend Schedule")}
                     </h3>
                     <p className="text-gray-400">
-                      {t('index.weekendScheduleDesc', 'Flexible weekend classes that don\'t interfere with school commitments')}
+                      {t(
+                        "index.weekendScheduleDesc",
+                        "Flexible weekend classes that don't interfere with school commitments"
+                      )}
                     </p>
                   </div>
                 </div>
@@ -641,7 +647,7 @@ const Index = () => {
                     className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6"
                   >
                     <Zap className="mr-2 w-5 h-5" />
-                    {t('index.joinJuniorProgram', 'Join Junior Program')}
+                    {t("index.joinJuniorProgram", "Join Junior Program")}
                   </Button>
                 </JuniorProgramForm>
                 <Button
@@ -650,7 +656,7 @@ const Index = () => {
                   className="border-slate-600 text-slate-900 hover:bg-slate-800 hover:bg-gray-100 px-8 py-6 hover:scale-105"
                 >
                   <Link to="/junior" className="flex items-center">
-                    {t('index.learnMore', 'Learn More')}
+                    {t("index.learnMore", "Learn More")}
                   </Link>
                 </Button>
               </div>
@@ -704,14 +710,17 @@ const Index = () => {
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
             <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-            {t('index.startJourney', 'Start Your Journey')}
+            {t("index.startJourney", "Start Your Journey")}
           </Badge>
 
           <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-            {t('index.readyToBuild', 'Ready to Build the Future?')}
+            {t("index.readyToBuild", "Ready to Build the Future?")}
           </h2>
           <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            {t('index.ctaDescription', 'Join thousands of developers mastering embedded systems. Start with our free course preview and see why professionals choose Embedded School.')}
+            {t(
+              "index.ctaDescription",
+              "Join thousands of developers mastering embedded systems. Start with our free course preview and see why professionals choose Embedded School."
+            )}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
