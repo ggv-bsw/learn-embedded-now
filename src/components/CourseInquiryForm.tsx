@@ -30,54 +30,7 @@ interface CourseInquiryFormProps {
   subscriptionType?: string;
 }
 
-const getCoursesBySubscription = (subscriptionType?: string) => {
-  switch (subscriptionType) {
-    case "career-path-embedded-professional":
-      return {
-        packageName: "Career Path - Embedded Professional",
-        courseCount: 4,
-        courses: [
-          "C Programming",
-          "Embedded Arduino",
-          "Embedded Advanced",
-          "C++ BSW Beginner to Advanced",
-        ],
-        description:
-          "Пакет для карьеры в Embedded системах: IoT, Automotive, Biomedical",
-      };
-
-    case "career-path-complete-bundle":
-      return {
-        packageName: "Career Path - Data Engineer",
-        courseCount: 4,
-        courses: [
-          "Python Level 1",
-          "Python Level 2",
-          "SQL, Database",
-          "Cloud Services",
-        ],
-        description:
-          "Специализация в области Data Engineering и облачных технологий",
-      };
-
-    case "career-path-software-developer":
-      return {
-        packageName: "Career Path - Mobile Engineer",
-        courseCount: 4,
-        courses: ["React Native", "TypeScript", "JavaScript", "Node.js"],
-        description: "Полный стек разработки мобильных приложений",
-      };
-
-    case "individual":
-    default:
-      return {
-        packageName: "Individual Courses",
-        courseCount: "Доступны отдельно",
-        courses: ["Все курсы кроме Career Path пакетов"],
-        description: "Покупка отдельных курсов по выбору",
-      };
-  }
-};
+// Moved inside component to access translations
 
 interface FormData {
   name: string;
@@ -100,6 +53,58 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [showCourseList, setShowCourseList] = useState(false);
+
+  const getCoursesBySubscription = (subscriptionType?: string) => {
+    switch (subscriptionType) {
+      case "career-path-embedded-professional":
+        return {
+          packageName: t("careerPath.iotAutomotive.title", "IoT, Automotive & Biomedical Career"),
+          courseCount: 4,
+          courses: [
+            t("careerPath.iotAutomotive.course1", "C Programming"),
+            t("careerPath.iotAutomotive.course2", "Embedded Arduino"),
+            t("careerPath.iotAutomotive.course3", "Embedded Advanced"),
+            t("careerPath.iotAutomotive.course4", "C++ BSW Beginner to Advanced"),
+          ],
+          description: t("careerPath.iotAutomotive.description", "Career package for Embedded systems: IoT, Automotive, Biomedical"),
+        };
+
+      case "career-path-complete-bundle":
+        return {
+          packageName: t("careerPath.dataEngineer.title", "Data Engineer"),
+          courseCount: 4,
+          courses: [
+            t("careerPath.dataEngineer.course1", "Python Level 1"),
+            t("careerPath.dataEngineer.course2", "Python Level 2"),
+            t("careerPath.dataEngineer.course3", "SQL, Database"),
+            t("careerPath.dataEngineer.course4", "Cloud Services"),
+          ],
+          description: t("careerPath.dataEngineer.description", "Specialization in Data Engineering and cloud technologies"),
+        };
+
+      case "career-path-software-developer":
+        return {
+          packageName: t("careerPath.mobileEngineer.title", "Mobile Engineer"),
+          courseCount: 4,
+          courses: [
+            t("careerPath.mobileEngineer.course1", "React Native"),
+            t("careerPath.mobileEngineer.course2", "TypeScript"),
+            t("careerPath.mobileEngineer.course3", "JavaScript"),
+            t("careerPath.mobileEngineer.course4", "Node.js"),
+          ],
+          description: t("careerPath.mobileEngineer.description", "Full stack mobile application development"),
+        };
+
+      case "individual":
+      default:
+        return {
+          packageName: t("careerPath.individual.title", "Individual Courses"),
+          courseCount: t("careerPath.individual.availability", "Available separately"),
+          courses: [t("careerPath.individual.allCourses", "All courses except Career Path packages")],
+          description: t("careerPath.individual.description", "Purchase individual courses of your choice"),
+        };
+    }
+  };
   const [formData, setFormData] = useState<FormData>({
     name: "",
     surname: "",
