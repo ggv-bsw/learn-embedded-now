@@ -20,7 +20,7 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Send } from "lucide-react";
+import { Loader2, Send, ChevronDown, ChevronUp } from "lucide-react";
 import { featuredCourses } from "@/testData/featuredCourses";
 
 interface CourseInquiryFormProps {
@@ -33,28 +33,49 @@ interface CourseInquiryFormProps {
 const getCoursesBySubscription = (subscriptionType?: string) => {
   switch (subscriptionType) {
     case "career-path-embedded-professional":
-      return featuredCourses.filter(
-        (course) =>
-          course.id === "cpp-bsw-beginner-to-advanced" ||
-          course.id === "software-testing-automotive-qa" ||
-          course.id === "pcb-design-fundamentals"
-      );
-
-    case "career-path-software-developer":
-      return featuredCourses.filter(
-        (course) =>
-          course.id === "python-junior-beginner" ||
-          course.id === "cpp-bsw-beginner-to-advanced"
-      );
+      return {
+        packageName: "Career Path - Embedded Professional",
+        courseCount: 4,
+        courses: [
+          "C Programming",
+          "Embedded Arduino",
+          "Embedded Advanced",
+          "C++ BSW Beginner to Advanced",
+        ],
+        description:
+          "Пакет для карьеры в Embedded системах: IoT, Automotive, Biomedical",
+      };
 
     case "career-path-complete-bundle":
-      return featuredCourses;
+      return {
+        packageName: "Career Path - Data Engineer",
+        courseCount: 4,
+        courses: [
+          "Python Level 1",
+          "Python Level 2",
+          "SQL, Database",
+          "Cloud Services",
+        ],
+        description:
+          "Специализация в области Data Engineering и облачных технологий",
+      };
+
+    case "career-path-software-developer":
+      return {
+        packageName: "Career Path - Mobile Engineer",
+        courseCount: 4,
+        courses: ["React Native", "TypeScript", "JavaScript", "Node.js"],
+        description: "Полный стек разработки мобильных приложений",
+      };
 
     case "individual":
     default:
-      return featuredCourses.filter(
-        (course) => !course.id.includes("career-path")
-      );
+      return {
+        packageName: "Individual Courses",
+        courseCount: "Доступны отдельно",
+        courses: ["Все курсы кроме Career Path пакетов"],
+        description: "Покупка отдельных курсов по выбору",
+      };
   }
 };
 
@@ -78,6 +99,7 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
   const { t } = useLanguage();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [showCourseList, setShowCourseList] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     surname: "",
@@ -88,7 +110,9 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
     subscriptionType: subscriptionType,
   });
 
-  const availableCourses = getCoursesBySubscription(selectedCourseId);
+  const packageInfo = selectedCourseId?.includes("career-path")
+    ? getCoursesBySubscription(selectedCourseId)
+    : null;
 
   useEffect(() => {
     if (open) {
@@ -123,8 +147,8 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
 
     if (!formData.name || !formData.surname || !formData.courseId) {
       toast({
-        title: t('form.missingInfo'),
-        description: t('form.fillRequired'),
+        title: t("form.missingInfo"),
+        description: t("form.fillRequired"),
         variant: "destructive",
       });
       return;
@@ -150,8 +174,8 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
       }
 
       toast({
-        title: t('form.inquirySubmitted'),
-        description: t('form.thankYou'),
+        title: t("form.inquirySubmitted"),
+        description: t("form.thankYou"),
       });
 
       setFormData({
@@ -167,8 +191,8 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
     } catch (error: any) {
       console.error("Submit error:", error);
       toast({
-        title: t('form.submissionFailed'),
-        description: error.message || t('form.errorMessage'),
+        title: t("form.submissionFailed"),
+        description: error.message || t("form.errorMessage"),
         variant: "destructive",
       });
     } finally {
@@ -178,19 +202,11 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
 
   const getSelectedCourseTitle = () => {
     if (formData.courseId.includes("career-path")) {
-      switch (formData.courseId) {
-        case "career-path-embedded-professional":
-          return "IoT, Automotive & Biomedical Career";
-        case "career-path-software-developer":
-          return "Mobile Engineer";
-        case "career-path-complete-bundle":
-          return "Data Engineer";
-        default:
-          return "Career Path";
-      }
+      const packageInfo = getCoursesBySubscription(formData.courseId);
+      return packageInfo.packageName;
     }
 
-    const course = availableCourses.find((c) => c.id === formData.courseId);
+    const course = featuredCourses.find((c) => c.id === formData.courseId);
     return course?.title || "";
   };
 
@@ -204,15 +220,10 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
           <DialogDescription>
             {selectedCourseId && selectedCourseId.includes("career-path") ? (
               <div>
-                <p className="font-semibold text-blue-400 mb-2">
-                  {getSelectedCourseTitle()}
+                <p className="font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                  {packageInfo?.packageName}
                 </p>
-                <p>
-                  {t(
-                    "form.careerPathDescription",
-                    "You're applying for a complete career path. We'll contact you with detailed information about all included courses."
-                  )}
-                </p>
+                <p className="text-sm">{packageInfo?.description}</p>
               </div>
             ) : (
               t(
@@ -277,27 +288,83 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
                   />
                 </SelectTrigger>
                 <SelectContent>
-                  {availableCourses.map((course) => (
-                    <SelectItem key={course.id} value={course.id}>
-                      {course.title}
-                    </SelectItem>
-                  ))}
+                  {featuredCourses
+                    .filter((course) => !course.id.includes("career-path"))
+                    .map((course) => (
+                      <SelectItem key={course.id} value={course.id}>
+                        {course.title}
+                      </SelectItem>
+                    ))}
                 </SelectContent>
               </Select>
             </div>
           )}
 
-          {selectedCourseId?.includes("career-path") && (
-            <div className="space-y-2 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <Label className="text-sm font-medium text-blue-700 dark:text-blue-300">
-                {t('form.selectedCareerPath')}
-              </Label>
-              <div className="text-sm text-blue-600 dark:text-blue-400">
-                <p className="font-semibold">{getSelectedCourseTitle()}</p>
-                <p className="text-xs mt-1">
-                  {t('form.includesCourses')} {availableCourses.length} {availableCourses.length === 1 ? t('form.courseSingular') : t('form.courses')}
+          {selectedCourseId?.includes("career-path") && packageInfo && (
+            <div className="space-y-3 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
+              <div className="flex items-center justify-between">
+                <Label className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                  {t("form.selectedCareerPath", "Selected Career Path")}
+                </Label>
+                <span className="text-xs bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full">
+                  {packageInfo.courseCount}{" "}
+                  {typeof packageInfo.courseCount === "number"
+                    ? packageInfo.courseCount === 1
+                      ? t("form.courseSingular", "course")
+                      : t("form.courses", "courses")
+                    : packageInfo.courseCount}
+                </span>
+              </div>
+
+              <div className="text-sm">
+                <p className="font-semibold text-blue-800 dark:text-blue-200">
+                  {packageInfo.packageName}
+                </p>
+                <p className="text-blue-600 dark:text-blue-400 text-xs mt-1">
+                  {packageInfo.description}
                 </p>
               </div>
+
+              <div className="space-y-2">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="w-full flex items-center justify-between text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+                  onClick={() => setShowCourseList(!showCourseList)}
+                >
+                  <span className="text-xs">
+                    {showCourseList
+                      ? t("form.hideCourses", "Hide included courses")
+                      : t("form.showCourses", "Show included courses")}
+                  </span>
+                  {showCourseList ? (
+                    <ChevronUp size={16} />
+                  ) : (
+                    <ChevronDown size={16} />
+                  )}
+                </Button>
+
+                {showCourseList && (
+                  <div className="bg-white dark:bg-gray-900 rounded-md border border-blue-100 dark:border-blue-800 p-3">
+                    <p className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-2">
+                      {t(
+                        "form.includedCourses",
+                        "Courses included in this package:"
+                      )}
+                    </p>
+                    <ul className="space-y-1 text-xs text-blue-600 dark:text-blue-400">
+                      {packageInfo.courses.map((course, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-blue-500 mr-2">•</span>
+                          {course}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+
               <input
                 type="hidden"
                 value={selectedCourseId}
