@@ -700,6 +700,95 @@ export type Database = {
         }
         Relationships: []
       }
+      professional_pack_courses: {
+        Row: {
+          course_id: string
+          created_at: string
+          id: string
+          order_index: number
+          pack_id: string
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          id?: string
+          order_index?: number
+          pack_id: string
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          id?: string
+          order_index?: number
+          pack_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "professional_pack_courses_pack_id_fkey"
+            columns: ["pack_id"]
+            isOneToOne: false
+            referencedRelation: "professional_packs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      professional_packs: {
+        Row: {
+          courses_count: number
+          created_at: string
+          description: string
+          description_ro: string | null
+          description_ru: string | null
+          discount_percentage: number | null
+          duration_weeks: number
+          icon: string
+          id: string
+          level: string
+          original_price: number | null
+          price: number
+          title: string
+          title_ro: string | null
+          title_ru: string | null
+          updated_at: string
+        }
+        Insert: {
+          courses_count?: number
+          created_at?: string
+          description: string
+          description_ro?: string | null
+          description_ru?: string | null
+          discount_percentage?: number | null
+          duration_weeks: number
+          icon?: string
+          id: string
+          level: string
+          original_price?: number | null
+          price: number
+          title: string
+          title_ro?: string | null
+          title_ru?: string | null
+          updated_at?: string
+        }
+        Update: {
+          courses_count?: number
+          created_at?: string
+          description?: string
+          description_ro?: string | null
+          description_ru?: string | null
+          discount_percentage?: number | null
+          duration_weeks?: number
+          icon?: string
+          id?: string
+          level?: string
+          original_price?: number | null
+          price?: number
+          title?: string
+          title_ro?: string | null
+          title_ru?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       team_members: {
         Row: {
           bio: string
