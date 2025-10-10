@@ -439,10 +439,11 @@ const Courses = () => {
                 <p className="text-gray-300">{t('common.loading') || 'Loading packs...'}</p>
               </div>
             ) : (
-              packs.map((pack) => (
+              packs.map((pack, index) => (
                 <ProfessionalPackCard
                   key={pack.id}
                   {...pack}
+                  index={index}
                   onEnroll={handleEnrollClick}
                 />
               ))

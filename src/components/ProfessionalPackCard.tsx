@@ -15,6 +15,7 @@ interface ProfessionalPackCardProps {
   courses_count: number;
   discount_percentage: number | null;
   icon: string;
+  index: number;
   onEnroll: (id: string) => void;
 }
 
@@ -57,11 +58,12 @@ export const ProfessionalPackCard = ({
   courses_count,
   discount_percentage,
   icon,
+  index,
   onEnroll,
 }: ProfessionalPackCardProps) => {
   const { t } = useLanguage();
   const IconComponent = getIconComponent(icon);
-  const colors = getCardColors(parseInt(id.split('-').pop() || '0'));
+  const colors = getCardColors(index);
 
   return (
     <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">

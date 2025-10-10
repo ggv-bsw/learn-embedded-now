@@ -459,6 +459,7 @@ const Index = () => {
                 <ProfessionalPackCard
                   key={pack.id}
                   {...pack}
+                  index={index}
                   onEnroll={handleEnrollClick}
                 />
               ))
