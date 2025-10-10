@@ -19,11 +19,14 @@ import CourseInquiryForm from "@/components/CourseInquiryForm";
 import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCourses } from "@/hooks/useCourses";
+import { useProfessionalPacks } from "@/hooks/useProfessionalPacks";
+import { ProfessionalPackCard } from "@/components/ProfessionalPackCard";
 
 const Courses = () => {
   const navigate = useNavigate();
   const { t } = useLanguage();
   const { courses: featuredCourses, loading, error } = useCourses();
+  const { packs, loading: packsLoading } = useProfessionalPacks();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedLevel, setSelectedLevel] = useState("All");
@@ -430,172 +433,20 @@ const Courses = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Embedded Systems Professional */}
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Cpu className="w-8 h-8 text-green-400" />
-                </div>
-                <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-green-400 transition-colors">
-                  {t('coursesPage.embeddedProfessional')}
-                </CardTitle>
-                <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 mx-auto">
-                  {t('coursesPage.advanced')}
-                </Badge>
-              </CardHeader>
-
-              <CardContent className="pt-0">
-                <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  {t('coursesPage.embeddedProfDesc')}
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">{t('coursesPage.duration')}</span>
-                    <span className="text-white font-semibold">30 {t('coursesPage.weeks')}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">{t('coursesPage.levelLabel')}</span>
-                    <span className="text-orange-400 font-semibold">
-                      {t('coursesPage.advanced')}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">{t('coursesPage.coursesIncluded')}</span>
-                    <span className="text-white font-semibold">3 {t('coursesPage.coursesLabel')}</span>
-                  </div>
-                </div>
-
-                <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-white mb-1">699 mdl</div>
-                  <div className="text-gray-400 text-sm line-through">927 mdl</div>
-                  <div className="text-green-400 text-sm font-semibold">
-                    {t('coursesPage.save')} 25%
-                  </div>
-                </div>
-
-                <Button
-                  className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
-                  onClick={() =>
-                    handleEnrollClick("career-path-embedded-professional")
-                  }
-                >
-                  {t('coursesPage.startCareerPath')}
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Software Developer Track */}
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Code className="w-8 h-8 text-blue-400" />
-                </div>
-                <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-blue-400 transition-colors">
-                  {t('coursesPage.softwareDeveloper')}
-                </CardTitle>
-                <Badge className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 mx-auto">
-                  {t('coursesPage.beginnerIntermediate')}
-                </Badge>
-              </CardHeader>
-
-              <CardContent className="pt-0">
-                <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  {t('coursesPage.softwareDevDesc')}
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">{t('coursesPage.duration')}</span>
-                    <span className="text-white font-semibold">22 {t('coursesPage.weeks')}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">{t('coursesPage.levelLabel')}</span>
-                    <span className="text-yellow-400 font-semibold">
-                      {t('coursesPage.beginnerIntermediate')}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">{t('coursesPage.coursesIncluded')}</span>
-                    <span className="text-white font-semibold">2 {t('coursesPage.coursesLabel')}</span>
-                  </div>
-                </div>
-
-                <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-white mb-1">379 mdl</div>
-                  <div className="text-gray-400 text-sm line-through">448 mdl</div>
-                  <div className="text-green-400 text-sm font-semibold">
-                    {t('coursesPage.save')} 15%
-                  </div>
-                </div>
-
-                <Button
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold"
-                  onClick={() =>
-                    handleEnrollClick("career-path-software-developer")
-                  }
-                >
-                  {t('coursesPage.startCareerPath')}
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Complete Engineering Bundle */}
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 hover:scale-105 group">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="w-8 h-8 text-purple-400" />
-                </div>
-                <CardTitle className="text-xl font-bold text-white text-center mb-2 group-hover:text-purple-400 transition-colors">
-                  {t('coursesPage.completeBundle')}
-                </CardTitle>
-                <Badge className="bg-green-500/20 text-green-400 border-green-500/30 mx-auto">
-                  {t('coursesPage.allLevels')}
-                </Badge>
-              </CardHeader>
-
-              <CardContent className="pt-0">
-                <p className="text-gray-400 mb-6 text-center leading-relaxed">
-                  {t('coursesPage.completeBundleDesc')}
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">{t('coursesPage.duration')}</span>
-                    <span className="text-white font-semibold">40 {t('coursesPage.weeks')}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">{t('coursesPage.levelLabel')}</span>
-                    <span className="text-green-400 font-semibold">
-                      {t('coursesPage.allLevels')}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">{t('coursesPage.coursesIncluded')}</span>
-                    <span className="text-white font-semibold">4 {t('coursesPage.coursesLabel')}</span>
-                  </div>
-                </div>
-
-                <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-white mb-1">799 mdl</div>
-                  <div className="text-gray-400 text-sm line-through">
-                    1,096 mdl
-                  </div>
-                  <div className="text-green-400 text-sm font-semibold">
-                    {t('coursesPage.save')} 27%
-                  </div>
-                </div>
-
-                <Button
-                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold"
-                  onClick={() =>
-                    handleEnrollClick("career-path-complete-bundle")
-                  }
-                >
-                  {t('coursesPage.startCareerPath')}
-                </Button>
-              </CardContent>
-            </Card>
+            {packsLoading ? (
+              <div className="col-span-3 text-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+                <p className="text-gray-300">{t('common.loading') || 'Loading packs...'}</p>
+              </div>
+            ) : (
+              packs.map((pack) => (
+                <ProfessionalPackCard
+                  key={pack.id}
+                  {...pack}
+                  onEnroll={handleEnrollClick}
+                />
+              ))
+            )}
           </div>
         </div>
       </section>
