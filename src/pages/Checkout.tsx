@@ -123,11 +123,11 @@ const Checkout = () => {
                       <h3 className="font-semibold text-white">{item.name}</h3>
                       <p className="text-gray-400">Quantity: {item.quantity}</p>
                       <p className="text-gray-400">
-                        ${item.price} × {item.quantity}
+                        {item.price} mdl × {item.quantity}
                       </p>
                     </div>
                     <div className="text-white font-bold">
-                      ${(item.price * item.quantity).toFixed(2)}
+                      {(item.price * item.quantity).toFixed(2)} mdl
                     </div>
                   </div>
                 ))}
@@ -135,7 +135,7 @@ const Checkout = () => {
               <Separator className="my-4 bg-slate-700" />
               <div className="flex justify-between text-xl font-bold text-white">
                 <span>Total:</span>
-                <span>${totalPrice.toFixed(2)}</span>
+                <span>{totalPrice.toFixed(2)} mdl</span>
               </div>
             </Card>
           </div>

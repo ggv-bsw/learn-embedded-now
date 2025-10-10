@@ -425,10 +425,10 @@ const CourseDetail = () => {
                 <div className="text-center mb-6">
                   <div className="flex items-baseline justify-center space-x-2 mb-2">
                     <span className="text-3xl font-bold text-primary">
-                      ${course.price}
+                      {course.price} mdl
                     </span>
                     <span className="text-lg text-muted-foreground line-through">
-                      ${course.originalPrice}
+                      {course.originalPrice} mdl
                     </span>
                   </div>
                   <Badge className="bg-green-100 text-green-800">

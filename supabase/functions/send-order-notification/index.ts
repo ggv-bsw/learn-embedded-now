@@ -126,7 +126,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Step 3: Send notification emails
 
     const itemsList = items.map(item => 
-      `<li>${escapeHtml(item.name)} - Quantity: ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}</li>`
+      `<li>${escapeHtml(item.name)} - Quantity: ${item.quantity} - ${(item.price * item.quantity).toFixed(2)} mdl</li>`
     ).join('');
 
     // Send confirmation email to customer
@@ -143,7 +143,7 @@ const handler = async (req: Request): Promise<Response> => {
           ${itemsList}
         </ul>
         
-        <p><strong>Total: $${totalPrice.toFixed(2)}</strong></p>
+        <p><strong>Total: ${totalPrice.toFixed(2)} mdl</strong></p>
         
         <h3>Contact Information:</h3>
         <p>Email: ${escapeHtml(customerEmail)}</p>
@@ -178,7 +178,7 @@ const handler = async (req: Request): Promise<Response> => {
           ${itemsList}
         </ul>
         
-        <p><strong>Total: $${totalPrice.toFixed(2)}</strong></p>
+        <p><strong>Total: ${totalPrice.toFixed(2)} mdl</strong></p>
         
         <p>Please contact the customer to arrange delivery and payment.</p>
       `,

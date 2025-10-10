@@ -398,7 +398,7 @@ const Index = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="text-2xl font-bold text-white">
-                        ${course.price}
+                        {course.price} mdl
                       </span>
                     </div>
                     <Button
@@ -483,8 +483,8 @@ const Index = () => {
                 </div>
 
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-white mb-1">$699</div>
-                  <div className="text-gray-400 text-sm line-through">$927</div>
+                  <div className="text-3xl font-bold text-white mb-1">699 mdl</div>
+                  <div className="text-gray-400 text-sm line-through">927 mdl</div>
                   <div className="text-green-400 text-sm font-semibold">
                     {t('index.save', 'Save')} 25%
                   </div>
@@ -538,8 +538,8 @@ const Index = () => {
                 </div>
 
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-white mb-1">$379</div>
-                  <div className="text-gray-400 text-sm line-through">$448</div>
+                  <div className="text-3xl font-bold text-white mb-1">379 mdl</div>
+                  <div className="text-gray-400 text-sm line-through">448 mdl</div>
                   <div className="text-green-400 text-sm font-semibold">
                     {t('index.save', 'Save')} 15%
                   </div>
@@ -593,9 +593,9 @@ const Index = () => {
                 </div>
 
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-white mb-1">$799</div>
+                  <div className="text-3xl font-bold text-white mb-1">799 mdl</div>
                   <div className="text-gray-400 text-sm line-through">
-                    $1,096
+                    1,096 mdl
                   </div>
                   <div className="text-green-400 text-sm font-semibold">
                     {t('index.save', 'Save')} 27%

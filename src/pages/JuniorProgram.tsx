@@ -488,7 +488,7 @@ const JuniorProgram = () => {
               <CardContent className="space-y-6">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-yellow-400 mb-2">
-                    $299
+                    299 mdl
                   </div>
                   <div className="text-gray-400">per 12-week term</div>
                   <div className="text-green-400 text-sm">

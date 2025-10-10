@@ -76,7 +76,7 @@ const CourseCard = ({
         
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-2xl font-bold text-white">${price}</span>
+            <span className="text-2xl font-bold text-white">{price} mdl</span>
           </div>
           <Button 
             asChild 
