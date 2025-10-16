@@ -40,6 +40,7 @@ const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [newsletterEmail, setNewsletterEmail] = useState("");
 
   const categories = [
     { key: "All", label: t('blog.category.all', 'All') },
@@ -347,10 +348,26 @@ const Blog = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
                 <input 
                   type="email" 
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder={t('blog.newsletter.placeholder', 'your.email@rebellion.com')}
                   className="flex-1 px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400"
                 />
-                <Button className="bg-white text-slate-900 hover:bg-gray-100 px-6 font-semibold">
+                <Button 
+                  className="bg-white text-slate-900 hover:bg-gray-100 px-6 font-semibold"
+                  onClick={() => {
+                    if (!newsletterEmail || !newsletterEmail.includes('@')) {
+                      toast.error(
+                        t('blog.newsletter.errorDesc', 'Please enter a valid email address.')
+                      );
+                      return;
+                    }
+                    toast.success(
+                      t('blog.newsletter.successDesc', "You've successfully joined our newsletter. May the code be with you!")
+                    );
+                    setNewsletterEmail("");
+                  }}
+                >
                   {t('blog.newsletter.cta', 'Join the Force')}
                 </Button>
               </div>
