@@ -349,13 +349,13 @@ const Trainers = () => {
                     {t('trainers.browseAllCourses', 'Browse All Courses')}
                   </Link>
                 </Button>
-                <Button
+                {/* <Button
                   size="lg"
                   variant="outline"
                   className="border-gray-600 text-slate-900 hover:border-gray-500 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg"
                 >
                   {t('trainers.scheduleConsultation', 'Schedule Consultation')}
-                </Button>
+                </Button> */}
               </div>
             </div>
           </ScrollReveal>
@@ -466,13 +466,13 @@ const Trainers = () => {
                   <Award className="mr-2 w-5 h-5" />
                   {t('trainers.applyToTeach', 'Apply to Teach')}
                 </Button>
-                <Button
+                {/* <Button
                   size="lg"
                   variant="outline"
                   className="border-gray-600 text-slate-900 hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg"
                 >
                   {t('trainers.learnMore', 'Learn More')}
-                </Button>
+                </Button> */}
               </div>
             </div>
           </ScrollReveal>
