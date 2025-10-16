@@ -235,11 +235,11 @@ const HardwareDetail = () => {
                     <div>
                       <div className="flex items-center space-x-3">
                         <span className="text-4xl font-bold text-white">
-                          {product.price} mdl
+                          €{product.price}
                         </span>
                           {product.original_price && (
                             <span className="text-2xl text-gray-500 line-through">
-                              {product.original_price} mdl
+                              €{product.original_price}
                             </span>
                           )}
                       </div>

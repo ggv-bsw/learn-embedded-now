@@ -347,11 +347,11 @@ const Hardware = () => {
                       <div>
                         <div className="flex items-center space-x-2">
                           <span className="text-2xl font-bold text-white">
-                            {board.price} mdl
+                            €{board.price}
                           </span>
                           {board.original_price && (
                             <span className="text-lg text-gray-500 line-through">
-                              {board.original_price} mdl
+                              €{board.original_price}
                             </span>
                           )}
                         </div>
