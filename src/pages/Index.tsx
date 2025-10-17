@@ -1,10 +1,8 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
-import CourseInquiryForm from "@/components/CourseInquiryForm";
-import { JuniorProgramForm } from "@/components/JuniorProgramForm";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Zap,
@@ -21,13 +19,16 @@ import {
   BookOpen,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import VideoDemo from "@/components/VideoDemo";
 import juniorChessRobot from "@/assets/junior-chess-robot.jpg";
 import AnimatedParticles from "@/components/animated-particles";
 import { useCourses } from "@/hooks/useCourses";
 import { useProfessionalPacks } from "@/hooks/useProfessionalPacks";
 import { ProfessionalPackCard } from "@/components/ProfessionalPackCard";
 import Footer from "@/components/footer";
+
+const CourseInquiryForm = lazy(() => import("@/components/CourseInquiryForm"));
+const JuniorProgramForm = lazy(() => import("@/components/JuniorProgramForm").then(m => ({ default: m.JuniorProgramForm })));
+const VideoDemo = lazy(() => import("@/components/VideoDemo"));
 
 const Index = () => {
   const { t } = useLanguage();
@@ -333,6 +334,9 @@ const Index = () => {
                         src={course.image}
                         alt={course.title}
                         className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                        width="400"
+                        height="192"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                       <Badge
@@ -668,6 +672,9 @@ const Index = () => {
                   src={juniorChessRobot}
                   alt="Junior student playing chess with a robot in a modern tech classroom"
                   className="rounded-lg shadow-2xl shadow-yellow-500/20 border border-yellow-500/20 hover:shadow-yellow-500/30 transition-all duration-300"
+                  width="600"
+                  height="400"
+                  loading="lazy"
                 />
                 <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
                   <Star className="w-8 h-8 text-white" />
@@ -771,18 +778,22 @@ const Index = () => {
       <Footer />
 
       {/* Video Demo */}
-      <VideoDemo
-        open={showVideo}
-        onOpenChange={setShowVideo}
-        videoUrl="https://www.youtube.com/embed/9J-0EGmsc1E?autoplay=1&mute=1&rel=0&modestbranding=1"
-      />
+      <Suspense fallback={null}>
+        <VideoDemo
+          open={showVideo}
+          onOpenChange={setShowVideo}
+          videoUrl="https://www.youtube.com/embed/9J-0EGmsc1E?autoplay=1&mute=1&rel=0&modestbranding=1"
+        />
+      </Suspense>
 
       {/* Course Inquiry Form */}
-      <CourseInquiryForm
-        open={showInquiryForm}
-        selectedCourseId={selectedCourse}
-        onOpenChange={setShowInquiryForm}
-      />
+      <Suspense fallback={null}>
+        <CourseInquiryForm
+          open={showInquiryForm}
+          selectedCourseId={selectedCourse}
+          onOpenChange={setShowInquiryForm}
+        />
+      </Suspense>
     </div>
   );
 };

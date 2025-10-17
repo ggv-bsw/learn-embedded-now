@@ -36,6 +36,9 @@ const CourseCard = ({
           src={image} 
           alt={title}
           className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+          width="400"
+          height="192"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
         <Badge className={`absolute top-3 right-3 font-mono ${

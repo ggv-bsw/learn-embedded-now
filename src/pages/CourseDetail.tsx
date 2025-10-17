@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -25,10 +25,11 @@ import {
 } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
-import CourseInquiryForm from "@/components/CourseInquiryForm";
-import VideoDemo from "@/components/VideoDemo";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCourse } from "@/hooks/useCourses";
+
+const CourseInquiryForm = lazy(() => import("@/components/CourseInquiryForm"));
+const VideoDemo = lazy(() => import("@/components/VideoDemo"));
 
 const CourseDetail = () => {
   const { courseId } = useParams();
@@ -191,6 +192,9 @@ const CourseDetail = () => {
                 src={course.image}
                 alt={course.title}
                 className="w-full h-64 lg:h-80 object-cover"
+                width="800"
+                height="320"
+                loading="lazy"
               />
               {course.link && (
                 <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
@@ -346,12 +350,15 @@ const CourseDetail = () => {
               <TabsContent value="instructor">
                 <Card>
                   <CardContent className="pt-6">
-                    <div className="flex items-start space-x-6">
+                  <div className="flex items-start space-x-6">
                       {course.instructor.image ? (
                         <img
                           src={course.instructor.image}
                           alt={course.instructor.name}
                           className="w-20 h-20 rounded-full object-cover"
+                          width="80"
+                          height="80"
+                          loading="lazy"
                         />
                       ) : (
                         <div className="w-20 h-20 bg-gradient-hero rounded-full flex items-center justify-center">
@@ -534,17 +541,21 @@ const CourseDetail = () => {
         </div>
       </div>
 
-      <VideoDemo
-        open={showVideo}
-        videoUrl={course.link}
-        onOpenChange={setShowVideo}
-      />
+      <Suspense fallback={null}>
+        <VideoDemo
+          open={showVideo}
+          videoUrl={course.link}
+          onOpenChange={setShowVideo}
+        />
+      </Suspense>
 
-      <CourseInquiryForm
-        open={showInquiryForm}
-        selectedCourseId={course.id}
-        onOpenChange={setShowInquiryForm}
-      />
+      <Suspense fallback={null}>
+        <CourseInquiryForm
+          open={showInquiryForm}
+          selectedCourseId={course.id}
+          onOpenChange={setShowInquiryForm}
+        />
+      </Suspense>
     </div>
   );
 };
