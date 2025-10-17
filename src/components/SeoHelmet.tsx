@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { SEO_BY_LANG } from "@/seo";
+import { useLocation } from "react-router-dom";
 
 interface SeoHelmetProps {
   lang: "en" | "ro" | "ru";
@@ -21,11 +22,15 @@ export default function SeoHelmet({
   image,
 }: SeoHelmetProps) {
   const L = SEO_BY_LANG[lang] ?? SEO_BY_LANG.en;
+  const { pathname } = useLocation();
+
+  const site = "https://embeddedschool.md";
+  const computedCanonical =
+    canonical ?? `${site}${pathname.endsWith("/") ? pathname : pathname + "/"}`;
 
   const finalTitle = title ?? L.title;
   const finalDesc = description ?? L.description;
-  const finalCanonical = canonical ?? L.canonical;
-  const finalOgUrl = ogUrl ?? L.url;
+  const finalOgUrl = ogUrl ?? computedCanonical;
   const finalImage = image ?? L.image;
 
   return (
@@ -34,11 +39,7 @@ export default function SeoHelmet({
       <title>{finalTitle}</title>
       <meta name="description" content={finalDesc} />
 
-      <link rel="canonical" href={finalCanonical} />
-
-      {L.hreflangs.map((h) => (
-        <link key={h.lang} rel="alternate" href={h.href} hrefLang={h.lang} />
-      ))}
+      <link rel="canonical" href={computedCanonical} />
 
       <meta property="og:title" content={finalTitle} />
       <meta property="og:description" content={finalDesc} />

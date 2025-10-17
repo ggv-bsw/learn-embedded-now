@@ -10,7 +10,7 @@ export const SEO_BY_LANG: Record<
     url: string;
     twitterSite: string;
     image: string;
-    hreflangs: Array<{ href: string; lang: string }>;
+    // hreflangs: Array<{ href: string; lang: string }>;
   }
 > = {
   en: {
@@ -18,48 +18,48 @@ export const SEO_BY_LANG: Record<
       "Embedded School - IT Courses in Embedded Systems, IoT & Programming",
     description:
       "Learn embedded systems, IoT, and programming with expert-led courses. Perfect for students and professionals in Moldova & Romania. Start your tech career today!",
-    canonical: "https://embeddedschool.md/en/",
+    canonical: "https://embeddedschool.md/",
     ogLocale: "en_US",
-    url: "https://embeddedschool.md/en/",
+    url: "https://embeddedschool.md/",
     twitterSite: "@embeddedschool",
     image: "https://embeddedschool.md/og/embedded-school-1200x630.jpg",
-    hreflangs: [
-      { href: "https://embeddedschool.md/en/", lang: "en" },
-      { href: "https://embeddedschool.md/ro/", lang: "ro" },
-      { href: "https://embeddedschool.md/ru/", lang: "ru" },
-      { href: "https://embeddedschool.md/", lang: "x-default" },
-    ],
+    // hreflangs: [
+    //   { href: "https://embeddedschool.md/en/", lang: "en" },
+    //   { href: "https://embeddedschool.md/ro/", lang: "ro" },
+    //   { href: "https://embeddedschool.md/ru/", lang: "ru" },
+    //   { href: "https://embeddedschool.md/", lang: "x-default" },
+    // ],
   },
   ro: {
     title: "Embedded School - Cursuri IT în Sisteme Embedded și IoT",
     description:
       "Învață sisteme embedded, IoT și programare cu mentori experți. Perfect pentru studenți și profesioniști din Moldova & România.",
-    canonical: "https://embeddedschool.md/ro/",
+    canonical: "https://embeddedschool.md/",
     ogLocale: "ro_RO",
-    url: "https://embeddedschool.md/ro/",
+    url: "https://embeddedschool.md/",
     twitterSite: "@embeddedschool",
     image: "https://embeddedschool.md/og/embedded-school-1200x630.jpg",
-    hreflangs: [
-      { href: "https://embeddedschool.md/en/", lang: "en" },
-      { href: "https://embeddedschool.md/ro/", lang: "ro" },
-      { href: "https://embeddedschool.md/ru/", lang: "ru" },
-      { href: "https://embeddedschool.md/", lang: "x-default" },
-    ],
+    // hreflangs: [
+    //   { href: "https://embeddedschool.md/en/", lang: "en" },
+    //   { href: "https://embeddedschool.md/ro/", lang: "ro" },
+    //   { href: "https://embeddedschool.md/ru/", lang: "ru" },
+    //   { href: "https://embeddedschool.md/", lang: "x-default" },
+    // ],
   },
   ru: {
     title: "Embedded School — курсы по Embedded-системам и IoT",
     description:
       "Изучи embedded-системы, IoT и программирование с наставниками-практиками. Подходит студентам и профессионалам в Молдове и Румынии.",
-    canonical: "https://embeddedschool.md/ru/",
+    canonical: "https://embeddedschool.md/",
     ogLocale: "ru_RU",
-    url: "https://embeddedschool.md/ru/",
+    url: "https://embeddedschool.md/",
     twitterSite: "@embeddedschool",
     image: "https://embeddedschool.md/og/embedded-school-1200x630.jpg",
-    hreflangs: [
-      { href: "https://embeddedschool.md/en/", lang: "en" },
-      { href: "https://embeddedschool.md/ro/", lang: "ro" },
-      { href: "https://embeddedschool.md/ru/", lang: "ru" },
-      { href: "https://embeddedschool.md/", lang: "x-default" },
-    ],
+    // hreflangs: [
+    //   { href: "https://embeddedschool.md/en/", lang: "en" },
+    //   { href: "https://embeddedschool.md/ro/", lang: "ro" },
+    //   { href: "https://embeddedschool.md/ru/", lang: "ru" },
+    //   { href: "https://embeddedschool.md/", lang: "x-default" },
+    // ],
   },
 };
