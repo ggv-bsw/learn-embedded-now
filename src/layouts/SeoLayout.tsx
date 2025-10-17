@@ -3,17 +3,17 @@ import SeoHelmet from "@/components/SeoHelmet";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // простая карта для статических страниц
-const SEO_BY_ROUTE: Record<string, Partial<Parameters<typeof SeoHelmet>[0]>> = {
-  "/":            { pageKey: "home" },
-  "/about":       { pageKey: "about" },
-  "/trainers":    { pageKey: "trainers" },
-  "/courses":     { pageKey: "courses" },
-  "/contact":     { pageKey: "contact" },
-  "/hardware":    { pageKey: "hardware" },
-  "/junior":      { pageKey: "junior" },
+const SEO_BY_ROUTE: Record<string, { pageKey: string }> = {
+  "/": { pageKey: "home" },
+  "/about": { pageKey: "about" },
+  "/trainers": { pageKey: "trainers" },
+  "/courses": { pageKey: "courses" },
+  "/contact": { pageKey: "contact" },
+  "/hardware": { pageKey: "hardware" },
+  "/junior": { pageKey: "junior" },
   "/documentation": { pageKey: "docs" },
-  "/checkout":    { pageKey: "checkout" },
-  "/blog":        { pageKey: "blog" },
+  "/checkout": { pageKey: "checkout" },
+  "/blog": { pageKey: "blog" },
 };
 
 export default function SeoLayout() {
