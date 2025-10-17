@@ -58,6 +58,39 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Rate limiting: Get client IP
+    const clientIp = req.headers.get('x-forwarded-for')?.split(',')[0] || 
+                     req.headers.get('x-real-ip') || 
+                     'unknown';
+    
+    // Check rate limit: max 5 requests per hour per IP
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+    const { count, error: rateLimitError } = await supabaseAdmin
+      .from('rate_limit_log')
+      .select('*', { count: 'exact', head: true })
+      .eq('ip_address', clientIp)
+      .eq('endpoint', 'send-order-notification')
+      .gte('request_time', oneHourAgo);
+
+    if (rateLimitError) {
+      console.error('Rate limit check error:', rateLimitError);
+    } else if (count && count >= 5) {
+      return new Response(
+        JSON.stringify({ error: 'Too many requests. Please try again later.' }),
+        {
+          status: 429,
+          headers: { 'Content-Type': 'application/json', ...corsHeaders },
+        }
+      );
+    }
+
+    // Log this request
+    await supabaseAdmin.from('rate_limit_log').insert({
+      ip_address: clientIp,
+      endpoint: 'send-order-notification',
+      request_time: new Date().toISOString()
+    });
+
     const rawBody = await req.json();
     
     // Validate input data
