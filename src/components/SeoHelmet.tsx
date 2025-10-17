@@ -37,7 +37,7 @@ export default function SeoHelmet({
       <link rel="canonical" href={finalCanonical} />
 
       {L.hreflangs.map((h) => (
-        <link key={h.lang} rel="alternate" href={h.href} hreflang={h.lang} />
+        <link key={h.lang} rel="alternate" href={h.href} hrefLang={h.lang} />
       ))}
 
       <meta property="og:title" content={finalTitle} />
