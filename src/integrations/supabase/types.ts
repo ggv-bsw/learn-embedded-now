@@ -421,6 +421,9 @@ export type Database = {
         Row: {
           created_at: string
           curriculum_id: string
+          description: string | null
+          description_ro: string | null
+          description_ru: string | null
           duration: string
           id: string
           order_index: number
@@ -432,6 +435,9 @@ export type Database = {
         Insert: {
           created_at?: string
           curriculum_id: string
+          description?: string | null
+          description_ro?: string | null
+          description_ru?: string | null
           duration: string
           id?: string
           order_index: number
@@ -443,6 +449,9 @@ export type Database = {
         Update: {
           created_at?: string
           curriculum_id?: string
+          description?: string | null
+          description_ro?: string | null
+          description_ru?: string | null
           duration?: string
           id?: string
           order_index?: number

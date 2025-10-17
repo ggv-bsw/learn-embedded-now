@@ -17,6 +17,7 @@ export interface CurriculumLesson {
   title: string;
   duration: string;
   type: 'video' | 'hands-on' | 'project' | 'capstone';
+  description?: string;
 }
 
 export interface CurriculumModule {
@@ -119,6 +120,7 @@ export const useCourses = () => {
               title: getTranslatedField(lesson.title, lesson.title_ro, lesson.title_ru),
               duration: lesson.duration,
               type: lesson.type as 'video' | 'hands-on' | 'project' | 'capstone',
+              description: lesson.description ? getTranslatedField(lesson.description, lesson.description_ro, lesson.description_ru) : undefined,
             })),
           };
         });

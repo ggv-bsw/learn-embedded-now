@@ -308,23 +308,30 @@ const CourseDetail = () => {
                               {module.lessons.map((lesson, lessonIndex) => (
                                 <div
                                   key={lessonIndex}
-                                  className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
+                                  className="p-4 bg-muted/50 rounded-lg space-y-2"
                                 >
-                                  <div className="flex items-center space-x-3">
-                                    <Play className="w-4 h-4 text-muted-foreground" />
-                                    <span className="font-medium">
-                                      {lesson.title}
+                                  <div className="flex items-center justify-between">
+                                    <div className="flex items-center space-x-3">
+                                      <Play className="w-4 h-4 text-muted-foreground" />
+                                      <span className="font-medium">
+                                        {lesson.title}
+                                      </span>
+                                      <Badge
+                                        variant="outline"
+                                        className="text-xs"
+                                      >
+                                        {lesson.type}
+                                      </Badge>
+                                    </div>
+                                    <span className="text-sm text-muted-foreground">
+                                      {lesson.duration}
                                     </span>
-                                    <Badge
-                                      variant="outline"
-                                      className="text-xs"
-                                    >
-                                      {lesson.type}
-                                    </Badge>
                                   </div>
-                                  <span className="text-sm text-muted-foreground">
-                                    {lesson.duration}
-                                  </span>
+                                  {lesson.description && (
+                                    <p className="text-sm text-muted-foreground pl-7 whitespace-pre-line">
+                                      {lesson.description}
+                                    </p>
+                                  )}
                                 </div>
                               ))}
                             </div>
