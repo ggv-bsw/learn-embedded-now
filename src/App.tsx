@@ -19,6 +19,7 @@ import NotFound from "./pages/NotFound";
 import JuniorProgram from "./pages/JuniorProgram";
 import Checkout from "./pages/Checkout";
 import Documentation from "./pages/Documentation";
+import SeoLayout from "@/layouts/SeoLayout";
 
 const queryClient = new QueryClient();
 
@@ -41,21 +42,23 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/courses/:courseId" element={<CourseDetail />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/trainers" element={<Trainers />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPostDetail />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/hardware" element={<Hardware />} />
-            <Route path="/hardware/:productId" element={<HardwareDetail />} />
-            <Route path="/junior" element={<JuniorProgram />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/documentation" element={<Documentation />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
+            <Route element={<SeoLayout />}>
+              <Route path="/" element={<Index />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/courses/:courseId" element={<CourseDetail />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/trainers" element={<Trainers />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPostDetail />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/hardware" element={<Hardware />} />
+              <Route path="/hardware/:productId" element={<HardwareDetail />} />
+              <Route path="/junior" element={<JuniorProgram />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/documentation" element={<Documentation />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
