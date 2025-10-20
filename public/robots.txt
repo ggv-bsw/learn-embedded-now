@@ -12,3 +12,9 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+User-agent: *
+Disallow: /en/
+Disallow: /ro/
+Disallow: /ru/
+Sitemap: https://embeddedschool.md/sitemap.xml

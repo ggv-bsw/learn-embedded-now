@@ -42,6 +42,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+          <StripLangFromUrl />
           <Routes>
             <Route element={<SeoLayout />}>
               <Route path="/" element={<Index />} />
