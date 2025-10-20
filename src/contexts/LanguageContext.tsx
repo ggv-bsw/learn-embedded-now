@@ -844,7 +844,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.getStarted": "Începe Acum",
 
     // Hero Section
-    "hero.title": "Fabrica de Ingineri - Școala de Sisteme Înglobate",
+    "hero.title": "Fabrica de Ingineri - Embedded School",
     "hero.subtitle": "Construiește-ți Viitorul",
     "hero.description":
       "Alătură-te miilor de studenți care stăpânesc tehnologia de vârf prin cursuri practice în IoT, sisteme înglobate și multe altele.",
@@ -1695,7 +1695,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.getStarted": "Начать",
 
     // Hero Section
-    "hero.title": "Фабрика Инженеров - Школа Встраиваемых Систем",
+    "hero.title": "Фабрика Инженеров - Embedded School",
     "hero.subtitle": "Построй Свое Будущее",
     "hero.description":
       "Присоединяйтесь к тысячам студентов, осваивающих передовые технологии через практические курсы по IoT, встраиваемым системам и многому другому.",
