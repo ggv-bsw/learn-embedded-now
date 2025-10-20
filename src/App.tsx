@@ -41,7 +41,6 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <StripLangFromUrl />
           <ScrollToTop />
           <Routes>
             <Route element={<SeoLayout />}>

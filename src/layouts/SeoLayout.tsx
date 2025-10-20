@@ -1,8 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import SeoHelmet from "@/components/SeoHelmet";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useAutoLanguage } from "@/hooks/useAutoLanguage";
 
-// простая карта для статических страниц
 const SEO_BY_ROUTE: Record<string, { pageKey: string }> = {
   "/": { pageKey: "home" },
   "/about": { pageKey: "about" },
@@ -19,8 +19,8 @@ const SEO_BY_ROUTE: Record<string, { pageKey: string }> = {
 export default function SeoLayout() {
   const { pathname } = useLocation();
   const { language } = useLanguage();
+  useAutoLanguage();   
 
-  // подбираем конфиг; по умолчанию — главная
   const seoProps = SEO_BY_ROUTE[pathname] ?? SEO_BY_ROUTE["/"];
 
   return (
