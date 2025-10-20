@@ -20,6 +20,7 @@ import JuniorProgram from "./pages/JuniorProgram";
 import Checkout from "./pages/Checkout";
 import Documentation from "./pages/Documentation";
 import SeoLayout from "@/layouts/SeoLayout";
+import { StripLangFromUrl } from "./components/StripLangFromUrl";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <StripLangFromUrl />
           <ScrollToTop />
           <Routes>
             <Route element={<SeoLayout />}>
