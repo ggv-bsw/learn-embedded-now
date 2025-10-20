@@ -21,6 +21,7 @@ const MeetingRequestSchema = z.object({
   trainerName: z.string().trim().min(1).max(100),
   preferredDate: z.string().trim().max(100).optional(),
   message: z.string().trim().max(1000).optional(),
+  website: z.string().max(0).optional(), // Honeypot field
 });
 
 const corsHeaders = {
@@ -60,20 +61,27 @@ const handler = async (req: Request): Promise<Response> => {
                      req.headers.get('x-real-ip') || 
                      'unknown';
     
-    // Check rate limit: max 5 requests per hour per IP
+    // Check rate limit with exponential backoff
     const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
-    const { count, error: rateLimitError } = await supabase
+    const { data: rateLimitData, error: rateLimitError } = await supabase
       .from('rate_limit_log')
-      .select('*', { count: 'exact', head: true })
+      .select('*')
       .eq('ip_address', clientIp)
       .eq('endpoint', 'send-meeting-request')
-      .gte('request_time', oneHourAgo);
+      .gte('request_time', oneHourAgo)
+      .order('request_time', { ascending: false });
 
     if (rateLimitError) {
       console.error('Rate limit check error:', rateLimitError);
-    } else if (count && count >= 5) {
+    } else if (rateLimitData && rateLimitData.length >= 5) {
+      const violationCount = rateLimitData.length - 4;
+      const minutesToWait = Math.min(Math.pow(2, violationCount), 60);
+      console.warn(`Rate limit exceeded for ${clientIp}. Violations: ${violationCount}, Wait: ${minutesToWait}min`);
+      
       return new Response(
-        JSON.stringify({ error: 'Too many requests. Please try again later.' }),
+        JSON.stringify({ 
+          error: `Too many requests. Please try again in ${minutesToWait} minutes.` 
+        }),
         {
           status: 429,
           headers: { 'Content-Type': 'application/json', ...corsHeaders },
@@ -107,6 +115,18 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const validData = validationResult.data;
+
+    // Honeypot check
+    if (validData.website) {
+      console.warn('Honeypot triggered for IP:', clientIp);
+      return new Response(
+        JSON.stringify({ error: 'Invalid submission' }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json', ...corsHeaders },
+        }
+      );
+    }
 
     const { data: dbData, error: dbError } = await supabase
       .from('one_to_one_requests')

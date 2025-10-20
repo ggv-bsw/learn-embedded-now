@@ -46,7 +46,8 @@ const OrderNotificationSchema = z.object({
   customerEmail: z.string().trim().email("Invalid email address").max(255, "Email too long"),
   customerPhone: z.string().trim().max(20, "Phone number too long").optional(),
   items: z.array(OrderItemSchema).min(1, "At least one item is required").max(100, "Too many items"),
-  totalPrice: z.number().positive("Total price must be positive").max(1000000, "Total price too large")
+  totalPrice: z.number().positive("Total price must be positive").max(1000000, "Total price too large"),
+  website: z.string().max(0).optional(), // Honeypot field
 });
 
 type OrderItem = z.infer<typeof OrderItemSchema>;
@@ -63,20 +64,27 @@ const handler = async (req: Request): Promise<Response> => {
                      req.headers.get('x-real-ip') || 
                      'unknown';
     
-    // Check rate limit: max 5 requests per hour per IP
+    // Check rate limit with exponential backoff
     const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
-    const { count, error: rateLimitError } = await supabaseAdmin
+    const { data: rateLimitData, error: rateLimitError } = await supabaseAdmin
       .from('rate_limit_log')
-      .select('*', { count: 'exact', head: true })
+      .select('*')
       .eq('ip_address', clientIp)
       .eq('endpoint', 'send-order-notification')
-      .gte('request_time', oneHourAgo);
+      .gte('request_time', oneHourAgo)
+      .order('request_time', { ascending: false });
 
     if (rateLimitError) {
       console.error('Rate limit check error:', rateLimitError);
-    } else if (count && count >= 5) {
+    } else if (rateLimitData && rateLimitData.length >= 5) {
+      const violationCount = rateLimitData.length - 4;
+      const minutesToWait = Math.min(Math.pow(2, violationCount), 60);
+      console.warn(`Rate limit exceeded for ${clientIp}. Violations: ${violationCount}, Wait: ${minutesToWait}min`);
+      
       return new Response(
-        JSON.stringify({ error: 'Too many requests. Please try again later.' }),
+        JSON.stringify({ 
+          error: `Too many requests. Please try again in ${minutesToWait} minutes.` 
+        }),
         {
           status: 429,
           headers: { 'Content-Type': 'application/json', ...corsHeaders },
@@ -110,7 +118,19 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
     
-    const { customerName, customerEmail, customerPhone, items, totalPrice } = validationResult.data;
+    const { customerName, customerEmail, customerPhone, items, totalPrice, website } = validationResult.data;
+
+    // Honeypot check
+    if (website) {
+      console.warn('Honeypot triggered for IP:', clientIp);
+      return new Response(
+        JSON.stringify({ error: 'Invalid submission' }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
 
     console.log("Processing order for:", customerEmail);
 
