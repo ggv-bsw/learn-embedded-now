@@ -25,12 +25,14 @@ export default function SeoHelmet({
   const { pathname } = useLocation();
 
   const site = "https://embeddedschool.md";
+  const stripLangPrefix = (p: string) => p.replace(/^\/(en|ro|ru)(?=\/|$)/, "");
+  const normalizedPath = stripLangPrefix(pathname || "/");
 
   const ensureTrailingSlash = (p: string) => (p.endsWith("/") ? p : p + "/");
 
   const computedCanonical =
-    canonical ?? site + ensureTrailingSlash(pathname || "/");
-
+    canonical ?? site + ensureTrailingSlash(normalizedPath);
+    
   const finalTitle = title ?? L.title;
   const finalDesc = description ?? L.description;
   const finalOgUrl = ogUrl ?? computedCanonical;
