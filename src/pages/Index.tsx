@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, lazy, Suspense, startTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,8 +44,10 @@ const Index = () => {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
 
   const handleEnrollClick = (course: string) => {
-    setSelectedCourse(course);
-    setShowInquiryForm(true);
+    startTransition(() => {
+      setSelectedCourse(course);
+      setShowInquiryForm(true);
+    });
   };
 
   const features = [
@@ -653,15 +655,18 @@ const Index = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <JuniorProgramForm>
-                  <Button
-                    size="lg"
-                    className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6"
-                  >
-                    <Zap className="mr-2 w-5 h-5" />
-                    {t("index.joinJuniorProgram", "Join Junior Program")}
-                  </Button>
-                </JuniorProgramForm>
+                <Suspense fallback={null}>
+                  <JuniorProgramForm>
+                    <Button
+                      size="lg"
+                      className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6"
+                    >
+                      <Zap className="mr-2 w-5 h-5" />
+                      {t("index.joinJuniorProgram", "Join Junior Program")}
+                    </Button>
+                  </JuniorProgramForm>
+                  ы
+                </Suspense>
                 <Button
                   size="lg"
                   variant="outline"
@@ -789,22 +794,26 @@ const Index = () => {
       <Footer />
 
       {/* Video Demo */}
-      <Suspense fallback={null}>
-        <VideoDemo
-          open={showVideo}
-          onOpenChange={setShowVideo}
-          videoUrl="https://www.youtube.com/embed/9J-0EGmsc1E?autoplay=1&mute=1&rel=0&modestbranding=1"
-        />
-      </Suspense>
+      {showVideo && (
+        <Suspense fallback={null}>
+          <VideoDemo
+            open={showVideo}
+            onOpenChange={setShowVideo}
+            videoUrl="https://www.youtube.com/embed/9J-0EGmsc1E?autoplay=1&mute=1&rel=0&modestbranding=1"
+          />
+        </Suspense>
+      )}
 
       {/* Course Inquiry Form */}
-      <Suspense fallback={null}>
-        <CourseInquiryForm
-          open={showInquiryForm}
-          selectedCourseId={selectedCourse}
-          onOpenChange={setShowInquiryForm}
-        />
-      </Suspense>
+      {showInquiryForm && (
+        <Suspense fallback={null}>
+          <CourseInquiryForm
+            open={showInquiryForm}
+            selectedCourseId={selectedCourse}
+            onOpenChange={setShowInquiryForm}
+          />
+        </Suspense>
+      )}
     </div>
   );
 };
