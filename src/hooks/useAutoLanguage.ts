@@ -48,7 +48,10 @@ export function useAutoLanguage() {
 }
 
 export const langPath = (path: string, language?: string) => {
-  const lang = language || "en";
-  const clean = path.startsWith("/") ? path : `/${path}`;
-  return clean === "/" ? `/${lang}` : `/${lang}${clean}`;
+  const lang = language || "ro";
+  const clean = path?.startsWith("/") ? path : `/${path || ""}`;
+
+  if (clean === "/") return `/${lang}/`;
+
+  return `/${lang}${clean}`.replace(/\/{2,}/g, "/");
 };
