@@ -13,10 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-User-agent: *
-Allow: /
-
-# Disallow: /en/
-# Disallow: /ro/
-# Disallow: /ru/
 Sitemap: https://embeddedschool.md/sitemap.xml

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
   <!-- Главная -->
   <url>
     <loc>https://embeddedschool.md/</loc>
+    <lastmod>2025-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/"/>
@@ -13,6 +16,7 @@
   <!-- About -->
   <url>
     <loc>https://embeddedschool.md/about/</loc>
+    <lastmod>2025-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/about/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/about/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/about/"/>
@@ -22,6 +26,7 @@
   <!-- Trainers -->
   <url>
     <loc>https://embeddedschool.md/trainers/</loc>
+    <lastmod>2025-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/trainers/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/trainers/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/trainers/"/>
@@ -31,6 +36,7 @@
   <!-- Courses -->
   <url>
     <loc>https://embeddedschool.md/courses/</loc>
+    <lastmod>2025-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/courses/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/courses/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/courses/"/>
@@ -40,6 +46,7 @@
   <!-- Blog -->
   <url>
     <loc>https://embeddedschool.md/blog/</loc>
+    <lastmod>2025-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/blog/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/blog/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/blog/"/>
@@ -49,6 +56,7 @@
   <!-- Contact -->
   <url>
     <loc>https://embeddedschool.md/contact/</loc>
+    <lastmod>2025-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/contact/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/contact/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/contact/"/>
@@ -58,6 +66,7 @@
   <!-- Hardware -->
   <url>
     <loc>https://embeddedschool.md/hardware/</loc>
+    <lastmod>2025-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/hardware/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/hardware/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/hardware/"/>
@@ -67,6 +76,7 @@
   <!-- Junior -->
   <url>
     <loc>https://embeddedschool.md/junior/</loc>
+    <lastmod>2025-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/junior/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/junior/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/junior/"/>
@@ -76,6 +86,7 @@
   <!-- Documentation -->
   <url>
     <loc>https://embeddedschool.md/documentation/</loc>
+    <lastmod>2025-10-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/documentation/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/documentation/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/documentation/"/>
