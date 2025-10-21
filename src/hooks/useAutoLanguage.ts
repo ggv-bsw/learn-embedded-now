@@ -1,56 +1,51 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
+import { useLanguage, type Language } from "@/contexts/LanguageContext";
 
-type Lang = "en" | "ro" | "ru";
-const isLang = (v: any): v is Lang => v === "en" || v === "ro" || v === "ru";
+const isLang = (v: any): v is Language =>
+  v === "en" || v === "ro" || v === "ru";
 
 export function useAutoLanguage() {
-  const { setLanguage } = useLanguage();
-  const { search } = useLocation();
+  const params = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
-    const saved = localStorage.getItem("language");
-    if (isLang(saved)) return;
+    const fromParam = params.lang as string | undefined;
+    const fromQuery = searchParams.get("lang") || undefined;
 
-    const params = new URLSearchParams(search);
-    const urlLang = params.get("lang");
-    if (isLang(urlLang)) {
-      setLanguage(urlLang);
-      localStorage.setItem("language", urlLang);
-      return;
+    let next: Language | undefined;
+    if (isLang(fromParam)) next = fromParam;
+    else if (isLang(fromQuery)) next = fromQuery;
+
+    if (next && next !== language) setLanguage(next);
+
+    if (isLang(fromQuery)) {
+      searchParams.delete("lang");
+      setSearchParams(searchParams, { replace: true });
     }
 
-    if (document.referrer) {
-      try {
-        const u = new URL(document.referrer);
-        const host = u.hostname;
-        const q = u.search || "";
-        const googleRu =
-          /(^|\.)google\./i.test(host) && /(hl=ru|lr=lang_ru)/i.test(q);
-        const yandex = /(^|\.)yandex\./i.test(host);
-        if (googleRu || yandex) {
-          setLanguage("ru");
-          localStorage.setItem("language", "ru");
-          return;
-        }
-      } catch { /* ignore */ }
+    if (fromParam === "en") {
+      const cleaned = pathname.replace(/^\/en(\b|\/)/, "/");
+      if (cleaned !== pathname) navigate(cleaned, { replace: true });
     }
-
-    const langs = (navigator.languages?.length
-      ? navigator.languages
-      : [navigator.language]
-    ).map((l) => l?.toLowerCase() ?? "");
-
-    if (langs.find((l) => l.startsWith("ru"))) {
-      setLanguage("ru");
-      localStorage.setItem("language", "ru");
-    } else if (langs.find((l) => l.startsWith("ro"))) {
-      setLanguage("ro");
-      localStorage.setItem("language", "ro");
-    } else {
-      setLanguage("en");
-      localStorage.setItem("language", "en");
-    }
-  }, [search, setLanguage]);
+  }, [
+    language,
+    navigate,
+    params.lang,
+    pathname,
+    searchParams,
+    setLanguage,
+    setSearchParams,
+  ]);
 }
+
+export const langPath = (path: string, lang: "en" | "ro" | "ru") =>
+  lang === "en" ? path : `/${lang}${path.startsWith("/") ? path : `/${path}`}`;

@@ -10,11 +10,14 @@ import { ShoppingCart, Trash2, Plus, Minus } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
+import { langPath } from "@/hooks/useAutoLanguage";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const ShoppingCartSheet = () => {
   const { items, removeFromCart, updateQuantity, totalItems, totalPrice } =
     useCart();
   const navigate = useNavigate();
+  const { language } = useLanguage();
 
   return (
     <Sheet>
@@ -101,9 +104,10 @@ export const ShoppingCartSheet = () => {
                   <span>Total:</span>
                   <span>{totalPrice.toFixed(2)} mdl</span>
                 </div>
-                <Button 
+                <Button
                   className="w-full bg-blue-600 hover:bg-blue-700"
-                  onClick={() => navigate("/checkout")}
+                  // to={langPath("/contact", language)}
+                  onClick={() => navigate(langPath("/checkout", language))}
                 >
                   Proceed to Checkout
                 </Button>

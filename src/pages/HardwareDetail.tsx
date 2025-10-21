@@ -21,6 +21,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast as sonnerToast } from "sonner";
 import STMImage from "@/assets/STM1.png";
 import arduinoImage from "@/assets/arduino1.png";
+import { langPath } from "@/hooks/useAutoLanguage";
 
 interface DevelopmentBoard {
   id: string;
@@ -93,12 +94,21 @@ const HardwareDetail = () => {
     }
   };
 
-  const getTranslatedField = (field: 'name' | 'description' | 'specifications' | 'features' | 'full_description' | 'applications' | 'package_includes') => {
-    if (!product) return '';
-    if (language === 'ro' && product[`${field}_ro`]) {
+  const getTranslatedField = (
+    field:
+      | "name"
+      | "description"
+      | "specifications"
+      | "features"
+      | "full_description"
+      | "applications"
+      | "package_includes"
+  ) => {
+    if (!product) return "";
+    if (language === "ro" && product[`${field}_ro`]) {
       return product[`${field}_ro`];
     }
-    if (language === 'ru' && product[`${field}_ru`]) {
+    if (language === "ru" && product[`${field}_ru`]) {
       return product[`${field}_ru`];
     }
     return product[field];
@@ -118,7 +128,10 @@ const HardwareDetail = () => {
         <Navigation />
         <div className="container mx-auto px-4 py-20 text-center">
           <h1 className="text-3xl font-bold mb-4">Product Not Found</h1>
-          <Button onClick={() => navigate("/hardware")} variant="outline">
+          <Button
+            onClick={() => navigate(langPath("/hardware", language))}
+            variant="outline"
+          >
             <ArrowLeft className="mr-2 w-4 h-4" />
             Back to Hardware
           </Button>
@@ -129,7 +142,7 @@ const HardwareDetail = () => {
 
   const handleAddToCart = () => {
     if (!product) return;
-    const translatedName = getTranslatedField('name') as string;
+    const translatedName = getTranslatedField("name") as string;
     addToCart({
       id: product.id,
       name: translatedName,
@@ -137,8 +150,11 @@ const HardwareDetail = () => {
       image: product.image,
     });
     toast({
-      title: t('hardware.addedToCart', 'Added to cart'),
-      description: `${translatedName} ${t('hardware.addedDescription', 'has been added to your cart.')}`,
+      title: t("hardware.addedToCart", "Added to cart"),
+      description: `${translatedName} ${t(
+        "hardware.addedDescription",
+        "has been added to your cart."
+      )}`,
     });
   };
 
@@ -149,7 +165,7 @@ const HardwareDetail = () => {
       {/* Back Button */}
       <div className="container mx-auto px-4 pt-24 pb-8">
         <Button
-          onClick={() => navigate("/hardware")}
+          onClick={() => navigate(langPath("/hardware", language))}
           variant="outline"
           className="border-slate-600 text-slate-900 hover:bg-slate-800"
         >
@@ -209,10 +225,14 @@ const HardwareDetail = () => {
                       : "bg-red-500/20 text-red-400 border-red-500/30"
                   }`}
                 >
-                  {product.in_stock ? t('hardware.inStock', 'In Stock') : t('hardware.outOfStock', 'Out of Stock')}
+                  {product.in_stock
+                    ? t("hardware.inStock", "In Stock")
+                    : t("hardware.outOfStock", "Out of Stock")}
                 </Badge>
 
-                <h1 className="text-4xl font-bold mb-4">{getTranslatedField('name')}</h1>
+                <h1 className="text-4xl font-bold mb-4">
+                  {getTranslatedField("name")}
+                </h1>
 
                 <div className="flex items-center space-x-4 mb-6">
                   <div className="flex items-center">
@@ -227,7 +247,7 @@ const HardwareDetail = () => {
                 </div>
 
                 <p className="text-gray-300 text-lg mb-6">
-                  {getTranslatedField('description')}
+                  {getTranslatedField("description")}
                 </p>
 
                 <div className="border-t border-b border-slate-700 py-6 mb-6">
@@ -237,11 +257,11 @@ const HardwareDetail = () => {
                         <span className="text-4xl font-bold text-white">
                           €{product.price}
                         </span>
-                          {product.original_price && (
-                            <span className="text-2xl text-gray-500 line-through">
-                              €{product.original_price}
-                            </span>
-                          )}
+                        {product.original_price && (
+                          <span className="text-2xl text-gray-500 line-through">
+                            €{product.original_price}
+                          </span>
+                        )}
                       </div>
                       <p className="text-gray-400 mt-2">Including VAT</p>
                     </div>
@@ -259,7 +279,9 @@ const HardwareDetail = () => {
                   onClick={handleAddToCart}
                 >
                   <ShoppingCart className="w-5 h-5 mr-2" />
-                  {product.in_stock ? t('hardware.addToCart', 'Add to Cart') : t('hardware.outOfStock', 'Out of Stock')}
+                  {product.in_stock
+                    ? t("hardware.addToCart", "Add to Cart")
+                    : t("hardware.outOfStock", "Out of Stock")}
                 </Button>
               </div>
             </div>
@@ -268,14 +290,15 @@ const HardwareDetail = () => {
           {/* Detailed Information */}
           <div className="max-w-7xl mx-auto mt-16 space-y-8">
             {/* Full Description */}
-            {(getTranslatedField('full_description') as string || "").length > 0 && (
+            {((getTranslatedField("full_description") as string) || "").length >
+              0 && (
               <Card className="bg-slate-800/50 border-slate-700">
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold mb-4 text-gray-300">
-                    {t('hardware.detail.overview', 'Product Overview')}
+                    {t("hardware.detail.overview", "Product Overview")}
                   </h2>
                   <p className="text-gray-300 leading-relaxed">
-                    {getTranslatedField('full_description')}
+                    {getTranslatedField("full_description")}
                   </p>
                 </CardContent>
               </Card>
@@ -285,15 +308,17 @@ const HardwareDetail = () => {
             <Card className="bg-slate-800/50 border-slate-700">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-6 text-gray-300">
-                  {t('hardware.detail.specs', 'Technical Specifications')}
+                  {t("hardware.detail.specs", "Technical Specifications")}
                 </h2>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {(getTranslatedField('specifications') as string[]).map((spec, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <Check className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-300">{spec}</span>
-                    </div>
-                  ))}
+                  {(getTranslatedField("specifications") as string[]).map(
+                    (spec, index) => (
+                      <div key={index} className="flex items-start space-x-3">
+                        <Check className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-300">{spec}</span>
+                      </div>
+                    )
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -302,54 +327,65 @@ const HardwareDetail = () => {
             <Card className="bg-slate-800/50 border-slate-700">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-6 text-gray-300">
-                  {t('hardware.detail.features', 'Key Features')}
+                  {t("hardware.detail.features", "Key Features")}
                 </h2>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {(getTranslatedField('features') as string[]).map((feature, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-300">{feature}</span>
-                    </div>
-                  ))}
+                  {(getTranslatedField("features") as string[]).map(
+                    (feature, index) => (
+                      <div key={index} className="flex items-start space-x-3">
+                        <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-300">{feature}</span>
+                      </div>
+                    )
+                  )}
                 </div>
               </CardContent>
             </Card>
 
             {/* Applications */}
-            {((getTranslatedField('applications') as string[])?.length ?? 0) > 0 && (
+            {((getTranslatedField("applications") as string[])?.length ?? 0) >
+              0 && (
               <Card className="bg-slate-800/50 border-slate-700">
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold mb-6 text-gray-300">
-                    {t('hardware.detail.applications', 'Ideal Applications')}
+                    {t("hardware.detail.applications", "Ideal Applications")}
                   </h2>
                   <div className="grid md:grid-cols-3 gap-4">
-                    {(getTranslatedField('applications') as string[])!.map((app, index) => (
-                      <Badge
-                        key={index}
-                        className="bg-purple-500/20 text-purple-400 border-purple-500/30 text-center py-2"
-                      >
-                        {app}
-                      </Badge>
-                    ))}
+                    {(getTranslatedField("applications") as string[])!.map(
+                      (app, index) => (
+                        <Badge
+                          key={index}
+                          className="bg-purple-500/20 text-purple-400 border-purple-500/30 text-center py-2"
+                        >
+                          {app}
+                        </Badge>
+                      )
+                    )}
                   </div>
                 </CardContent>
               </Card>
             )}
 
             {/* Package Contents */}
-            {((getTranslatedField('package_includes') as string[])?.length ?? 0) > 0 && (
+            {((getTranslatedField("package_includes") as string[])?.length ??
+              0) > 0 && (
               <Card className="bg-slate-800/50 border-slate-700">
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold mb-6 text-gray-300">
-                    {t('hardware.detail.package', 'Package Includes')}
+                    {t("hardware.detail.package", "Package Includes")}
                   </h2>
                   <div className="space-y-3">
-                    {(getTranslatedField('package_includes') as string[])!.map((item, index) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <Package className="w-5 h-5 text-blue-400" />
-                        <span className="text-gray-300">{item}</span>
-                      </div>
-                    ))}
+                    {(getTranslatedField("package_includes") as string[])!.map(
+                      (item, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center space-x-3"
+                        >
+                          <Package className="w-5 h-5 text-blue-400" />
+                          <span className="text-gray-300">{item}</span>
+                        </div>
+                      )
+                    )}
                   </div>
                 </CardContent>
               </Card>

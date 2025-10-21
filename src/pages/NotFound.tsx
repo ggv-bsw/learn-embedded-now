@@ -1,6 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { langPath } from "@/hooks/useAutoLanguage";
 
 const NotFound = () => {
   const location = useLocation();
@@ -12,8 +14,20 @@ const NotFound = () => {
     );
   }, [location.pathname]);
 
+  const { language } = useLanguage();
+  const titleByLang = {
+    en: "Page not found | Embedded School",
+    ro: "Pagina nu a fost găsită | Embedded School",
+    ru: "Страница не найдена | Embedded School",
+  } as const;
+
   return (
-    <Helmet>
+    <>
+      <Helmet>
+        <title>{titleByLang[language]}</title>
+        <meta name="robots" content="noindex,follow" />
+      </Helmet>
+
       <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
         <div className="text-center max-w-md mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">404</h1>
@@ -21,14 +35,14 @@ const NotFound = () => {
             Oops! Page not found
           </p>
           <a
-            href="/"
+            href={langPath("/", language)}
             className="text-blue-500 hover:text-blue-700 underline text-sm md:text-base"
           >
             Return to Home
           </a>
         </div>
       </div>
-    </Helmet>
+    </>
   );
 };
 

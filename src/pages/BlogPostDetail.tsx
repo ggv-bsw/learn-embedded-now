@@ -20,6 +20,7 @@ import blogArduinoStrikes from "@/assets/blog-arduino-strikes.jpg";
 import blogReturnC from "@/assets/blog-return-c.jpg";
 import blogRevengeSith from "@/assets/blog-revenge-sith.jpg";
 import blogForceEmbedded from "@/assets/blog-force-embedded.jpg";
+import { langPath } from "@/hooks/useAutoLanguage";
 
 interface BlogPost {
   id: string;
@@ -75,12 +76,14 @@ const BlogPostDetail = () => {
     fetchPost();
   }, [slug]);
 
-  const getTranslatedField = (field: 'title' | 'excerpt' | 'content' | 'category') => {
-    if (!post) return '';
-    if (language === 'ro' && post[`${field}_ro`]) {
+  const getTranslatedField = (
+    field: "title" | "excerpt" | "content" | "category"
+  ) => {
+    if (!post) return "";
+    if (language === "ro" && post[`${field}_ro`]) {
       return post[`${field}_ro`];
     }
-    if (language === 'ru' && post[`${field}_ru`]) {
+    if (language === "ru" && post[`${field}_ru`]) {
       return post[`${field}_ru`];
     }
     return post[field];
@@ -88,12 +91,12 @@ const BlogPostDetail = () => {
 
   const getImageForSlug = (slug: string) => {
     const imageMap: { [key: string]: string } = {
-      'phantom-menace-debugging-embedded': blogPhantomMenace,
-      'attack-of-clones-scalable-iot': blogAttackClones,
-      'arduino-strikes-back-advanced-programming': blogArduinoStrikes,
-      'return-of-c-mastering-low-level': blogReturnC,
-      'revenge-of-sith-security-embedded': blogRevengeSith,
-      'force-of-embedded-systems-iot': blogForceEmbedded,
+      "phantom-menace-debugging-embedded": blogPhantomMenace,
+      "attack-of-clones-scalable-iot": blogAttackClones,
+      "arduino-strikes-back-advanced-programming": blogArduinoStrikes,
+      "return-of-c-mastering-low-level": blogReturnC,
+      "revenge-of-sith-security-embedded": blogRevengeSith,
+      "force-of-embedded-systems-iot": blogForceEmbedded,
     };
     return imageMap[slug];
   };
@@ -101,14 +104,21 @@ const BlogPostDetail = () => {
   const copyToClipboard = async () => {
     if (!post) return;
 
-    const shareText = `${getTranslatedField('title')}\n\n${getTranslatedField('excerpt')}\n\nRead more: ${window.location.href}`;
+    const shareText = `${getTranslatedField("title")}\n\n${getTranslatedField(
+      "excerpt"
+    )}\n\nRead more: ${window.location.href}`;
 
     try {
       await navigator.clipboard.writeText(shareText);
-      toast.success(t('blog.detail.linkCopied', 'Article link and description copied to clipboard!'));
+      toast.success(
+        t(
+          "blog.detail.linkCopied",
+          "Article link and description copied to clipboard!"
+        )
+      );
     } catch (error) {
       console.error("Failed to copy link:", error);
-      toast.error(t('blog.detail.linkCopyFailed', 'Failed to copy link'));
+      toast.error(t("blog.detail.linkCopyFailed", "Failed to copy link"));
     }
   };
 
@@ -126,15 +136,18 @@ const BlogPostDetail = () => {
         <Navigation />
         <div className="container mx-auto px-4 py-20 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            {t('blog.detail.notFound', 'Post Not Found')}
+            {t("blog.detail.notFound", "Post Not Found")}
           </h1>
           <p className="text-gray-400 mb-8">
-            {t('blog.detail.notFoundMessage', "The blog post you're looking for doesn't exist.")}
+            {t(
+              "blog.detail.notFoundMessage",
+              "The blog post you're looking for doesn't exist."
+            )}
           </p>
-          <Link to="/blog">
+          <Link to={langPath("/blog", language)}>
             <Button>
               <ArrowLeft className="mr-2 w-4 h-4" />
-              {t('blog.detail.backToBlog', 'Back to Blog')}
+              {t("blog.detail.backToBlog", "Back to Blog")}
             </Button>
           </Link>
         </div>
@@ -149,13 +162,13 @@ const BlogPostDetail = () => {
       {/* Back Button */}
       <section className="bg-slate-800 py-6">
         <div className="container mx-auto px-4">
-          <Link to="/blog">
+          <Link to={langPath("/blog", language)}>
             <Button
               variant="ghost"
               className="text-gray-300 hover:text-slate-900"
             >
               <ArrowLeft className="mr-2 w-4 h-4" />
-              {t('blog.detail.backToBlog', 'Back to Blog')}
+              {t("blog.detail.backToBlog", "Back to Blog")}
             </Button>
           </Link>
         </div>
@@ -167,9 +180,9 @@ const BlogPostDetail = () => {
           {/* Hero Image */}
           {post.slug && (
             <div className="mb-8 rounded-xl overflow-hidden">
-              <img 
-                src={getImageForSlug(post.slug)} 
-                alt={getTranslatedField('title')}
+              <img
+                src={getImageForSlug(post.slug)}
+                alt={getTranslatedField("title")}
                 className="w-full h-64 md:h-96 object-cover"
               />
             </div>
@@ -177,15 +190,15 @@ const BlogPostDetail = () => {
 
           <div className="mb-8">
             <Badge className="mb-4 bg-blue-500/10 text-blue-400 border-blue-500/20">
-              {getTranslatedField('category')}
+              {getTranslatedField("category")}
             </Badge>
 
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              {getTranslatedField('title')}
+              {getTranslatedField("title")}
             </h1>
 
             <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
-              {getTranslatedField('excerpt')}
+              {getTranslatedField("excerpt")}
             </p>
 
             <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-gray-400 pb-8 border-b border-slate-700">
@@ -223,12 +236,14 @@ const BlogPostDetail = () => {
               prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700
               prose-ul:text-gray-300 prose-ol:text-gray-300
               prose-li:mb-2"
-            dangerouslySetInnerHTML={{ __html: getTranslatedField('content') }}
+            dangerouslySetInnerHTML={{ __html: getTranslatedField("content") }}
           />
 
           {/* Share Section */}
           <div className="mt-12 pt-8 border-t border-slate-700">
-            <h3 className="text-xl font-bold mb-4">{t('blog.detail.shareArticle', 'Share this article')}</h3>
+            <h3 className="text-xl font-bold mb-4">
+              {t("blog.detail.shareArticle", "Share this article")}
+            </h3>
             <div className="flex flex-wrap gap-3">
               <Button
                 onClick={copyToClipboard}
@@ -236,7 +251,7 @@ const BlogPostDetail = () => {
                 className="border-slate-600 text-slate-900 hover:bg-green-500 hover:text-white hover:border-green-500"
               >
                 <Share2 className="w-4 h-4 mr-2" />
-                {t('blog.detail.copyLink', 'Copy Link')}
+                {t("blog.detail.copyLink", "Copy Link")}
               </Button>
             </div>
           </div>
@@ -248,10 +263,13 @@ const BlogPostDetail = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-              {t('blog.newsletter.title', 'Join the Rebel Alliance')}
+              {t("blog.newsletter.title", "Join the Rebel Alliance")}
             </h2>
             <p className="text-base md:text-lg text-gray-300 mb-8">
-              {t('blog.newsletter.subtitle', 'Receive transmissions from across the galaxy. Get the latest embedded systems wisdom delivered directly to your hologram projector.')}
+              {t(
+                "blog.newsletter.subtitle",
+                "Receive transmissions from across the galaxy. Get the latest embedded systems wisdom delivered directly to your hologram projector."
+              )}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
@@ -259,25 +277,34 @@ const BlogPostDetail = () => {
                 type="email"
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder={t('blog.newsletter.placeholder', 'your.email@rebellion.com')}
+                placeholder={t(
+                  "blog.newsletter.placeholder",
+                  "your.email@rebellion.com"
+                )}
                 className="flex-1 px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400"
               />
-              <Button 
+              <Button
                 className="bg-white text-slate-900 hover:bg-gray-100 px-6 font-semibold"
                 onClick={() => {
-                  if (!newsletterEmail || !newsletterEmail.includes('@')) {
+                  if (!newsletterEmail || !newsletterEmail.includes("@")) {
                     toast.error(
-                      t('blog.newsletter.errorDesc', 'Please enter a valid email address.')
+                      t(
+                        "blog.newsletter.errorDesc",
+                        "Please enter a valid email address."
+                      )
                     );
                     return;
                   }
                   toast.success(
-                    t('blog.newsletter.successDesc', "You've successfully joined our newsletter. May the code be with you!")
+                    t(
+                      "blog.newsletter.successDesc",
+                      "You've successfully joined our newsletter. May the code be with you!"
+                    )
                   );
                   setNewsletterEmail("");
                 }}
               >
-                {t('blog.newsletter.cta', 'Join the Force')}
+                {t("blog.newsletter.cta", "Join the Force")}
               </Button>
             </div>
           </div>

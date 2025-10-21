@@ -3,10 +3,12 @@ import { Code, Cpu, Wifi, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { featuredCourses } from "@/testData/featuredCourses";
+import { langPath } from "@/hooks/useAutoLanguage";
 
 const Footer = () => {
   const { t } = useLanguage();
-  
+  const { language } = useLanguage();
+
   return (
     <footer className="py-12 bg-slate-950 border-t border-slate-800">
       <div className="container mx-auto px-4">
@@ -20,24 +22,33 @@ const Footer = () => {
                 Embedded School
               </span>
             </div>
-            <p className="text-gray-400 mb-4">
-              {t('footer.description')}
-            </p>
+            <p className="text-gray-400 mb-4">{t("footer.description")}</p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 text-white">{t('footer.courses')}</h4>
+            <h4 className="font-semibold mb-3 text-white">
+              {t("footer.courses")}
+            </h4>
             <ul className="space-y-2 text-gray-400">
               {featuredCourses.map((course) => (
                 <li key={course.id}>
                   <Link
-                    to={`/courses/${course.id}`}
+                    // to={`/courses/${course.id}`}
+                    to={langPath(`/courses/${course.id}`, language)}
                     className="hover:text-blue-400 transition-colors flex items-center"
                   >
-                    {course.category === "Python" && <Code className="w-3 h-3 mr-2" />}
-                    {course.category === "C++" && <Cpu className="w-3 h-3 mr-2" />}
-                    {course.category === "Hardware" && <Wifi className="w-3 h-3 mr-2" />}
-                    {course.category === "Testing" && <Zap className="w-3 h-3 mr-2" />}
+                    {course.category === "Python" && (
+                      <Code className="w-3 h-3 mr-2" />
+                    )}
+                    {course.category === "C++" && (
+                      <Cpu className="w-3 h-3 mr-2" />
+                    )}
+                    {course.category === "Hardware" && (
+                      <Wifi className="w-3 h-3 mr-2" />
+                    )}
+                    {course.category === "Testing" && (
+                      <Zap className="w-3 h-3 mr-2" />
+                    )}
                     {course.title}
                   </Link>
                 </li>
@@ -46,38 +57,44 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 text-white">{t('footer.company')}</h4>
+            <h4 className="font-semibold mb-3 text-white">
+              {t("footer.company")}
+            </h4>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <Link
-                  to="/about"
+                  // to="/about"
+                  to={langPath("/about", language)}
                   className="hover:text-blue-400 transition-colors"
                 >
-                  {t('footer.aboutUs')}
+                  {t("footer.aboutUs")}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  // to="/contact"
+                  to={langPath("/contact", language)}
                   className="hover:text-blue-400 transition-colors"
                 >
-                  {t('footer.contact')}
+                  {t("footer.contact")}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/blog"
+                  // to="/blog"
+                  to={langPath("/blog", language)}
                   className="hover:text-blue-400 transition-colors"
                 >
-                  {t('footer.blog')}
+                  {t("footer.blog")}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/trainers#become-a-trainer"
+                  // to="/trainers#become-a-trainer"
+                  to={langPath("/trainers#become-a-trainer", language)}
                   className="hover:text-blue-400 transition-colors"
                 >
-                  {t('footer.careers')}
+                  {t("footer.careers")}
                 </Link>
               </li>
             </ul>
@@ -85,15 +102,16 @@ const Footer = () => {
 
           <div>
             <h4 className="font-semibold mb-3 text-white">
-              {t('footer.resources')}
+              {t("footer.resources")}
             </h4>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <Link
-                  to="/documentation"
+                  // to="/documentation"
+                  to={langPath("/documentation", language)}
                   className="hover:text-blue-400 transition-colors"
                 >
-                  {t('footer.docs')}
+                  {t("footer.docs")}
                 </Link>
               </li>
               <li>
@@ -103,12 +121,13 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  {t('footer.community')}
+                  {t("footer.community")}
                 </a>
               </li>
               <li>
                 <Link
-                  to="/hardware"
+                  // to="/hardware"
+                  to={langPath("/hardware", language)}
                   className="hover:text-blue-400 transition-colors"
                 >
                   Hardware Store
@@ -116,10 +135,11 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  // to="/contact"
+                  to={langPath("/contact", language)}
                   className="hover:text-blue-400 transition-colors"
                 >
-                  {t('footer.support')}
+                  {t("footer.support")}
                 </Link>
               </li>
             </ul>
@@ -128,13 +148,11 @@ const Footer = () => {
 
         <div className="border-t border-slate-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-500 text-sm">
-              © {t('footer.copyright')}
-            </p>
+            <p className="text-gray-500 text-sm">© {t("footer.copyright")}</p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
               <div className="flex items-center space-x-1 text-gray-400">
                 <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span className="text-xs">{t('footer.operational')}</span>
+                <span className="text-xs">{t("footer.operational")}</span>
               </div>
             </div>
           </div>

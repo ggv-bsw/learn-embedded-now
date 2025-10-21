@@ -21,10 +21,11 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useCourses } from "@/hooks/useCourses";
 import { useProfessionalPacks } from "@/hooks/useProfessionalPacks";
 import { ProfessionalPackCard } from "@/components/ProfessionalPackCard";
+import { langPath } from "@/hooks/useAutoLanguage";
 
 const Courses = () => {
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { courses: featuredCourses, loading, error } = useCourses();
   const { packs, loading: packsLoading } = useProfessionalPacks();
   const [searchQuery, setSearchQuery] = useState("");
@@ -94,7 +95,9 @@ const Courses = () => {
       <div className="min-h-screen bg-slate-900 font-inter text-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-300">{t('common.loading') || 'Loading courses...'}</p>
+          <p className="text-gray-300">
+            {t("common.loading") || "Loading courses..."}
+          </p>
         </div>
       </div>
     );
@@ -153,18 +156,18 @@ const Courses = () => {
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
               <BookOpen className="w-4 h-4 mr-2" />
-              {t('coursesPage.allAvailable')}
+              {t("coursesPage.allAvailable")}
             </Badge>
 
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-              {t('coursesPage.masterEmbedded')}
+              {t("coursesPage.masterEmbedded")}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                {t('coursesPage.systemsIot')}
+                {t("coursesPage.systemsIot")}
               </span>
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto">
-              {t('coursesPage.discover')}
+              {t("coursesPage.discover")}
             </p>
 
             {/* Quick Stats */}
@@ -174,7 +177,9 @@ const Courses = () => {
                 <span className="text-white font-semibold">
                   {featuredCourses.length}
                 </span>
-                <span className="text-gray-400">{t('coursesPage.coursesLabel')}</span>
+                <span className="text-gray-400">
+                  {t("coursesPage.coursesLabel")}
+                </span>
               </div>
               <div className="flex items-center space-x-2">
                 <Users className="w-5 h-5 text-green-400" />
@@ -185,12 +190,16 @@ const Courses = () => {
                   )}
                   +
                 </span>
-                <span className="text-gray-400">{t('coursesPage.studentsLabel')}</span>
+                <span className="text-gray-400">
+                  {t("coursesPage.studentsLabel")}
+                </span>
               </div>
               <div className="flex items-center space-x-2">
                 <Star className="w-5 h-5 text-yellow-400" />
                 <span className="text-white font-semibold">4.8</span>
-                <span className="text-gray-400">{t('coursesPage.avgRating')}</span>
+                <span className="text-gray-400">
+                  {t("coursesPage.avgRating")}
+                </span>
               </div>
             </div>
 
@@ -200,7 +209,7 @@ const Courses = () => {
                 <div className="relative mb-6">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <Input
-                    placeholder={t('coursesPage.searchPlaceholder')}
+                    placeholder={t("coursesPage.searchPlaceholder")}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-10 bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-blue-500"
@@ -212,7 +221,7 @@ const Courses = () => {
                     <div className="flex items-center space-x-2">
                       <Filter className="w-4 h-4 text-gray-400" />
                       <span className="text-sm font-medium text-gray-300">
-                        {t('coursesPage.category')}
+                        {t("coursesPage.category")}
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -241,7 +250,7 @@ const Courses = () => {
                     <div className="flex items-center space-x-2">
                       <SlidersHorizontal className="w-4 h-4 text-gray-400" />
                       <span className="text-sm font-medium text-gray-300">
-                        {t('coursesPage.level')}
+                        {t("coursesPage.level")}
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -276,12 +285,15 @@ const Courses = () => {
           <div className="flex items-center justify-between mb-12">
             <div>
               <h2 className="text-3xl font-bold text-white mb-2">
-                {filteredCourses.length} {filteredCourses.length === 1 ? t('coursesPage.courseFound') : t('coursesPage.coursesFound')}
+                {filteredCourses.length}{" "}
+                {filteredCourses.length === 1
+                  ? t("coursesPage.courseFound")
+                  : t("coursesPage.coursesFound")}
               </h2>
               <p className="text-gray-400">
                 {selectedCategory !== "All" && `${selectedCategory} • `}
                 {selectedLevel !== "All" && `${selectedLevel} Level • `}
-                {t('coursesPage.professionalEducation')}
+                {t("coursesPage.professionalEducation")}
               </p>
             </div>
 
@@ -297,7 +309,7 @@ const Courses = () => {
                   setSearchQuery("");
                 }}
               >
-                {t('coursesPage.clearFilters')}
+                {t("coursesPage.clearFilters")}
               </Button>
             )}
           </div>
@@ -378,7 +390,7 @@ const Courses = () => {
                         className="bg-blue-600 hover:bg-blue-700 text-white"
                         onClick={() => handleEnrollClick(course.id)}
                       >
-                        {t('coursesPage.enrollNow')}
+                        {t("coursesPage.enrollNow")}
                       </Button>
                     </div>
                   </CardContent>
@@ -393,10 +405,10 @@ const Courses = () => {
                     <Search className="w-8 h-8 text-gray-400" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2 text-white">
-                    {t('coursesPage.noCoursesFound')}
+                    {t("coursesPage.noCoursesFound")}
                   </h3>
                   <p className="text-gray-400 mb-4">
-                    {t('coursesPage.adjustSearch')}
+                    {t("coursesPage.adjustSearch")}
                   </p>
                   <Button
                     variant="outline"
@@ -407,7 +419,7 @@ const Courses = () => {
                       setSearchQuery("");
                     }}
                   >
-                    {t('coursesPage.viewAllCourses')}
+                    {t("coursesPage.viewAllCourses")}
                   </Button>
                 </CardContent>
               </Card>
@@ -422,13 +434,13 @@ const Courses = () => {
           <div className="text-center mb-16">
             <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
               <Star className="w-4 h-4 mr-2" />
-              {t('coursesPage.professionalPack')}
+              {t("coursesPage.professionalPack")}
             </Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-              {t('coursesPage.completeCareerPaths')}
+              {t("coursesPage.completeCareerPaths")}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              {t('coursesPage.careerPathsDescription')}
+              {t("coursesPage.careerPathsDescription")}
             </p>
           </div>
 
@@ -436,7 +448,9 @@ const Courses = () => {
             {packsLoading ? (
               <div className="col-span-3 text-center py-12">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                <p className="text-gray-300">{t('common.loading') || 'Loading packs...'}</p>
+                <p className="text-gray-300">
+                  {t("common.loading") || "Loading packs..."}
+                </p>
               </div>
             ) : (
               packs.map((pack, index) => (
@@ -459,40 +473,40 @@ const Courses = () => {
             <CardContent className="pt-12 pb-12 text-center">
               <Badge className="mb-6 bg-purple-500/30 text-purple-300 border-purple-500/50 font-mono shadow-lg">
                 <Code className="w-4 h-4 mr-2" />
-                {t('coursesPage.needSpecific')}
+                {t("coursesPage.needSpecific")}
               </Badge>
 
               <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-                {t('coursesPage.cantFind')}
+                {t("coursesPage.cantFind")}
               </h2>
               <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
-                {t('coursesPage.cantFindDesc')}
+                {t("coursesPage.cantFindDesc")}
               </p>
 
               {/* Feature highlights */}
               <div className="grid md:grid-cols-3 gap-6 mb-8 max-w-3xl mx-auto">
                 <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
                   <h3 className="font-semibold text-white mb-2">
-                    {t('coursesPage.customCurriculum')}
+                    {t("coursesPage.customCurriculum")}
                   </h3>
                   <p className="text-gray-300 text-sm">
-                    {t('coursesPage.customCurriculumDesc')}
+                    {t("coursesPage.customCurriculumDesc")}
                   </p>
                 </div>
                 <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
                   <h3 className="font-semibold text-white mb-2">
-                    {t('coursesPage.expertInstructors')}
+                    {t("coursesPage.expertInstructors")}
                   </h3>
                   <p className="text-gray-300 text-sm">
-                    {t('coursesPage.expertInstructorsDesc')}
+                    {t("coursesPage.expertInstructorsDesc")}
                   </p>
                 </div>
                 <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
                   <h3 className="font-semibold text-white mb-2">
-                    {t('coursesPage.earlyAccess')}
+                    {t("coursesPage.earlyAccess")}
                   </h3>
                   <p className="text-gray-300 text-sm">
-                    {t('coursesPage.earlyAccessDesc')}
+                    {t("coursesPage.earlyAccessDesc")}
                   </p>
                 </div>
               </div>
@@ -501,9 +515,9 @@ const Courses = () => {
                 <Button
                   size="lg"
                   className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 shadow-lg"
-                  onClick={() => navigate("/contact")}
+                  onClick={() => navigate(langPath("/contact", language))}
                 >
-                  {t('coursesPage.contactUs')}
+                  {t("coursesPage.contactUs")}
                 </Button>
                 <Button
                   size="lg"
@@ -515,7 +529,7 @@ const Courses = () => {
                     href="https://t.me/embeddedschool"
                     rel="noopener noreferrer"
                   >
-                    {t('coursesPage.subscribeUpdates')}
+                    {t("coursesPage.subscribeUpdates")}
                   </a>
                 </Button>
               </div>

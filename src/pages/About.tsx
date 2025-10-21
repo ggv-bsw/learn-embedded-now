@@ -32,6 +32,7 @@ import gefeetech from "@/assets/gefeetech.png";
 import moldStud from "@/assets/moldStud.png";
 import procesio from "@/assets/procesio.png";
 import theAutomationNetwork from "@/assets/theAutomationNetwork.svg";
+import { langPath } from "@/hooks/useAutoLanguage";
 
 const About = () => {
   const navigate = useNavigate();
@@ -46,13 +47,13 @@ const About = () => {
         .from("team_members")
         .select("*")
         .order("id");
-      
+
       if (!error && data) {
         setTeam(data);
       }
       setLoading(false);
     };
-    
+
     fetchTeam();
   }, []);
 
@@ -68,8 +69,18 @@ const About = () => {
 
   const stats = [
     { icon: Users, label: t("about.studentsTaught"), value: 250, suffix: "+" },
-    { icon: Award, label: t("about.courseCompletions"), value: 50, suffix: "+" },
-    { icon: Trophy, label: t("about.industryPartners"), value: 30, suffix: "+" },
+    {
+      icon: Award,
+      label: t("about.courseCompletions"),
+      value: 50,
+      suffix: "+",
+    },
+    {
+      icon: Trophy,
+      label: t("about.industryPartners"),
+      value: 30,
+      suffix: "+",
+    },
     { icon: Globe, label: t("about.countriesReached"), value: 15, suffix: "" },
   ];
 
@@ -281,8 +292,8 @@ const About = () => {
                       </div>
                       <span>{value.title}</span>
                     </CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex-grow flex flex-col justify-between">
+                  </CardHeader>
+                  <CardContent className="flex-grow flex flex-col justify-between">
                     <p className="text-gray-400">{value.description}</p>
                   </CardContent>
                 </Card>
@@ -338,11 +349,15 @@ const About = () => {
                     <CardContent className="flex-grow flex flex-col justify-between">
                       <div>
                         <p className="text-sm text-gray-400 mb-2">
-                          <strong className="text-gray-300">{t("about.specialization")}</strong>{" "}
+                          <strong className="text-gray-300">
+                            {t("about.specialization")}
+                          </strong>{" "}
                           {getTranslatedField(member, "specialization")}
                         </p>
                         <p className="text-sm text-gray-400 mb-4">
-                          <strong className="text-gray-300">{t("about.experience")}</strong>{" "}
+                          <strong className="text-gray-300">
+                            {t("about.experience")}
+                          </strong>{" "}
                           {member.experience}
                         </p>
                       </div>
@@ -380,9 +395,7 @@ const About = () => {
               <h3 className="text-2xl font-bold mb-4 text-white">
                 {t("about.partnersTitle")}
               </h3>
-              <p className="text-gray-400">
-                {t("about.partnersSubtitle")}
-              </p>
+              <p className="text-gray-400">{t("about.partnersSubtitle")}</p>
             </div>
           </ScrollReveal>
 
@@ -460,7 +473,8 @@ const About = () => {
                 size="lg"
                 variant="outline"
                 className="border-slate-600 text-slate-900 hover:border-slate-500 px-8 py-6 text-lg hover:scale-105"
-                onClick={() => navigate("/contact")}
+                // onClick={() => navigate("/contact")}
+                onClick={() => navigate(langPath("/contact", language))}
               >
                 <Mail className="mr-2 w-5 h-5" />
                 {t("about.contactTeam")}

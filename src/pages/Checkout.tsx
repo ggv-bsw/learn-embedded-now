@@ -10,15 +10,31 @@ import { toast } from "sonner";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { langPath } from "@/hooks/useAutoLanguage";
 
 // Validation schema for checkout form
 const checkoutSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
-  phone: z.string().trim().min(1, "Phone is required").max(20, "Phone number must be less than 20 characters"),
+  name: z
+    .string()
+    .trim()
+    .min(1, "Name is required")
+    .max(100, "Name must be less than 100 characters"),
+  email: z
+    .string()
+    .trim()
+    .email("Invalid email address")
+    .max(255, "Email must be less than 255 characters"),
+  phone: z
+    .string()
+    .trim()
+    .min(1, "Phone is required")
+    .max(20, "Phone number must be less than 20 characters"),
 });
 
 const Checkout = () => {
+  const { language } = useLanguage();
+
   const { items, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +51,7 @@ const Checkout = () => {
     try {
       // Validate form data
       const validationResult = checkoutSchema.safeParse(formData);
-      
+
       if (!validationResult.success) {
         const firstError = validationResult.error.issues[0];
         toast.error(firstError.message);
@@ -65,11 +81,9 @@ const Checkout = () => {
       if (error) throw error;
 
       console.log("Order created successfully:", data);
-      toast.success(
-        "Order placed successfully! We will contact you shortly."
-      );
+      toast.success("Order placed successfully! We will contact you shortly.");
       clearCart();
-      navigate("/");
+      navigate(langPath("/", language));
     } catch (error: any) {
       console.error("Error placing order:", error);
       toast.error(error.message || "Failed to place order. Please try again.");
@@ -85,7 +99,9 @@ const Checkout = () => {
           <h2 className="text-2xl font-bold text-white mb-4">
             Your cart is empty
           </h2>
-          <Button onClick={() => navigate("/hardware")}>Browse Hardware</Button>
+          <Button onClick={() => navigate(langPath("/hardware", language))}>
+            Browse Hardware
+          </Button>
         </Card>
       </div>
     );

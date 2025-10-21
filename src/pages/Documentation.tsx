@@ -20,164 +20,167 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { langPath } from "@/hooks/useAutoLanguage";
 
 const Documentation = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(t('docs.category.all'));
+  const [selectedCategory, setSelectedCategory] = useState(
+    t("docs.category.all")
+  );
 
   const categories = [
-    t('docs.category.all'),
-    t('docs.category.gettingStarted'),
-    t('docs.category.courseGuides'),
-    t('docs.category.technicalRef'),
-    t('docs.category.toolsSetup'),
-    t('docs.category.faqs'),
+    t("docs.category.all"),
+    t("docs.category.gettingStarted"),
+    t("docs.category.courseGuides"),
+    t("docs.category.technicalRef"),
+    t("docs.category.toolsSetup"),
+    t("docs.category.faqs"),
   ];
 
   const docSections = [
     {
       id: "getting-started",
-      category: t('docs.category.gettingStarted'),
-      title: t('docs.section.gettingStarted.title'),
-      description: t('docs.section.gettingStarted.desc'),
+      category: t("docs.category.gettingStarted"),
+      title: t("docs.section.gettingStarted.title"),
+      description: t("docs.section.gettingStarted.desc"),
       icon: GraduationCap,
       articles: [
         {
-          title: t('docs.section.gettingStarted.enroll'),
+          title: t("docs.section.gettingStarted.enroll"),
           link: "/courses",
-          duration: `5 ${t('docs.duration.minRead')}`,
+          duration: `5 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.gettingStarted.overview'),
+          title: t("docs.section.gettingStarted.overview"),
           link: "/about",
-          duration: `8 ${t('docs.duration.minRead')}`,
+          duration: `8 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.gettingStarted.payment'),
+          title: t("docs.section.gettingStarted.payment"),
           link: "/courses",
-          duration: `4 ${t('docs.duration.minRead')}`,
+          duration: `4 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.gettingStarted.certificate'),
+          title: t("docs.section.gettingStarted.certificate"),
           link: "/courses",
-          duration: `6 ${t('docs.duration.minRead')}`,
+          duration: `6 ${t("docs.duration.minRead")}`,
         },
       ],
     },
     {
       id: "course-guides",
-      category: t('docs.category.courseGuides'),
-      title: t('docs.section.courseGuides.title'),
-      description: t('docs.section.courseGuides.desc'),
+      category: t("docs.category.courseGuides"),
+      title: t("docs.section.courseGuides.title"),
+      description: t("docs.section.courseGuides.desc"),
       icon: BookOpen,
       articles: [
         {
-          title: t('docs.section.courseGuides.python'),
+          title: t("docs.section.courseGuides.python"),
           link: "/courses/python-junior-beginner",
-          duration: `7 ${t('docs.duration.minRead')}`,
+          duration: `7 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.courseGuides.cpp'),
+          title: t("docs.section.courseGuides.cpp"),
           link: "/courses/cpp-bsw-beginner-to-advanced",
-          duration: `10 ${t('docs.duration.minRead')}`,
+          duration: `10 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.courseGuides.pcb'),
+          title: t("docs.section.courseGuides.pcb"),
           link: "/courses/pcb-design-fundamentals",
-          duration: `12 ${t('docs.duration.minRead')}`,
+          duration: `12 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.courseGuides.testing'),
+          title: t("docs.section.courseGuides.testing"),
           link: "/courses/software-testing-automotive-qa",
-          duration: `9 ${t('docs.duration.minRead')}`,
+          duration: `9 ${t("docs.duration.minRead")}`,
         },
       ],
     },
     {
       id: "technical-reference",
-      category: t('docs.category.technicalRef'),
-      title: t('docs.section.technicalRef.title'),
-      description: t('docs.section.technicalRef.desc'),
+      category: t("docs.category.technicalRef"),
+      title: t("docs.section.technicalRef.title"),
+      description: t("docs.section.technicalRef.desc"),
       icon: Code,
       articles: [
         {
-          title: t('docs.section.technicalRef.arduino'),
+          title: t("docs.section.technicalRef.arduino"),
           link: "/hardware",
-          duration: `15 ${t('docs.duration.minRead')}`,
+          duration: `15 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.technicalRef.embeddedC'),
+          title: t("docs.section.technicalRef.embeddedC"),
           link: "/blog",
-          duration: `12 ${t('docs.duration.minRead')}`,
+          duration: `12 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.technicalRef.autosar'),
+          title: t("docs.section.technicalRef.autosar"),
           link: "/courses/software-testing-automotive-qa",
-          duration: `20 ${t('docs.duration.minRead')}`,
+          duration: `20 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.technicalRef.cmake'),
+          title: t("docs.section.technicalRef.cmake"),
           link: "/courses/cpp-bsw-beginner-to-advanced",
-          duration: `18 ${t('docs.duration.minRead')}`,
+          duration: `18 ${t("docs.duration.minRead")}`,
         },
       ],
     },
     {
       id: "tools-setup",
-      category: t('docs.category.toolsSetup'),
-      title: t('docs.section.toolsSetup.title'),
-      description: t('docs.section.toolsSetup.desc'),
+      category: t("docs.category.toolsSetup"),
+      title: t("docs.section.toolsSetup.title"),
+      description: t("docs.section.toolsSetup.desc"),
       icon: Layers,
       articles: [
         {
-          title: t('docs.section.toolsSetup.vscode'),
+          title: t("docs.section.toolsSetup.vscode"),
           link: "/blog",
-          duration: `10 ${t('docs.duration.minRead')}`,
+          duration: `10 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.toolsSetup.git'),
+          title: t("docs.section.toolsSetup.git"),
           link: "/courses/python-junior-beginner",
-          duration: `14 ${t('docs.duration.minRead')}`,
+          duration: `14 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.toolsSetup.virtualEnv'),
+          title: t("docs.section.toolsSetup.virtualEnv"),
           link: "/courses/python-junior-beginner",
-          duration: `8 ${t('docs.duration.minRead')}`,
+          duration: `8 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.toolsSetup.debugging'),
+          title: t("docs.section.toolsSetup.debugging"),
           link: "/hardware",
-          duration: `16 ${t('docs.duration.minRead')}`,
+          duration: `16 ${t("docs.duration.minRead")}`,
         },
       ],
     },
     {
       id: "faqs",
-      category: t('docs.category.faqs'),
-      title: t('docs.section.faqs.title'),
-      description: t('docs.section.faqs.desc'),
+      category: t("docs.category.faqs"),
+      title: t("docs.section.faqs.title"),
+      description: t("docs.section.faqs.desc"),
       icon: HelpCircle,
       articles: [
         {
-          title: t('docs.section.faqs.access'),
+          title: t("docs.section.faqs.access"),
           link: "/courses",
-          duration: `3 ${t('docs.duration.minRead')}`,
+          duration: `3 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.faqs.refund'),
+          title: t("docs.section.faqs.refund"),
           link: "/contact",
-          duration: `4 ${t('docs.duration.minRead')}`,
+          duration: `4 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.faqs.support'),
+          title: t("docs.section.faqs.support"),
           link: "/contact",
-          duration: `5 ${t('docs.duration.minRead')}`,
+          duration: `5 ${t("docs.duration.minRead")}`,
         },
         {
-          title: t('docs.section.faqs.career'),
+          title: t("docs.section.faqs.career"),
           link: "/trainers",
-          duration: `7 ${t('docs.duration.minRead')}`,
+          duration: `7 ${t("docs.duration.minRead")}`,
         },
       ],
     },
@@ -185,23 +188,24 @@ const Documentation = () => {
 
   const quickLinks = [
     {
-      title: t('docs.quickLinks.community'),
+      title: t("docs.quickLinks.community"),
       icon: ExternalLink,
       link: "https://t.me/embeddedschool",
-      description: t('docs.quickLinks.communityDesc'),
+      description: t("docs.quickLinks.communityDesc"),
       external: true,
     },
     {
-      title: t('docs.quickLinks.resources'),
+      title: t("docs.quickLinks.resources"),
       icon: FileText,
       link: "/hardware",
-      description: t('docs.quickLinks.resourcesDesc'),
+      description: t("docs.quickLinks.resourcesDesc"),
     },
   ];
 
   const filteredSections = docSections.filter((section) => {
     const matchesCategory =
-      selectedCategory === t('docs.category.all') || section.category === selectedCategory;
+      selectedCategory === t("docs.category.all") ||
+      section.category === selectedCategory;
     const matchesSearch =
       section.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       section.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -248,18 +252,18 @@ const Documentation = () => {
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono">
                 <FileText className="w-4 h-4 mr-2" />
-                {t('docs.badge')}
+                {t("docs.badge")}
               </Badge>
 
               <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white">
-                {t('docs.hero.title')}{" "}
+                {t("docs.hero.title")}{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                  {t('docs.hero.titleHighlight')}
+                  {t("docs.hero.titleHighlight")}
                 </span>
               </h1>
 
               <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                {t('docs.hero.description')}
+                {t("docs.hero.description")}
               </p>
 
               {/* Search Bar */}
@@ -268,7 +272,7 @@ const Documentation = () => {
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <Input
-                      placeholder={t('docs.search.placeholder')}
+                      placeholder={t("docs.search.placeholder")}
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="pl-10 bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-blue-500"
@@ -294,7 +298,7 @@ const Documentation = () => {
                   <CardContent className="p-6">
                     {link.external ? (
                       <a
-                        href={link.link}
+                        href={langPath(link.link, language)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block"
@@ -314,7 +318,10 @@ const Documentation = () => {
                         </div>
                       </a>
                     ) : (
-                      <Link to={link.link} className="block">
+                      <Link
+                        to={langPath(link.link, language)}
+                        className="block"
+                      >
                         <div className="flex items-start space-x-3">
                           <div className="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-lg flex items-center justify-center group-hover:bg-blue-500/30 transition-colors flex-shrink-0">
                             <link.icon className="w-6 h-6 text-blue-400" />
@@ -425,20 +432,20 @@ const Documentation = () => {
                     <Search className="w-8 h-8 text-gray-400" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2 text-white">
-                    {t('docs.noResults.title')}
+                    {t("docs.noResults.title")}
                   </h3>
                   <p className="text-gray-400 mb-4">
-                    {t('docs.noResults.message')}
+                    {t("docs.noResults.message")}
                   </p>
                   <Button
                     variant="outline"
                     className="border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-slate-500"
                     onClick={() => {
                       setSearchQuery("");
-                      setSelectedCategory(t('docs.category.all'));
+                      setSelectedCategory(t("docs.category.all"));
                     }}
                   >
-                    {t('docs.noResults.clear')}
+                    {t("docs.noResults.clear")}
                   </Button>
                 </CardContent>
               </Card>
@@ -455,18 +462,18 @@ const Documentation = () => {
               <CardContent className="pt-12 pb-12 text-center">
                 <Zap className="w-16 h-16 text-blue-400 mx-auto mb-6" />
                 <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-                  {t('docs.cta.title')}
+                  {t("docs.cta.title")}
                 </h2>
                 <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                  {t('docs.cta.description')}
+                  {t("docs.cta.description")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/contact">
+                  <Link to={langPath("/contact", language)}>
                     <Button
                       size="lg"
                       className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6"
                     >
-                      {t('docs.cta.contact')}
+                      {t("docs.cta.contact")}
                     </Button>
                   </Link>
                   <a
@@ -479,7 +486,7 @@ const Documentation = () => {
                       variant="outline"
                       className="border-blue-500/30 text-blue-400 hover:bg-blue-500/10 font-semibold px-8 py-6"
                     >
-                      {t('docs.cta.community')}
+                      {t("docs.cta.community")}
                     </Button>
                   </a>
                 </div>

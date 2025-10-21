@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import SeoHelmet from "@/components/SeoHelmet";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAutoLanguage } from "@/hooks/useAutoLanguage";
+import { useSyncUrlWithLanguage } from "@/hooks/useSyncUrlWithLanguage";
 
 const SEO_BY_ROUTE: Record<string, { pageKey: string }> = {
   "/": { pageKey: "home" },
@@ -16,12 +17,19 @@ const SEO_BY_ROUTE: Record<string, { pageKey: string }> = {
   "/blog": { pageKey: "blog" },
 };
 
-export default function SeoLayout() {
-  const { pathname } = useLocation();
-  const { language } = useLanguage();
-  useAutoLanguage();   
+function stripLeadingLangOnly(p: string) {
+  return p.replace(/^\/(en|ro|ru)(?=\/|$)/, "");
+}
 
-  const seoProps = SEO_BY_ROUTE[pathname] ?? SEO_BY_ROUTE["/"];
+export default function SeoLayout() {
+  useAutoLanguage();
+  useSyncUrlWithLanguage();
+  
+  const { language } = useLanguage();
+  const { pathname } = useLocation();
+
+  const key = stripLeadingLangOnly(pathname || "/");
+  const seoProps = SEO_BY_ROUTE[key] ?? SEO_BY_ROUTE["/"];
 
   return (
     <>

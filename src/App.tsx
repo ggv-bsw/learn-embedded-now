@@ -20,7 +20,6 @@ import JuniorProgram from "./pages/JuniorProgram";
 import Checkout from "./pages/Checkout";
 import Documentation from "./pages/Documentation";
 import SeoLayout from "@/layouts/SeoLayout";
-import { StripLangFromUrl } from "./components/StripLangFromUrl";
 
 const queryClient = new QueryClient();
 
@@ -42,25 +41,57 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          <StripLangFromUrl />
           <Routes>
-            <Route element={<SeoLayout />}>
-              <Route path="/" element={<Index />} />
-              <Route path="/courses" element={<Courses />} />
-              <Route path="/courses/:courseId" element={<CourseDetail />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/trainers" element={<Trainers />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPostDetail />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/hardware" element={<Hardware />} />
-              <Route path="/hardware/:productId" element={<HardwareDetail />} />
-              <Route path="/junior" element={<JuniorProgram />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/documentation" element={<Documentation />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<SeoLayout />}>
+              <Route index element={<Index />} />
+              <Route path="courses" element={<Courses />} />
+              <Route path="courses/:courseId" element={<CourseDetail />} />
+              <Route path="about" element={<About />} />
+              <Route path="trainers" element={<Trainers />} />
+              <Route path="blog" element={<Blog />} />
+              <Route path="blog/:slug" element={<BlogPostDetail />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="hardware" element={<Hardware />} />
+              <Route path="hardware/:productId" element={<HardwareDetail />} />
+              <Route path="junior" element={<JuniorProgram />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="documentation" element={<Documentation />} />
             </Route>
+
+            <Route path="/ro" element={<SeoLayout />}>
+              <Route index element={<Index />} />
+              <Route path="courses" element={<Courses />} />
+              <Route path="courses/:courseId" element={<CourseDetail />} />
+              <Route path="about" element={<About />} />
+              <Route path="trainers" element={<Trainers />} />
+              <Route path="blog" element={<Blog />} />
+              <Route path="blog/:slug" element={<BlogPostDetail />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="hardware" element={<Hardware />} />
+              <Route path="hardware/:productId" element={<HardwareDetail />} />
+              <Route path="junior" element={<JuniorProgram />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="documentation" element={<Documentation />} />
+            </Route>
+
+            {/* RU — явная ветка */}
+            <Route path="/ru" element={<SeoLayout />}>
+              <Route index element={<Index />} />
+              <Route path="courses" element={<Courses />} />
+              <Route path="courses/:courseId" element={<CourseDetail />} />
+              <Route path="about" element={<About />} />
+              <Route path="trainers" element={<Trainers />} />
+              <Route path="blog" element={<Blog />} />
+              <Route path="blog/:slug" element={<BlogPostDetail />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="hardware" element={<Hardware />} />
+              <Route path="hardware/:productId" element={<HardwareDetail />} />
+              <Route path="junior" element={<JuniorProgram />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="documentation" element={<Documentation />} />
+            </Route>
+            
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

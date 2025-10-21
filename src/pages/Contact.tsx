@@ -22,9 +22,10 @@ import { toast } from "sonner";
 import Footer from "@/components/footer";
 import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { langPath } from "@/hooks/useAutoLanguage";
 
 const Contact = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -37,33 +38,33 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: t('contact.info.mainOffice', 'Main Office'),
+      title: t("contact.info.mainOffice", "Main Office"),
       details: ["Chișinău, Moldova", "Strada Aleco Ruso 15", "MD-2068"],
       link: "#",
     },
     {
       icon: Phone,
-      title: t('contact.info.phoneNumbers', 'Phone Numbers'),
+      title: t("contact.info.phoneNumbers", "Phone Numbers"),
       details: ["+373 69 117 686", "Mon-Fri 9AM-6PM"],
       link: "tel:+37369117686",
     },
     {
       icon: Mail,
-      title: t('contact.info.emailSupport', 'Email Support'),
+      title: t("contact.info.emailSupport", "Email Support"),
       details: [
         "info@embeddedschool.com",
         "support@embeddedschool.com",
-        t('contact.info.responseTime', 'Response within 24hrs'),
+        t("contact.info.responseTime", "Response within 24hrs"),
       ],
       link: "mailto:info@embeddedschool.com",
     },
     {
       icon: Clock,
-      title: t('contact.info.officeHours', 'Office Hours'),
+      title: t("contact.info.officeHours", "Office Hours"),
       details: [
-        t('contact.info.hours.weekday', 'Monday - Friday: 9:00 - 18:00'),
-        t('contact.info.hours.saturday', 'Saturday: 10:00 - 16:00'),
-        t('contact.info.hours.sunday', 'Sunday: Closed'),
+        t("contact.info.hours.weekday", "Monday - Friday: 9:00 - 18:00"),
+        t("contact.info.hours.saturday", "Saturday: 10:00 - 16:00"),
+        t("contact.info.hours.sunday", "Sunday: Closed"),
       ],
       link: "#",
     },
@@ -71,24 +72,54 @@ const Contact = () => {
 
   const faq = [
     {
-      question: t('contact.faq.q1', 'Do you offer courses in Romanian and Russian?'),
-      answer: t('contact.faq.a1', 'Yes! All our courses are available in Romanian, Russian, and English. You can switch between languages anytime in your student dashboard.'),
+      question: t(
+        "contact.faq.q1",
+        "Do you offer courses in Romanian and Russian?"
+      ),
+      answer: t(
+        "contact.faq.a1",
+        "Yes! All our courses are available in Romanian, Russian, and English. You can switch between languages anytime in your student dashboard."
+      ),
     },
     {
-      question: t('contact.faq.q2', 'What equipment do I need for the embedded systems courses?'),
-      answer: t('contact.faq.a2', 'We provide starter kits for most courses, including Arduino boards, sensors, and components. For advanced courses, we\'ll provide a detailed equipment list.'),
+      question: t(
+        "contact.faq.q2",
+        "What equipment do I need for the embedded systems courses?"
+      ),
+      answer: t(
+        "contact.faq.a2",
+        "We provide starter kits for most courses, including Arduino boards, sensors, and components. For advanced courses, we'll provide a detailed equipment list."
+      ),
     },
     {
-      question: t('contact.faq.q3', 'Are there any prerequisites for your courses?'),
-      answer: t('contact.faq.a3', 'Basic programming knowledge is helpful but not required for beginner courses. Each course page lists specific prerequisites if any.'),
+      question: t(
+        "contact.faq.q3",
+        "Are there any prerequisites for your courses?"
+      ),
+      answer: t(
+        "contact.faq.a3",
+        "Basic programming knowledge is helpful but not required for beginner courses. Each course page lists specific prerequisites if any."
+      ),
     },
     {
-      question: t('contact.faq.q4', 'Do you offer certificates upon completion?'),
-      answer: t('contact.faq.a4', 'Yes, all students receive industry-recognized certificates upon successful course completion. These are valued by employers across Moldova and Romania.'),
+      question: t(
+        "contact.faq.q4",
+        "Do you offer certificates upon completion?"
+      ),
+      answer: t(
+        "contact.faq.a4",
+        "Yes, all students receive industry-recognized certificates upon successful course completion. These are valued by employers across Moldova and Romania."
+      ),
     },
     {
-      question: t('contact.faq.q5', 'Can I get help if I\'m stuck during a course?'),
-      answer: t('contact.faq.a5', 'Absolutely! We offer 24/7 community support, weekly live Q&A sessions, and one-on-one mentoring for premium students.'),
+      question: t(
+        "contact.faq.q5",
+        "Can I get help if I'm stuck during a course?"
+      ),
+      answer: t(
+        "contact.faq.a5",
+        "Absolutely! We offer 24/7 community support, weekly live Q&A sessions, and one-on-one mentoring for premium students."
+      ),
     },
   ];
 
@@ -97,23 +128,34 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('send-contact-message', {
-        body: formData
-      });
+      const { data, error } = await supabase.functions.invoke(
+        "send-contact-message",
+        {
+          body: formData,
+        }
+      );
 
       if (error) {
-        console.error('Error submitting contact form:', error);
-        throw new Error(error.message || 'Failed to send message');
+        console.error("Error submitting contact form:", error);
+        throw new Error(error.message || "Failed to send message");
       }
 
-      toast(t('contact.form.success', "Message sent successfully! We'll get back to you within 24 hours."), {
-        icon: <CheckCircle className="w-5 h-5 text-green-500" />,
-      });
+      toast(
+        t(
+          "contact.form.success",
+          "Message sent successfully! We'll get back to you within 24 hours."
+        ),
+        {
+          icon: <CheckCircle className="w-5 h-5 text-green-500" />,
+        }
+      );
 
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error: any) {
       console.error("Error submitting contact form:", error);
-      toast.error(t('contact.form.error', "Failed to send message. Please try again."));
+      toast.error(
+        t("contact.form.error", "Failed to send message. Please try again.")
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -166,18 +208,21 @@ const Contact = () => {
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                {t('contact.hero.badge', 'Get In Touch')}
+                {t("contact.hero.badge", "Get In Touch")}
               </Badge>
 
               <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white">
-                {t('contact.hero.title', "We're Here to")}{" "}
+                {t("contact.hero.title", "We're Here to")}{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
-                  {t('contact.hero.titleHighlight', 'Help You Succeed')}
+                  {t("contact.hero.titleHighlight", "Help You Succeed")}
                 </span>
               </h1>
 
               <p className="text-xl lg:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-                {t('contact.hero.description', "Have questions about our courses? Need guidance on your embedded systems journey? Our team of experts is ready to assist you every step of the way.")}
+                {t(
+                  "contact.hero.description",
+                  "Have questions about our courses? Need guidance on your embedded systems journey? Our team of experts is ready to assist you every step of the way."
+                )}
               </p>
             </div>
           </ScrollReveal>
@@ -233,7 +278,7 @@ const Contact = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2 text-2xl text-white">
                     <MessageCircle className="w-6 h-6 text-blue-400" />
-                    <span>{t('contact.form.title', 'Send us a Message')}</span>
+                    <span>{t("contact.form.title", "Send us a Message")}</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -241,12 +286,15 @@ const Contact = () => {
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name" className="text-gray-300">
-                          {t('contact.form.fullName', 'Full Name')}
+                          {t("contact.form.fullName", "Full Name")}
                         </Label>
                         <Input
                           id="name"
                           name="name"
-                          placeholder={t('contact.form.fullNamePlaceholder', 'Your full name')}
+                          placeholder={t(
+                            "contact.form.fullNamePlaceholder",
+                            "Your full name"
+                          )}
                           value={formData.name}
                           onChange={handleInputChange}
                           className="bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400"
@@ -255,13 +303,16 @@ const Contact = () => {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-gray-300">
-                          {t('contact.form.email', 'Email Address')}
+                          {t("contact.form.email", "Email Address")}
                         </Label>
                         <Input
                           id="email"
                           name="email"
                           type="email"
-                          placeholder={t('contact.form.emailPlaceholder', 'your.email@example.com')}
+                          placeholder={t(
+                            "contact.form.emailPlaceholder",
+                            "your.email@example.com"
+                          )}
                           value={formData.email}
                           onChange={handleInputChange}
                           className="bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400"
@@ -272,12 +323,15 @@ const Contact = () => {
 
                     <div className="space-y-2">
                       <Label htmlFor="subject" className="text-gray-300">
-                        {t('contact.form.subject', 'Subject')}
+                        {t("contact.form.subject", "Subject")}
                       </Label>
                       <Input
                         id="subject"
                         name="subject"
-                        placeholder={t('contact.form.subjectPlaceholder', 'What can we help you with?')}
+                        placeholder={t(
+                          "contact.form.subjectPlaceholder",
+                          "What can we help you with?"
+                        )}
                         value={formData.subject}
                         onChange={handleInputChange}
                         className="bg-slate-900/50 border-slate-600 text-white placeholder:text-gray-400"
@@ -287,12 +341,15 @@ const Contact = () => {
 
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-gray-300">
-                        {t('contact.form.message', 'Message')}
+                        {t("contact.form.message", "Message")}
                       </Label>
                       <Textarea
                         id="message"
                         name="message"
-                        placeholder={t('contact.form.messagePlaceholder', 'Tell us more about your inquiry...')}
+                        placeholder={t(
+                          "contact.form.messagePlaceholder",
+                          "Tell us more about your inquiry..."
+                        )}
                         rows={5}
                         value={formData.message}
                         onChange={handleInputChange}
@@ -308,11 +365,11 @@ const Contact = () => {
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
-                        <>{t('contact.form.sending', 'Sending...')}</>
+                        <>{t("contact.form.sending", "Sending...")}</>
                       ) : (
                         <>
                           <Send className="mr-2 w-5 h-5" />
-                          {t('contact.form.send', 'Send Message')}
+                          {t("contact.form.send", "Send Message")}
                         </>
                       )}
                     </Button>
@@ -342,7 +399,7 @@ const Contact = () => {
                       <div className="bg-slate-900/90 backdrop-blur-sm rounded-lg p-2 text-center border border-slate-700 shadow-lg min-w-[300px]">
                         <MapPin className="w-5 h-5 text-blue-400 mx-auto" />
                         <p className="font-bold text-white text-sm mb-1">
-                          {t('contact.map.title', 'Our Main Office')}
+                          {t("contact.map.title", "Our Main Office")}
                         </p>
                         <p className="text-xs text-gray-300 font-medium">
                           Strada Aleco Ruso 15, Chișinău, Moldova
@@ -356,7 +413,7 @@ const Contact = () => {
                 <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="text-xl text-white">
-                      {t('contact.quick.title', 'Need Immediate Help?')}
+                      {t("contact.quick.title", "Need Immediate Help?")}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -364,7 +421,7 @@ const Contact = () => {
                       <Phone className="w-5 h-5 text-blue-400 group-hover:text-blue-300" />
                       <div>
                         <p className="font-semibold text-sm text-white">
-                          {t('contact.quick.call', 'Call us directly')}
+                          {t("contact.quick.call", "Call us directly")}
                         </p>
                         <p className="text-xs text-gray-400">+373 69 117 686</p>
                       </div>
@@ -374,7 +431,7 @@ const Contact = () => {
                       <Mail className="w-5 h-5 text-green-400 group-hover:text-green-300" />
                       <div>
                         <p className="font-semibold text-sm text-white">
-                          {t('contact.quick.email', 'Email support')}
+                          {t("contact.quick.email", "Email support")}
                         </p>
                         <p className="text-xs text-gray-400">
                           support@embeddedschool.com
@@ -386,10 +443,13 @@ const Contact = () => {
                       <BookOpen className="w-5 h-5 text-purple-400 group-hover:text-purple-300" />
                       <div>
                         <p className="font-semibold text-sm text-white">
-                          {t('contact.quick.browse', 'Browse courses')}
+                          {t("contact.quick.browse", "Browse courses")}
                         </p>
                         <p className="text-xs text-gray-400">
-                          {t('contact.quick.browseDescription', 'Find the perfect course for you')}
+                          {t(
+                            "contact.quick.browseDescription",
+                            "Find the perfect course for you"
+                          )}
                         </p>
                       </div>
                     </div>
@@ -408,13 +468,16 @@ const Contact = () => {
             <div className="text-center mb-16">
               <Badge className="mb-6 bg-orange-500/10 text-orange-400 border-orange-500/20 font-mono">
                 <CheckCircle className="w-4 h-4 mr-2" />
-                {t('contact.faq.badge', 'FAQ')}
+                {t("contact.faq.badge", "FAQ")}
               </Badge>
               <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
-                {t('contact.faq.title', 'Frequently Asked Questions')}
+                {t("contact.faq.title", "Frequently Asked Questions")}
               </h2>
               <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                {t('contact.faq.description', 'Quick answers to common questions about our courses and services')}
+                {t(
+                  "contact.faq.description",
+                  "Quick answers to common questions about our courses and services"
+                )}
               </p>
             </div>
           </ScrollReveal>
@@ -439,21 +502,24 @@ const Contact = () => {
           <ScrollReveal delay={600}>
             <div className="text-center mt-12">
               <p className="text-gray-400 mb-4">
-                {t('contact.faq.notFound', "Can't find what you're looking for?")}
+                {t(
+                  "contact.faq.notFound",
+                  "Can't find what you're looking for?"
+                )}
               </p>
               <Button
                 variant="outline"
                 size="lg"
                 className="border-slate-600 text-slate-900 hover:bg-slate-700 hover:border-slate-500"
                 onClick={() => {
-                  document.getElementById('contact-form')?.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
+                  document.getElementById("contact-form")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
                   });
                 }}
               >
                 <MessageCircle className="mr-2 w-5 h-5" />
-                {t('contact.faq.askQuestion', 'Ask a Question')}
+                {t("contact.faq.askQuestion", "Ask a Question")}
               </Button>
             </div>
           </ScrollReveal>
@@ -493,23 +559,28 @@ const Contact = () => {
           <ScrollReveal>
             <Badge className="mb-6 bg-green-500/10 text-green-400 border-green-500/20 font-mono">
               <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-              {t('contact.cta.badge', 'Ready to Start?')}
+              {t("contact.cta.badge", "Ready to Start?")}
             </Badge>
 
             <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
-              {t('contact.cta.title', 'Ready to Start Your Journey?')}
+              {t("contact.cta.title", "Ready to Start Your Journey?")}
             </h2>
             <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-              {t('contact.cta.description', 'Join thousands of students mastering embedded systems. Get started today with our beginner-friendly courses.')}
+              {t(
+                "contact.cta.description",
+                "Join thousands of students mastering embedded systems. Get started today with our beginner-friendly courses."
+              )}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                onClick={() => (window.location.href = "/courses")}
+                onClick={() =>
+                  (window.location.href = langPath("/courses", language))
+                }
                 className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
               >
                 <BookOpen className="mr-2 w-5 h-5" />
-                {t('contact.cta.browseCourses', 'Browse Courses')}
+                {t("contact.cta.browseCourses", "Browse Courses")}
               </Button>
               <Button
                 size="lg"
@@ -523,7 +594,7 @@ const Contact = () => {
                   href="https://t.me/embeddedschool"
                 >
                   <Users className="mr-2 w-5 h-5" />
-                  {t('contact.cta.joinCommunity', 'Join Community')}
+                  {t("contact.cta.joinCommunity", "Join Community")}
                 </a>
               </Button>
             </div>

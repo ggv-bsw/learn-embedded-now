@@ -27,13 +27,14 @@ import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCourse } from "@/hooks/useCourses";
+import { langPath } from "@/hooks/useAutoLanguage";
 
 const CourseInquiryForm = lazy(() => import("@/components/CourseInquiryForm"));
 const VideoDemo = lazy(() => import("@/components/VideoDemo"));
 
 const CourseDetail = () => {
   const { courseId } = useParams();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { addToCart } = useCart();
   const [showInquiryForm, setShowInquiryForm] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
@@ -68,7 +69,7 @@ const CourseDetail = () => {
             {error || "Course not found"}
           </p>
           <Button asChild>
-            <Link to="/courses">
+            <Link to={langPath("/courses", language)}>
               {t("courseDetail.backToCourses") || "Back to Courses"}
             </Link>
           </Button>
@@ -125,11 +126,14 @@ const CourseDetail = () => {
       {/* Breadcrumb */}
       <div className="container mx-auto px-4 py-6">
         <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-          <Link to="/" className="hover:text-primary">
+          <Link to={langPath("/", language)} className="hover:text-primary">
             {t("courseDetail.home")}
           </Link>
           <span>/</span>
-          <Link to="/courses" className="hover:text-primary">
+          <Link
+            to={langPath("/courses", language)}
+            className="hover:text-primary"
+          >
             {t("courseDetail.courses")}
           </Link>
           <span>/</span>
@@ -350,7 +354,7 @@ const CourseDetail = () => {
               <TabsContent value="instructor">
                 <Card>
                   <CardContent className="pt-6">
-                  <div className="flex items-start space-x-6">
+                    <div className="flex items-start space-x-6">
                       {course.instructor.image ? (
                         <img
                           src={course.instructor.image}
