@@ -43,6 +43,37 @@ export default function SeoHelmet({
   const finalOgUrl = ogUrl ?? canonicalHref;
   const finalImage = image ?? L.image;
 
+  // JSON-LD: WebSite + Sitelinks Search
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Embedded School",
+    url: site + "/",
+    inLanguage: lang,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${site}/${
+        lang === "en" ? "" : lang + "/"
+      }search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  // JSON-LD: Breadcrumbs
+  const segments = tail.split("/").filter(Boolean);
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: segments.map((seg, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: seg,
+      item: `${site}${lang === "en" ? "" : "/" + lang}/${segments
+        .slice(0, idx + 1)
+        .join("/")}/`,
+    })),
+  };
+
   return (
     <Helmet>
       <html lang={lang} />
@@ -62,10 +93,23 @@ export default function SeoHelmet({
       <meta property="og:url" content={finalOgUrl} />
       <meta property="og:image" content={finalImage} />
       <meta property="og:locale" content={L.ogLocale} />
+      <meta property="og:locale:alternate" content="en_US" />
+      <meta property="og:locale:alternate" content="ro_RO" />
+      <meta property="og:locale:alternate" content="ru_RU" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={L.twitterSite} />
       <meta name="twitter:image" content={finalImage} />
+
+      {/* JSON-LD */}
+      <script type="application/ld+json">
+        {JSON.stringify(websiteJsonLd)}
+      </script>
+      {segments.length > 0 && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd)}
+        </script>
+      )}
     </Helmet>
   );
 }
