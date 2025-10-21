@@ -52,11 +52,10 @@ const Contact = () => {
       icon: Mail,
       title: t("contact.info.emailSupport", "Email Support"),
       details: [
-        "info@embeddedschool.com",
-        "support@embeddedschool.com",
+        "learn@embedded.school",
         t("contact.info.responseTime", "Response within 24hrs"),
       ],
-      link: "mailto:info@embeddedschool.com",
+      link: "mailto:learn@embedded.school",
     },
     {
       icon: Clock,
@@ -434,7 +433,7 @@ const Contact = () => {
                           {t("contact.quick.email", "Email support")}
                         </p>
                         <p className="text-xs text-gray-400">
-                          support@embeddedschool.com
+                          learn@embedded.school
                         </p>
                       </div>
                     </div>
