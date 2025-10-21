@@ -6,8 +6,7 @@ import { featuredCourses } from "@/testData/featuredCourses";
 import { langPath } from "@/hooks/useAutoLanguage";
 
 const Footer = () => {
-  const { t } = useLanguage();
-  const { language } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <footer className="py-12 bg-slate-950 border-t border-slate-800">
