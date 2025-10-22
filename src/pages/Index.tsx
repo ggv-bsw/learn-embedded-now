@@ -218,7 +218,7 @@ const Index = () => {
                 <Card className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20 backdrop-blur-sm hover-scale">
                   <CardContent className="p-4 text-center">
                     <Cpu className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                    <h3 className="text-slate-900 font-semibold text-sm">{t("index.embeddedC", "Embedded C")}</h3>
+                    <span className="text-slate-900 font-semibold text-sm block">{t("index.embeddedC", "Embedded C")}</span>
                     <p className="text-gray-400 text-xs">{t("index.lowLevel", "Low-level programming")}</p>
                   </CardContent>
                 </Card>
@@ -226,7 +226,7 @@ const Index = () => {
                 <Card className="bg-gradient-to-br from-green-500/10 to-blue-500/10 border-green-500/20 backdrop-blur-sm hover-scale">
                   <CardContent className="p-4 text-center">
                     <Wifi className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                    <h3 className="text-slate-900 font-semibold text-sm">{t("index.iotSystems", "IoT Systems")}</h3>
+                    <span className="text-slate-900 font-semibold text-sm block">{t("index.iotSystems", "IoT Systems")}</span>
                     <p className="text-gray-400 text-xs">{t("index.connectedDevices", "Connected devices")}</p>
                   </CardContent>
                 </Card>

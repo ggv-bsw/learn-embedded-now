@@ -24,9 +24,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 text-white">
+            <h3 className="font-semibold mb-3 text-white">
               {t("footer.courses")}
-            </h4>
+            </h3>
             <ul className="space-y-2 text-gray-400">
               {featuredCourses.map((course) => (
                 <li key={course.id}>
@@ -55,9 +55,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 text-white">
+            <h3 className="font-semibold mb-3 text-white">
               {t("footer.company")}
-            </h4>
+            </h3>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <Link
@@ -99,9 +99,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 text-white">
+            <h3 className="font-semibold mb-3 text-white">
               {t("footer.resources")}
-            </h4>
+            </h3>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <Link
