@@ -4,7 +4,7 @@ export const SEO_BY_LANG = {
       "Embedded School - IT Courses in Embedded Systems, IoT & Programming",
     description:
       "Learn embedded systems, IoT, and programming with expert-led courses. Perfect for students and professionals in Moldova & Romania. Start your tech career today!",
-    canonical: "https://embeddedschool.md/",
+    // canonical: "https://embeddedschool.md/",
     ogLocale: "en_US",
     url: "https://embeddedschool.md/",
     twitterSite: "@embeddedschool",
@@ -14,7 +14,7 @@ export const SEO_BY_LANG = {
     title: "Embedded School - Cursuri IT în Sisteme Embedded și IoT",
     description:
       "Învață sisteme embedded, IoT și programare cu mentori experți. Perfect pentru studenți și profesioniști din Moldova & România.",
-    canonical: "https://embeddedschool.md/ro/",
+    // canonical: "https://embeddedschool.md/ro/",
     ogLocale: "ro_RO",
     url: "https://embeddedschool.md/ro/",
     twitterSite: "@embeddedschool",
@@ -24,7 +24,7 @@ export const SEO_BY_LANG = {
     title: "Embedded School — курсы по Embedded-системам и IoT",
     description:
       "Изучи embedded-системы, IoT и программирование с наставниками-практиками. Подходит студентам и профессионалам в Молдове и Румынии.",
-    canonical: "https://embeddedschool.md/ru/",
+    // canonical: "https://embeddedschool.md/ru/",
     ogLocale: "ru_RU",
     url: "https://embeddedschool.md/ru/",
     twitterSite: "@embeddedschool",

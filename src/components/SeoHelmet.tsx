@@ -7,7 +7,7 @@ interface SeoHelmetProps {
   lang: SiteLang;
   title?: string;
   description?: string;
-  canonical?: string;
+  // canonical?: string;
   ogUrl?: string;
   image?: string;
 }
@@ -23,7 +23,7 @@ export default function SeoHelmet({
   lang,
   title,
   description,
-  canonical,
+  // canonical,
   ogUrl,
   image,
 }: SeoHelmetProps) {
@@ -33,8 +33,7 @@ export default function SeoHelmet({
 
   const tail = ensureSlash(stripLeadingLang(pathname || "/"));
   const localePrefix = lang === "en" ? "" : `/${lang}`;
-  const computedCanonical = `${site}${localePrefix}${tail}`;
-  const canonicalHref = ensureSlash(canonical || computedCanonical);
+  const canonicalHref = ensureSlash(`${site}${localePrefix}${tail}`);
 
   const altEn = `${site}${ensureSlash(stripLeadingLang(pathname || "/"))}`; // x-default + en
   const altRo = `${site}/ro${tail}`;
