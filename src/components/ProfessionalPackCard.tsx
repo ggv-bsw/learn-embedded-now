@@ -40,7 +40,7 @@ const getLevelColor = (level: string) => {
 
 const getCardColors = (index: number) => {
   const colors = [
-    { gradient: "from-green-500/20 to-blue-500/20", border: "border-green-500/30", icon: "text-green-400", hover: "group-hover:text-green-400", button: "bg-green-600 hover:bg-green-700" },
+    { gradient: "from-green-500/20 to-blue-500/20", border: "border-green-500/30", icon: "text-green-400", hover: "group-hover:text-green-400", button: "bg-green-700 hover:bg-green-800" },
     { gradient: "from-blue-500/20 to-purple-500/20", border: "border-blue-500/30", icon: "text-blue-400", hover: "group-hover:text-blue-400", button: "bg-blue-600 hover:bg-blue-700" },
     { gradient: "from-purple-500/20 to-pink-500/20", border: "border-purple-500/30", icon: "text-purple-400", hover: "group-hover:text-purple-400", button: "bg-purple-600 hover:bg-purple-700" },
   ];

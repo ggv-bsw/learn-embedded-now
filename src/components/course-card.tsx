@@ -63,7 +63,7 @@ const CourseCard = ({
           {description}
         </p>
         
-        <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+        <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
           <div className="flex items-center space-x-4">
             <span className="flex items-center">
               <Users className="w-4 h-4 mr-1" />

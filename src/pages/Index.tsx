@@ -177,7 +177,7 @@ const Index = () => {
                 <CardContent className="pt-4">
                   <div className="bg-slate-950 rounded-lg p-4 font-mono text-sm overflow-hidden">
                     <div className="space-y-2">
-                      <div className="text-gray-500">// IoT Temperature Monitoring System</div>
+                      <div className="text-gray-400">// IoT Temperature Monitoring System</div>
                       <div>
                         <span className="text-purple-400">#include</span>{" "}
                         <span className="text-green-400">&lt;WiFi.h&gt;</span>
@@ -186,7 +186,7 @@ const Index = () => {
                         <span className="text-purple-400">#include</span>{" "}
                         <span className="text-green-400">&lt;DHT.h&gt;</span>
                       </div>
-                      <div className="text-gray-600">// ...</div>
+                      <div className="text-gray-400">// ...</div>
                       <div className="pt-2">
                         <span className="text-blue-400">void</span> <span className="text-yellow-400">setup</span>
                         <span className="text-white">() {"{"}</span>
@@ -206,7 +206,7 @@ const Index = () => {
                       <div className="text-white">{"}"}</div>
                       <div className="pt-2 flex items-center">
                         <div className="w-2 h-4 bg-white animate-pulse mr-1"></div>
-                        <span className="text-gray-500">Ready to compile...</span>
+                        <span className="text-gray-400">Ready to compile...</span>
                       </div>
                     </div>
                   </div>
@@ -320,7 +320,7 @@ const Index = () => {
                       </Link>
                       <p className="text-gray-400 mb-4 line-clamp-2">{course.subtitle}</p>
 
-                      <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                      <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
                         <div className="flex items-center space-x-4">
                           <span className="flex items-center">
                             <Users className="w-4 h-4 mr-1" />
@@ -578,7 +578,7 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Suspense fallback={null}>
                   <JuniorProgramForm>
-                    <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6">
+                    <Button size="lg" className="bg-yellow-700 hover:bg-yellow-800 text-white font-semibold px-8 py-6">
                       <Zap className="mr-2 w-5 h-5" />
                       {t("index.joinJuniorProgram", "Join Junior Program")}
                     </Button>

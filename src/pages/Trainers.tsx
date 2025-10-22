@@ -525,7 +525,7 @@ const Trainers = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
+                  className="bg-green-700 hover:bg-green-800 text-white font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
                   onClick={() => setShowApplicationForm(true)}
                 >
                   <Award className="mr-2 w-5 h-5" />
