@@ -20,7 +20,6 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 const Documentation = () => {
   const { t, language } = useLanguage();
@@ -298,7 +297,7 @@ const Documentation = () => {
                   <CardContent className="p-6">
                     {link.external ? (
                       <a
-                        href={langPath(link.link, language)}
+                        href={link.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block"
@@ -319,7 +318,7 @@ const Documentation = () => {
                       </a>
                     ) : (
                       <Link
-                        to={langPath(link.link, language)}
+                        to={link.link}
                         className="block"
                       >
                         <div className="flex items-start space-x-3">
@@ -468,7 +467,7 @@ const Documentation = () => {
                   {t("docs.cta.description")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to={langPath("/contact", language)}>
+                  <Link to={"/contact"}>
                     <Button
                       size="lg"
                       className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6"

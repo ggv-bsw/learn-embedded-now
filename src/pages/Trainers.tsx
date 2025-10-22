@@ -28,7 +28,6 @@ import {
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 const Trainers = () => {
   const { t, language } = useLanguage();
@@ -379,10 +378,7 @@ const Trainers = () => {
                   size="lg"
                   className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-6 md:px-8 py-4 md:py-6 text-base md:text-lg transition-all duration-300 hover:scale-105"
                 >
-                  <Link
-                    to={langPath("/courses", language)}
-                    className="flex items-center"
-                  >
+                  <Link to={"/courses"} className="flex items-center">
                     <Code className="mr-2 w-4 md:w-5 h-4 md:h-5" />
                     {t("trainers.browseAllCourses", "Browse All Courses")}
                   </Link>

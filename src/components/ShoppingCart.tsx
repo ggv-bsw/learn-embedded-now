@@ -10,7 +10,6 @@ import { ShoppingCart, Trash2, Plus, Minus } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { langPath } from "@/hooks/useAutoLanguage";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export const ShoppingCartSheet = () => {
@@ -106,8 +105,7 @@ export const ShoppingCartSheet = () => {
                 </div>
                 <Button
                   className="w-full bg-blue-600 hover:bg-blue-700"
-                  // to={langPath("/contact", language)}
-                  onClick={() => navigate(langPath("/checkout", language))}
+                  onClick={() => navigate("/checkout")}
                 >
                   Proceed to Checkout
                 </Button>

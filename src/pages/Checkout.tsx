@@ -11,7 +11,6 @@ import { ArrowLeft, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 // Validation schema for checkout form
 const checkoutSchema = z.object({
@@ -83,7 +82,7 @@ const Checkout = () => {
       console.log("Order created successfully:", data);
       toast.success("Order placed successfully! We will contact you shortly.");
       clearCart();
-      navigate(langPath("/", language));
+      navigate("/");
     } catch (error: any) {
       console.error("Error placing order:", error);
       toast.error(error.message || "Failed to place order. Please try again.");
@@ -99,7 +98,7 @@ const Checkout = () => {
           <h2 className="text-2xl font-bold text-white mb-4">
             Your cart is empty
           </h2>
-          <Button onClick={() => navigate(langPath("/hardware", language))}>
+          <Button onClick={() => navigate("/hardware")}>
             Browse Hardware
           </Button>
         </Card>

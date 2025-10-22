@@ -32,7 +32,6 @@ import gefeetech from "@/assets/gefeetech.png";
 import moldStud from "@/assets/moldStud.png";
 import procesio from "@/assets/procesio.png";
 import theAutomationNetwork from "@/assets/theAutomationNetwork.svg";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 const About = () => {
   const navigate = useNavigate();
@@ -474,7 +473,7 @@ const About = () => {
                 variant="outline"
                 className="border-slate-600 text-slate-900 hover:border-slate-500 px-8 py-6 text-lg hover:scale-105"
                 // onClick={() => navigate("/contact")}
-                onClick={() => navigate(langPath("/contact", language))}
+                onClick={() => navigate("/contact")}
               >
                 <Mail className="mr-2 w-5 h-5" />
                 {t("about.contactTeam")}

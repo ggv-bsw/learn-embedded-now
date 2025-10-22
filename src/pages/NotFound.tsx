@@ -2,7 +2,6 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 const NotFound = () => {
   const location = useLocation();
@@ -35,7 +34,7 @@ const NotFound = () => {
             Oops! Page not found
           </p>
           <a
-            href={langPath("/", language)}
+            href={"/"}
             className="text-blue-500 hover:text-blue-700 underline text-sm md:text-base"
           >
             Return to Home

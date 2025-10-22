@@ -21,7 +21,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast as sonnerToast } from "sonner";
 import STMImage from "@/assets/STM1.png";
 import arduinoImage from "@/assets/arduino1.png";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 interface DevelopmentBoard {
   id: string;
@@ -129,7 +128,7 @@ const HardwareDetail = () => {
         <div className="container mx-auto px-4 py-20 text-center">
           <h1 className="text-3xl font-bold mb-4">Product Not Found</h1>
           <Button
-            onClick={() => navigate(langPath("/hardware", language))}
+            onClick={() => navigate("/hardware")}
             variant="outline"
           >
             <ArrowLeft className="mr-2 w-4 h-4" />
@@ -165,7 +164,7 @@ const HardwareDetail = () => {
       {/* Back Button */}
       <div className="container mx-auto px-4 pt-24 pb-8">
         <Button
-          onClick={() => navigate(langPath("/hardware", language))}
+          onClick={() => navigate("/hardware")}
           variant="outline"
           className="border-slate-600 text-slate-900 hover:bg-slate-800"
         >

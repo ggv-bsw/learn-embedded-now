@@ -5,7 +5,6 @@ import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "@/components/LanguageSelector";
 import { ShoppingCartSheet } from "@/components/ShoppingCart";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,8 +16,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
-            // to="/"
-            to={langPath("/", language)}
+            to="/"
             className="flex items-center space-x-2 font-bold text-xl text-white"
           >
             <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
@@ -30,43 +28,37 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link
-              // to="/courses"
-              to={langPath("/courses", language)}
+              to={"/courses"}
               className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
             >
               {t("nav.courses", "Courses")}
             </Link>
             <Link
-              // to="/about"
-              to={langPath("/about", language)}
+              to={"/about"}
               className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
             >
               {t("nav.about", "About")}
             </Link>
             <Link
-              // to="/trainers"
-              to={langPath("/trainers", language)}
+              to={"/trainers"}
               className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
             >
               {t("nav.trainers", "Trainers")}
             </Link>
             <Link
-              // to="/blog"
-              to={langPath("/blog", language)}
+              to={"/blog"}
               className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
             >
               {t("nav.blog", "Blog")}
             </Link>
             <Link
-              // to="/hardware"
-              to={langPath("/hardware", language)}
+              to={"/hardware"}
               className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
             >
               {t("nav.hardware", "Hardware")}
             </Link>
             <Link
-              // to="/contact"
-              to={langPath("/contact", language)}
+              to={"/contact"}
               className="text-gray-300 hover:text-blue-400 transition-colors font-medium"
             >
               {t("nav.contact", "Contact")}
@@ -93,44 +85,38 @@ const Navigation = () => {
           <div className="md:hidden py-4 border-t border-slate-800 bg-slate-900">
             <div className="flex flex-col space-y-4">
               <Link
-                // to="/courses"
-                to={langPath("/courses", language)}
+                to={"/courses"}
                 className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 {t("nav.courses", "Courses")}
               </Link>
 
               <Link
-                // to="/about"
-                to={langPath("/about", language)}
+                to={"/about"}
                 className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 {t("nav.about", "About")}
               </Link>
               <Link
-                // to="/trainers"
-                to={langPath("/trainers", language)}
+                to={"/trainers"}
                 className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 {t("nav.trainers", "Trainers")}
               </Link>
               <Link
-                // to="/blog"
-                to={langPath("/blog", language)}
+                to={"/blog"}
                 className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 {t("nav.blog", "Blog")}
               </Link>
               <Link
-                // to="/hardware"
-                to={langPath("/hardware", language)}
+                to={"/hardware"}
                 className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 {t("nav.hardware", "Hardware")}
               </Link>
               <Link
-                // to="/contact"
-                to={langPath("/contact", language)}
+                to="/contact"
                 className="block px-4 py-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 {t("nav.contact", "Contact")}

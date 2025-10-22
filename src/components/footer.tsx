@@ -3,7 +3,6 @@ import { Code, Cpu, Wifi, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { featuredCourses } from "@/testData/featuredCourses";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 const Footer = () => {
   const { t, language } = useLanguage();
@@ -33,7 +32,7 @@ const Footer = () => {
                 <li key={course.id}>
                   <Link
                     // to={`/courses/${course.id}`}
-                    to={langPath(`/courses/${course.id}`, language)}
+                    to={`/courses/${course.id}`}
                     className="hover:text-blue-400 transition-colors flex items-center"
                   >
                     {course.category === "Python" && (
@@ -63,7 +62,7 @@ const Footer = () => {
               <li>
                 <Link
                   // to="/about"
-                  to={langPath("/about", language)}
+                  to={"/about"}
                   className="hover:text-blue-400 transition-colors"
                 >
                   {t("footer.aboutUs")}
@@ -72,7 +71,7 @@ const Footer = () => {
               <li>
                 <Link
                   // to="/contact"
-                  to={langPath("/contact", language)}
+                  to={"/contact"}
                   className="hover:text-blue-400 transition-colors"
                 >
                   {t("footer.contact")}
@@ -81,7 +80,7 @@ const Footer = () => {
               <li>
                 <Link
                   // to="/blog"
-                  to={langPath("/blog", language)}
+                  to={"/blog"}
                   className="hover:text-blue-400 transition-colors"
                 >
                   {t("footer.blog")}
@@ -90,7 +89,7 @@ const Footer = () => {
               <li>
                 <Link
                   // to="/trainers#become-a-trainer"
-                  to={langPath("/trainers#become-a-trainer", language)}
+                  to={"/trainers#become-a-trainer"}
                   className="hover:text-blue-400 transition-colors"
                 >
                   {t("footer.careers")}
@@ -107,7 +106,7 @@ const Footer = () => {
               <li>
                 <Link
                   // to="/documentation"
-                  to={langPath("/documentation", language)}
+                  to={"/documentation"}
                   className="hover:text-blue-400 transition-colors"
                 >
                   {t("footer.docs")}
@@ -126,7 +125,7 @@ const Footer = () => {
               <li>
                 <Link
                   // to="/hardware"
-                  to={langPath("/hardware", language)}
+                  to={"/hardware"}
                   className="hover:text-blue-400 transition-colors"
                 >
                   Hardware Store
@@ -135,7 +134,7 @@ const Footer = () => {
               <li>
                 <Link
                   // to="/contact"
-                  to={langPath("/contact", language)}
+                  to={"/contact"}
                   className="hover:text-blue-400 transition-colors"
                 >
                   {t("footer.support")}

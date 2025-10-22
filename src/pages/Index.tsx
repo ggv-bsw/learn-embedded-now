@@ -25,7 +25,6 @@ import { useCourses } from "@/hooks/useCourses";
 import { useProfessionalPacks } from "@/hooks/useProfessionalPacks";
 import { ProfessionalPackCard } from "@/components/ProfessionalPackCard";
 import Footer from "@/components/footer";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 const CourseInquiryForm = lazy(() => import("@/components/CourseInquiryForm"));
 const JuniorProgramForm = lazy(() =>
@@ -357,7 +356,7 @@ const Index = () => {
               size="lg"
               className="border-slate-600 text-slate-900 hover:bg-gray-100 hover:scale-105"
             >
-              <Link to={langPath("/courses", language)} className="flex items-center">
+              <Link to={"/courses"} className="flex items-center">
                 {t("courses.viewAll", "View All Courses")}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
@@ -589,7 +588,7 @@ const Index = () => {
                   variant="outline"
                   className="border-slate-600 text-slate-900 hover:bg-slate-800 hover:bg-gray-100 px-8 py-6 hover:scale-105"
                 >
-                  <Link to={langPath("/junior", language)} className="flex items-center">
+                  <Link to={"/junior"} className="flex items-center">
                     {t("index.learnMoreJunior", "Learn More About Junior Program")}
                   </Link>
                 </Button>

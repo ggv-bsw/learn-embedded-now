@@ -27,7 +27,6 @@ import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCourse } from "@/hooks/useCourses";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 const CourseInquiryForm = lazy(() => import("@/components/CourseInquiryForm"));
 const VideoDemo = lazy(() => import("@/components/VideoDemo"));
@@ -69,7 +68,7 @@ const CourseDetail = () => {
             {error || "Course not found"}
           </p>
           <Button asChild>
-            <Link to={langPath("/courses", language)}>
+            <Link to={"/courses"}>
               {t("courseDetail.backToCourses") || "Back to Courses"}
             </Link>
           </Button>
@@ -126,12 +125,12 @@ const CourseDetail = () => {
       {/* Breadcrumb */}
       <div className="container mx-auto px-4 py-6">
         <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-          <Link to={langPath("/", language)} className="hover:text-primary">
+          <Link to={"/"} className="hover:text-primary">
             {t("courseDetail.home")}
           </Link>
           <span>/</span>
           <Link
-            to={langPath("/courses", language)}
+            to={"/courses"}
             className="hover:text-primary"
           >
             {t("courseDetail.courses")}

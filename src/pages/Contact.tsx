@@ -22,7 +22,6 @@ import { toast } from "sonner";
 import Footer from "@/components/footer";
 import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 const Contact = () => {
   const { t, language } = useLanguage();
@@ -574,7 +573,7 @@ const Contact = () => {
               <Button
                 size="lg"
                 onClick={() =>
-                  (window.location.href = langPath("/courses", language))
+                  (window.location.href = "/courses")
                 }
                 className="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
               >

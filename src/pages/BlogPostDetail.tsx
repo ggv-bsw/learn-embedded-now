@@ -20,7 +20,6 @@ import blogArduinoStrikes from "@/assets/blog-arduino-strikes.jpg";
 import blogReturnC from "@/assets/blog-return-c.jpg";
 import blogRevengeSith from "@/assets/blog-revenge-sith.jpg";
 import blogForceEmbedded from "@/assets/blog-force-embedded.jpg";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 interface BlogPost {
   id: string;
@@ -144,7 +143,7 @@ const BlogPostDetail = () => {
               "The blog post you're looking for doesn't exist."
             )}
           </p>
-          <Link to={langPath("/blog", language)}>
+          <Link to={"/blog"}>
             <Button>
               <ArrowLeft className="mr-2 w-4 h-4" />
               {t("blog.detail.backToBlog", "Back to Blog")}
@@ -162,7 +161,7 @@ const BlogPostDetail = () => {
       {/* Back Button */}
       <section className="bg-slate-800 py-6">
         <div className="container mx-auto px-4">
-          <Link to={langPath("/blog", language)}>
+          <Link to={"/blog"}>
             <Button
               variant="ghost"
               className="text-gray-300 hover:text-slate-900"

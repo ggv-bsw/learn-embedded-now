@@ -21,7 +21,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useCourses } from "@/hooks/useCourses";
 import { useProfessionalPacks } from "@/hooks/useProfessionalPacks";
 import { ProfessionalPackCard } from "@/components/ProfessionalPackCard";
-import { langPath } from "@/hooks/useAutoLanguage";
 
 const Courses = () => {
   const navigate = useNavigate();
@@ -515,7 +514,7 @@ const Courses = () => {
                 <Button
                   size="lg"
                   className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-6 shadow-lg"
-                  onClick={() => navigate(langPath("/contact", language))}
+                  onClick={() => navigate("/contact")}
                 >
                   {t("coursesPage.contactUs")}
                 </Button>
