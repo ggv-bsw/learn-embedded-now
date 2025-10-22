@@ -3,111 +3,255 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
-  <!-- Главная -->
+  <!-- Home (EN) -->
   <url>
     <loc>https://embeddedschool.md/</loc>
     <lastmod>2025-10-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/"/>
-    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/"/>
-    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/"/>
+  </url>
+  <!-- Home (RO) -->
+  <url>
+    <loc>https://embeddedschool.md/ro/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/"/>
+  </url>
+  <!-- Home (RU) -->
+  <url>
+    <loc>https://embeddedschool.md/ru/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/"/>
   </url>
 
-  <!-- About -->
+  <!-- About (EN) -->
   <url>
     <loc>https://embeddedschool.md/about/</loc>
     <lastmod>2025-10-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/about/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/about/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/about/"/>
-    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/about/"/>
-    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/about/"/>
+  </url>
+  <!-- About (RO) -->
+  <url>
+    <loc>https://embeddedschool.md/ro/about/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/about/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/about/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/about/"/>
+  </url>
+  <!-- About (RU) -->
+  <url>
+    <loc>https://embeddedschool.md/ru/about/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/about/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/about/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/about/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/about/"/>
   </url>
 
-  <!-- Trainers -->
+  <!-- Trainers (EN) -->
   <url>
     <loc>https://embeddedschool.md/trainers/</loc>
     <lastmod>2025-10-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/trainers/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/trainers/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/trainers/"/>
-    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/trainers/"/>
-    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/trainers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/trainers/"/>
+  </url>
+  <!-- Trainers (RO) -->
+  <url>
+    <loc>https://embeddedschool.md/ro/trainers/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/trainers/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/trainers/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/trainers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/trainers/"/>
+  </url>
+  <!-- Trainers (RU) -->
+  <url>
+    <loc>https://embeddedschool.md/ru/trainers/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/trainers/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/trainers/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/trainers/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/trainers/"/>
   </url>
 
-  <!-- Courses -->
+  <!-- Courses (EN) -->
   <url>
     <loc>https://embeddedschool.md/courses/</loc>
     <lastmod>2025-10-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/courses/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/courses/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/courses/"/>
-    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/courses/"/>
-    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/courses/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/courses/"/>
+  </url>
+  <!-- Courses (RO) -->
+  <url>
+    <loc>https://embeddedschool.md/ro/courses/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/courses/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/courses/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/courses/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/courses/"/>
+  </url>
+  <!-- Courses (RU) -->
+  <url>
+    <loc>https://embeddedschool.md/ru/courses/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/courses/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/courses/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/courses/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/courses/"/>
   </url>
 
-  <!-- Blog -->
+  <!-- Blog (EN) -->
   <url>
     <loc>https://embeddedschool.md/blog/</loc>
     <lastmod>2025-10-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/blog/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/blog/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/blog/"/>
-    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/blog/"/>
+  </url>
+  <!-- Blog (RO) -->
+  <url>
+    <loc>https://embeddedschool.md/ro/blog/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/blog/"/>
+  </url>
+  <!-- Blog (RU) -->
+  <url>
+    <loc>https://embeddedschool.md/ru/blog/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/blog/"/>
   </url>
 
-  <!-- Contact -->
+  <!-- Contact (EN) -->
   <url>
     <loc>https://embeddedschool.md/contact/</loc>
     <lastmod>2025-10-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/contact/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/contact/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/contact/"/>
-    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/contact/"/>
-    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/contact/"/>
+  </url>
+  <!-- Contact (RO) -->
+  <url>
+    <loc>https://embeddedschool.md/ro/contact/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/contact/"/>
+  </url>
+  <!-- Contact (RU) -->
+  <url>
+    <loc>https://embeddedschool.md/ru/contact/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/contact/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/contact/"/>
   </url>
 
-  <!-- Hardware -->
+  <!-- Hardware (EN) -->
   <url>
     <loc>https://embeddedschool.md/hardware/</loc>
     <lastmod>2025-10-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/hardware/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/hardware/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/hardware/"/>
-    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/hardware/"/>
-    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/hardware/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/hardware/"/>
+  </url>
+  <!-- Hardware (RO) -->
+  <url>
+    <loc>https://embeddedschool.md/ro/hardware/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/hardware/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/hardware/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/hardware/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/hardware/"/>
+  </url>
+  <!-- Hardware (RU) -->
+  <url>
+    <loc>https://embeddedschool.md/ru/hardware/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/hardware/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/hardware/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/hardware/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/hardware/"/>
   </url>
 
-  <!-- Junior -->
+  <!-- Junior (EN) -->
   <url>
     <loc>https://embeddedschool.md/junior/</loc>
     <lastmod>2025-10-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/junior/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/junior/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/junior/"/>
-    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/junior/"/>
-    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/junior/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/junior/"/>
+  </url>
+  <!-- Junior (RO) -->
+  <url>
+    <loc>https://embeddedschool.md/ro/junior/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/junior/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/junior/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/junior/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/junior/"/>
+  </url>
+  <!-- Junior (RU) -->
+  <url>
+    <loc>https://embeddedschool.md/ru/junior/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/junior/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/junior/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/junior/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/junior/"/>
   </url>
 
-  <!-- Documentation -->
+  <!-- Documentation (EN) -->
   <url>
     <loc>https://embeddedschool.md/documentation/</loc>
     <lastmod>2025-10-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/documentation/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/documentation/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/documentation/"/>
-    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/documentation/"/>
-    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/documentation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/documentation/"/>
+  </url>
+  <!-- Documentation (RO) -->
+  <url>
+    <loc>https://embeddedschool.md/ro/documentation/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/documentation/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/documentation/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/documentation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/documentation/"/>
+  </url>
+  <!-- Documentation (RU) -->
+  <url>
+    <loc>https://embeddedschool.md/ru/documentation/</loc>
+    <lastmod>2025-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/documentation/"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/documentation/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/documentation/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/documentation/"/>
   </url>
 </urlset>
