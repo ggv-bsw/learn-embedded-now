@@ -2547,13 +2547,17 @@ const isLang = (v: any): v is Language =>
 
 const getInitialLang = (): Language => {
   const saved = localStorage.getItem("language");
-  if (isLang(saved)) return saved;
-  const langs = (
-    navigator.languages?.length ? navigator.languages : [navigator.language]
-  ).map((l) => l?.toLowerCase() ?? "");
-  if (langs.find((l) => l.startsWith("ru"))) return "ru";
-  if (langs.find((l) => l.startsWith("en"))) return "en";
+  if (isLang(saved)) return saved as Language;
 
+  const prefs = (
+    navigator.languages?.length ? navigator.languages : [navigator.language]
+  ).map((l) => (l || "").toLowerCase());
+
+  const supported: Language[] = ["ro", "ru", "en"];
+  for (const p of prefs) {
+    const base = p.split("-")[0] as Language;
+    if ((supported as string[]).includes(base)) return base;
+  }
   return "ro";
 };
 

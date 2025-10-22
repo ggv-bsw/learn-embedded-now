@@ -85,6 +85,9 @@ export default function SeoHelmet({
       <link rel="alternate" hrefLang="en" href={altEn} />
       <link rel="alternate" hrefLang="ro" href={altRo} />
       <link rel="alternate" hrefLang="ru" href={altRu} />
+      <link rel="alternate" hrefLang="ro-md" href={altRo} />
+      <link rel="alternate" hrefLang="ru-md" href={altRu} />
+
       <link rel="alternate" hrefLang="x-default" href={altEn} />
 
       <meta property="og:title" content={finalTitle} />

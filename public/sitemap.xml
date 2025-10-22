@@ -10,6 +10,8 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/"/>
+    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/"/>
+    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/"/>
   </url>
 
@@ -20,6 +22,8 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/about/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/about/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/about/"/>
+    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/about/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/about/"/>
   </url>
 
@@ -30,6 +34,8 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/trainers/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/trainers/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/trainers/"/>
+    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/trainers/"/>
+    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/trainers/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/trainers/"/>
   </url>
 
@@ -40,6 +46,8 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/courses/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/courses/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/courses/"/>
+    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/courses/"/>
+    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/courses/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/courses/"/>
   </url>
 
@@ -50,6 +58,8 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/blog/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/blog/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/blog/"/>
   </url>
 
@@ -60,6 +70,8 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/contact/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/contact/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/contact/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/contact/"/>
   </url>
 
@@ -70,6 +82,8 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/hardware/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/hardware/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/hardware/"/>
+    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/hardware/"/>
+    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/hardware/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/hardware/"/>
   </url>
 
@@ -80,6 +94,8 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/junior/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/junior/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/junior/"/>
+    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/junior/"/>
+    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/junior/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/junior/"/>
   </url>
 
@@ -90,6 +106,8 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://embeddedschool.md/documentation/"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://embeddedschool.md/ro/documentation/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://embeddedschool.md/ru/documentation/"/>
+    <xhtml:link rel="alternate" hreflang="ro-md" href="https://embeddedschool.md/ro/documentation/"/>
+    <xhtml:link rel="alternate" hreflang="ru-md" href="https://embeddedschool.md/ru/documentation/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://embeddedschool.md/documentation/"/>
   </url>
 </urlset>
