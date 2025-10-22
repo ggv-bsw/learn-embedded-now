@@ -25,6 +25,7 @@ export const ShoppingCartSheet = () => {
           variant="outline"
           size="icon"
           className="relative bg-transparent border-slate-700 hover:bg-slate-800"
+          aria-label="Shopping cart"
         >
           <ShoppingCart className="h-5 w-5 text-white" />
           {totalItems > 0 && (
@@ -68,6 +69,7 @@ export const ShoppingCartSheet = () => {
                           onClick={() =>
                             updateQuantity(item.id, item.quantity - 1)
                           }
+                          aria-label="Decrease quantity"
                         >
                           <Minus className="h-3 w-3" />
                         </Button>
@@ -81,6 +83,7 @@ export const ShoppingCartSheet = () => {
                           onClick={() =>
                             updateQuantity(item.id, item.quantity + 1)
                           }
+                          aria-label="Increase quantity"
                         >
                           <Plus className="h-3 w-3" />
                         </Button>
@@ -91,6 +94,7 @@ export const ShoppingCartSheet = () => {
                       variant="ghost"
                       onClick={() => removeFromCart(item.id)}
                       className="text-red-400 hover:text-red-300"
+                      aria-label="Remove item from cart"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
