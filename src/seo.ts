@@ -31,3 +31,5 @@ export const SEO_BY_LANG = {
     image: "https://embeddedschool.md/og/embedded-school-1200x630.jpg",
   },
 } as const;
+
+export type SiteLang = keyof typeof SEO_BY_LANG;
