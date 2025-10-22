@@ -355,6 +355,7 @@ const Index = () => {
               variant="outline"
               size="lg"
               className="border-slate-600 text-slate-900 hover:bg-gray-100 hover:scale-105"
+              asChild
             >
               <Link to={"/courses"} className="flex items-center">
                 {t("courses.viewAll", "View All Courses")}
@@ -587,6 +588,7 @@ const Index = () => {
                   size="lg"
                   variant="outline"
                   className="border-slate-600 text-slate-900 hover:bg-slate-800 hover:bg-gray-100 px-8 py-6 hover:scale-105"
+                  asChild
                 >
                   <Link to={"/junior"} className="flex items-center">
                     {t("index.learnMoreJunior", "Learn More About Junior Program")}
