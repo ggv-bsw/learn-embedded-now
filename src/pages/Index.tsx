@@ -676,7 +676,7 @@ const Index = () => {
                     to={langPath("/junior", language)}
                     className="flex items-center"
                   >
-                    {t("index.learnMore", "Learn More")}
+                    {t("index.learnMoreJunior", "Learn More About Junior Program")}
                   </Link>
                 </Button>
               </div>
