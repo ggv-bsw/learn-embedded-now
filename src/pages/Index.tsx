@@ -31,7 +31,7 @@ const CourseInquiryForm = lazy(() => import("@/components/CourseInquiryForm"));
 const JuniorProgramForm = lazy(() =>
   import("@/components/JuniorProgramForm").then((m) => ({
     default: m.JuniorProgramForm,
-  }))
+  })),
 );
 const VideoDemo = lazy(() => import("@/components/VideoDemo"));
 
@@ -54,26 +54,17 @@ const Index = () => {
     {
       icon: Code,
       title: t("features.handsOn", "Hands-on Projects"),
-      description: t(
-        "features.handsOnDesc",
-        "Build real embedded systems projects from day one"
-      ),
+      description: t("features.handsOnDesc", "Build real embedded systems projects from day one"),
     },
     {
       icon: Cpu,
       title: t("features.industryTools", "Industry-Standard Tools"),
-      description: t(
-        "features.industryToolsDesc",
-        "Learn with the same tools used by professionals"
-      ),
+      description: t("features.industryToolsDesc", "Learn with the same tools used by professionals"),
     },
     {
       icon: Wifi,
       title: t("features.expertInstructors", "Expert Instructors"),
-      description: t(
-        "features.expertInstructorsDesc",
-        "Learn from experienced embedded systems engineers"
-      ),
+      description: t("features.expertInstructorsDesc", "Learn from experienced embedded systems engineers"),
     },
   ];
 
@@ -85,18 +76,9 @@ const Index = () => {
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 opacity-20">
-          <svg
-            className="w-full h-full"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
-              <pattern
-                id="grid"
-                width="4"
-                height="4"
-                patternUnits="userSpaceOnUse"
-              >
+              <pattern id="grid" width="4" height="4" patternUnits="userSpaceOnUse">
                 <path
                   d="M 4 0 L 0 0 0 4"
                   fill="none"
@@ -130,7 +112,7 @@ const Index = () => {
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                   {t(
                     "hero.description",
-                    "Join thousands of students mastering cutting-edge technology through hands-on courses in IoT, embedded systems, and more."
+                    "Join thousands of students mastering cutting-edge technology through hands-on courses in IoT, embedded systems, and more.",
                   )}
                 </p>
               </div>
@@ -162,27 +144,17 @@ const Index = () => {
                 <div className="flex items-center space-x-2">
                   <Star className="w-5 h-5 text-yellow-400" />
                   <span className="text-white font-semibold">4.9/5</span>
-                  <span className="text-gray-400">
-                    {t("hero.satisfaction", "Satisfaction Rate")}
-                  </span>
+                  <span className="text-gray-400">{t("hero.satisfaction", "Satisfaction Rate")}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users className="w-5 h-5 text-blue-400" />
-                  {featuredCourses.reduce(
-                    (acc, course) => acc + course.students,
-                    0
-                  )}
-                  +{" "}
-                  <span className="text-gray-400">
-                    {t("hero.activeStudents", "Active Students")}
-                  </span>
+                  {featuredCourses.reduce((acc, course) => acc + course.students, 0)}+{" "}
+                  <span className="text-gray-400">{t("hero.activeStudents", "Active Students")}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Trophy className="w-5 h-5 text-purple-400" />
                   <span className="text-white font-semibold">25+</span>
-                  <span className="text-gray-400">
-                    {t("hero.expertCourses", "Expert Courses")}
-                  </span>
+                  <span className="text-gray-400">{t("hero.expertCourses", "Expert Courses")}</span>
                 </div>
               </div>
             </div>
@@ -199,18 +171,14 @@ const Index = () => {
                         <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                       </div>
-                      <span className="text-gray-400 text-sm font-mono ml-4">
-                        embedded-project.ino
-                      </span>
+                      <span className="text-gray-400 text-sm font-mono ml-4">embedded-project.ino</span>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-4">
                   <div className="bg-slate-950 rounded-lg p-4 font-mono text-sm overflow-hidden">
                     <div className="space-y-2">
-                      <div className="text-gray-500">
-                        // IoT Temperature Monitoring System
-                      </div>
+                      <div className="text-gray-500">// IoT Temperature Monitoring System</div>
                       <div>
                         <span className="text-purple-400">#include</span>{" "}
                         <span className="text-green-400">&lt;WiFi.h&gt;</span>
@@ -221,8 +189,7 @@ const Index = () => {
                       </div>
                       <div className="text-gray-600">// ...</div>
                       <div className="pt-2">
-                        <span className="text-blue-400">void</span>{" "}
-                        <span className="text-yellow-400">setup</span>
+                        <span className="text-blue-400">void</span> <span className="text-yellow-400">setup</span>
                         <span className="text-white">() {"{"}</span>
                       </div>
                       <div className="pl-4">
@@ -240,9 +207,7 @@ const Index = () => {
                       <div className="text-white">{"}"}</div>
                       <div className="pt-2 flex items-center">
                         <div className="w-2 h-4 bg-white animate-pulse mr-1"></div>
-                        <span className="text-gray-500">
-                          Ready to compile...
-                        </span>
+                        <span className="text-gray-500">Ready to compile...</span>
                       </div>
                     </div>
                   </div>
@@ -254,24 +219,16 @@ const Index = () => {
                 <Card className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/20 backdrop-blur-sm hover-scale">
                   <CardContent className="p-4 text-center">
                     <Cpu className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                    <h3 className="text-slate-900 font-semibold text-sm">
-                      {t("index.embeddedC", "Embedded C")}
-                    </h3>
-                    <p className="text-gray-400 text-xs">
-                      {t("index.lowLevel", "Low-level programming")}
-                    </p>
+                    <h3 className="text-slate-900 font-semibold text-sm">{t("index.embeddedC", "Embedded C")}</h3>
+                    <p className="text-gray-400 text-xs">{t("index.lowLevel", "Low-level programming")}</p>
                   </CardContent>
                 </Card>
 
                 <Card className="bg-gradient-to-br from-green-500/10 to-blue-500/10 border-green-500/20 backdrop-blur-sm hover-scale">
                   <CardContent className="p-4 text-center">
                     <Wifi className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                    <h3 className="text-slate-900 font-semibold text-sm">
-                      {t("index.iotSystems", "IoT Systems")}
-                    </h3>
-                    <p className="text-gray-400 text-xs">
-                      {t("index.connectedDevices", "Connected devices")}
-                    </p>
+                    <h3 className="text-slate-900 font-semibold text-sm">{t("index.iotSystems", "IoT Systems")}</h3>
+                    <p className="text-gray-400 text-xs">{t("index.connectedDevices", "Connected devices")}</p>
                   </CardContent>
                 </Card>
               </div>
@@ -299,10 +256,7 @@ const Index = () => {
               {t("courses.featured", "Featured Courses")}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              {t(
-                "courses.description",
-                "Discover our most popular courses designed by industry experts"
-              )}
+              {t("courses.description", "Discover our most popular courses designed by industry experts")}
             </p>
           </div>
 
@@ -310,10 +264,7 @@ const Index = () => {
             {coursesLoading
               ? // Loading skeleton
                 Array.from({ length: 3 }).map((_, idx) => (
-                  <Card
-                    key={idx}
-                    className="bg-slate-800/50 border-slate-700 backdrop-blur-sm"
-                  >
+                  <Card key={idx} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
                     <div className="relative overflow-hidden">
                       <div className="w-full h-48 bg-slate-700 animate-pulse"></div>
                     </div>
@@ -351,35 +302,24 @@ const Index = () => {
                           course.level === "Beginner"
                             ? "bg-green-500/20 text-green-400 border-green-500/30"
                             : course.level === "Intermediate"
-                            ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-                            : "bg-red-500/20 text-red-400 border-red-500/30"
+                              ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                              : "bg-red-500/20 text-red-400 border-red-500/30"
                         }`}
                       >
                         {t(
-                          `level.${
-                            course.level.toLowerCase() as
-                              | "beginner"
-                              | "intermediate"
-                              | "advanced"
-                          }`,
-                          course.level
+                          `level.${course.level.toLowerCase() as "beginner" | "intermediate" | "advanced"}`,
+                          course.level,
                         )}
                       </Badge>
                     </div>
 
                     <CardContent className="p-6">
-                      <Link
-                        key={course.id}
-                        className="block"
-                        to={`/courses/${course.id}`}
-                      >
+                      <Link key={course.id} className="block" to={`/courses/${course.id}`}>
                         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                           {course.title}
                         </h3>
                       </Link>
-                      <p className="text-gray-400 mb-4 line-clamp-2">
-                        {course.subtitle}
-                      </p>
+                      <p className="text-gray-400 mb-4 line-clamp-2">{course.subtitle}</p>
 
                       <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                         <div className="flex items-center space-x-4">
@@ -397,9 +337,7 @@ const Index = () => {
 
                       <div className="flex items-center justify-between">
                         <div>
-                          <span className="text-2xl font-bold text-white">
-                            {course.price} mdl
-                          </span>
+                          <span className="text-2xl font-bold text-white">{course.price} mdl</span>
                         </div>
                         <Button
                           className="bg-blue-600 hover:bg-blue-700 text-white"
@@ -419,10 +357,7 @@ const Index = () => {
               size="lg"
               className="border-slate-600 text-slate-900 hover:bg-gray-100 hover:scale-105"
             >
-              <Link
-                to={langPath("/courses", language)}
-                className="flex items-center"
-              >
+              <Link to={langPath("/courses", language)} className="flex items-center">
                 {t("courses.viewAll", "View All Courses")}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
@@ -445,7 +380,7 @@ const Index = () => {
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
               {t(
                 "index.careerPathsDesc",
-                "Comprehensive learning tracks designed for specific engineering roles. Master multiple technologies in focused career paths."
+                "Comprehensive learning tracks designed for specific engineering roles. Master multiple technologies in focused career paths.",
               )}
             </p>
           </div>
@@ -454,18 +389,11 @@ const Index = () => {
             {packsLoading ? (
               <div className="col-span-3 text-center py-12">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                <p className="text-gray-300">
-                  {t("common.loading") || "Loading packs..."}
-                </p>
+                <p className="text-gray-300">{t("common.loading") || "Loading packs..."}</p>
               </div>
             ) : (
               packs.map((pack, index) => (
-                <ProfessionalPackCard
-                  key={pack.id}
-                  {...pack}
-                  index={index}
-                  onEnroll={handleEnrollClick}
-                />
+                <ProfessionalPackCard key={pack.id} {...pack} index={index} onEnroll={handleEnrollClick} />
               ))
             )}
           </div>
@@ -488,7 +416,7 @@ const Index = () => {
               <p className="text-lg text-gray-400 mb-8 leading-relaxed">
                 {t(
                   "features.description",
-                  "Master embedded systems with our comprehensive, hands-on curriculum designed by industry professionals. From basic concepts to advanced real-world applications."
+                  "Master embedded systems with our comprehensive, hands-on curriculum designed by industry professionals. From basic concepts to advanced real-world applications.",
                 )}
               </p>
 
@@ -516,16 +444,14 @@ const Index = () => {
                     <div className="w-12 h-12 bg-green-500/30 border border-green-500/50 rounded-lg flex items-center justify-center shadow-lg shadow-green-500/20">
                       <CheckCircle className="w-6 h-6 text-green-300" />
                     </div>
-                    <span className="text-lg font-bold">
-                      {t("features.certification", "Industry Certification")}
-                    </span>
+                    <span className="text-lg font-bold">{t("features.certification", "Industry Certification")}</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-200 text-base leading-relaxed mb-4">
                     {t(
                       "features.certificationDesc",
-                      "Get recognized certificates that employers value. All courses align with industry standards and best practices."
+                      "Get recognized certificates that employers value. All courses align with industry standards and best practices.",
                     )}
                   </p>
                   <div className="mt-4 flex items-center space-x-3 p-3 bg-green-500/10 rounded-lg border border-green-500/20">
@@ -535,8 +461,7 @@ const Index = () => {
                       <div className="w-8 h-8 bg-green-500 rounded-full border-2 border-slate-700 shadow-md"></div>
                     </div>
                     <span className="text-sm text-green-300 font-semibold">
-                      50+{" "}
-                      {t("index.certifiedThisMonth", "certified this month")}
+                      50+ {t("index.certifiedThisMonth", "certified this month")}
                     </span>
                   </div>
                 </CardContent>
@@ -548,22 +473,18 @@ const Index = () => {
                     <div className="w-12 h-12 bg-blue-500/30 border border-blue-500/50 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
                       <Users className="w-6 h-6 text-blue-300" />
                     </div>
-                    <span className="text-lg font-bold">
-                      {t("index.activeCommunity", "Active Community")}
-                    </span>
+                    <span className="text-lg font-bold">{t("index.activeCommunity", "Active Community")}</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-200 text-base leading-relaxed mb-4">
                     {t(
                       "index.communityDesc",
-                      "Join a vibrant community of developers, mentors, and industry experts. Get help, share projects, and network."
+                      "Join a vibrant community of developers, mentors, and industry experts. Get help, share projects, and network.",
                     )}
                   </p>
                   <div className="mt-4 flex items-center justify-between p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
-                    <span className="text-sm text-blue-300 font-semibold">
-                      {t("index.onlineNow", "Online now:")}
-                    </span>
+                    <span className="text-sm text-blue-300 font-semibold">{t("index.onlineNow", "Online now:")}</span>
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                       <span className="text-sm text-green-300 font-mono font-bold">
@@ -597,7 +518,7 @@ const Index = () => {
               <p className="text-lg text-gray-400 mb-8 leading-relaxed">
                 {t(
                   "index.juniorDescription",
-                  "Designed for young innovators aged 12-18 years old. Our weekend program introduces teenagers to embedded systems, robotics, and space technology through hands-on projects and interactive learning experiences."
+                  "Designed for young innovators aged 12-18 years old. Our weekend program introduces teenagers to embedded systems, robotics, and space technology through hands-on projects and interactive learning experiences.",
                 )}
               </p>
 
@@ -613,7 +534,7 @@ const Index = () => {
                     <p className="text-gray-400">
                       {t(
                         "index.interactiveLearningDesc",
-                        "Learn programming and electronics through games, robots, and real projects"
+                        "Learn programming and electronics through games, robots, and real projects",
                       )}
                     </p>
                   </div>
@@ -630,7 +551,7 @@ const Index = () => {
                     <p className="text-gray-400">
                       {t(
                         "index.futureSkillsDesc",
-                        "Develop problem-solving, creativity, and technical skills for tomorrow's careers"
+                        "Develop problem-solving, creativity, and technical skills for tomorrow's careers",
                       )}
                     </p>
                   </div>
@@ -647,7 +568,7 @@ const Index = () => {
                     <p className="text-gray-400">
                       {t(
                         "index.weekendScheduleDesc",
-                        "Flexible weekend classes that don't interfere with school commitments"
+                        "Flexible weekend classes that don't interfere with school commitments",
                       )}
                     </p>
                   </div>
@@ -657,25 +578,18 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Suspense fallback={null}>
                   <JuniorProgramForm>
-                    <Button
-                      size="lg"
-                      className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6"
-                    >
+                    <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-8 py-6">
                       <Zap className="mr-2 w-5 h-5" />
                       {t("index.joinJuniorProgram", "Join Junior Program")}
                     </Button>
                   </JuniorProgramForm>
-                  ы
                 </Suspense>
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-slate-600 text-slate-900 hover:bg-slate-800 hover:bg-gray-100 px-8 py-6 hover:scale-105"
                 >
-                  <Link
-                    to={langPath("/junior", language)}
-                    className="flex items-center"
-                  >
+                  <Link to={langPath("/junior", language)} className="flex items-center">
                     {t("index.learnMoreJunior", "Learn More About Junior Program")}
                   </Link>
                 </Button>
@@ -705,18 +619,9 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <svg
-            className="w-full h-full"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
-              <pattern
-                id="cta-grid"
-                width="8"
-                height="8"
-                patternUnits="userSpaceOnUse"
-              >
+              <pattern id="cta-grid" width="8" height="8" patternUnits="userSpaceOnUse">
                 <path
                   d="M 8 0 L 0 0 0 8"
                   fill="none"
@@ -742,7 +647,7 @@ const Index = () => {
           <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
             {t(
               "index.ctaDescription",
-              "Join thousands of developers mastering embedded systems. Start with our free course preview and see why professionals choose Embedded School."
+              "Join thousands of developers mastering embedded systems. Start with our free course preview and see why professionals choose Embedded School.",
             )}
           </p>
 
@@ -761,11 +666,7 @@ const Index = () => {
               className="border-slate-600 text-slate-900 hover:bg-gray-100 hover:border-slate-500 px-8 py-6 text-lg hover:scale-105"
               asChild
             >
-              <a
-                href="https://t.me/embeddedschool"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://t.me/embeddedschool" target="_blank" rel="noopener noreferrer">
                 <Users className="mr-2 w-5 h-5" />
                 Join Community
               </a>
