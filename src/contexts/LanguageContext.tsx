@@ -805,7 +805,6 @@ const translations: Record<Language, Record<string, string>> = {
       "Flexible weekend classes that don't interfere with school commitments",
     "index.joinJuniorProgram": "Join Junior Program",
     "index.learnMore": "Learn More",
-    "index.learnMoreJunior": "Learn More About Junior Program",
 
     // CTA Section
     "index.startJourney": "Start Your Journey",
@@ -1388,7 +1387,6 @@ const translations: Record<Language, Record<string, string>> = {
       "Cursuri flexibile de weekend care nu interferează cu angajamentele școlare",
     "index.joinJuniorProgram": "Alătură-te Programului Junior",
     "index.learnMore": "Află Mai Mult",
-    "index.learnMoreJunior": "Află Mai Mult Despre Programul Junior",
 
     // CTA Section
     "index.startJourney": "Începe Călătoria",
@@ -2350,7 +2348,6 @@ const translations: Record<Language, Record<string, string>> = {
       "Гибкие занятия по выходным, которые не мешают школьным обязательствам",
     "index.joinJuniorProgram": "Присоединиться к Юниорской Программе",
     "index.learnMore": "Узнать Больше",
-    "index.learnMoreJunior": "Узнать Больше О Юниорской Программе",
 
     // CTA Section
     "index.startJourney": "Начать Путешествие",
