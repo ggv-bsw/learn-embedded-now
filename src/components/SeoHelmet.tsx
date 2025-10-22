@@ -9,7 +9,7 @@ interface SeoHelmetProps {
   description?: string;
   // canonical?: string;
   ogUrl?: string;
-  image?: string;
+  // image?: string;
 }
 
 function ensureSlash(p: string) {
@@ -25,7 +25,7 @@ export default function SeoHelmet({
   description,
   // canonical,
   ogUrl,
-  image,
+  // image,
 }: SeoHelmetProps) {
   const { pathname } = useLocation();
   const site = "https://embeddedschool.md";
@@ -42,7 +42,7 @@ export default function SeoHelmet({
   const finalTitle = title || L.title;
   const finalDesc = description || L.description;
   const finalOgUrl = ogUrl || canonicalHref;
-  const finalImage = image || L.image;
+  // const finalImage = image || L.image;
 
   const websiteJsonLd = {
     "@context": "https://schema.org",
@@ -88,15 +88,15 @@ export default function SeoHelmet({
       <meta property="og:description" content={finalDesc} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={finalOgUrl} />
-      <meta property="og:image" content={finalImage} />
+      {/* <meta property="og:image" content={finalImage} /> */}
       <meta property="og:locale" content={L.ogLocale} />
       {lang !== "en" && <meta property="og:locale:alternate" content="en_US" />}
       {lang !== "ro" && <meta property="og:locale:alternate" content="ro_RO" />}
       {lang !== "ru" && <meta property="og:locale:alternate" content="ru_RU" />}
 
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content={L.twitterSite} />
-      <meta name="twitter:image" content={finalImage} />
+      {/* <meta name="twitter:card" content="summary_large_image" /> */}
+      {/* <meta name="twitter:site" content={L.twitterSite} /> */}
+      {/* <meta name="twitter:image" content={finalImage} /> */}
 
       <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
       {breadcrumbJsonLd && (

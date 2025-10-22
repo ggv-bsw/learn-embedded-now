@@ -7,8 +7,8 @@ export const SEO_BY_LANG = {
     // canonical: "https://embeddedschool.md/",
     ogLocale: "en_US",
     url: "https://embeddedschool.md/",
-    twitterSite: "@embeddedschool",
-    image: "https://embeddedschool.md/og/embedded-school-1200x630.jpg",
+    // twitterSite: "@embeddedschool",
+    // image: "https://embeddedschool.md/og/embedded-school-1200x630.jpg",
   },
   ro: {
     title: "Embedded School - Cursuri IT în Sisteme Embedded și IoT",
@@ -17,8 +17,8 @@ export const SEO_BY_LANG = {
     // canonical: "https://embeddedschool.md/ro/",
     ogLocale: "ro_RO",
     url: "https://embeddedschool.md/ro/",
-    twitterSite: "@embeddedschool",
-    image: "https://embeddedschool.md/og/embedded-school-1200x630.jpg",
+    // twitterSite: "@embeddedschool",
+    // image: "https://embeddedschool.md/og/embedded-school-1200x630.jpg",
   },
   ru: {
     title: "Embedded School — курсы по Embedded-системам и IoT",
@@ -27,8 +27,8 @@ export const SEO_BY_LANG = {
     // canonical: "https://embeddedschool.md/ru/",
     ogLocale: "ru_RU",
     url: "https://embeddedschool.md/ru/",
-    twitterSite: "@embeddedschool",
-    image: "https://embeddedschool.md/og/embedded-school-1200x630.jpg",
+    // twitterSite: "@embeddedschool",
+    // image: "https://embeddedschool.md/og/embedded-school-1200x630.jpg",
   },
 } as const;
 
