@@ -26,10 +26,10 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.getStarted": "Get Started",
 
     // Hero Section
-    "hero.title": "Engineers Factory - Embedded School",
-    "hero.subtitle": "Build Your Future",
+    "hero.title": "Embedded Systems & IoT Courses — Embedded School",
+    "hero.subtitle": "Build Your Future in Tech",
     "hero.description":
-      "Join thousands of students mastering cutting-edge technology through hands-on courses in IoT, embedded systems, and more.",
+      "Master embedded systems and IoT with hands-on courses in Chișinău and online. Learn from industry experts and start your tech career in Moldova & Romania.",
     "hero.startLearning": "Start Learning Today",
     "hero.watchDemo": "Watch Demo",
     "hero.satisfaction": "Satisfaction Rate",
@@ -288,10 +288,10 @@ const translations: Record<Language, Record<string, string>> = {
     "docs.duration.minRead": "min read",
 
     // Trainers Page
-    "trainers.title": "Meet Our",
-    "trainers.titleHighlight": "Expert Trainers",
+    "trainers.title": "Embedded Systems",
+    "trainers.titleHighlight": "Instructors & IoT Mentors",
     "trainers.description":
-      "Learn from industry professionals with years of real-world experience in embedded systems, IoT development, and cutting-edge technology solutions.",
+      "Learn from embedded systems engineers and IoT mentors with real industry experience. Get one-to-one guidance and hands-on feedback.",
     "trainers.studentsTaught": "Students Taught",
     "trainers.averageRating": "Average Rating",
     "trainers.hoursExperience": "Hours Experience",
@@ -371,8 +371,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hardware Page
     "hardware.hero.badge": "Hardware Store",
-    "hardware.hero.title": "Premium Development",
-    "hardware.hero.subtitle": "Hardware & Boards",
+    "hardware.hero.title": "Embedded Development Boards",
+    "hardware.hero.subtitle": "Microcontrollers & Professional Hardware",
     "hardware.hero.description":
       "Professional-grade development boards and microcontrollers for your embedded projects.",
     "hardware.hero.shopNow": "Shop Now",
@@ -506,7 +506,7 @@ const translations: Record<Language, Record<string, string>> = {
     "junior.parentRating": "Parent Rating",
     "junior.whyChoose": "Why Choose Our Junior Program?",
     "junior.whyDescription":
-      "We transform young minds into tech innovators through project-based learning, industry mentorship, and cutting-edge technology exposure.",
+      "Project-based STEM learning in robotics, AI, space tech and IoT. Weekend school in Chișinău for teenagers 12–18.",
     "junior.spacetech": "Space Technology",
     "junior.spacetechDesc":
       "Learn about satellites, rockets, and space exploration systems",
@@ -845,10 +845,10 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.getStarted": "Începe Acum",
 
     // Hero Section
-    "hero.title": "Fabrica de Ingineri - Embedded School",
-    "hero.subtitle": "Construiește-ți Viitorul",
+    "hero.title": "Cursuri de sisteme embedded și IoT — Embedded School",
+    "hero.subtitle": "Construiește-ți viitorul în IT",
     "hero.description":
-      "Alătură-te miilor de studenți care stăpânesc tehnologia de vârf prin cursuri practice în IoT, sisteme înglobate și multe altele.",
+      "Stăpânește sisteme embedded și IoT cu cursuri practice în Chișinău și online. Învață de la experți din industrie și începe o carieră în Moldova și România.",
     "hero.startLearning": "Începe să Înveți Astăzi",
     "hero.watchDemo": "Vizionează Demo",
     "hero.satisfaction": "Rata de Satisfacție",
@@ -1110,10 +1110,10 @@ const translations: Record<Language, Record<string, string>> = {
     "docs.duration.minRead": "min citire",
 
     // Trainers Page
-    "trainers.title": "Cunoaște",
-    "trainers.titleHighlight": "Instructorii Noștri Experți",
+    "trainers.title": "Sisteme Embedded",
+    "trainers.titleHighlight": "Instructori și mentori IoT",
     "trainers.description":
-      "Învață de la profesioniști din industrie cu ani de experiență reală în sisteme înglobate, dezvoltare IoT și soluții tehnologice de ultimă oră.",
+      "Învață de la ingineri în sisteme embedded și mentori IoT cu experiență reală în industrie. Primește îndrumare unu-la-unu și feedback practic.",
     "trainers.studentsTaught": "Studenți Predați",
     "trainers.averageRating": "Rating Mediu",
     "trainers.hoursExperience": "Ore de Experiență",
@@ -1193,8 +1193,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hardware Page
     "hardware.hero.badge": "Magazin Hardware",
-    "hardware.hero.title": "Hardware de Dezvoltare",
-    "hardware.hero.subtitle": "Premium & Plăci",
+    "hardware.hero.title": "Plăci de dezvoltare embedded",
+    "hardware.hero.subtitle": "Microcontrolere și hardware profesional",
     "hardware.hero.description":
       "Plăci de dezvoltare și microcontrolere profesionale pentru proiectele tale embedded.",
     "hardware.hero.shopNow": "Cumpără Acum",
@@ -1357,7 +1357,7 @@ const translations: Record<Language, Record<string, string>> = {
     "junior.parentRating": "Rating Părinți",
     "junior.whyChoose": "De Ce Să Alegi Programul Nostru Junior?",
     "junior.whyDescription":
-      "Transformăm minți tinere în inovatori tech prin învățare bazată pe proiecte, mentorat din industrie și expunere la tehnologie de ultimă oră.",
+      "Învățare STEM bazată pe proiecte în robotică, AI, tehnologie spațială și IoT. Școală de weekend în Chișinău pentru adolescenți 12–18 ani.",
     "junior.spacetech": "Tehnologie Spațială",
     "junior.spacetechDesc":
       "Învață despre sateliți, rachete și sisteme de explorare spațială",
@@ -1697,10 +1697,10 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.getStarted": "Начать",
 
     // Hero Section
-    "hero.title": "Фабрика Инженеров - Embedded School",
-    "hero.subtitle": "Построй Свое Будущее",
+    "hero.title": "Курсы по Embedded-системам и IoT — Embedded School",
+    "hero.subtitle": "Постройте карьеру в IT",
     "hero.description":
-      "Присоединяйтесь к тысячам студентов, осваивающих передовые технологии через практические курсы по IoT, встраиваемым системам и многому другому.",
+      "Освойте embedded-системы и IoT на практических курсах в Кишинёве и онлайн. Учитесь у экспертов и начинайте карьеру в Молдове и Румынии.",
     "hero.startLearning": "Начать Обучение Сегодня",
     "hero.watchDemo": "Смотреть Демо",
     "hero.satisfaction": "Уровень Удовлетворенности",
@@ -1708,10 +1708,10 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.expertCourses": "Экспертные Курсы",
 
     // Featured Courses
-    "courses.featured": "Рекомендуемые Курсы",
+    "courses.featured": "Курсы по Embedded-системам и IoT",
     "courses.mostPopular": "Самые Популярные Курсы",
     "courses.description":
-      "Откройте для себя наши самые популярные курсы, созданные отраслевыми экспертами",
+      "Найдите курсы по embedded-системам, IoT и программированию с практикой в Кишинёве и онлайн. Учитесь у индустриальных экспертов и создавайте реальные проекты.",
     "courses.enrollNow": "Записаться Сейчас",
     "courses.viewAll": "Посмотреть Все Курсы",
     "courses.allAvailable": "Все Доступные Курсы",
@@ -1967,10 +1967,10 @@ const translations: Record<Language, Record<string, string>> = {
     "docs.duration.minRead": "мин чтения",
 
     // Trainers Page
-    "trainers.title": "Познакомьтесь с",
-    "trainers.titleHighlight": "Нашими Экспертными Инструкторами",
+    "trainers.title": "Преподаватели по Embedded",
+    "trainers.titleHighlight": "и IoT-наставники",
     "trainers.description":
-      "Учитесь у профессионалов индустрии с многолетним реальным опытом во встраиваемых системах, разработке IoT и передовых технологических решениях.",
+      "Обучайтесь у инженеров embedded-систем и IoT-наставников с реальным опытом. Персональные консультации и практическая обратная связь.",
     "trainers.studentsTaught": "Обученных Студентов",
     "trainers.averageRating": "Средний Рейтинг",
     "trainers.hoursExperience": "Часов Опыта",
@@ -2050,8 +2050,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hardware Page
     "hardware.hero.badge": "Магазин Оборудования",
-    "hardware.hero.title": "Премиальное Оборудование",
-    "hardware.hero.subtitle": "Для Разработки",
+    "hardware.hero.title": "Платы для embedded-разработки",
+    "hardware.hero.subtitle": "Микроконтроллеры и профессиональное оборудование",
     "hardware.hero.description":
       "Профессиональные платы для разработки и микроконтроллеры для ваших встраиваемых проектов.",
     "hardware.hero.shopNow": "Купить Сейчас",
@@ -2319,7 +2319,7 @@ const translations: Record<Language, Record<string, string>> = {
     "junior.parentRating": "Рейтинг Родителей",
     "junior.whyChoose": "Почему Выбрать Нашу Юниорскую Программу?",
     "junior.whyDescription":
-      "Мы превращаем молодые умы в технологических инноваторов через проектное обучение, наставничество из индустрии и знакомство с передовыми технологиями.",
+      "Проектное STEM-обучение в робототехнике, ИИ, космических технологиях и IoT. Школа выходного дня в Кишинёве для подростков 12–18 лет.",
     "junior.spacetech": "Космические Технологии",
     "junior.spacetechDesc":
       "Узнайте о спутниках, ракетах и системах исследования космоса",
