@@ -6,9 +6,7 @@ interface SeoHelmetProps {
   lang: SiteLang;
   title?: string;
   description?: string;
-  // canonical?: string;
   ogUrl?: string;
-  // image?: string;
 }
 
 function ensureSlash(p: string) {
@@ -22,9 +20,8 @@ export default function SeoHelmet({
   lang,
   title,
   description,
-  // canonical,
   ogUrl,
-}: // image,
+}:
 SeoHelmetProps) {
   const { pathname } = useLocation();
   const site = "https://embeddedschool.md";
@@ -42,11 +39,9 @@ SeoHelmetProps) {
 
   const tail = ensureSlash(stripLeadingLang(pathname || "/"));
   const localePrefix = lang === "en" ? "" : `/${lang}`;
-  // const canonicalHref = ensureSlash(`${site}${localePrefix}${tail}`);
   const tailNoLang = normalizePath(
     pathname.replace(/^\/(en|ro|ru)(?=\/|$)/, "") || "/"
   );
-  // const altEn = `${site}${ensureSlash(stripLeadingLang(pathname || "/"))}`; // x-default + en
   const altEn = `${site}${tailNoLang}`;
   const altRo = `${site}/ro${tailNoLang}`;
   const altRu = `${site}/ru${tailNoLang}`;
@@ -54,7 +49,6 @@ SeoHelmetProps) {
   const finalTitle = title || L.title;
   const finalDesc = description || L.description;
   const finalOgUrl = ogUrl || canonicalHref;
-  // const finalImage = image || L.image;
 
   const websiteJsonLd = {
     "@context": "https://schema.org",
@@ -104,15 +98,10 @@ SeoHelmetProps) {
       <meta property="og:description" content={finalDesc} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={finalOgUrl} />
-      {/* <meta property="og:image" content={finalImage} /> */}
       <meta property="og:locale" content={L.ogLocale} />
       {lang !== "en" && <meta property="og:locale:alternate" content="en_US" />}
       {lang !== "ro" && <meta property="og:locale:alternate" content="ro_RO" />}
       {lang !== "ru" && <meta property="og:locale:alternate" content="ru_RU" />}
-
-      {/* <meta name="twitter:card" content="summary_large_image" /> */}
-      {/* <meta name="twitter:site" content={L.twitterSite} /> */}
-      {/* <meta name="twitter:image" content={finalImage} /> */}
 
       <script type="application/ld+json">
         {JSON.stringify(websiteJsonLd)}

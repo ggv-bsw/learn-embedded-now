@@ -35,19 +35,25 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
 
-    <meta property="og:image" content="og/embedded-school-1200x630.png" />
-    <meta name="twitter:image" content="og/embedded-school-1200x630.png" />
+    <meta
+      property="og:image"
+      content="https://embeddedschool.md/og/embedded-school-1200x630.png"
+    />
+    <meta
+      name="twitter:image"
+      content="https://embeddedschool.md/og/embedded-school-1200x630.png"
+    />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Embedded School" />
+    <!-- <meta property="og:type" content="website" /> -->
+    <!-- <meta property="og:title" content="Embedded School" /> -->
     <meta name="twitter:title" content="Embedded School" />
-    <meta property="og:description" content="Embedded School website" />
+    <!-- <meta property="og:description" content="Embedded School website" /> -->
     <meta name="twitter:description" content="Embedded School website" />
   </head>
   <body>
     <div id="root"></div>
-    <script>
+    <!-- <script>
       (function () {
         var path = location.pathname || "/";
         var lang = path.startsWith("/ro")
@@ -87,7 +93,7 @@
         setMeta("og:title", titleMap[lang], true);
         setMeta("og:description", descMap[lang], true);
       })();
-    </script>
+    </script> -->
 
     <script type="module" src="/src/main.tsx"></script>
   </body>
