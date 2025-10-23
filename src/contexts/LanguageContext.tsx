@@ -688,7 +688,7 @@ const translations: Record<Language, Record<string, string>> = {
     "coursesPage.masterEmbedded": "Master Embedded",
     "coursesPage.systemsIot": "Systems & IoT",
     "coursesPage.discover":
-      "Discover comprehensive courses in embedded systems, IoT, and programming. Start your journey from beginner to professional level.",
+      "Explore comprehensive IT courses at Embedded School. Master embedded systems, IoT, and programming through hands-on training. Start your journey from beginner to professional level.",
     "coursesPage.coursesLabel": "Courses",
     "coursesPage.studentsLabel": "Students",
     "coursesPage.avgRating": "Avg Rating",
@@ -1456,7 +1456,7 @@ const translations: Record<Language, Record<string, string>> = {
     "coursesPage.masterEmbedded": "Stăpânește Sistemele",
     "coursesPage.systemsIot": "Înglobate & IoT",
     "coursesPage.discover":
-      "Descoperă cursuri complete de sisteme înglobate, IoT și programare. Începe călătoria ta de la nivel începător la nivel profesional.",
+      "Explorează cursuri IT cuprinzătoare la Embedded School. Stăpânește sisteme embedded, IoT și programare prin instruire practică. Începe-ți călătoria de la nivel începător la profesional.",
     "coursesPage.coursesLabel": "Cursuri",
     "coursesPage.studentsLabel": "Studenți",
     "coursesPage.avgRating": "Rating Mediu",
@@ -2206,7 +2206,7 @@ const translations: Record<Language, Record<string, string>> = {
     "coursesPage.masterEmbedded": "Освойте Встраиваемые",
     "coursesPage.systemsIot": "Системы и IoT",
     "coursesPage.discover":
-      "Откройте для себя полные курсы по встраиваемым системам, IoT и программированию. Начните свой путь от новичка до профессионального уровня.",
+      "Изучайте комплексные IT-курсы в Embedded School. Освойте embedded-системы, IoT и программирование через практическое обучение. Начните свой путь от новичка до профессионального уровня.",
     "coursesPage.coursesLabel": "Курсы",
     "coursesPage.studentsLabel": "Студенты",
     "coursesPage.avgRating": "Средний Рейтинг",

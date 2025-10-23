@@ -27,19 +27,19 @@ const PAGE_META: Record<
 > = {
   courses: {
     en: {
-      title: "Embedded & IoT Courses — Catalog | Embedded School",
+      title: "Embedded Systems & IoT Courses — IT Training | Embedded School",
       description:
-        "Browse embedded systems, IoT and programming courses. Hands-on, mentor-led. Chisinau & online.",
+        "Discover IT courses in embedded systems, IoT and programming at Embedded School. Learn from expert instructors with hands-on training in Chisinau & online.",
     },
     ro: {
-      title: "Cursuri Embedded & IoT — Catalog | Embedded School",
+      title: "Cursuri IT Sisteme Embedded & IoT — Catalog | Embedded School",
       description:
-        "Vezi cursurile Embedded, IoT și programare. Practic, cu mentori. Chișinău & online.",
+        "Descoperă cursuri IT în sisteme embedded, IoT și programare la Embedded School. Învață cu mentori experți, practică hands-on. Chișinău & online.",
     },
     ru: {
-      title: "Курсы по Embedded и IoT — каталог | Embedded School",
+      title: "IT-курсы по Embedded-системам и IoT — каталог | Embedded School",
       description:
-        "Смотрите каталог курсов по Embedded, IoT и программированию. Практика, наставники. Кишинёв и онлайн.",
+        "Найдите IT-курсы по embedded-системам, IoT и программированию в Embedded School. Обучение с практикой под руководством экспертов. Кишинёв и онлайн.",
     },
   },
   contact: {
