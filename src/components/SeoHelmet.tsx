@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import { SEO_BY_LANG, type SiteLang } from "@/seo";
@@ -25,19 +24,32 @@ export default function SeoHelmet({
   description,
   // canonical,
   ogUrl,
-  // image,
-}: SeoHelmetProps) {
+}: // image,
+SeoHelmetProps) {
   const { pathname } = useLocation();
   const site = "https://embeddedschool.md";
   const L = SEO_BY_LANG[lang] ?? SEO_BY_LANG.en;
 
+  function normalizePath(p: string) {
+    if (!p) return "/";
+    let x = p.replace(/\/{2,}/g, "/");
+    if (!x.endsWith("/")) x += "/";
+    return x;
+  }
+
+  const normalizedPath = normalizePath(pathname || "/");
+  const canonicalHref = `${site}${normalizedPath}`;
+
   const tail = ensureSlash(stripLeadingLang(pathname || "/"));
   const localePrefix = lang === "en" ? "" : `/${lang}`;
-  const canonicalHref = ensureSlash(`${site}${localePrefix}${tail}`);
-
-  const altEn = `${site}${ensureSlash(stripLeadingLang(pathname || "/"))}`; // x-default + en
-  const altRo = `${site}/ro${tail}`;
-  const altRu = `${site}/ru${tail}`;
+  // const canonicalHref = ensureSlash(`${site}${localePrefix}${tail}`);
+  const tailNoLang = normalizePath(
+    pathname.replace(/^\/(en|ro|ru)(?=\/|$)/, "") || "/"
+  );
+  // const altEn = `${site}${ensureSlash(stripLeadingLang(pathname || "/"))}`; // x-default + en
+  const altEn = `${site}${tailNoLang}`;
+  const altRo = `${site}/ro${tailNoLang}`;
+  const altRu = `${site}/ru${tailNoLang}`;
 
   const finalTitle = title || L.title;
   const finalDesc = description || L.description;
@@ -52,7 +64,9 @@ export default function SeoHelmet({
     inLanguage: lang,
     potentialAction: {
       "@type": "SearchAction",
-      target: `${site}/${lang === "en" ? "" : lang + "/"}search?q={search_term_string}`,
+      target: `${site}/${
+        lang === "en" ? "" : lang + "/"
+      }search?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   } as const;
@@ -66,7 +80,9 @@ export default function SeoHelmet({
           "@type": "ListItem",
           position: idx + 1,
           name: seg,
-          item: `${site}${localePrefix}/${segments.slice(0, idx + 1).join("/")}/`,
+          item: `${site}${localePrefix}/${segments
+            .slice(0, idx + 1)
+            .join("/")}/`,
         })),
       }
     : null;
@@ -98,9 +114,13 @@ export default function SeoHelmet({
       {/* <meta name="twitter:site" content={L.twitterSite} /> */}
       {/* <meta name="twitter:image" content={finalImage} /> */}
 
-      <script type="application/ld+json">{JSON.stringify(websiteJsonLd)}</script>
+      <script type="application/ld+json">
+        {JSON.stringify(websiteJsonLd)}
+      </script>
       {breadcrumbJsonLd && (
-        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd)}
+        </script>
       )}
     </Helmet>
   );
