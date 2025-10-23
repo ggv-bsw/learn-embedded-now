@@ -111,7 +111,7 @@ const Index = () => {
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                   {t(
                     "hero.description",
-                    "Join thousands of students mastering cutting-edge technology through hands-on courses in IoT, embedded systems, and more.",
+                    "Join thousands of students mastering cutting-edge technology through hands-on IT courses in embedded systems, IoT, and programming.",
                   )}
                 </p>
               </div>
