@@ -1,9 +1,16 @@
 // Trainer image mappings
-// Add your trainer images to src/assets/ and map them here
+import GheorgheGhirjev from "@/assets/GheorgheGhirjev.jpeg";
+import DanielVrabii from "@/assets/DanielVrabii.jpeg";
+import IonCaruta from "@/assets/IonCaruta.jpeg";
+import GrigoreCiobanu from "@/assets/GrigoreCiobanu.jpeg";
+import VladislavMokluza from "@/assets/VladislavMokluza.jpeg";
 
 export const trainerImageMap: Record<number, string> = {
-  // Example: 1: "/path/to/trainer-image.jpg",
-  // Add mappings for each trainer ID
+  1: GheorgheGhirjev,
+  2: DanielVrabii,
+  3: IonCaruta,
+  4: GrigoreCiobanu,
+  5: VladislavMokluza,
 };
 
 export const getTrainerImage = (trainerId: number, fallbackUrl: string): string => {
