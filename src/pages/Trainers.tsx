@@ -28,6 +28,7 @@ import {
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
+import { getTrainerImage } from "@/utils/trainerImages";
 
 const Trainers = () => {
   const { t, language } = useLanguage();
@@ -181,7 +182,7 @@ const Trainers = () => {
                         <div className="relative">
                           <Avatar className="w-20 h-20 border-2 border-blue-500/30">
                             <AvatarImage
-                              src={trainer.image}
+                              src={getTrainerImage(trainer.id, trainer.image)}
                               alt={trainer.name}
                             />
                             <AvatarFallback className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 text-blue-400 text-xl font-bold">
