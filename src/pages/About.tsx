@@ -25,6 +25,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from "@/components/footer";
 import CourseInquiryForm from "@/components/CourseInquiryForm";
 import { supabase } from "@/integrations/supabase/client";
+import { getTrainerImage } from "@/utils/trainerImages";
 
 import bswTech from "@/assets/bswTech.png";
 import capgemini from "@/assets/capgemini.png";
@@ -332,7 +333,7 @@ const About = () => {
                     <CardHeader className="pb-4 flex-shrink-0">
                       <div className="relative mx-auto mb-4">
                         <img
-                          src={member.image}
+                          src={getTrainerImage(member.id, member.image)}
                           alt={member.name}
                           className="w-24 h-24 rounded-full mx-auto object-cover shadow-2xl"
                         />
