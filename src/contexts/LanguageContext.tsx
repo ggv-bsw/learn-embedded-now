@@ -26,10 +26,10 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.getStarted": "Get Started",
 
     // Hero Section
-    "hero.title": "Embedded Systems & IoT Courses — Embedded School",
-    "hero.subtitle": "Build Your Future in Tech",
+    "hero.title": "Embedded School — Embedded Systems & IoT Courses",
+    "hero.subtitle": "IT & Embedded School for Future Engineers",
     "hero.description":
-      "Master embedded systems and IoT with hands-on courses in Chișinău and online. Learn from industry experts and start your tech career in Moldova & Romania.",
+      "Embedded School is an IT school and advanced learning educational company focused on embedded system training and IoT. Join an embedded programming course, an embedded Python course or STM32 workshop in Chișinău or online. Learn C/C++, Python for embedded systems, electronics hardware design and real-world IoT from industry engineers in Moldova and Romania.",
     "hero.startLearning": "Start Learning Today",
     "hero.watchDemo": "Watch Demo",
     "hero.satisfaction": "Satisfaction Rate",
@@ -37,17 +37,17 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.expertCourses": "Expert Courses",
 
     // Featured Courses
-    "courses.featured": "Featured Courses",
+    "courses.featured": "Embedded Courses & IoT Training",
     "courses.mostPopular": "Most Popular Courses",
     "courses.description":
-      "Discover our most popular courses designed by industry experts",
+      "Find practical embedded courses and embedded system training in Chișinău and online. Study Embedded C, STM32, Arduino, Python for embedded systems and electronics hardware design with real projects and industry experts.",
     "courses.enrollNow": "Enroll Now",
     "courses.viewAll": "View All Courses",
     "courses.allAvailable": "All Courses Available",
     "courses.masterEmbedded": "Master Embedded",
     "courses.systemsIoT": "Systems & IoT",
     "courses.discover":
-      "Discover comprehensive courses in embedded systems, IoT, and programming. Start your journey from beginner to professional level.",
+      "Discover complete embedded programming courses for beginners and professionals. Start with C and C++ fundamentals, then move to STM32, Arduino, sensors, Python for embedded systems, PCB design and automotive electronics.",
     "courses.searchPlaceholder": "Search courses...",
     "courses.category": "Category:",
     "courses.level": "Level:",
@@ -141,7 +141,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about.title": "Empowering the Next Generation of",
     "about.titleHighlight": "Embedded Engineers",
     "about.description":
-      "Founded in Moldova with a vision to democratize embedded systems education across Eastern Europe. We bridge the gap between academic theory and industry practice.",
+      "Embedded School is an advanced learning educational company and IT school founded in Moldova with a vision to democratize embedded systems and IoT education across Eastern Europe. We bridge the gap between academic theory and industry practice with structured embedded system training, hardware design courses and real engineering projects.",
 
     // Stats
     "about.studentsTaught": "Students Taught",
@@ -291,13 +291,13 @@ const translations: Record<Language, Record<string, string>> = {
     "trainers.title": "Embedded Systems",
     "trainers.titleHighlight": "Instructors & IoT Mentors",
     "trainers.description":
-      "Learn from embedded systems engineers and IoT mentors with real industry experience. Get one-to-one guidance and hands-on feedback.",
+      "Learn from embedded systems engineers and IoT mentors with real industry experience in automotive, industrial and consumer electronics. Our lead embedded trainer Gheorghe Ghirjev and the team offer one-to-one guidance, code reviews and hardware debugging support on your projects.",
     "trainers.studentsTaught": "Students Taught",
     "trainers.averageRating": "Average Rating",
     "trainers.hoursExperience": "Hours Experience",
     "trainers.yourMentors": "Your Learning Mentors",
     "trainers.mentorsDescription":
-      "Expert embedded systems engineers ready to guide your journey",
+      "Expert embedded systems and IoT engineers ready to guide your journey from beginner to professional. Get practical embedded system training, real project reviews and career advice tailored to embedded software and hardware roles.",
     "trainers.viewProfile": "View Profile",
     "trainers.requestOneToOne": "Request One-to-One",
     "trainers.expertise": "Expertise",
@@ -374,7 +374,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hardware.hero.title": "Embedded Development Boards",
     "hardware.hero.subtitle": "Microcontrollers & Professional Hardware",
     "hardware.hero.description":
-      "Professional-grade development boards and microcontrollers for your embedded projects.",
+      "Buy professional development boards, STM32 microcontrollers and IoT starter kits for your embedded systems projects. Our selection covers Arduino, STM32, sensors, modules and electronics hardware design tools tested by engineers for lab, prototyping and education.",
     "hardware.hero.shopNow": "Shop Now",
     "hardware.hero.browseCategories": "Browse Categories",
     "hardware.category.allBoards": "All Boards",
@@ -688,7 +688,7 @@ const translations: Record<Language, Record<string, string>> = {
     "coursesPage.masterEmbedded": "Master Embedded",
     "coursesPage.systemsIot": "Systems & IoT",
     "coursesPage.discover":
-      "Explore comprehensive IT courses at Embedded School. Master embedded systems, IoT, and programming through hands-on training. Start your journey from beginner to professional level.",
+      "Explore embedded courses at Embedded School: embedded programming courses, embedded system training, STM32 and Arduino workshops and a dedicated embedded Python course. Learn C/C++, Python for embedded systems, IoT and electronics hardware design through hands-on labs in Chișinău and online.",
     "coursesPage.coursesLabel": "Courses",
     "coursesPage.studentsLabel": "Students",
     "coursesPage.avgRating": "Avg Rating",
@@ -845,10 +845,10 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.getStarted": "Începe Acum",
 
     // Hero Section
-    "hero.title": "Cursuri de sisteme embedded și IoT — Embedded School",
-    "hero.subtitle": "Construiește-ți viitorul în IT",
+    "hero.title": "Embedded School — Cursuri de sisteme embedded și IoT",
+    "hero.subtitle": "Școală IT și Embedded pentru viitorii ingineri",
     "hero.description":
-      "Stăpânește sisteme embedded și IoT cu cursuri practice în Chișinău și online. Învață de la experți din industrie și începe o carieră în Moldova și România.",
+      "Embedded School este o școală IT și companie de advanced learning specializată în training de sisteme embedded și IoT. Înscrie-te la un curs de programare embedded, un curs Embedded Python sau workshop STM32 în Chișinău sau online. Învață C/C++, Python pentru sisteme embedded, electronics hardware design și proiecte IoT reale alături de ingineri din industrie din Moldova și România.",
     "hero.startLearning": "Începe să Înveți Astăzi",
     "hero.watchDemo": "Vizionează Demo",
     "hero.satisfaction": "Rata de Satisfacție",
@@ -856,17 +856,17 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.expertCourses": "Cursuri de Expert",
 
     // Featured Courses
-    "courses.featured": "Cursuri Recomandate",
+    "courses.featured": "Cursuri embedded și training IoT",
     "courses.mostPopular": "Cele Mai Populare Cursuri",
     "courses.description":
-      "Descoperă cele mai populare cursuri create de experți din industrie",
+      "Găsește cursuri embedded practice și embedded system training în Chișinău și online. Studiază Embedded C, STM32, Arduino, Python pentru sisteme embedded și electronics hardware design cu proiecte reale și experți din industrie.",
     "courses.enrollNow": "Înscrie-te Acum",
     "courses.viewAll": "Vezi Toate Cursurile",
     "courses.allAvailable": "Toate Cursurile Disponibile",
     "courses.masterEmbedded": "Stăpânește Sistemele",
     "courses.systemsIoT": "Înglobate & IoT",
     "courses.discover":
-      "Descoperă cursuri complete de sisteme înglobate, IoT și programare. Începe călătoria ta de la nivel începător la nivel profesional.",
+      "Descoperă cursuri complete de programare embedded pentru începători și profesioniști. Începe cu bazele C și C++, apoi treci la STM32, Arduino, senzori, Python pentru sisteme embedded, design PCB și electronică auto.",
     "courses.searchPlaceholder": "Caută cursuri...",
     "courses.category": "Categorie:",
     "courses.level": "Nivel:",
@@ -962,7 +962,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about.title": "Împuternicim Noua Generație de",
     "about.titleHighlight": "Ingineri Înglobați",
     "about.description":
-      "Fondată în Moldova cu viziunea de a democratiza educația sistemelor înglobate în Europa de Est. Comblăm diferența între teoria academică și practica industrială.",
+      "Embedded School este o advanced learning educational company și școală IT fondată în Moldova, cu viziunea de a democratiza educația în sisteme embedded și IoT în Europa de Est. Conectăm teoria academică cu practica din industrie prin embedded system training structurat, cursuri de hardware design și proiecte reale de inginerie.",
 
     // Stats
     "about.studentsTaught": "Studenți Predați",
@@ -1113,13 +1113,13 @@ const translations: Record<Language, Record<string, string>> = {
     "trainers.title": "Sisteme Embedded",
     "trainers.titleHighlight": "Instructori și mentori IoT",
     "trainers.description":
-      "Învață de la ingineri în sisteme embedded și mentori IoT cu experiență reală în industrie. Primește îndrumare unu-la-unu și feedback practic.",
+      "Învață de la ingineri în sisteme embedded și mentori IoT cu experiență reală în automotive, industrial și electronică de consum. Trainerul nostru principal pe embedded, Gheorghe Ghirjev, împreună cu echipa oferă îndrumare unu-la-unu, code review și suport pentru debugging hardware pe proiectele tale.",
     "trainers.studentsTaught": "Studenți Predați",
     "trainers.averageRating": "Rating Mediu",
     "trainers.hoursExperience": "Ore de Experiență",
     "trainers.yourMentors": "Mentorii Tăi de Învățare",
     "trainers.mentorsDescription":
-      "Ingineri experți în sisteme înglobate gata să-ți ghideze călătoria",
+      "Ingineri experți în sisteme embedded și IoT gata să-ți ghideze călătoria de la începător la profesionist. Primești embedded system training practic, revizuirea proiectelor reale și sfaturi de carieră pentru roluri de software și hardware embedded.",
     "trainers.viewProfile": "Vezi Profilul",
     "trainers.requestOneToOne": "Solicită Întâlnire Individuală",
     "trainers.expertise": "Expertiză",
@@ -1196,7 +1196,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hardware.hero.title": "Plăci de dezvoltare embedded",
     "hardware.hero.subtitle": "Microcontrolere și hardware profesional",
     "hardware.hero.description":
-      "Plăci de dezvoltare și microcontrolere profesionale pentru proiectele tale embedded.",
+      "Cumpără plăci de dezvoltare profesionale, microcontrolere STM32 și kituri IoT pentru proiectele tale de sisteme embedded. Selecția noastră include Arduino, STM32, senzori, module și unelte pentru electronics hardware design testate de ingineri pentru laborator, prototipare și educație.",
     "hardware.hero.shopNow": "Cumpără Acum",
     "hardware.hero.browseCategories": "Răsfoiește Categorii",
     "hardware.category.allBoards": "Toate Plăcile",
@@ -1456,7 +1456,7 @@ const translations: Record<Language, Record<string, string>> = {
     "coursesPage.masterEmbedded": "Stăpânește Sistemele",
     "coursesPage.systemsIot": "Înglobate & IoT",
     "coursesPage.discover":
-      "Explorează cursuri IT cuprinzătoare la Embedded School. Stăpânește sisteme embedded, IoT și programare prin instruire practică. Începe-ți călătoria de la nivel începător la profesional.",
+      "Explorează embedded courses la Embedded School: cursuri de programare embedded, embedded system training, workshopuri STM32 și Arduino și un curs dedicat Embedded Python. Învață C/C++, Python pentru sisteme embedded, IoT și electronics hardware design prin laboratoare practice în Chișinău și online.",
     "coursesPage.coursesLabel": "Cursuri",
     "coursesPage.studentsLabel": "Studenți",
     "coursesPage.avgRating": "Rating Mediu",
@@ -1697,10 +1697,10 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.getStarted": "Начать",
 
     // Hero Section
-    "hero.title": "Курсы по Embedded-системам и IoT — Embedded School",
-    "hero.subtitle": "Постройте карьеру в IT",
+    "hero.title": "Embedded School — курсы по embedded-системам и IoT",
+    "hero.subtitle": "IT и embedded school для будущих инженеров",
     "hero.description":
-      "Освойте embedded-системы и IoT на практических курсах в Кишинёве и онлайн. Учитесь у экспертов и начинайте карьеру в Молдове и Румынии.",
+      "Embedded School — это IT-школа и advanced learning educational company, которая специализируется на training по embedded-системам и IoT. Записывайтесь на embedded programming course, Embedded Python course или STM32-тренинг в Кишинёве или онлайн. Изучайте C/C++, Python для embedded-систем, electronics hardware design и реальные IoT-проекты вместе с инженерами из индустрии в Молдове и Румынии.",
     "hero.startLearning": "Начать Обучение Сегодня",
     "hero.watchDemo": "Смотреть Демо",
     "hero.satisfaction": "Уровень Удовлетворенности",
@@ -1708,17 +1708,17 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.expertCourses": "Экспертные Курсы",
 
     // Featured Courses
-    "courses.featured": "Курсы по Embedded-системам и IoT",
+    "courses.featured": "Embedded-курсы и IoT-training",
     "courses.mostPopular": "Самые Популярные Курсы",
     "courses.description":
-      "Найдите курсы по embedded-системам, IoT и программированию с практикой в Кишинёве и онлайн. Учитесь у индустриальных экспертов и создавайте реальные проекты.",
+      "Найдите практические embedded courses и embedded system training в Кишинёве и онлайн. Изучайте Embedded C, STM32, Arduino, Python для embedded-систем и electronics hardware design на реальных проектах с экспертами из индустрии.",
     "courses.enrollNow": "Записаться Сейчас",
     "courses.viewAll": "Посмотреть Все Курсы",
     "courses.allAvailable": "Все Доступные Курсы",
     "courses.masterEmbedded": "Освойте Встраиваемые",
     "courses.systemsIoT": "Системы и IoT",
     "courses.discover":
-      "Откройте для себя полные курсы по встраиваемым системам, IoT и программированию. Начните свой путь от новичка до профессионального уровня.",
+      "Откройте для себя полные курсы по embedded-программированию для новичков и профессионалов. Начните с основ C и C++, затем переходите к STM32, Arduino, сенсорам, Python для embedded-систем, проектированию PCB и автомобильной электронике.",
     "courses.searchPlaceholder": "Поиск курсов...",
     "courses.category": "Категория:",
     "courses.level": "Уровень:",
@@ -1814,7 +1814,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about.title": "Расширяем Возможности Следующего Поколения",
     "about.titleHighlight": "Встраиваемых Инженеров",
     "about.description":
-      "Основана в Молдове с видением демократизировать образование встраиваемых систем в Восточной Европе. Мы соединяем академическую теорию с промышленной практикой.",
+      "Embedded School — IT-школа и advanced learning educational company из Молдовы, специализирующаяся на embedded system training и IoT-образовании. Мы объединяем академические знания с промышленным опытом, предлагая курсы по embedded-системам, embedded programming, hardware design и реальные инженерные проекты для практики.",
 
     // Stats
     "about.studentsTaught": "Обученных Студентов",
@@ -1970,13 +1970,13 @@ const translations: Record<Language, Record<string, string>> = {
     "trainers.title": "Преподаватели по Embedded",
     "trainers.titleHighlight": "и IoT-наставники",
     "trainers.description":
-      "Обучайтесь у инженеров embedded-систем и IoT-наставников с реальным опытом. Персональные консультации и практическая обратная связь.",
+      "Обучайтесь у инженеров по embedded-системам и IoT-наставников с реальным опытом в автомобильной, промышленной и потребительской электронике. Наш ведущий embedded-тренер Gheorghe Ghirjev и команда помогают с индивидуальными сессиями, code review и отладкой железа на ваших проектах.",
     "trainers.studentsTaught": "Обученных Студентов",
     "trainers.averageRating": "Средний Рейтинг",
     "trainers.hoursExperience": "Часов Опыта",
     "trainers.yourMentors": "Ваши Учебные Наставники",
     "trainers.mentorsDescription":
-      "Эксперты-инженеры встраиваемых систем готовы направить ваш путь",
+      "Эксперты по embedded-системам и IoT готовы провести вас путь от новичка до профессионала. Получайте практический embedded system training, разбор реальных проектов и карьерные рекомендации для embedded-software и hardware-ролей.",
     "trainers.viewProfile": "Посмотреть Профиль",
     "trainers.requestOneToOne": "Запросить Индивидуальную Встречу",
     "trainers.expertise": "Опыт",
@@ -2051,9 +2051,10 @@ const translations: Record<Language, Record<string, string>> = {
     // Hardware Page
     "hardware.hero.badge": "Магазин Оборудования",
     "hardware.hero.title": "Платы для embedded-разработки",
-    "hardware.hero.subtitle": "Микроконтроллеры и профессиональное оборудование",
+    "hardware.hero.subtitle":
+      "Микроконтроллеры и профессиональное оборудование",
     "hardware.hero.description":
-      "Профессиональные платы для разработки и микроконтроллеры для ваших встраиваемых проектов.",
+      "Купите профессиональные платы разработки, микроконтроллеры STM32 и IoT-стартовые наборы для ваших embedded-проектов. В подборку входят Arduino, STM32, датчики, модули и инструменты для electronics hardware design, протестированные инженерами для лабораторий, прототипирования и обучения.",
     "hardware.hero.shopNow": "Купить Сейчас",
     "hardware.hero.browseCategories": "Просмотреть Категории",
     "hardware.category.allBoards": "Все Платы",
@@ -2206,7 +2207,7 @@ const translations: Record<Language, Record<string, string>> = {
     "coursesPage.masterEmbedded": "Освойте Встраиваемые",
     "coursesPage.systemsIot": "Системы и IoT",
     "coursesPage.discover":
-      "Изучайте комплексные IT-курсы в Embedded School. Освойте embedded-системы, IoT и программирование через практическое обучение. Начните свой путь от новичка до профессионального уровня.",
+      "Изучайте embedded courses в Embedded School: курсы по embedded-программированию, embedded system training, STM32 и Arduino-воркшопы и отдельный Embedded Python course. Осваивайте C/C++, Python для embedded-систем, IoT и electronics hardware design на практических лабораторных в Кишинёве и онлайн.",
     "coursesPage.coursesLabel": "Курсы",
     "coursesPage.studentsLabel": "Студенты",
     "coursesPage.avgRating": "Средний Рейтинг",
