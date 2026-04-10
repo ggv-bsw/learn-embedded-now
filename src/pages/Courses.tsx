@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { mdlToEur } from "@/utils/currency";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -377,11 +378,11 @@ const Courses = () => {
                     <div className="flex items-center justify-between">
                       <div>
                         <span className="text-2xl font-bold text-white">
-                          €{course.price}
+                          €{mdlToEur(course.price)}
                         </span>
                         {course.originalPrice && (
                           <span className="text-gray-400 line-through text-sm ml-2">
-                            €{course.originalPrice}
+                            €{mdlToEur(course.originalPrice)}
                           </span>
                         )}
                       </div>

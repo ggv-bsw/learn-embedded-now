@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { mdlToEur } from "@/utils/currency";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
@@ -347,11 +348,11 @@ const Hardware = () => {
                       <div>
                         <div className="flex items-center space-x-2">
                           <span className="text-2xl font-bold text-white">
-                            €{board.price}
+                            €{mdlToEur(board.price)}
                           </span>
                           {board.original_price && (
                             <span className="text-lg text-gray-500 line-through">
-                              €{board.original_price}
+                              €{mdlToEur(board.original_price)}
                             </span>
                           )}
                         </div>

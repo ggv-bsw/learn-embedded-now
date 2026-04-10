@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Clock, Users, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { mdlToEur } from "@/utils/currency";
 
 interface CourseCardProps {
   id: string;
@@ -79,7 +80,7 @@ const CourseCard = ({
         
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-2xl font-bold text-white">€{price}</span>
+            <span className="text-2xl font-bold text-white">€{mdlToEur(price)}</span>
           </div>
           <Button 
             asChild 

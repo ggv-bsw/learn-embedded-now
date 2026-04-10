@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { mdlToEur } from "@/utils/currency";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
@@ -254,11 +255,11 @@ const HardwareDetail = () => {
                     <div>
                       <div className="flex items-center space-x-3">
                         <span className="text-4xl font-bold text-white">
-                          €{product.price}
+                          €{mdlToEur(product.price)}
                         </span>
                         {product.original_price && (
                           <span className="text-2xl text-gray-500 line-through">
-                            €{product.original_price}
+                            €{mdlToEur(product.original_price)}
                           </span>
                         )}
                       </div>

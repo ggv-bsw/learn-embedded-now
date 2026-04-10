@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
 import { JuniorProgramForm } from "@/components/JuniorProgramForm";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { mdlToEur } from "@/utils/currency";
 import {
   Zap,
   Users,
@@ -488,7 +489,7 @@ const JuniorProgram = () => {
               <CardContent className="space-y-6">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-yellow-400 mb-2">
-                    €299
+                    €{mdlToEur(299)}
                   </div>
                   <div className="text-gray-400">per 12-week term</div>
                   <div className="text-green-400 text-sm">
