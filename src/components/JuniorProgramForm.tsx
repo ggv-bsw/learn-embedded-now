@@ -7,6 +7,8 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useFormRateLimit } from "@/utils/rateLimit";
+import { juniorProgramFormSchema, validateFormData, getValidationErrorMessage } from "@/utils/formValidation";
 
 interface JuniorProgramFormProps {
   children: React.ReactNode;
@@ -34,11 +36,34 @@ export const JuniorProgramForm = ({ children }: JuniorProgramFormProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.name || !formData.surname || !formData.email) {
+
+    const { checkLimit } = useFormRateLimit("junior-form");
+    const { allowed, message: rateLimitMessage } = checkLimit();
+
+    if (!allowed) {
       toast({
-        title: t('juniorForm.missingInfo'),
-        description: t('juniorForm.fillRequired'),
+        title: t('juniorForm.rateLimited'),
+        description: rateLimitMessage,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate form data using schema
+    const validation = await validateFormData(juniorProgramFormSchema, {
+      studentName: formData.name.trim(),
+      parentName: formData.surname.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      age: 13, // Default placeholder (form doesn't capture age)
+      experience: 'Interested in joining the junior program', // Default placeholder
+    });
+
+    if (!validation.success) {
+      const errorMessage = getValidationErrorMessage(validation.errors || {});
+      toast({
+        title: t('juniorForm.validationError'),
+        description: errorMessage,
         variant: "destructive",
       });
       return;

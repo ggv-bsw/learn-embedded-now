@@ -14,6 +14,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useFormRateLimit } from "@/utils/rateLimit";
+import { meetingFormSchema, validateFormData, getValidationErrorMessage } from "@/utils/formValidation";
 
 interface OneToOneMeetingFormProps {
   open: boolean;
@@ -50,10 +52,34 @@ const OneToOneMeetingForm = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name.trim() || !formData.email.trim()) {
+    const { checkLimit } = useFormRateLimit("meeting-form");
+    const { allowed, message: rateLimitMessage } = checkLimit();
+
+    if (!allowed) {
       toast({
-        title: t('meetingForm.missingInfo'),
-        description: t('meetingForm.fillRequired'),
+        title: t('meetingForm.rateLimited'),
+        description: rateLimitMessage,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate form data using schema
+    const validation = await validateFormData(meetingFormSchema, {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      topic: trainerName || 'Meeting request',
+      message: formData.message.trim(),
+      preferredDate: formData.preferred_date || undefined,
+      timeSlot: undefined,
+    });
+
+    if (!validation.success) {
+      const errorMessage = getValidationErrorMessage(validation.errors || {});
+      toast({
+        title: t('meetingForm.validationError'),
+        description: errorMessage,
         variant: "destructive",
       });
       return;

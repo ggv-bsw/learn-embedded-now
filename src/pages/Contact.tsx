@@ -22,6 +22,8 @@ import { toast } from "sonner";
 import Footer from "@/components/footer";
 import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useFormRateLimit } from "@/utils/rateLimit";
+import { contactFormSchema, validateFormData, getValidationErrorMessage } from "@/utils/formValidation";
 
 const Contact = () => {
   const { t, language } = useLanguage();
@@ -123,6 +125,30 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const { checkLimit } = useFormRateLimit("contact-form");
+    const { allowed, message: rateLimitMessage } = checkLimit();
+
+    if (!allowed) {
+      toast.error(rateLimitMessage);
+      return;
+    }
+
+    // Validate form data using schema
+    const validation = await validateFormData(contactFormSchema, {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone?.trim(),
+      subject: formData.subject.trim(),
+      message: formData.message.trim(),
+    });
+
+    if (!validation.success) {
+      const errorMessage = getValidationErrorMessage(validation.errors || {});
+      toast.error(errorMessage);
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {

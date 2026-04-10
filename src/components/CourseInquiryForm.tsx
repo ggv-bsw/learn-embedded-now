@@ -22,6 +22,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send, ChevronDown, ChevronUp } from "lucide-react";
 import { featuredCourses } from "@/testData/featuredCourses";
+import { useFormRateLimit } from "@/utils/rateLimit";
+import { courseInquiryFormSchema } from "@/utils/formValidation";
 
 interface CourseInquiryFormProps {
   open: boolean;
@@ -53,6 +55,9 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [showCourseList, setShowCourseList] = useState(false);
+
+  // Rate limiting: 5 attempts per 60 seconds for course inquiries
+  const { checkLimit } = useFormRateLimit("course-inquiry-form");
 
   const getCoursesBySubscription = (subscriptionType?: string) => {
     switch (subscriptionType) {
@@ -149,6 +154,17 @@ const CourseInquiryForm: React.FC<CourseInquiryFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Check rate limit BEFORE any validation
+    const { allowed, message } = checkLimit();
+    if (!allowed) {
+      toast({
+        title: t("form.rateLimited", "Too Many Submissions"),
+        description: message || t("form.tryAgainLater", "Please wait before submitting again."),
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (!formData.name || !formData.surname || !formData.courseId) {
       toast({

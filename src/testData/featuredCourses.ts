@@ -12,8 +12,8 @@ export const featuredCourses = [
     description:
       "A hands-on beginner curriculum. You’ll learn core programming concepts in Python, data structures, OOP, working with files and data (JSON/CSV), using external libraries with uv, unit testing, and best practices. By the end, you’ll build two mini-projects: a CLI To-Do app and a small Flask web app.",
     image: coursePython,
-    price: 169,
-    originalPrice: 229,
+    price: 8.99,
+    originalPrice: 11.99,
     duration: "10 weeks",
     link: "https://www.youtube.com/shorts/AoeWnfn-kGU",
     students: 14,
@@ -236,8 +236,8 @@ export const featuredCourses = [
     description:
       "A 25-lesson journey that takes you from zero to advanced C++ at BSW. You’ll build confidence with core language features, master memory and the STL, write multi-file and multi-threaded programs, and structure real projects with modern CMake. Every lesson pairs theory with hands-on labs and progressive challenges.",
     image: courseCpp,
-    price: 279,
-    originalPrice: 399,
+    price: 14.99,
+    originalPrice: 19.99,
     duration: "12 weeks",
     students: 11,
     rating: 4.8,
@@ -562,8 +562,8 @@ export const featuredCourses = [
     description:
       "Learn to design professional PCBs using industry-standard tools. This comprehensive course covers schematic design, component selection, PCB layout, signal integrity, power distribution, and manufacturing preparation. Build real-world projects from simple boards to complex multi-layer designs.",
     image: coursePcbDesign,
-    price: 249,
-    originalPrice: 349,
+    price: 12.99,
+    originalPrice: 17.99,
     duration: "8 weeks",
     students: 18,
     rating: 4.9,
@@ -718,8 +718,8 @@ export const featuredCourses = [
     description:
       "Master software testing principles specifically for automotive applications. Learn test automation, ISO 26262 functional safety, AUTOSAR testing, HIL/SIL testing, and automotive-specific quality assurance processes. Gain hands-on experience with industry-standard testing tools and frameworks.",
     image: courseSoftwareTesting,
-    price: 299,
-    originalPrice: 429,
+    price: 14.99,
+    originalPrice: 21.99,
     duration: "10 weeks",
     students: 22,
     rating: 4.9,

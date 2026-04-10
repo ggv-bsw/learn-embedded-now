@@ -5,13 +5,28 @@ import type { Database } from './types';
 const SUPABASE_URL = "https://wzdlhukymsjittdyuddr.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZGxodWt5bXNqaXR0ZHl1ZGRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0MTMyNDksImV4cCI6MjA3Mjk4OTI0OX0._Uk6LQ_BLsEvNz3p-24Qky3DFANXgOD0AM9JWO5CcxY";
 
+// Custom fetch wrapper with 15-second timeout
+const timeoutFetch = async (url: RequestInfo | URL, options?: RequestInit): Promise<Response> => {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
+};
+
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: {
-    storage: localStorage,
-    persistSession: true,
+    storage: sessionStorage,  // Changed from localStorage to sessionStorage for security
+    persistSession: false,     // Don't persist across browser sessions
     autoRefreshToken: true,
+  },
+  global: {
+    fetch: timeoutFetch,      // Use custom fetch with timeout
   }
 });

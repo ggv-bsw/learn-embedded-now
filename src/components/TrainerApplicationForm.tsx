@@ -14,6 +14,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useFormRateLimit } from "@/utils/rateLimit";
+import { trainerApplicationFormSchema, validateFormData, getValidationErrorMessage } from "@/utils/formValidation";
 
 interface TrainerApplicationFormProps {
   open: boolean;
@@ -46,17 +48,13 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.expertise ||
-      !formData.experienceYears ||
-      !formData.bio ||
-      !formData.whyTeach
-    ) {
+    const { checkLimit } = useFormRateLimit("trainer-app-form");
+    const { allowed, message: rateLimitMessage } = checkLimit();
+
+    if (!allowed) {
       toast({
-        title: t('trainerForm.missingInfo'),
-        description: t('trainerForm.fillRequired'),
+        title: t('trainerForm.rateLimited'),
+        description: rateLimitMessage,
         variant: "destructive",
       });
       return;
@@ -67,6 +65,28 @@ const TrainerApplicationForm: React.FC<TrainerApplicationFormProps> = ({
       toast({
         title: t('trainerForm.invalidExperience'),
         description: t('trainerForm.validYears'),
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate form data using schema
+    const validation = await validateFormData(trainerApplicationFormSchema, {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      experience: experienceYearsNum,
+      specialization: formData.expertise.trim(),
+      certifications: formData.bio.trim(),
+      portfolio: formData.portfolioUrl || undefined,
+      motivation: formData.whyTeach.trim(),
+    });
+
+    if (!validation.success) {
+      const errorMessage = getValidationErrorMessage(validation.errors || {});
+      toast({
+        title: t('trainerForm.validationError'),
+        description: errorMessage,
         variant: "destructive",
       });
       return;

@@ -9,27 +9,12 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { z } from "zod";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useFormRateLimit } from "@/utils/rateLimit";
+import { checkoutFormSchema, getValidationErrorMessage } from "@/utils/formValidation";
 
 // Validation schema for checkout form
-const checkoutSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(1, "Name is required")
-    .max(100, "Name must be less than 100 characters"),
-  email: z
-    .string()
-    .trim()
-    .email("Invalid email address")
-    .max(255, "Email must be less than 255 characters"),
-  phone: z
-    .string()
-    .trim()
-    .min(1, "Phone is required")
-    .max(20, "Phone number must be less than 20 characters"),
-});
+// Now using centralized schema from utils/formValidation.ts
 
 const Checkout = () => {
   const { language } = useLanguage();
@@ -43,17 +28,30 @@ const Checkout = () => {
     phone: "",
   });
 
+  // Rate limiting hook for checkout form (5 attempts per 60 seconds)
+  const { checkLimit, getRemainingTime } = useFormRateLimit("checkout-form");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Check rate limit BEFORE processing
+    const { allowed, message } = checkLimit();
+    if (!allowed) {
+      toast.error(message || "Too many submissions. Please try again later.");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      // Validate form data
-      const validationResult = checkoutSchema.safeParse(formData);
+      // Validate form data using centralized schema
+      const validationResult = checkoutFormSchema.safeParse(formData);
 
       if (!validationResult.success) {
-        const firstError = validationResult.error.issues[0];
-        toast.error(firstError.message);
+        // Get first error message from validation
+        const errors = validationResult.error.flatten().fieldErrors;
+        const firstErrorMessage = Object.values(errors)[0]?.[0] || "Please check your form";
+        toast.error(firstErrorMessage);
         setIsLoading(false);
         return;
       }
