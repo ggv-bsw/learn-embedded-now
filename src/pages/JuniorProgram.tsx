@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/ui/navigation";
 import { JuniorProgramForm } from "@/components/JuniorProgramForm";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { mdlToEur } from "@/utils/currency";
 import {
   Zap,
   Users,
