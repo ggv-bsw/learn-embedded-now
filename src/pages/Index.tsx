@@ -336,7 +336,7 @@ const Index = () => {
 
                       <div className="flex items-center justify-between">
                         <div>
-                          <span className="text-2xl font-bold text-white">{course.price} mdl</span>
+                          <span className="text-2xl font-bold text-white">€{course.price}</span>
                         </div>
                         <Button
                           className="bg-blue-600 hover:bg-blue-700 text-white"

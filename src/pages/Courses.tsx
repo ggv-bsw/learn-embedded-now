@@ -377,11 +377,11 @@ const Courses = () => {
                     <div className="flex items-center justify-between">
                       <div>
                         <span className="text-2xl font-bold text-white">
-                          {course.price} mdl
+                          €{course.price}
                         </span>
                         {course.originalPrice && (
                           <span className="text-gray-400 line-through text-sm ml-2">
-                            {course.originalPrice} mdl
+                            €{course.originalPrice}
                           </span>
                         )}
                       </div>

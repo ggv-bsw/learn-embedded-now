@@ -102,9 +102,9 @@ export const ProfessionalPackCard = ({
         </div>
 
         <div className="text-center mb-6">
-          <div className="text-3xl font-bold text-white mb-1">{price} mdl</div>
+          <div className="text-3xl font-bold text-white mb-1">€{price}</div>
           {original_price && (
-            <div className="text-gray-400 text-sm line-through">{original_price} mdl</div>
+            <div className="text-gray-400 text-sm line-through">€{original_price}</div>
           )}
           {discount_percentage && (
             <div className="text-green-400 text-sm font-semibold">
