@@ -1,4 +1,5 @@
 import { useState, lazy, Suspense, startTransition } from "react";
+import { mdlToEur } from "@/utils/currency";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -336,7 +337,7 @@ const Index = () => {
 
                       <div className="flex items-center justify-between">
                         <div>
-                          <span className="text-2xl font-bold text-white">€{course.price}</span>
+                          <span className="text-2xl font-bold text-white">€{mdlToEur(course.price)}</span>
                         </div>
                         <Button
                           className="bg-blue-600 hover:bg-blue-700 text-white"

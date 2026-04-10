@@ -12,6 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useFormRateLimit } from "@/utils/rateLimit";
 import { checkoutFormSchema, getValidationErrorMessage } from "@/utils/formValidation";
+import { mdlToEur } from "@/utils/currency";
 
 // Validation schema for checkout form
 // Now using centralized schema from utils/formValidation.ts
@@ -136,11 +137,11 @@ const Checkout = () => {
                       <h3 className="font-semibold text-white">{item.name}</h3>
                       <p className="text-gray-400">Quantity: {item.quantity}</p>
                       <p className="text-gray-400">
-                        €{item.price} × {item.quantity}
+                        €{mdlToEur(item.price)} × {item.quantity}
                       </p>
                     </div>
                     <div className="text-white font-bold">
-                      €{(item.price * item.quantity).toFixed(2)}
+                      €{mdlToEur(item.price * item.quantity)}
                     </div>
                   </div>
                 ))}
@@ -148,7 +149,7 @@ const Checkout = () => {
               <Separator className="my-4 bg-slate-700" />
               <div className="flex justify-between text-xl font-bold text-white">
                 <span>Total:</span>
-                <span>€{totalPrice.toFixed(2)}</span>
+                <span>€{mdlToEur(totalPrice)}</span>
               </div>
             </Card>
           </div>
