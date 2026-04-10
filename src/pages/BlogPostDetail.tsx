@@ -236,7 +236,12 @@ const BlogPostDetail = () => {
               prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700
               prose-ul:text-gray-300 prose-ol:text-gray-300
               prose-li:mb-2"
-            dangerouslySetInnerHTML={{ __html: getTranslatedField("content") }}
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(getTranslatedField("content"), {
+                ALLOWED_TAGS: ['h1','h2','h3','h4','h5','h6','p','a','strong','em','ul','ol','li','code','pre','blockquote','img','br','hr','span','div','table','thead','tbody','tr','th','td'],
+                ALLOWED_ATTR: ['href','target','rel','src','alt','class','id']
+              })
+            }}
           />
 
           {/* Share Section */}
