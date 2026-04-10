@@ -60,7 +60,7 @@ export const ShoppingCartSheet = () => {
                     />
                     <div className="flex-1">
                       <h4 className="font-semibold text-white">{item.name}</h4>
-                      <p className="text-gray-400">{item.price} mdl</p>
+                      <p className="text-gray-400">€{item.price}</p>
                       <div className="flex items-center gap-2 mt-2">
                         <Button
                           size="icon"
@@ -105,7 +105,7 @@ export const ShoppingCartSheet = () => {
               <div className="border-t border-slate-700 pt-4 space-y-4">
                 <div className="flex justify-between text-lg font-bold text-white">
                   <span>Total:</span>
-                  <span>{totalPrice.toFixed(2)} mdl</span>
+                  <span>€{totalPrice.toFixed(2)}</span>
                 </div>
                 <Button
                   className="w-full bg-blue-600 hover:bg-blue-700"
