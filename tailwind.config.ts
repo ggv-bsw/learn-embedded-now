@@ -19,7 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				inter: ['Inter', 'system-ui', 'sans-serif'],
+				inter: ['Inter', 'Inter Fallback', 'system-ui', 'sans-serif'],
+				sans: ['Inter', 'Inter Fallback', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
