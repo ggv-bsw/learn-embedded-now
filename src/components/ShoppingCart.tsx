@@ -11,6 +11,7 @@ import { useCart } from "@/contexts/CartContext";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { mdlToEur } from "@/utils/currency";
 
 export const ShoppingCartSheet = () => {
   const { items, removeFromCart, updateQuantity, totalItems, totalPrice } =
@@ -60,7 +61,7 @@ export const ShoppingCartSheet = () => {
                     />
                     <div className="flex-1">
                       <h4 className="font-semibold text-white">{item.name}</h4>
-                      <p className="text-gray-400">€{item.price}</p>
+                      <p className="text-gray-400">€{mdlToEur(item.price)}</p>
                       <div className="flex items-center gap-2 mt-2">
                         <Button
                           size="icon"
@@ -105,7 +106,7 @@ export const ShoppingCartSheet = () => {
               <div className="border-t border-slate-700 pt-4 space-y-4">
                 <div className="flex justify-between text-lg font-bold text-white">
                   <span>Total:</span>
-                  <span>€{totalPrice.toFixed(2)}</span>
+                  <span>€{mdlToEur(totalPrice)}</span>
                 </div>
                 <Button
                   className="w-full bg-blue-600 hover:bg-blue-700"

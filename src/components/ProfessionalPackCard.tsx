@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Cpu, Code, BookOpen, LucideIcon } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { mdlToEur } from "@/utils/currency";
 
 interface ProfessionalPackCardProps {
   id: string;
@@ -102,9 +103,9 @@ export const ProfessionalPackCard = ({
         </div>
 
         <div className="text-center mb-6">
-          <div className="text-3xl font-bold text-white mb-1">€{price}</div>
+          <div className="text-3xl font-bold text-white mb-1">€{mdlToEur(price)}</div>
           {original_price && (
-            <div className="text-gray-400 text-sm line-through">€{original_price}</div>
+            <div className="text-gray-400 text-sm line-through">€{mdlToEur(original_price)}</div>
           )}
           {discount_percentage && (
             <div className="text-green-400 text-sm font-semibold">
